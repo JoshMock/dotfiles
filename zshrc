@@ -47,4 +47,7 @@ alias crontab="VIM_CRONTAB=true crontab"
 [ -r ~/.work_stuff ] && source ~/.work_stuff # work-sensitive things I don't want on Github
 
 # `prunelocal` will get rid of all git branches that have been merged into your current branch
-prunelocal = !sh -c 'git branch -d `git branch --merged | grep -v "^*"`'
+alias prunelocal='git branch -d `git branch --merged | grep -v "^*"`'
+
+# refresh git submodules
+alias refresh_submodules='git submodule foreach git pull origin master'
