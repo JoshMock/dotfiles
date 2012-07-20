@@ -1,6 +1,6 @@
 # "Include" external dotfiles if they exist. Stolen from Paul Irish:
 # https://github.com/paulirish/dotfiles/blob/master/.bash_profile
-[ -r ~/.emma_functions ] && source ~/.emma_functions
+[ -r ~/.work_stuff ] && source ~/.work_stuff
 
 alias crontab="VIM_CRONTAB=true crontab"
 
