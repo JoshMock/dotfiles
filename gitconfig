@@ -1,0 +1,11 @@
+[user]
+	name = Josh Mock
+	email = josh@joshmock.com
+
+[color]
+	# turn on color
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = auto
