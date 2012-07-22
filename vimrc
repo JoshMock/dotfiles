@@ -137,7 +137,7 @@ inoremap jj <ESC>
 " Sets font to Inconsolata (http://www.levien.com/type/myfonts/inconsolata.html) size 14
 " set guifont=Inconsolata:h14
 " Sets font to Droid Sans Mono (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released) size 12
-set guifont=Droid\ Sans\ Mono:h12
+set guifont=Droid\ Sans\ Mono:h14
 
 " Set linespacing
 set linespace=5
