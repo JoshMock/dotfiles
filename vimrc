@@ -114,11 +114,6 @@ fun! s:LongLineHLToggle()
     endif
 endfunction
 
-" Backup directories
-set backupdir=~/.vim/tmp/backup/
-set directory=~/.vim/tmp/swap/
-set backup
-
 " Disables arrow keys in normal mode to enforce use of hjkl
 nnoremap <up> <nop>
 nnoremap <down> <nop>
