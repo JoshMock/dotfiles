@@ -249,3 +249,6 @@ source $VIMRUNTIME/macros/matchit.vim
 
 "vim-powerline settings
 let g:Powerline_symbols = "unicode"
+
+" Sass (.scss) file highlighting
+au BufRead,BufNewFile *.scss set filetype=scss
