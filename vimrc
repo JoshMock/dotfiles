@@ -248,5 +248,10 @@ let g:Powerline_symbols = "unicode"
 " Sass (.scss) file highlighting
 au BufRead,BufNewFile *.scss set filetype=scss
 
-" Turn off swap files
+" backup and swap rules
 set noswapfile
+set backup 
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set backupskip=/tmp/*,/private/tmp/* 
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set writebackup
