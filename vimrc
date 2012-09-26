@@ -247,3 +247,6 @@ let g:Powerline_symbols = "unicode"
 
 " Sass (.scss) file highlighting
 au BufRead,BufNewFile *.scss set filetype=scss
+
+" Turn off swap files
+set noswapfile
