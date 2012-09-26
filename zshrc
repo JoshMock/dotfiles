@@ -51,3 +51,6 @@ alias prunelocal='git branch -d `git branch --merged | grep -v "^*"`'
 
 # refresh git submodules
 alias refresh_submodules='git submodule foreach git pull origin master'
+
+# add z command
+source ~/.z/z.sh
