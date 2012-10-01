@@ -79,6 +79,6 @@
 [submodule "vim/bundle/vim-coffee-script"]
 	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "z"]
-	path = z
+[submodule "z_command"]
+	path = z_command
 	url = https://github.com/rupa/z.git
