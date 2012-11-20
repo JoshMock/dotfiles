@@ -34,7 +34,7 @@ plugins=(git vagrant virtualenvwrapper)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:$PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/lib/node_modules:$PATH
 
 # virtualenv stuff
 export WORKON_HOME=~/.virtualenvs
@@ -54,3 +54,6 @@ alias refresh_submodules='git submodule foreach git pull origin master'
 
 # include z command
 . $HOME/.z_command/z.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
