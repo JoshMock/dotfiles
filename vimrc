@@ -134,10 +134,12 @@ vnoremap <F1> <ESC>
 " Remap jj to do same thing as <ESC> when in insert mode
 inoremap jj <ESC>
 
-" Sets font to Inconsolata (http://www.levien.com/type/myfonts/inconsolata.html) size 14
-" set guifont=Inconsolata:h14
-" Sets font to Droid Sans Mono (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released) size 12
-set guifont=Droid\ Sans\ Mono:h14
+" Sets font to Inconsolata (http://www.levien.com/type/myfonts/inconsolata.html) size 16
+" set guifont=Inconsolata:h16
+" Sets font to Droid Sans Mono (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released) size 14
+" set guifont=Droid\ Sans\ Mono:h14
+" Sets font to Source Code Pro (http://blogs.adobe.com/typblography/2012/09/source-code-pro.html) size 14
+set guifont=Source\ Code\ Pro:h14
 
 " Set linespacing
 set linespace=5
