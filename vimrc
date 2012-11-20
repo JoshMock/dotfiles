@@ -257,3 +257,6 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/* 
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
+
+" Set custom snipmate snippets directory
+let g:snippets_dir = '~/.vim/snippets/'
