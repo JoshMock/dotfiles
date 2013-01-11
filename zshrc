@@ -52,5 +52,11 @@ alias prunelocal='git branch -d `git branch --merged | grep -v "^*"`'
 # refresh git submodules
 alias refresh_submodules='git submodule foreach git pull origin master'
 
+# push the current branch to origin
+alias pushit="git push origin `git branch | grep ^\* | sed 's/^\* //'`"
+
+# easy server
+alias server='python -m SimpleHTTPServer'
+
 # include z command
 . $HOME/.z_command/z.sh
