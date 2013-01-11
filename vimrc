@@ -1,5 +1,6 @@
 " Pathogen settings to auto-load new plugins (http://www.vim.org/scripts/script.php?script_id=2332)
 filetype off
+call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
