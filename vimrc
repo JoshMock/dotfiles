@@ -142,9 +142,9 @@ set guifont=Source\ Code\ Pro:h14 "http://blogs.adobe.com/typblography/2012/09/s
 " Set linespacing
 set linespace=5
 
-" Sets color scheme for MacVim to jellybeans (https://github.com/nanotech/jellybeans.vim)
+" Set color scheme
 if has("gui_running")
-    colorscheme jellybeans
+    colorscheme Revelation
 else
     colorscheme vilight
 endif
