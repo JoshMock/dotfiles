@@ -135,12 +135,9 @@ vnoremap <F1> <ESC>
 " Remap jj to do same thing as <ESC> when in insert mode
 inoremap jj <ESC>
 
-" Sets font to Inconsolata (http://www.levien.com/type/myfonts/inconsolata.html) size 16
-" set guifont=Inconsolata:h16
-" Sets font to Droid Sans Mono (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released) size 14
-" set guifont=Droid\ Sans\ Mono:h14
-" Sets font to Source Code Pro (http://blogs.adobe.com/typblography/2012/09/source-code-pro.html) size 14
-set guifont=Source\ Code\ Pro:h14
+" set guifont=Inconsolata:h16 "http://www.levien.com/type/myfonts/inconsolata.html
+" set guifont=Droid\ Sans\ Mono:h14 "http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
+set guifont=Source\ Code\ Pro:h14 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
 
 " Set linespacing
 set linespace=5
@@ -158,7 +155,6 @@ let NERDTreeIgnore=['\.pyc$']
 " NERDTree leader shortcuts for some of my often-used paths
 nnoremap <leader>npy :NERDTree python<cr>
 nnoremap <leader>nph :NERDTree php<cr>
-nnoremap <leader>mc :NERDTree mailing_create<cr>
 nnoremap <leader>na :NERDTree api<cr>
 
 " ,nt toggles NERDTree open/closed
@@ -170,11 +166,6 @@ set foldmethod=indent
 " Settings for Indent Guides plugin (https://github.com/nathanaelkane/vim-indent-guides)
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
-
-" Check Python syntax using F5 key
-autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufRead *.py nmap <F5> :!python %<CR>
 
 " Crontab uses tmp files to edit, so backup rules must change. (See
 " .bash_profile for $VIM_CRONTAB alias stuff.)
@@ -205,7 +196,7 @@ set completeopt=menuone,longest,preview
 let g:SuperTabDefaultCompletionType = "context"
 
 " Tidy JSON - http://lumberjaph.net/perl/2009/02/17/tidify-a-json-in-vim.html 
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+map <leader>jt  <Esc>:%!python -m json.tool<CR>
 
 " inoremap <M-o> <Esc>o
 " inoremap <C-j> <Down>
@@ -231,8 +222,11 @@ if has("gui_running")
     set guioptions=egmrt
 endif
 
-" Leader shortcut to replace 4 spaces with a tab char
+" Leader shortcut to replace 4 spaces with a tab
 vnoremap <leader>st :s/    /\t/<CR>
+
+" Leader shortcut to replace a tab with 4 spaces
+vnoremap <leader>ts :s/\t/    /<CR>
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=128
