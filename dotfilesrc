@@ -1,7 +1,8 @@
 [dotfiles]
-repository = ~/Documents/Code/dotfiles
+repository = ~/Code/dotfiles
 ignore = [
     '.git',
     '.gitignore',
+    '.gitmodules',
     '*.swp',
     'README*']
