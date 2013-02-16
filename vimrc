@@ -144,7 +144,7 @@ set linespace=5
 
 " Set color scheme
 if has("gui_running")
-    colorscheme Revelation
+    colorscheme Darkside
 else
     colorscheme vilight
 endif
