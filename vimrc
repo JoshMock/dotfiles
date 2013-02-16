@@ -42,8 +42,7 @@ set ttyfast
 set backspace=indent,eol,start
 
 " Auto cd to current file's directory
-" autocmd BufEnter * lcd %:p:h
-set autochdir
+autocmd BufEnter * lcd %:p:h
 
 " More useful command-line-like tab completion
 set wildmenu
