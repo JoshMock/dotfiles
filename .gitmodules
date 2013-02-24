@@ -79,3 +79,6 @@
 [submodule "z_command"]
 	path = z_command
 	url = https://github.com/rupa/z.git
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
