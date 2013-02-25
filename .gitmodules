@@ -16,9 +16,6 @@
 [submodule "vim/bundle/python_match.vim"]
 	path = vim/bundle/python_match.vim
 	url = https://github.com/vim-scripts/python_match.vim.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
