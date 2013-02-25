@@ -186,13 +186,6 @@ let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8/bin/ctags'
 nnoremap <leader>tbo :TagbarOpen<cr>
 nnoremap <leader>tbc :TagbarClose<cr>
 
-" Set SuperTab options for Python files
-au FileType python set omnifunc=pythoncomplete#Complete
-set completeopt=menuone,longest,preview
-
-" SuperTab integration with Vim's OmniComplete
-let g:SuperTabDefaultCompletionType = "context"
-
 " Tidy JSON - http://lumberjaph.net/perl/2009/02/17/tidify-a-json-in-vim.html 
 map <leader>jt  <Esc>:%!python -m json.tool<CR>
 
@@ -256,3 +249,6 @@ let g:snippets_dir = '~/.vim/snippets/'
 
 " Have new buffers open in tabs
 set switchbuf+=usetab,newtab
+
+" Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
+let g:ycm_key_detailed_diagnostics = '<leader>yd'
