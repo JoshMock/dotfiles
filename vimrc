@@ -254,3 +254,6 @@ set writebackup
 
 " Set custom snipmate snippets directory
 let g:snippets_dir = '~/.vim/snippets/'
+
+" Have new buffers open in tabs
+set switchbuf+=usetab,newtab
