@@ -152,9 +152,8 @@ endif
 let NERDTreeIgnore=['\.pyc$']
 
 " NERDTree leader shortcuts for some of my often-used paths
-nnoremap <leader>npy :NERDTree python<cr>
-nnoremap <leader>nph :NERDTree php<cr>
-nnoremap <leader>na :NERDTree api<cr>
+nnoremap <leader>npy :NERDTree ~/Code/App/python/<cr>
+nnoremap <leader>na :NERDTree ~/Code/API/audience/<cr>
 
 " ,nt toggles NERDTree open/closed
 nnoremap <leader>nt :NERDTreeToggle<cr>
