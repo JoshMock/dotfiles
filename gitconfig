@@ -9,3 +9,5 @@
 	branch = auto
 	interactive = auto
 	ui = auto
+[merge]
+	tool = opendiff
