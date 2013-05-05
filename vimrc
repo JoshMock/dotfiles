@@ -22,6 +22,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" tab rules differ for Clojure
+autocmd Filetype clojure setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
 " Indentation rules
 set autoindent
 set smartindent
