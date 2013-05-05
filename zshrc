@@ -44,7 +44,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 alias crontab="VIM_CRONTAB=true crontab"
 
 # include external files
-[ -r ~/.work_stuff ] && source ~/.work_stuff # work-sensitive things I don't want on Github
+[ -r ~/.emma ] && source ~/.emma # work-sensitive things I don't want on Github
 
 # `prunelocal` will get rid of all git branches that have been merged into your current branch
 alias prunelocal='git branch -d `git branch --merged | grep -v "^*"`'
