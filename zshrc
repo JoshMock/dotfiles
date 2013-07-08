@@ -30,7 +30,7 @@ plugins=(git gitfast vagrant python osx)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/.rvm/bin/:/usr/local/lib/node_modules:/usr/local/heroku/bin:$PATH
+export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/.rvm/bin/:/usr/local/lib/node_modules:/usr/local/heroku/bin:$PATH
 
 # virtualenv stuff
 export WORKON_HOME=~/.virtualenvs
