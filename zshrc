@@ -59,5 +59,10 @@ else # OS X `ls`
 fi
 alias l="ls -la ${colorflag}"
 
+# auto-open certain filetypes in vim
+alias -s py=vim
+alias -s html=vim
+alias -s js=vim
+
 # include z command
 . $HOME/.z_command/z.sh
