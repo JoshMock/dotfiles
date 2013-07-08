@@ -51,5 +51,13 @@ alias refresh_submodules='git submodule foreach git pull origin master'
 # easy server
 alias server='python -m SimpleHTTPServer'
 
+# Detect which `ls` flavor is in use (stolen from Paul Irish)
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+    colorflag="--color"
+else # OS X `ls`
+    colorflag="-G"
+fi
+alias l="ls -la ${colorflag}"
+
 # include z command
 . $HOME/.z_command/z.sh
