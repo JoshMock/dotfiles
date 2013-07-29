@@ -152,7 +152,8 @@ else
 endif
 
 " NERDTree (https://github.com/scrooloose/nerdtree)
-let NERDTreeIgnore=['\.pyc$']
+let NERDTreeIgnore=['\.pyc$', '^\.git$', '^node_modules$']
+let NERDTreeShowHidden=1
 
 " NERDTree leader shortcuts for some of my often-used paths
 nnoremap <leader>npy :NERDTree ~/Code/App/python/<cr>
