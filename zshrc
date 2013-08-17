@@ -66,3 +66,6 @@ alias -s js=vim
 
 # include z command
 . $HOME/.z_command/z.sh
+
+# necessary alias for Bower to play nice with oh-my-zsh
+alias bower='noglob bower'
