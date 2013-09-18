@@ -139,7 +139,8 @@ inoremap jj <ESC>
 
 " set guifont=Inconsolata:h16 "http://www.levien.com/type/myfonts/inconsolata.html
 " set guifont=Droid\ Sans\ Mono:h14 "http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
-set guifont=Source\ Code\ Pro:h14 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
+" set guifont=Source\ Code\ Pro:h14 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
+set guifont=Hermit:h15 "http://pcaro.es/p/hermit/
 
 " Set linespacing
 set linespace=5
@@ -184,11 +185,6 @@ nnoremap <leader>D :bd!<cr>
 
 " Remap ,w to switch splits
 nnoremap <leader>w <C-w>w<cr>
-
-" Tagbar setting
-let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8/bin/ctags'
-nnoremap <leader>tbo :TagbarOpen<cr>
-nnoremap <leader>tbc :TagbarClose<cr>
 
 " Tidy JSON - http://lumberjaph.net/perl/2009/02/17/tidify-a-json-in-vim.html 
 map <leader>jt  <Esc>:%!python -m json.tool<CR>
@@ -256,3 +252,6 @@ set switchbuf+=usetab,newtab
 
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
 let g:ycm_key_detailed_diagnostics = '<leader>yd'
+
+" Syntastic configs
+let g:syntastic_javascript_checkers = ['jshint']
