@@ -7,9 +7,6 @@
 [submodule "vim/bundle/delimitMate"]
 	path = vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
-[submodule "vim/bundle/jshint.vim"]
-	path = vim/bundle/jshint.vim
-	url = https://github.com/rmanalan/jshint.vim.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
