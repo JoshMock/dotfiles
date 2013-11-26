@@ -46,7 +46,7 @@ alias crontab="VIM_CRONTAB=true crontab"
 alias prunelocal='git branch -d `git branch --merged | grep -v "^*"`'
 
 # refresh git submodules
-alias refresh_submodules='git submodule foreach git pull origin master'
+alias refresh_submodules='git submodule update --init --recursive'
 
 # easy server
 alias server='python -m SimpleHTTPServer'
