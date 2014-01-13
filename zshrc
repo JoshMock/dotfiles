@@ -69,3 +69,6 @@ alias -s js=vim
 
 # necessary alias for Bower to play nice with oh-my-zsh
 alias bower='noglob bower'
+
+# Echo Nest thang
+export ECHO_NEST_API_KEY="HE48JPVA5O68VOS3X"
