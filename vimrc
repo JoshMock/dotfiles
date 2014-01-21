@@ -4,6 +4,9 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
 
+"powerline settings
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
 "Enable filetypes
 filetype on
 filetype plugin on
@@ -137,11 +140,14 @@ vnoremap <F1> <ESC>
 " Remap jj to do same thing as <ESC> when in insert mode
 inoremap jj <ESC>
 
+
 " set guifont=Inconsolata:h16 "http://www.levien.com/type/myfonts/inconsolata.html
+set guifont=Inconsolata\ for\ Powerline:h17 "https://github.com/Lokaltog/powerline-fonts
 " set guifont=Droid\ Sans\ Mono:h14 "http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
 " set guifont=Source\ Code\ Pro:h14 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
+" set guifont=Sauce\ Code\ Powerline:h15 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
 " set guifont=Hermit:h15 "http://pcaro.es/p/hermit/
-set guifont=CosmicSansNeueMono:h18 "http://openfontlibrary.org/en/font/cosmic-sans-neue-mono
+" set guifont=CosmicSansNeueMono:h18 "http://openfontlibrary.org/en/font/cosmic-sans-neue-mono
 
 " Set linespacing
 set linespace=5
@@ -230,9 +236,6 @@ set lazyredraw " to avoid scrolling problems
 
 "matchit.vim settings
 source $VIMRUNTIME/macros/matchit.vim
-
-"vim-powerline settings
-let g:Powerline_symbols = "unicode"
 
 " Sass (.scss) file highlighting
 au BufRead,BufNewFile *.scss set filetype=scss

@@ -67,3 +67,6 @@
 [submodule "vim/bundle/VimClojure"]
 	path = vim/bundle/VimClojure
 	url = git@github.com:vim-scripts/VimClojure.git
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
+	url = git@github.com:Lokaltog/powerline.git
