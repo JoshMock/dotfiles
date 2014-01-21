@@ -1,10 +1,14 @@
 # SOURCE CONTROL ALL THE REPOS
 
-These are my dotfiles, guys. Nothing special, really. Lots of
-heavily-documented Vim, bash and zsh config files. And a crap-ton of Vim
-plugins (installed and managed using
-[Vundle](https://github.com/gmarik/vundle)) great for making Vim (my primary
-text editor) act more like what's expected of a modern-day code editor.
+These are my dotfiles, guys. Nothing special, really.
+
+## Stuff I use
+
+- zsh (instead of bash)
+- [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh/) for all the goodies
+- Vim as my primary editor
+- [Vundle](https://github.com/gmarik/vundle) for Vim plugin management
+- A ton of Vim plugins (check my [.vimrc](https://github.com/JoshMock/dotfiles/blob/master/vimrc) for a current list)
 
 ## Installation/Management
 
