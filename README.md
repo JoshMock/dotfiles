@@ -6,7 +6,7 @@ These are my dotfiles, guys. Nothing special, really.
 
 - zsh (instead of bash)
 - [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh/) for all the goodies
-- Vim as my primary editor
+- [MacVim](https://code.google.com/p/macvim/) as my primary editor
 - [Vundle](https://github.com/gmarik/vundle) for Vim plugin management
 - A ton of Vim plugins (check my [.vimrc](https://github.com/JoshMock/dotfiles/blob/master/vimrc) for a current list)
 
