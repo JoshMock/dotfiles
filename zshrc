@@ -69,3 +69,7 @@ alias bower='noglob bower'
 
 # Echo Nest thang
 export ECHO_NEST_API_KEY="HE48JPVA5O68VOS3X"
+
+# oh-my-zsh already adds .. and ..., this just takes it a step further
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
