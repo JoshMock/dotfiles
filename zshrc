@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gitfast vagrant python osx lein)
+plugins=(z git gitfast vagrant python osx lein)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,9 +63,6 @@ alias l="ls -la ${colorflag}"
 alias -s py=vim
 alias -s html=vim
 alias -s js=vim
-
-# include z command
-. $HOME/.z_command/z.sh
 
 # necessary alias for Bower to play nice with oh-my-zsh
 alias bower='noglob bower'
