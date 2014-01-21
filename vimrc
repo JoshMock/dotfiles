@@ -30,6 +30,7 @@ Bundle 'vim-scripts/VimClojure'
 Bundle 'Lokaltog/powerline'
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
 Bundle "Shougo/neocomplcache.vim"
+Bundle "myusuf3/numbers.vim"
 
 filetype plugin indent on
 
@@ -120,10 +121,8 @@ set hlsearch
 " Clear a search by typing ,<space>
 nnoremap <leader><space> :noh<cr>
 
-" Turn on line numbers by typing ,num
-nnoremap <leader>num :set number<cr>
-nnoremap <leader>rnum :set relativenumber<cr>
-nnoremap <leader>nonum :set nonumber<cr>:set norelativenumber<cr>
+" Turn on line numbers
+set number
 
 " Remaps % to tab to navigate matching brackets
 nnoremap <tab> %
