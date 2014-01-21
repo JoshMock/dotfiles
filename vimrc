@@ -1,7 +1,35 @@
-" Pathogen settings to auto-load new plugins (http://www.vim.org/scripts/script.php?script_id=2332)
+" Vundle setup
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" load my bundles from Github
+" to install or update all bundles do :BundleInstall
+Bundle 'vim-scripts/ack.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/python_match.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'sickill/vim-pasta'
+Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-scripts/vilight.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'vim-scripts/VimClojure'
+Bundle 'Lokaltog/powerline'
+Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+
 filetype plugin indent on
 
 "powerline settings
@@ -142,10 +170,10 @@ inoremap jj <ESC>
 
 
 " set guifont=Inconsolata:h16 "http://www.levien.com/type/myfonts/inconsolata.html
-set guifont=Inconsolata\ for\ Powerline:h17 "https://github.com/Lokaltog/powerline-fonts
+" set guifont=Inconsolata\ for\ Powerline:h17 "https://github.com/Lokaltog/powerline-fonts
 " set guifont=Droid\ Sans\ Mono:h14 "http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
 " set guifont=Source\ Code\ Pro:h14 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
-" set guifont=Sauce\ Code\ Powerline:h15 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
+set guifont=Sauce\ Code\ Powerline:h15 "http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
 " set guifont=Hermit:h15 "http://pcaro.es/p/hermit/
 " set guifont=CosmicSansNeueMono:h18 "http://openfontlibrary.org/en/font/cosmic-sans-neue-mono
 

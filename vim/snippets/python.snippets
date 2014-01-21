@@ -1,8 +1,0 @@
-snippet logmail
-	from django.core.mail import send_mail
-	send_mail('${1:Subject}', ${2:Message}, 'josh.mock@myemma.com', ['josh.mock@myemma.com'], fail_silently=False)
-
-snippet logfile
-	import logging
-	logging.basicConfig(filename='${1:filename}',level=logging.DEBUG)
-	logging.debug(${2:message})

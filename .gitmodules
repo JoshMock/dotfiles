@@ -1,72 +1,9 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/ack.vim"]
-	path = vim/bundle/ack.vim
-	url = https://github.com/vim-scripts/ack.vim.git
-[submodule "vim/bundle/delimitMate"]
-	path = vim/bundle/delimitMate
-	url = https://github.com/Raimondi/delimitMate.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/python_match.vim"]
-	path = vim/bundle/python_match.vim
-	url = https://github.com/vim-scripts/python_match.vim.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/tcomment_vim"]
-	path = vim/bundle/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "vim/bundle/vim-indent-guides"]
-	path = vim/bundle/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "vim/bundle/vim-pasta"]
-	path = vim/bundle/vim-pasta
-	url = git://github.com/sickill/vim-pasta.git
-[submodule "vim/bundle/vim-ragtag"]
-	path = vim/bundle/vim-ragtag
-	url = https://github.com/tpope/vim-ragtag.git
-[submodule "vim/bundle/vim-repeat"]
-	path = vim/bundle/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/jellybeans.vim"]
-	path = vim/bundle/jellybeans.vim
-	url = https://github.com/nanotech/jellybeans.vim.git
-[submodule "vim/bundle/solarized"]
-	path = vim/bundle/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/vilight"]
-	path = vim/bundle/vilight
-	url = https://github.com/vim-scripts/vilight.vim.git
-[submodule "vim/bundle/vim-addon-mw-utils"]
-	path = vim/bundle/vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "vim/bundle/tlib_vim"]
-	path = vim/bundle/tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
-[submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/scss-syntax.vim"]
-	path = vim/bundle/scss-syntax.vim
-	url = https://github.com/cakebaker/scss-syntax.vim.git
-[submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "z_command"]
 	path = z_command
 	url = https://github.com/rupa/z.git
-[submodule "vim/bundle/YouCompleteMe"]
-	path = vim/bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
-[submodule "vim/bundle/VimClojure"]
-	path = vim/bundle/VimClojure
-	url = git@github.com:vim-scripts/VimClojure.git
-[submodule "vim/bundle/powerline"]
-	path = vim/bundle/powerline
-	url = git@github.com:Lokaltog/powerline.git
+[submodule "vim/bundle/vundle"]
+	path = vim/bundle/vundle
+	url = git@github.com:gmarik/vundle.git
