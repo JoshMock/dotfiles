@@ -29,6 +29,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'Lokaltog/powerline'
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+Bundle "Shougo/neocomplcache.vim"
 
 filetype plugin indent on
 
@@ -284,3 +285,6 @@ set switchbuf+=usetab,newtab
 
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
 let g:ycm_key_detailed_diagnostics = '<leader>yd'
+
+" Enable neocomplcache at startup
+let g:neocomplcache_enable_at_startup = 1
