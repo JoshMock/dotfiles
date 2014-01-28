@@ -41,6 +41,7 @@ alias crontab="VIM_CRONTAB=true crontab"
 
 # include external files
 [ -r ~/.emma ] && source ~/.emma # work-sensitive things I don't want on Github
+[ -r ~/.echonest ] && source ~/.echonest # Echo Nest key as envvar
 
 # `prunelocal` will get rid of all git branches that have been merged into your current branch
 alias prunelocal='git branch -d `git branch --merged | grep -v "^*"`'
@@ -66,9 +67,6 @@ alias -s js=vim
 
 # necessary alias for Bower to play nice with oh-my-zsh
 alias bower='noglob bower'
-
-# Echo Nest thang
-export ECHO_NEST_API_KEY="HE48JPVA5O68VOS3X"
 
 # oh-my-zsh already adds .. and ..., this just takes it a step further
 alias ....='cd ../../..'
