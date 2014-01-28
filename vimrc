@@ -30,6 +30,7 @@ Bundle 'vim-scripts/VimClojure'
 Bundle 'Lokaltog/powerline'
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
 Bundle "Shougo/neocomplcache.vim"
+Bundle "terryma/vim-multiple-cursors"
 
 filetype plugin indent on
 
