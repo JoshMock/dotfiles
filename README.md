@@ -20,3 +20,7 @@ setting up all your $HOME symlinks for you and keeping them in sync.
 
 I can't license other people's submodules obviously, but for anything that
 isn't already licensed, assume the [WTFPL license](http://sam.zoy.org/wtfpl/).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/JoshMock/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
