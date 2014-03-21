@@ -31,6 +31,9 @@ Bundle 'Lokaltog/powerline'
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
 Bundle "Shougo/neocomplcache.vim"
 Bundle "terryma/vim-multiple-cursors"
+Bundle "29decibel/vim-stringify"
+Bundle "tpope/vim-markdown"
+Bundle "tpope/vim-jdaddy"
 
 filetype plugin indent on
 
@@ -289,3 +292,6 @@ let g:ycm_key_detailed_diagnostics = '<leader>yd'
 
 " Enable neocomplcache at startup
 let g:neocomplcache_enable_at_startup = 1
+
+" Map JavaScript stringify to leader key
+map <leader>g :call Stringify()<CR>
