@@ -71,3 +71,6 @@ alias bower='noglob bower'
 # oh-my-zsh already adds .. and ..., this just takes it a step further
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+
+# takes JSON in your clipboard, pretty-formats it, copies it back to clipboard
+alias prettyjson='pbpaste | python -m json.tool | pbcopy'
