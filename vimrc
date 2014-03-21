@@ -295,3 +295,6 @@ let g:neocomplcache_enable_at_startup = 1
 
 " Map JavaScript stringify to leader key
 map <leader>g :call Stringify()<CR>
+
+" Only redraw screen after a macro has completed (performance boost!)
+set lazyredraw
