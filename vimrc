@@ -28,8 +28,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'Lokaltog/powerline'
-Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
-Bundle "Shougo/neocomplcache.vim"
+Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Bundle "terryma/vim-multiple-cursors"
 Bundle "29decibel/vim-stringify"
 Bundle "tpope/vim-markdown"
@@ -191,6 +190,9 @@ if has("gui_running")
 else
     colorscheme vilight
 endif
+
+" Makes eol/tab chars not get ugly highlighting with colour-schemes bundle
+hi NonText guibg=bg guifg=#333333
 
 " NERDTree (https://github.com/scrooloose/nerdtree)
 let NERDTreeIgnore=['\.pyc$', '^\.git$', '^node_modules$']
