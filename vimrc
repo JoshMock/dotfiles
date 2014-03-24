@@ -26,11 +26,11 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'Lokaltog/powerline'
-Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
-Bundle "terryma/vim-multiple-cursors"
-Bundle "29decibel/vim-stringify"
-Bundle "tpope/vim-markdown"
-Bundle "tpope/vim-jdaddy"
+Bundle 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Bundle 'terryma/vim-multiple-cursors'
+Bundle '29decibel/vim-stringify'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-jdaddy'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
