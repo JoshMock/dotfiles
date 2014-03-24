@@ -20,8 +20,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/vilight.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -33,6 +31,8 @@ Bundle "terryma/vim-multiple-cursors"
 Bundle "29decibel/vim-stringify"
 Bundle "tpope/vim-markdown"
 Bundle "tpope/vim-jdaddy"
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 filetype plugin indent on
 
@@ -283,9 +283,6 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
 
-" Set custom snipmate snippets directory
-let g:snippets_dir = '~/.vim/snippets/'
-
 " Have new buffers open in tabs
 set switchbuf+=usetab,newtab
 
@@ -300,3 +297,11 @@ map <leader>g :call Stringify()<CR>
 
 " Only redraw screen after a macro has completed (performance boost!)
 set lazyredraw
+
+" Directory for custom snippets
+let g:UltiSnipsSnippetDirectories=["my_snippets"]
+
+" Snippet insert with Cmd-J and Shift-Cmd-J
+let g:UltiSnipsExpandTrigger="<D-j>"
+let g:UltiSnipsJumpForwardTrigger = "<D-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"
