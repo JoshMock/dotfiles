@@ -51,3 +51,6 @@ alias .....='cd ../../../..'
 
 # takes JSON in your clipboard, pretty-formats it, copies it back to clipboard
 alias prettyjson='pbpaste | python -m json.tool | pbcopy'
+
+# find my Raspberry Pi on current network based on its known MAC addresses
+alias rpi_ip="arp -a | grep 'b8:27:eb|00:13:ef:d0:22:94' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'"
