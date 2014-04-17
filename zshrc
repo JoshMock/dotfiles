@@ -54,3 +54,10 @@ alias prettyjson='pbpaste | python -m json.tool | pbcopy'
 
 # find my Raspberry Pi on current network based on its known MAC addresses
 alias rpi_ip="arp -a | grep 'b8:27:eb|00:13:ef:d0:22:94' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'"
+
+# `sshkey <name of host>` will put my ssh key on that host so I can log into it
+# in the future without a password
+sshkey() {
+    ssh "$*" mkdir -p .ssh;
+    cat ~/.ssh/id_rsa.pub | ssh "$*" 'cat >> .ssh/authorized_keys';
+}
