@@ -61,3 +61,14 @@ sshkey() {
     ssh "$*" mkdir -p .ssh;
     cat ~/.ssh/id_rsa.pub | ssh "$*" 'cat >> .ssh/authorized_keys';
 }
+
+# make an animated GIF from inputted .mov file: makegif path/to/file.mov
+# requires installation of imagemagick and ffmpeg 2+
+makegif() {
+    mkdir -p /tmp/gifout;
+    rm /tmp/gifout/*;
+    ffmpeg -i "$*" -vf scale=320:-1 -r 10 /tmp/gifout/ffout%3d.png;
+    convert -delay 8 -loop 0 /tmp/gifout/ffout*.png animation.gif;
+    echo "animation.gif created";
+    rm -r /tmp/gifout;
+}
