@@ -9,30 +9,27 @@ Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/ack.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/python_match.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'sickill/vim-pasta'
-Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Lokaltog/powerline'
+Bundle '29decibel/vim-stringify'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+" syntax highlighting
+Bundle 'sheerun/vim-polyglot'
+" Bundle 'jelera/vim-javascript-syntax'
+Bundle 'cakebaker/scss-syntax.vim'
+" color schemes
+Bundle 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/vilight.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'vim-scripts/VimClojure'
-Bundle 'Lokaltog/powerline'
-Bundle 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-Bundle 'terryma/vim-multiple-cursors'
-Bundle '29decibel/vim-stringify'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-jdaddy'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
 
 filetype plugin indent on
 
@@ -199,8 +196,7 @@ let NERDTreeIgnore=['\.pyc$', '^\.git$', '^node_modules$']
 let NERDTreeShowHidden=1
 
 " NERDTree leader shortcuts for some of my often-used paths
-nnoremap <leader>npy :NERDTree ~/Code/App/python/<cr>
-nnoremap <leader>na :NERDTree ~/Code/API/audience/<cr>
+nnoremap <leader>npy :NERDTree ~/Code/App/<cr>
 
 " ,nt toggles NERDTree open/closed
 nnoremap <leader>nt :NERDTreeToggle<cr>
@@ -267,7 +263,6 @@ set synmaxcol=128
 " speed up Vim some
 set ttyfast
 set ttyscroll=3
-set lazyredraw " to avoid scrolling problems
 
 "matchit.vim settings
 source $VIMRUNTIME/macros/matchit.vim
