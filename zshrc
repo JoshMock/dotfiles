@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="fletcherm"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(z git gitfast vagrant python osx lein)
+plugins=(z git gitfast vagrant python osx lein bower jsontools npm)
 source $ZSH/oh-my-zsh.sh
 
 # Get $PATH from ~/.profile
