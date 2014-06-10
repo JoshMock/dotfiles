@@ -300,3 +300,7 @@ let g:UltiSnipsSnippetDirectories=["my_snippets"]
 let g:UltiSnipsExpandTrigger="<D-j>"
 let g:UltiSnipsJumpForwardTrigger = "<D-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"
+
+" Save/restore editing session using Fn-F2 and Fn-F3
+map <F2> :mksession! ~/vim_session <cr> "
+map <F3> :source ~/vim_session <cr>
