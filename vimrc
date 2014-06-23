@@ -180,7 +180,7 @@ endif
 hi NonText guibg=bg guifg=#333333
 
 " NERDTree (https://github.com/scrooloose/nerdtree)
-let NERDTreeIgnore=['\.pyc$', '^\.git$', '^node_modules$']
+let NERDTreeIgnore=['\.pyc$', '^\.git$', '^node_modules$', '^\.sass-cache$']
 let NERDTreeShowHidden=1
 
 " NERDTree leader shortcuts for some of my often-used paths
