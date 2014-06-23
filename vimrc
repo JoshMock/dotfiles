@@ -26,8 +26,6 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/vilight.vim'
 
-filetype plugin indent on
-
 "Enable filetypes
 filetype on
 filetype plugin on
@@ -63,6 +61,7 @@ set showmode
 set visualbell
 set cursorline
 set ttyfast
+set ttyscroll=3
 set backspace=indent,eol,start
 
 " Auto cd to current file's directory
@@ -248,10 +247,6 @@ vnoremap <leader>ts :s/\t/    /<CR>
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=128
-
-" speed up Vim some
-set ttyfast
-set ttyscroll=3
 
 " backup and swap rules
 set noswapfile
