@@ -20,10 +20,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle '29decibel/vim-stringify'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-" syntax highlighting
 Bundle 'sheerun/vim-polyglot'
-" Bundle 'jelera/vim-javascript-syntax'
-Bundle 'cakebaker/scss-syntax.vim'
 " color schemes
 Bundle 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Bundle 'nanotech/jellybeans.vim'
@@ -49,9 +46,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
-" tab rules differ for Clojure
-autocmd Filetype clojure setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " Indentation rules
 set autoindent
@@ -262,9 +256,6 @@ set ttyscroll=3
 
 "matchit.vim settings
 source $VIMRUNTIME/macros/matchit.vim
-
-" Sass (.scss) file highlighting
-au BufRead,BufNewFile *.scss set filetype=scss
 
 " backup and swap rules
 set noswapfile
