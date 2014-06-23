@@ -171,7 +171,7 @@ set linespace=5
 
 " Set color scheme
 if has("gui_running")
-    colorscheme Darkside
+    colorscheme freshcut-contrast
 else
     colorscheme vilight
 endif
