@@ -17,7 +17,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Valloric/YouCompleteMe'
-Bundle '29decibel/vim-stringify'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'sheerun/vim-polyglot'
@@ -254,9 +253,6 @@ set synmaxcol=128
 set ttyfast
 set ttyscroll=3
 
-"matchit.vim settings
-source $VIMRUNTIME/macros/matchit.vim
-
 " backup and swap rules
 set noswapfile
 set backup 
@@ -270,12 +266,6 @@ set switchbuf+=usetab,newtab
 
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
 let g:ycm_key_detailed_diagnostics = '<leader>yd'
-
-" Enable neocomplcache at startup
-let g:neocomplcache_enable_at_startup = 1
-
-" Map JavaScript stringify to leader key
-map <leader>g :call Stringify()<CR>
 
 " Only redraw screen after a macro has completed (performance boost!)
 set lazyredraw
