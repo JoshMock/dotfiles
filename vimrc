@@ -17,7 +17,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'Lokaltog/powerline'
 Bundle '29decibel/vim-stringify'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
@@ -32,9 +31,6 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/vilight.vim'
 
 filetype plugin indent on
-
-"powerline settings
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 "Enable filetypes
 filetype on
