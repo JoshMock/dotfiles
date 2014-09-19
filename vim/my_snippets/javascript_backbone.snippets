@@ -1,7 +1,8 @@
 snippet bbview
 /**
-    @class $2
-    @classdesc ${1:description}
+ * @class $2
+ * @classdesc ${1:description}
+ * @extends Backbone.View
 */
 var ${2:name} = Backbone.View.extend({
     $0
@@ -10,9 +11,10 @@ endsnippet
 
 snippet bbmodel
 /**
-    @class $2
-    @classdesc ${1:description}
-*/
+ * @class $2
+ * @classdesc ${1:description}
+ * @extends Backbone.Model
+ */
 var ${2:name} = Backbone.Model.extend({
     $0
 });
@@ -20,9 +22,10 @@ endsnippet
 
 snippet bbcollection
 /**
-    @class $2
-    @classdesc ${1:description}
-*/
+ * @class $2
+ * @classdesc ${1:description}
+ * @extends Backbone.Collection
+ */
 var ${2:name} = Backbone.Collection.extend({
     $0
 });
