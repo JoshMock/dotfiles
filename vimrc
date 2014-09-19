@@ -171,13 +171,13 @@ set linespace=5
 
 " Set color scheme
 if has("gui_running")
-    colorscheme freshcut-contrast
+    colorscheme freshcut
 else
     colorscheme vilight
 endif
 
 " Makes eol/tab chars not get ugly highlighting with colour-schemes bundle
-hi NonText guibg=bg guifg=#333333
+hi NonText guibg=bg guifg=#444444
 
 " NERDTree (https://github.com/scrooloose/nerdtree)
 let NERDTreeIgnore=['\.pyc$', '^\.git$', '^node_modules$', '^\.sass-cache$']
