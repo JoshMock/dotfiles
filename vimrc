@@ -189,9 +189,6 @@ nnoremap <leader>npy :NERDTree ~/Code/App/<cr>
 " ,nt toggles NERDTree open/closed
 nnoremap <leader>nt :NERDTreeToggle<cr>
 
-" Automatically fold code based on indents
-set foldmethod=indent
-
 " Settings for Indent Guides plugin (https://github.com/nathanaelkane/vim-indent-guides)
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
@@ -245,9 +242,6 @@ vnoremap <leader>st :s/    /\t/<CR>
 " Leader shortcut to replace a tab with 4 spaces
 vnoremap <leader>ts :s/\t/    /<CR>
 
-" Syntax coloring lines that are too long just slows down the world
-set synmaxcol=128
-
 " backup and swap rules
 set noswapfile
 set backup 
@@ -276,3 +270,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"
 " Save/restore editing session using Fn-F2 and Fn-F3
 map <F2> :mksession! ~/vim_session <cr> "
 map <F3> :source ~/vim_session <cr>
+
+" because apparently *.md is also a Modula-2 file, which I'm never going to edit
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
