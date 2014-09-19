@@ -85,8 +85,8 @@ set hidden
 " Always show status line
 set laststatus=2
 
-" Remap leader key from \ to ,
-let mapleader = ","
+" Remap leader key from \ to space bar
+let mapleader = "\<Space>"
 
 " Remaps / search key to use standard regex instead of vim regex
 nnoremap / /\v
