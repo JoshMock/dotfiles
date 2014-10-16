@@ -1,6 +1,8 @@
 # Oh My Zsh settings
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="fletcherm"
+ZSH_CUSTOM=$HOME/.zsh-custom
+ZSH_THEME="joshmock"
+
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(z git gitfast vagrant python osx lein npm vundle)
