@@ -268,3 +268,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"
 
 " because apparently *.md is also a Modula-2 file, which I'm never going to edit
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Trying to train myself out of using tabs vs buffers
+map <leader>] :bnext<CR>
+map <leader>[ :bprevious<CR>
