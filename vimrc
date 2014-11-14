@@ -4,6 +4,11 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+" Python support for Neovim
+if has('nvim')
+  runtime! python_setup.vim
+endif
+
 " load my bundles from Github
 " to install or update all bundles do :BundleInstall
 Bundle 'vim-scripts/ack.vim'
