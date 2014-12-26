@@ -1,8 +1,8 @@
 " Vundle setup
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+call vundle#begin()
+Plugin 'gmarik/vundle'
 
 " Python support for Neovim
 if has('nvim')
@@ -10,31 +10,34 @@ if has('nvim')
 endif
 
 " load my bundles from Github
-" to install or update all bundles do :BundleInstall
-Bundle 'vim-scripts/ack.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'sickill/vim-pasta'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'sheerun/vim-polyglot'
+" to install or update all bundles do :PluginInstall
+Plugin 'vim-scripts/ack.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'sickill/vim-pasta'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'mxw/vim-jsx'
+Plugin 'wincent/Command-T'
+Plugin 'amdt/vim-niji'
 " color schemes
-Bundle 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/vilight.vim'
+Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-scripts/vilight.vim'
+
+call vundle#end()
 
 "Enable filetypes
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 syntax on
 
 " turn off vi compatibility
