@@ -283,3 +283,6 @@ map <leader>[ :bprevious<CR>
 
 " Custom syntax linting rules
 let g:syntastic_javascript_checkers = ['jshint', 'eslint', 'jslint']
+
+" Ignore node_modules directory
+set wildignore+=node_modules/*
