@@ -40,9 +40,9 @@ fi
 alias l="ls -la ${colorflag}"
 
 # auto-open certain filetypes in vim
-alias -s py=nvim
-alias -s html=nvim
-alias -s js=nvim
+alias -s py=vim
+alias -s html=vim
+alias -s js=vim
 
 # necessary alias for Bower to play nice with oh-my-zsh
 alias bower='noglob bower'
@@ -97,3 +97,10 @@ bindkey -s "^[Ok" "+"
 bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
+
+# set default editors
+export VISUAL=/usr/local/bin/nvim
+export EDITOR=/usr/local/bin/nvim
+
+# use neovim as default vim
+alias vim="nvim"
