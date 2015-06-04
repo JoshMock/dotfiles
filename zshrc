@@ -5,7 +5,7 @@ ZSH_THEME="joshmock"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(z git gitfast vagrant python osx lein npm vundle)
+plugins=(z git gitfast vagrant python osx lein npm vundle grunt vim-interaction)
 source $ZSH/oh-my-zsh.sh
 
 # Get $PATH from ~/.profile
@@ -104,3 +104,7 @@ export EDITOR=/usr/local/bin/nvim
 
 # use neovim as default vim
 alias vim="nvim"
+
+# use greadlink for the vim-interaction plugin
+# requires `brew install coreutils`
+alias readlink=greadlink
