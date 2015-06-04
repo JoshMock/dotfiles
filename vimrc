@@ -25,9 +25,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'mxw/vim-jsx'
 Plugin 'wincent/Command-T'
-Plugin 'amdt/vim-niji'
+Plugin 'luochen1990/rainbow'
+Plugin 'marijnh/tern_for_vim'
 " color schemes
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
