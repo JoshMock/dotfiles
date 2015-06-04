@@ -98,6 +98,9 @@ bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
 
+# make an alias for Dash.app searches
+alias dash="open dash\://$*"
+
 # set default editors
 export VISUAL=/usr/local/bin/nvim
 export EDITOR=/usr/local/bin/nvim
