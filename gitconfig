@@ -8,3 +8,5 @@
 	email = josh@joshmock.com
 [color]
 	ui = true
+[url "https://"]
+	insteadOf = git://
