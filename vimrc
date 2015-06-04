@@ -181,7 +181,7 @@ set linespace=5
 if has("gui_running")
     colorscheme freshcut
 else
-    colorscheme vilight
+    colorscheme solarized
 endif
 
 " Makes eol/tab chars not get ugly highlighting with colour-schemes bundle
