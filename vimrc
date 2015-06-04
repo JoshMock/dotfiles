@@ -68,8 +68,9 @@ set scrolloff=3
 set showmode
 set visualbell
 set cursorline
-set ttyfast
-set ttyscroll=3
+if has("gui_running")
+    set ttyfast
+endif
 set backspace=indent,eol,start
 
 " Auto cd to current file's directory
