@@ -287,3 +287,6 @@ let g:syntastic_javascript_checkers = ['eslint', 'jslint']
 
 " Ignore node_modules directory
 set wildignore+=node_modules/*
+
+" JSX syntax in .js files
+let g:jsx_ext_required = 0
