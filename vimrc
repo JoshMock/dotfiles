@@ -13,7 +13,6 @@ endif
 " to install or update all bundles do :PluginInstall
 Plugin 'vim-scripts/ack.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -187,15 +186,11 @@ endif
 " Makes eol/tab chars not get ugly highlighting with colour-schemes bundle
 hi NonText guibg=bg guifg=#444444
 
-" NERDTree (https://github.com/scrooloose/nerdtree)
-let NERDTreeIgnore=['\.pyc$', '^\.git$', '^node_modules$', '^\.sass-cache$', '^\.DS_Store$']
-let NERDTreeShowHidden=1
+" Hide files in netrw file tree based on .gitignore rules
+    let g:netrw_list_hide= netrw_gitignore#Hide().',\.git$'
 
-" NERDTree leader shortcuts for some of my often-used paths
-nnoremap <leader>npy :NERDTree ~/Code/App/<cr>
-
-" ,nt toggles NERDTree open/closed
-nnoremap <leader>nt :NERDTreeToggle<cr>
+" Open netrw window using leader shortcut
+map <leader>e <Esc>:e .<CR>
 
 " Settings for Indent Guides plugin (https://github.com/nathanaelkane/vim-indent-guides)
 let g:indent_guides_guide_size = 1
@@ -290,3 +285,6 @@ set wildignore+=node_modules/*
 
 " JSX syntax in .js files
 let g:jsx_ext_required = 0
+
+" List current buffers with <leader>l
+map <leader>l :ls<CR>
