@@ -203,13 +203,16 @@ if $VIM_CRONTAB == "true"
     set nowritebackup
 endif
 
-" Remap ,d to close current buffer
+" Remap <leader>d to close current buffer
 nnoremap <leader>d :bd<cr>
 
-" Remap ,D to force close current buffer
+" Remap <leader>s to close current buffer without destroying current split
+nnoremap <leader>s :b#<bar>bd#<cr>
+
+" Remap <leader>D to force-close current buffer
 nnoremap <leader>D :bd!<cr>
 
-" Remap ,w to switch splits
+" Remap <leader>w to switch splits
 nnoremap <leader>w <C-w>w<cr>
 
 " Tidy JSON - http://lumberjaph.net/perl/2009/02/17/tidify-a-json-in-vim.html 
@@ -277,9 +280,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 map <leader>] :bnext<CR>
 map <leader>[ :bprevious<CR>
 
-" Custom syntax linting rules
-let g:syntastic_javascript_checkers = ['eslint', 'jslint']
-
 " Ignore node_modules directory
 set wildignore+=node_modules/*
 
@@ -288,3 +288,11 @@ let g:jsx_ext_required = 0
 
 " List current buffers with <leader>l
 map <leader>l :ls<CR>
+
+" Syntastic settings
+let g:syntastic_javascript_checkers = ['eslint', 'jslint']
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
