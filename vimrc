@@ -24,6 +24,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'wincent/Command-T'
 Plugin 'luochen1990/rainbow'
 Plugin 'marijnh/tern_for_vim'
@@ -296,3 +297,6 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
+
+" javascript-libraries-syntax.vim settings
+let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
