@@ -115,3 +115,7 @@ export LESS=' -R '
 # use greadlink for the vim-interaction plugin
 # requires `brew install coreutils`
 alias readlink=greadlink
+
+# NVM settings
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
