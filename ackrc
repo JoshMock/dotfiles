@@ -42,6 +42,7 @@
 --ignore-file=match:/jquery\..*[\d\.]+\.js$/
 --ignore-file=ext:pdf
 --ignore-file=ext:gif,jpg,jpeg,png
+--ignore-file=ext:map
 --type-add=perl:ext:pl,pm,pod,t,psgi
 --type-add=perl:firstlinematch:/^#!.*\bperl/
 --type-add=perltest:ext:t
