@@ -12,7 +12,7 @@ endif
 " load my bundles from Github
 " to install or update all bundles do :PluginInstall
 Plugin 'vim-scripts/ack.vim'
-Plugin 'Raimondi/delimitMate'
+Plugin 'Townk/vim-autoclose'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
