@@ -348,3 +348,8 @@ set suffixesadd+=.js
 
 " turn on rainbow plugin
 let g:rainbow_active = 1
+
+" use ag instead of ack
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
