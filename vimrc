@@ -344,3 +344,6 @@ endif
 
 " `gf` will open JS file paths that don't end in .js (a la CommonJS/ES6 modules)
 set suffixesadd+=.js
+
+" turn on rainbow plugin
+let g:rainbow_active = 1
