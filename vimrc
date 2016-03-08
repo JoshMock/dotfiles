@@ -300,12 +300,20 @@ let g:jsx_ext_required = 0
 map <leader>l :ls<CR>
 
 " Syntastic settings
-let g:syntastic_javascript_checkers = ['eslint', 'jslint']
-let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
