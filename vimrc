@@ -39,6 +39,7 @@ Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/vilight.vim'
+Plugin 'vim-scripts/CSApprox'
 
 call vundle#end()
 
@@ -202,13 +203,7 @@ set guifont=Hack:h14 "https://github.com/chrissimpkins/Hack
 set linespace=5
 
 " Set color scheme
-if has("gui_running")
-    colorscheme freshcut
-elseif has("nvim")
-    colorscheme freshcut
-else
-    colorscheme solarized
-endif
+colorscheme freshcut
 
 " Makes eol/tab chars not get ugly highlighting with colour-schemes bundle
 hi NonText guibg=bg guifg=#444444
