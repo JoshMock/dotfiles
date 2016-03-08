@@ -25,7 +25,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'wincent/Command-T'
+if has("nvim")
+    Plugin 'kien/ctrlp.vim'
+else
+    Plugin 'wincent/Command-T'
+endif
 Plugin 'luochen1990/rainbow'
 Plugin 'marijnh/tern_for_vim'
 " color schemes
@@ -181,6 +185,8 @@ set linespace=5
 " Set color scheme
 if has("gui_running")
     colorscheme freshcut
+elseif has("nvim")
+    colorscheme freshcut
 else
     colorscheme solarized
 endif
@@ -265,7 +271,9 @@ set switchbuf+=usetab,newtab
 let g:ycm_key_detailed_diagnostics = '<leader>yd'
 
 " Only redraw screen after a macro has completed (performance boost!)
-set lazyredraw
+if !has("nvim")
+    set lazyredraw
+endif
 
 " Directory for custom snippets
 let g:UltiSnipsSnippetDirectories=["my_snippets"]
@@ -301,3 +309,9 @@ let g:syntastic_enable_signs = 1
 
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
+
+" Ctrl-P/Command-T settings
+if has("nvim")
+    nmap <leader>t :CtrlPMixed<CR>
+    nmap <leader>b :CtrlPBuffer<CR>
+endif
