@@ -40,11 +40,6 @@ else # OS X `ls`
 fi
 alias l="ls -la ${colorflag}"
 
-# auto-open certain filetypes in vim
-alias -s py=vim
-alias -s html=vim
-alias -s js=vim
-
 # necessary alias for Bower to play nice with oh-my-zsh
 alias bower='noglob bower'
 
