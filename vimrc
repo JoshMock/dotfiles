@@ -32,6 +32,7 @@ else
 endif
 Plugin 'luochen1990/rainbow'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'tpope/vim-vinegar'
 " color schemes
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
