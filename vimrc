@@ -42,7 +42,9 @@ Plugin 'vim-scripts/vilight.vim'
 call vundle#end()
 
 "Enable filetypes
-filetype plugin indent on
+filetype on
+filetype plugin on
+filetype indent on
 syntax on
 
 " turn off vi compatibility
