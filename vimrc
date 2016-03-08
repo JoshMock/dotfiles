@@ -136,8 +136,8 @@ set incsearch
 set showmatch
 set hlsearch
 
-" Clear a search by typing ,<space>
-nnoremap <leader><space> :noh<cr>
+" Clear a search by typing <space>k
+nnoremap <leader>k :noh<cr>
 
 " Turn on line numbers by typing ,num
 nnoremap <leader>num :set number<cr>
