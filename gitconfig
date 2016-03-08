@@ -3,10 +3,16 @@
 
 [core]
 	excludesfile = ~/.gitignore
+	pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 [user]
 	name = Josh Mock
 	email = josh@joshmock.com
 [color]
-	ui = true
+	ui = always
 [url "https://"]
 	insteadOf = git://
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
