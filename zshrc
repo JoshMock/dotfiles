@@ -106,9 +106,6 @@ alias dash="open dash\://$*"
 export VISUAL=/usr/local/bin/nvim
 export EDITOR=/usr/local/bin/nvim
 
-# use neovim as default vim
-alias vim="nvim"
-
 # syntax highlighting when using `less` on the command line (required: brew install source-highlight)
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
