@@ -47,6 +47,21 @@ filetype plugin on
 filetype indent on
 syntax on
 
+" Enable folding
+set foldmethod=syntax
+function! JavaScriptFold()
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction
+au FileType javascript call JavaScriptFold()
+au FileType javascript setl fen
+
 " turn off vi compatibility
 set nocompatible
 
@@ -326,3 +341,6 @@ if has("nvim")
     nmap <leader>t :CtrlPMixed<CR>
     nmap <leader>b :CtrlPBuffer<CR>
 endif
+
+" `gf` will open JS file paths that don't end in .js (a la CommonJS/ES6 modules)
+set suffixesadd+=.js
