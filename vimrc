@@ -34,6 +34,7 @@ endif
 Plugin 'honza/vim-snippets'
 Plugin 'grvcoelho/vim-javascript-snippets'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'xolox/vim-easytags'
 Plugin 'luochen1990/rainbow'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'easymotion/vim-easymotion'
@@ -376,3 +377,6 @@ let g:rainbow_active = 1
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+
+" easytags options
+let g:easytags_async = 1
