@@ -13,23 +13,27 @@ endif
 " to install or update all bundles do :PluginInstall
 Plugin 'vim-scripts/ack.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'othree/javascript-libraries-syntax.vim'
 if has("nvim")
-    Plugin 'kien/ctrlp.vim'
+    Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
+    Plugin 'kien/ctrlp.vim' " Command-T substitute
+    Plugin 'benekastah/neomake' " syntastic (+ more!) substitute
+    " wanted: neovim-compatible ultisnips substitute
 else
+    Plugin 'Valloric/YouCompleteMe'
     Plugin 'wincent/Command-T'
+    Plugin 'SirVer/ultisnips'
+    Plugin 'scrooloose/syntastic'
 endif
+Plugin 'honza/vim-snippets'
+Plugin 'grvcoelho/vim-javascript-snippets'
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'luochen1990/rainbow'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'easymotion/vim-easymotion'
@@ -65,7 +69,9 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
 " turn off vi compatibility
-set nocompatible
+if !has("nvim")
+    set nocompatible
+endif
 
 " prevents security exploits dealing with modelines in files
 set modelines=0
@@ -80,9 +86,6 @@ set expandtab
 set autoindent
 set smartindent
 
-" UTF-8 text encoding by default
-set encoding=utf-8
-
 " Show TextMate-like whitespace chars for tab and end of line
 set list
 set listchars=tab:▸\ ,eol:¬
@@ -92,8 +95,10 @@ set scrolloff=3
 set showmode
 set visualbell
 set cursorline
-if has("gui_running")
-    set ttyfast
+if !has("nvim")
+    if has("gui_running")
+        set ttyfast
+    endif
 endif
 set backspace=indent,eol,start
 
@@ -209,10 +214,7 @@ colorscheme freshcut
 hi NonText guibg=bg guifg=#444444
 
 " Hide files in netrw file tree based on .gitignore rules
-    let g:netrw_list_hide= netrw_gitignore#Hide().',\.git$'
-
-" Open netrw window using leader shortcut
-map <leader>e <Esc>:e .<CR>
+let g:netrw_list_hide = netrw_gitignore#Hide() . '\.git$'
 
 " Settings for Indent Guides plugin (https://github.com/nathanaelkane/vim-indent-guides)
 let g:indent_guides_guide_size = 1
@@ -284,6 +286,24 @@ set switchbuf+=usetab,newtab
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
 let g:ycm_key_detailed_diagnostics = '<leader>yd'
 
+" Deoplete rules for neovim
+if has("nvim")
+    let g:python3_host_prog = '/usr/local/bin/python3'
+    let g:deoplete#enable_at_startup = 1
+
+    " tab-complete
+    inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+
+    " <leader><Tab> for regular tab
+    inoremap <Leader><Tab> <Space><Space>
+
+    " add tern support for JS files
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+    " close Tern scratch window on completion
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+endif
+
 " Only redraw screen after a macro has completed (performance boost!)
 if !has("nvim")
     set lazyredraw
@@ -329,11 +349,19 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
+" Neomake settings
+if has('nvim')
+    autocmd! BufWritePost * Neomake
+    let g:neomake_javascript_enabled_makers = ['eslint']
+    let g:neomake_python_enabled_makers = ['flake8']
+endif
+
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
 
 " Ctrl-P/Command-T settings
 if has("nvim")
+    let g:ctrlp_working_path_mode = 'r'
     nmap <leader>t :CtrlPMixed<CR>
     nmap <leader>b :CtrlPBuffer<CR>
 endif
