@@ -36,7 +36,6 @@ Plugin 'grvcoelho/vim-javascript-snippets'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'xolox/vim-easytags'
 Plugin 'luochen1990/rainbow'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-vinegar'
 " color schemes
