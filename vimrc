@@ -34,6 +34,7 @@ endif
 Plugin 'honza/vim-snippets'
 Plugin 'grvcoelho/vim-javascript-snippets'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'luochen1990/rainbow'
 Plugin 'easymotion/vim-easymotion'
