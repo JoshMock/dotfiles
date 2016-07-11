@@ -211,10 +211,14 @@ set guifont=Hack:h14 "https://github.com/chrissimpkins/Hack
 set linespace=5
 
 " Set color scheme
-colorscheme freshcut
-
-" Makes eol/tab chars not get ugly highlighting with colour-schemes bundle
-hi NonText guibg=bg guifg=#444444
+set background=dark
+if has("nvim")
+    colorscheme solarflare-contrast
+else
+    colorscheme solarized
+endif
+" Makes eol/tab chars not get ugly highlighting
+hi NonText guibg=bg guifg=#073642
 
 " Hide files in netrw file tree based on .gitignore rules
 let g:netrw_list_hide = netrw_gitignore#Hide() . '\.git$'
