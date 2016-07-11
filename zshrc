@@ -115,3 +115,6 @@ alias readlink=greadlink
 # NVM settings
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# the saddest alias
+alias sigh="rm -rf ./node_modules && npm i"
