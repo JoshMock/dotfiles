@@ -40,6 +40,7 @@ Plugin 'xolox/vim-easytags'
 Plugin 'luochen1990/rainbow'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-vinegar'
+Plugin 'heavenshell/vim-jsdoc'
 " color schemes
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
@@ -378,3 +379,6 @@ endif
 
 " easytags options
 let g:easytags_async = 1
+
+" jsdoc settings
+let g:jsdoc_allow_input_prompt = 1
