@@ -1,3 +1,6 @@
+# speed up ZSH init time?
+skip_global_compinit=1
+
 # Oh My Zsh settings
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh-custom
@@ -5,7 +8,7 @@ ZSH_THEME="joshmock"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(z git gitfast vagrant python osx lein npm vundle grunt vim-interaction)
+plugins=(z git gitfast osx npm vundle vim-interaction)
 source $ZSH/oh-my-zsh.sh
 
 # Get $PATH from ~/.profile
