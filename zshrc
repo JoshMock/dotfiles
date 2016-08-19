@@ -113,8 +113,25 @@ export LESS=' -R '
 alias readlink=greadlink
 
 # NVM settings
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+nvm() {
+    unset -f nvm
+    export NVM_DIR=~/.nvm
+    [ -s $(brew --prefix nvm)/nvm.sh ] && . $(brew --prefix nvm)/nvm.sh  # This loads nvm
+    nvm "$@"
+}
+node() {
+    unset -f node
+    export NVM_DIR=~/.nvm
+    [ -s $(brew --prefix nvm)/nvm.sh ] && . $(brew --prefix nvm)/nvm.sh  # This loads nvm
+    node "$@"
+}
+npm() {
+    unset -f npm
+    export NVM_DIR=~/.nvm
+    [ -s $(brew --prefix nvm)/nvm.sh ] && . $(brew --prefix nvm)/nvm.sh  # This loads nvm
+    npm "$@"
+}
+# source $(brew --prefix nvm)/nvm.sh
 
 # the saddest alias
 alias sigh="rm -rf ./node_modules && npm i"
