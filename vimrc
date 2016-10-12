@@ -383,3 +383,6 @@ let g:easytags_async = 1
 
 " jsdoc settings
 let g:jsdoc_allow_input_prompt = 1
+
+" turn off Tern's scratch window
+set completeopt-=preview
