@@ -32,7 +32,7 @@ else
     Plugin 'scrooloose/syntastic'
 endif
 Plugin 'honza/vim-snippets'
-Plugin 'grvcoelho/vim-javascript-snippets'
+" Plugin 'grvcoelho/vim-javascript-snippets'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'xolox/vim-misc'
@@ -99,9 +99,7 @@ set showmode
 set visualbell
 set cursorline
 if !has("nvim")
-    if has("gui_running")
-        set ttyfast
-    endif
+    set ttyfast
 endif
 set backspace=indent,eol,start
 
@@ -213,12 +211,12 @@ set linespace=5
 " Set color scheme
 set background=dark
 if has("nvim")
-    colorscheme solarflare-contrast
+    colorscheme solarflare
 else
     colorscheme solarized
 endif
 " Makes eol/tab chars not get ugly highlighting
-hi NonText guibg=bg guifg=#073642
+hi NonText guibg=bg guifg=#111111
 
 " Hide files in netrw file tree based on .gitignore rules
 let g:netrw_list_hide = netrw_gitignore#Hide() . '\.git$'
@@ -269,9 +267,7 @@ map <leader>p m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
 map <leader>P m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 
 " Hide MacVim's GUI task bar on load
-if has("gui_running")
-    set guioptions=egmrt
-endif
+set guioptions=egmrt
 
 " Leader shortcut to replace 4 spaces with a tab
 vnoremap <leader>st :s/    /\t/<CR>
