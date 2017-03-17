@@ -22,7 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'sheerun/vim-polyglot'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
-    Plugin 'kien/ctrlp.vim' " Command-T substitute
+    Plugin 'ctrlpvim/ctrlp.vim' " Command-T substitute
     Plugin 'benekastah/neomake' " syntastic (+ more!) substitute
     " wanted: neovim-compatible ultisnips substitute
 else
