@@ -24,15 +24,14 @@ if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
     Plugin 'ctrlpvim/ctrlp.vim' " Command-T substitute
     Plugin 'benekastah/neomake' " syntastic (+ more!) substitute
-    " wanted: neovim-compatible ultisnips substitute
 else
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'wincent/Command-T'
-    Plugin 'SirVer/ultisnips'
     Plugin 'scrooloose/syntastic'
 endif
 Plugin 'honza/vim-snippets'
 " Plugin 'grvcoelho/vim-javascript-snippets'
+Plugin 'SirVer/ultisnips'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'xolox/vim-misc'
