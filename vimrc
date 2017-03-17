@@ -31,6 +31,8 @@ else
 endif
 Plugin 'honza/vim-snippets'
 " Plugin 'grvcoelho/vim-javascript-snippets'
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'epilande/vim-react-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
