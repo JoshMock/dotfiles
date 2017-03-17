@@ -291,10 +291,7 @@ if has("nvim")
     let g:deoplete#enable_at_startup = 1
 
     " tab-complete
-    inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
-
-    " <leader><Tab> for regular tab
-    inoremap <Leader><Tab> <Space><Space>
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
     " add tern support for JS files
     autocmd FileType javascript setlocal omnifunc=tern#Complete
