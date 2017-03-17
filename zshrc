@@ -43,9 +43,6 @@ else # OS X `ls`
 fi
 alias l="ls -la ${colorflag}"
 
-# necessary alias for Bower to play nice with oh-my-zsh
-alias bower='noglob bower'
-
 # oh-my-zsh already adds .. and ..., this just takes it a step further
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
@@ -73,9 +70,6 @@ makegif() {
     echo "animation.gif created";
     rm -r /tmp/gifout;
 }
-
-# make an alias for Dash.app searches
-alias dash="open dash\://$*"
 
 # set default editors
 export VISUAL=/usr/local/bin/nvim
