@@ -8,7 +8,7 @@ ZSH_THEME="joshmock"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(z git gitfast osx npm vundle vim-interaction)
+plugins=(z history git gitfast git-extras osx npm vundle zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # Get $PATH from ~/.profile
