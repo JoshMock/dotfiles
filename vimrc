@@ -19,6 +19,7 @@ Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'sheerun/vim-polyglot'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
