@@ -10,8 +10,6 @@ if has('nvim')
 endif
 
 " load my bundles from Github
-" to install or update all bundles do :PluginInstall
-Plugin 'vim-scripts/ack.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -21,13 +19,13 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
-    Plugin 'ctrlpvim/ctrlp.vim' " Command-T substitute
     Plugin 'benekastah/neomake' " syntastic (+ more!) substitute
 else
     Plugin 'Valloric/YouCompleteMe'
-    Plugin 'wincent/Command-T'
     Plugin 'scrooloose/syntastic'
 endif
 Plugin 'honza/vim-snippets'
@@ -353,23 +351,15 @@ endif
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
 
-" Ctrl-P/Command-T settings
-if has("nvim")
-    let g:ctrlp_working_path_mode = 'r'
-    nmap <leader>t :CtrlPMixed<CR>
-    nmap <leader>b :CtrlPBuffer<CR>
-endif
+" fzf settings
+nmap <leader>t :Files<CR>
+nmap <leader>b :Buffers<CR>
 
 " `gf` will open JS file paths that don't end in .js (a la CommonJS/ES6 modules)
 set suffixesadd+=.js
 
 " turn on rainbow plugin
 let g:rainbow_active = 1
-
-" use ag instead of ack
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
 
 " easytags options
 let g:easytags_async = 1
