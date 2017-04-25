@@ -19,6 +19,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'ternjs/tern_for_vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 if has("nvim")
