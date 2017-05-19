@@ -20,6 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'ternjs/tern_for_vim'
+Plugin 'airblade/vim-rooter'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 if has("nvim")
@@ -102,9 +103,6 @@ if !has("nvim")
     set ttyfast
 endif
 set backspace=indent,eol,start
-
-" Auto cd to current file's directory
-autocmd BufEnter * lcd %:p:h
 
 " More useful command-line-like tab completion
 set wildmenu
