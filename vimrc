@@ -25,6 +25,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
+    Plugin 'carlitux/deoplete-ternjs'
     Plugin 'benekastah/neomake' " syntastic (+ more!) substitute
 else
     Plugin 'Valloric/YouCompleteMe'
@@ -42,6 +43,8 @@ Plugin 'luochen1990/rainbow'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-vinegar'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'tpope/vim-fireplace'
 " color schemes
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
@@ -367,3 +370,7 @@ let g:jsdoc_allow_input_prompt = 1
 
 " turn off Tern's scratch window
 set completeopt-=preview
+
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
