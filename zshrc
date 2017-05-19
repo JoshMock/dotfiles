@@ -8,7 +8,7 @@ ZSH_THEME="joshmock"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(z history git gitfast git-extras osx npm vundle zsh-autosuggestions)
+plugins=(z history git gitfast git-extras osx npm zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # Get $PATH from ~/.profile
@@ -79,10 +79,6 @@ export EDITOR=/usr/local/bin/nvim
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
-# use greadlink for the vim-interaction plugin
-# requires `brew install coreutils`
-alias readlink=greadlink
-
 # NVM settings
 nvm() {
     unset -f nvm
@@ -102,7 +98,6 @@ npm() {
     [ -s $(brew --prefix nvm)/nvm.sh ] && . $(brew --prefix nvm)/nvm.sh  # This loads nvm
     npm "$@"
 }
-# source $(brew --prefix nvm)/nvm.sh
 
 # the saddest alias
 alias sigh="rm -rf ./node_modules && npm i"
