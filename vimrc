@@ -112,6 +112,9 @@ if !has("nvim")
 endif
 set backspace=indent,eol,start
 
+" Case-insensitive filename completion in Neovim
+set wildignorecase
+
 " More useful command-line-like tab completion
 set wildmenu
 
@@ -395,3 +398,7 @@ nnoremap <leader>sr :SidewaysRight<cr>
 " airline customizations
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" fancy colorscheme support in tmux
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
