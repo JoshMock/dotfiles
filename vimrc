@@ -19,10 +19,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'neoclide/vim-jsx-improve'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'airblade/vim-rooter'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'AndrewRadev/sideways.vim'
 Plugin 'tpope/vim-projectionist'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
@@ -46,6 +48,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'tpope/vim-fireplace'
+Plugin 'moll/vim-node'
 " color schemes
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
@@ -375,3 +378,7 @@ set completeopt-=preview
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
+
+" sideways.vim shortcuts
+nnoremap <leader>sl :SidewaysLeft<cr>
+nnoremap <leader>sr :SidewaysRight<cr>
