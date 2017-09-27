@@ -5,4 +5,5 @@ ignore = [
     '.gitignore',
     '.gitmodules',
     '*.swp',
-    'README*']
+    'README*',
+    'tmux-client-*']
