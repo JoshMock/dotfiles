@@ -23,6 +23,7 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'airblade/vim-rooter'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-projectionist'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
     Plugin 'carlitux/deoplete-ternjs'
