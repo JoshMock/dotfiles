@@ -26,6 +26,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'tpope/vim-projectionist'
+Plugin 'vim-airline/vim-airline'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
     Plugin 'carlitux/deoplete-ternjs'
@@ -390,3 +391,7 @@ endif
 " sideways.vim shortcuts
 nnoremap <leader>sl :SidewaysLeft<cr>
 nnoremap <leader>sr :SidewaysRight<cr>
+
+" airline customizations
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
