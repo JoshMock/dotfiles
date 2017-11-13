@@ -406,6 +406,9 @@ let g:airline_powerline_fonts = 1
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
 
+" tmux send-key shortcuts
+nmap <leader>nt :!tmux send-keys -t right 'npm test' C-m<CR><CR>
+
 " settings for LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
