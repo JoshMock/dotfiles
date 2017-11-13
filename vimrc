@@ -28,6 +28,7 @@ Plugin 'AndrewRadev/sideways.vim'
 Plugin 'tpope/vim-projectionist'
 Plugin 'vim-airline/vim-airline'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'autozimu/LanguageClient-neovim'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
     Plugin 'carlitux/deoplete-ternjs'
@@ -413,3 +414,14 @@ let g:airline_powerline_fonts = 1
 " fancy colorscheme support in tmux
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
+
+" settings for LanguageClient-neovim
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'python': ['pyls'],
+    \ }
+let g:LanguageClient_autoStart = 1
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
