@@ -28,6 +28,7 @@ Plugin 'AndrewRadev/sideways.vim'
 Plugin 'tpope/vim-projectionist'
 Plugin 'vim-airline/vim-airline'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'tpope/vim-eunuch'
 Plugin 'autozimu/LanguageClient-neovim'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
