@@ -260,9 +260,6 @@ nnoremap <leader>D :bd!<cr>
 " Remap <leader>w to switch splits
 nnoremap <leader>w <C-w>w<cr>
 
-" Tidy JSON - http://lumberjaph.net/perl/2009/02/17/tidify-a-json-in-vim.html 
-map <leader>jt  <Esc>:%!python -m json.tool<CR>
-
 " Make the 0 key go to first non-whitespace char
 " TODO: wrap in conditional so it toggles between first non-whitespace char and column 0
 nnoremap 0 ^
@@ -271,10 +268,6 @@ vnoremap 0 ^
 " <leader>o/O adds a blank line above or below current line
 map <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
 map <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
-
-" <leader>p/P delete a line above or below (only if blank)
-map <leader>p m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
-map <leader>P m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 
 " Hide MacVim's GUI task bar on load
 set guioptions=egmrt
@@ -340,9 +333,6 @@ set wildignore+=*.pyc
 
 " JSX syntax in .js files
 let g:jsx_ext_required = 0
-
-" List current buffers with <leader>l
-map <leader>l :ls<CR>
 
 " Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
