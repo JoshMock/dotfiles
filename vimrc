@@ -93,14 +93,23 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set nowrap
 
 " Indentation rules
 set autoindent
 set smartindent
+set cindent
 
 " Show TextMate-like whitespace chars for tab and end of line
 set list
 set listchars=tab:▸\ ,eol:¬
+
+"better timeouts
+set timeoutlen=1000 ttimeoutlen=-1
+set updatetime=2000
+
+" shorter "Hit ENTER" message size
+set shortmess+=c
 
 " Random stuff from http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
 set scrolloff=3
@@ -156,7 +165,7 @@ set hlsearch
 " Clear a search by typing <space>k
 nnoremap <leader>k :noh<cr>
 
-" Turn on line numbers by typing ,num
+" Turn on line numbers by typing <space>num
 nnoremap <leader>num :set number<cr>
 nnoremap <leader>rnum :set relativenumber<cr>
 nnoremap <leader>nonum :set nonumber<cr>:set norelativenumber<cr>
@@ -167,7 +176,7 @@ vnoremap <tab> %
 
 " Line-wrapping options
 set wrap
-set textwidth=79
+set textwidth=80
 set formatoptions=qrn1
 
 " Use <leader>H to toggle highlighting lines over 80 chars
@@ -205,7 +214,6 @@ vnoremap <F1> <ESC>
 " Remap jj to do same thing as <ESC> when in insert mode
 inoremap jj <ESC>
 
-
 " set guifont=Inconsolata:h16 "http://www.levien.com/type/myfonts/inconsolata.html
 " set guifont=Inconsolata\ for\ Powerline:h17 "https://github.com/Lokaltog/powerline-fonts
 " set guifont=Droid\ Sans\ Mono:h14 "http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
@@ -228,7 +236,7 @@ endif
 hi NonText guibg=bg guifg=#111111
 
 " Hide files in netrw file tree based on .gitignore rules
-let g:netrw_list_hide = netrw_gitignore#Hide() . '\.git$'
+" let g:netrw_list_hide = netrw_gitignore#Hide() . '\.git$'
 
 " Settings for Indent Guides plugin (https://github.com/nathanaelkane/vim-indent-guides)
 let g:indent_guides_guide_size = 1
@@ -293,6 +301,8 @@ let g:ycm_key_detailed_diagnostics = '<leader>yd'
 if has("nvim")
     let g:python3_host_prog = '/usr/local/bin/python3'
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#file#enable_buffer_path = 1
+    let g:deoplete#enable_smart_case = 1
 
     " tab-complete
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -324,8 +334,10 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 map <leader>] :bnext<CR>
 map <leader>[ :bprevious<CR>
 
-" Ignore node_modules directory
-set wildignore+=node_modules/*
+" Ignore hidden directories/files
+set wildignore+=*/node_modules/*
+set wildignore+=.git
+set wildignore+=*.pyc
 
 " JSX syntax in .js files
 let g:jsx_ext_required = 0
@@ -396,6 +408,7 @@ nnoremap <leader>sl :SidewaysLeft<cr>
 nnoremap <leader>sr :SidewaysRight<cr>
 
 " airline customizations
+set noshowmode
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
