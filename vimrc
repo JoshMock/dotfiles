@@ -27,6 +27,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'tpope/vim-projectionist'
 Plugin 'vim-airline/vim-airline'
+Plugin 'qpkorr/vim-bufkill'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
     Plugin 'carlitux/deoplete-ternjs'
@@ -250,10 +251,7 @@ if $VIM_CRONTAB == "true"
 endif
 
 " Remap <leader>d to close current buffer
-nnoremap <leader>d :bd<cr>
-
-" Remap <leader>s to close current buffer without destroying current split
-nnoremap <leader>s :b#<bar>bd#<cr>
+nnoremap <leader>d :BD<cr>
 
 " Remap <leader>D to force-close current buffer
 nnoremap <leader>D :bd!<cr>
