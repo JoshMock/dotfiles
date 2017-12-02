@@ -104,6 +104,3 @@ alias sigh="rm -rf ./node_modules && npm i"
 
 # ignore noisy files in the_silver_searcher
 alias ag="ag --path-to-ignore ~/.agignore"
-
-# start tmux with zsh by default
-SHELL=/usr/local/bin/zsh
