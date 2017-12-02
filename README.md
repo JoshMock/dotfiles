@@ -17,11 +17,11 @@ There's also a lot of dependencies that have to be installed from Homebrew.
 I should probably put those all in a script at some point so it's officially
 documented somewhere.
 
-### Homebrew stuff that should be installed for all of this to work that
+### Setup stuff that should be run for all of this to work that
 I should probably put in an install script or something
 
 ```bash
-brew install node python3 neovim reattach-to-user-namespace source-highlight the_silver_searcher tmux zsh
+brew install node python3 neovim reattach-to-user-namespace source-highlight the_silver_searcher tmux zsh fzf
 ```
 
 ## License
