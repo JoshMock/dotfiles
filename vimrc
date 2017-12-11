@@ -409,3 +409,9 @@ set t_8b=^[[48;2;%lu;%lu;%lum
 
 " tmux send-key shortcuts
 nmap <leader>nt :!tmux send-keys -t right 'npm test' C-m<CR><CR>
+
+" shorcuts for working with system clipboard
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
