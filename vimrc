@@ -29,6 +29,7 @@ Plugin 'tpope/vim-projectionist'
 Plugin 'vim-airline/vim-airline'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-sensible'
 if has("nvim")
     Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
     Plugin 'carlitux/deoplete-ternjs'
@@ -61,12 +62,6 @@ Plugin 'vim-scripts/CSApprox'
 
 call vundle#end()
 
-"Enable filetypes
-filetype on
-filetype plugin on
-filetype indent on
-syntax on
-
 " Enable folding
 set foldmethod=syntax
 function! JavaScriptFold()
@@ -98,7 +93,6 @@ set expandtab
 set nowrap
 
 " Indentation rules
-set autoindent
 set smartindent
 set cindent
 
@@ -106,28 +100,19 @@ set cindent
 set list
 set listchars=tab:▸\ ,eol:¬
 
-"better timeouts
-set timeoutlen=1000 ttimeoutlen=-1
-set updatetime=2000
-
 " shorter "Hit ENTER" message size
 set shortmess+=c
 
 " Random stuff from http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
-set scrolloff=3
 set showmode
 set visualbell
 set cursorline
 if !has("nvim")
     set ttyfast
 endif
-set backspace=indent,eol,start
 
 " Case-insensitive filename completion in Neovim
 set wildignorecase
-
-" More useful command-line-like tab completion
-set wildmenu
 
 "Auto-completion menu
 set wildmode=list:longest
@@ -135,14 +120,8 @@ set wildmode=list:longest
 "Show command in bottom right portion of the screen
 set showcmd
 
-" Display current cursor position in lower right corner
-set ruler
-
 " Switch between buffers without saving
 set hidden
-
-" Always show status line
-set laststatus=2
 
 " Remap leader key from \ to space bar
 let mapleader = "\<Space>"
@@ -160,7 +139,6 @@ set smartcase
 set gdefault
 
 " Highlight results as you search
-set incsearch
 set showmatch
 set hlsearch
 
@@ -179,7 +157,7 @@ vnoremap <tab> %
 " Line-wrapping options
 set wrap
 set textwidth=80
-set formatoptions=qrn1
+set formatoptions+=rn1l
 
 " Use <leader>H to toggle highlighting lines over 80 chars
 nnoremap <leader>H :call<SID>LongLineHLToggle()<cr>
