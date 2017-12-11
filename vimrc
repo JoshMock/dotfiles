@@ -287,7 +287,9 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
-let g:ycm_key_detailed_diagnostics = '<leader>yd'
+if !has("nvim")
+    let g:ycm_key_detailed_diagnostics = '<leader>yd'
+endif
 
 " Deoplete rules for neovim
 if has("nvim")
