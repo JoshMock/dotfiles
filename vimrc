@@ -9,56 +9,69 @@ if has('nvim')
   runtime! python_setup.vim
 endif
 
-" load my bundles from Github
-Plugin 'Raimondi/delimitMate'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'nathanaelkane/vim-indent-guides'
+" vim utilities
 Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'neoclide/vim-jsx-improve'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'airblade/vim-rooter'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'AndrewRadev/sideways.vim'
-Plugin 'tpope/vim-projectionist'
-Plugin 'vim-airline/vim-airline'
 Plugin 'qpkorr/vim-bufkill'
-Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-sensible'
-if has("nvim")
-    Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
-    Plugin 'carlitux/deoplete-ternjs'
-    Plugin 'benekastah/neomake' " syntastic (+ more!) substitute
-else
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'scrooloose/syntastic'
-endif
-Plugin 'honza/vim-snippets'
-Plugin 'epilande/vim-es2015-snippets'
-Plugin 'epilande/vim-react-snippets'
-Plugin 'SirVer/ultisnips'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'vim-scripts/HTML-AutoCloseTag'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'luochen1990/rainbow'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'tpope/vim-vinegar'
-Plugin 'heavenshell/vim-jsdoc'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'tpope/vim-fireplace'
-Plugin 'moll/vim-node'
-" color schemes
+
+" display and colorschemes
+Plugin 'luochen1990/rainbow'
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/vilight.vim'
 Plugin 'vim-scripts/CSApprox'
+Plugin 'vim-airline/vim-airline'
+
+" code syntax and language-specific tools
+Plugin 'sheerun/vim-polyglot'
+Plugin 'neoclide/vim-jsx-improve'
+Plugin 'heavenshell/vim-jsdoc'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'tpope/vim-fireplace'
+Plugin 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plugin 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
+
+" source control
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+
+" file and project management
+Plugin 'airblade/vim-rooter'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-vinegar'
+
+" code modification tools
+Plugin 'Raimondi/delimitMate'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'AndrewRadev/sideways.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'nathanaelkane/vim-indent-guides'
+
+if has("nvim")
+    Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
+    Plugin 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+    Plugin 'benekastah/neomake' " syntastic substitute
+else
+    Plugin 'Valloric/YouCompleteMe'
+    Plugin 'scrooloose/syntastic'
+endif
+
+" snippet plugins
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'epilande/vim-react-snippets'
+
 
 call vundle#end()
 
