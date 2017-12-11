@@ -264,6 +264,11 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
 
+" UltiSnips config
+let g:UltiSnipsSnippetsDir="~/.config/nvim/my_snippets"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+let g:UltiSnipsExpandTrigger="<c-j>"
+
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
 if !has("nvim")
     let g:ycm_key_detailed_diagnostics = '<leader>yd'
@@ -277,7 +282,8 @@ if has("nvim")
     let g:deoplete#enable_smart_case = 1
 
     " tab-complete
-    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+    inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>
 
     " add tern support for JS files
     autocmd FileType javascript setlocal omnifunc=tern#Complete
@@ -290,14 +296,6 @@ endif
 if !has("nvim")
     set lazyredraw
 endif
-
-" Directory for custom snippets
-let g:UltiSnipsSnippetDirectories=["my_snippets"]
-
-" Snippet insert with Cmd-J and Shift-Cmd-J
-let g:UltiSnipsExpandTrigger="<D-j>"
-let g:UltiSnipsJumpForwardTrigger = "<D-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"
 
 " because apparently *.md is also a Modula-2 file, which I'm never going to edit
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
