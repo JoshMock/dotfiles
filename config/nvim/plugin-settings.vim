@@ -29,7 +29,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#enable_smart_case = 1
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>
+inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Settings for Indent Guides plugin
