@@ -6,4 +6,5 @@ ignore = [
     '.gitmodules',
     '*.swp',
     'README*',
-    'tmux-client-*']
+    'tmux-client-*',
+    'install.sh']
