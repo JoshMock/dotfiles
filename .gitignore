@@ -8,5 +8,6 @@ twitter-credentials
 emma
 echonest
 vim/bundle
+config/nvim/bundle
 djlazy
 react-storybook-usage.json

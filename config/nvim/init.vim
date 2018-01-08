@@ -2,7 +2,7 @@
 filetype off
 set rtp+=~/.config/nvim/bundle/vundle/
 call vundle#begin()
-call vundle#rc('~/.config/nvim/bundle/vundle/')
+call vundle#rc('~/.config/nvim/bundle/')
 Plugin 'VundleVim/Vundle.vim'
 
 " Python support for Neovim
