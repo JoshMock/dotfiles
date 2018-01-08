@@ -26,9 +26,6 @@ alias crontab="VIM_CRONTAB=true crontab"
 [ -r ~/.echonest ] && source ~/.echonest # Echo Nest key as envvar
 [ -r ~/.djlazy ] && source ~/.djlazy # DJ Lazy envvars https://github.com/jemise111/dj-lazy
 
-# `prunelocal` will get rid of all git branches that have been merged into your current branch
-alias prunelocal='git branch -d `git branch --merged | grep -v "^*"`'
-
 # refresh git submodules
 alias refresh_submodules='git submodule foreach git pull origin master'
 
@@ -60,22 +57,11 @@ sshkey() {
     cat ~/.ssh/id_rsa.pub | ssh "$*" 'cat >> .ssh/authorized_keys';
 }
 
-# make an animated GIF from inputted .mov file: makegif path/to/file.mov
-# requires installation of imagemagick and ffmpeg 2+
-makegif() {
-    mkdir -p /tmp/gifout;
-    rm /tmp/gifout/*;
-    ffmpeg -i "$*" -vf scale=320:-1 -r 10 /tmp/gifout/ffout%3d.png;
-    convert -delay 8 -loop 0 /tmp/gifout/ffout*.png animation.gif;
-    echo "animation.gif created";
-    rm -r /tmp/gifout;
-}
-
 # set default editors
 export VISUAL=/usr/local/bin/nvim
 export EDITOR=/usr/local/bin/nvim
 
-# syntax highlighting when using `less` on the command line (required: brew install source-highlight)
+# syntax highlighting when using `less` on the command line
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
