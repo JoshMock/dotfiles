@@ -9,5 +9,6 @@ emma
 echonest
 vim/bundle
 config/nvim/bundle
+config/nvim/plugged
 djlazy
 react-storybook-usage.json

@@ -1,74 +1,69 @@
-" Vundle setup
-filetype off
-set rtp+=~/.config/nvim/bundle/vundle/
-call vundle#begin()
-call vundle#rc('~/.config/nvim/bundle/')
-Plugin 'VundleVim/Vundle.vim'
-
 " Python support for Neovim
 runtime! python_setup.vim
 
+" vim-plug setup
+call plug#begin('~/.config/nvim/plugged')
+
 " vim utilities
-Plugin 'sickill/vim-pasta'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'tpope/vim-sensible'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'tmhedberg/SimpylFold'
+Plug 'sickill/vim-pasta'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'qpkorr/vim-bufkill'
+Plug 'tpope/vim-sensible'
+Plug 'easymotion/vim-easymotion'
+Plug 'tmhedberg/SimpylFold'
 
 " display and colorschemes
-Plugin 'luochen1990/rainbow'
-Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-scripts/vilight.vim'
-Plugin 'vim-scripts/CSApprox'
-Plugin 'vim-airline/vim-airline'
+Plug 'luochen1990/rainbow'
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/vilight.vim'
+Plug 'vim-scripts/CSApprox'
+Plug 'vim-airline/vim-airline'
 
 " code syntax and language-specific tools
-Plugin 'sheerun/vim-polyglot'
-Plugin 'neoclide/vim-jsx-improve'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'vim-scripts/HTML-AutoCloseTag'
-Plugin 'tpope/vim-fireplace'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'moll/vim-node'
+Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': ['html'] }
+Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
 
 " source control
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " file and project management
-Plugin 'airblade/vim-rooter'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-vinegar'
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
 
 " code modification tools
-Plugin 'Raimondi/delimitMate'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'AndrewRadev/sideways.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'benekastah/neomake'
+Plug 'Raimondi/delimitMate'
+Plug 'tomtom/tcomment_vim'
+Plug 'AndrewRadev/sideways.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'benekastah/neomake'
 
 " autocompletion
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'carlitux/deoplete-ternjs'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 
 " snippet plugins
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'epilande/vim-es2015-snippets'
-Plugin 'epilande/vim-react-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'epilande/vim-es2015-snippets', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'epilande/vim-react-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
-
-call vundle#end()
+call plug#end()
 
 " set display, colorscheme, etc.
 source ~/.config/nvim/display.vim
