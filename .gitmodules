@@ -7,3 +7,6 @@
 [submodule "zsh-custom/plugins/zsh-autosuggestions"]
 	path = zsh-custom/plugins/zsh-autosuggestions
 	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "config/nvim/bundle/vundle"]
+	path = config/nvim/bundle/vundle
+	url = git@github.com:VundleVim/Vundle.vim.git

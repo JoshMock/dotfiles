@@ -3,6 +3,7 @@ work_stuff
 pydistutils.cfg
 vim/tmp
 vim/.netrwhist
+config/nvim/.netrwhist
 twitter-credentials
 emma
 echonest

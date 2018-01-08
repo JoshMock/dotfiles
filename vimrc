@@ -4,11 +4,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'gmarik/vundle'
 
-" Python support for Neovim
-if has('nvim')
-  runtime! python_setup.vim
-endif
-
 " vim utilities
 Plugin 'sickill/vim-pasta'
 Plugin 'tpope/vim-repeat'
@@ -56,21 +51,10 @@ Plugin 'AndrewRadev/sideways.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
 
-if has("nvim")
-    Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
-    Plugin 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-    Plugin 'benekastah/neomake' " syntastic substitute
-else
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'scrooloose/syntastic'
-endif
-
-" snippet plugins
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'epilande/vim-es2015-snippets'
-Plugin 'epilande/vim-react-snippets'
+" Autocompletion
+Plugin 'Valloric/YouCompleteMe'
 
 
 call vundle#end()
@@ -91,9 +75,7 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
 " turn off vi compatibility
-if !has("nvim")
-    set nocompatible
-endif
+set nocompatible
 
 " prevents security exploits dealing with modelines in files
 set modelines=0
@@ -120,9 +102,7 @@ set shortmess+=c
 set showmode
 set visualbell
 set cursorline
-if !has("nvim")
-    set ttyfast
-endif
+set ttyfast
 
 " Case-insensitive filename completion in Neovim
 set wildignorecase
@@ -220,11 +200,7 @@ set linespace=5
 
 " Set color scheme
 set background=dark
-if has("nvim")
-    colorscheme solarflare
-else
-    colorscheme solarized
-endif
+colorscheme solarflare
 " Makes eol/tab chars not get ugly highlighting
 hi NonText guibg=bg guifg=#111111
 
@@ -277,38 +253,11 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
 
-" UltiSnips config
-let g:UltiSnipsSnippetsDir="~/.config/nvim/my_snippets"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
-let g:UltiSnipsExpandTrigger="<c-j>"
-
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
-if !has("nvim")
-    let g:ycm_key_detailed_diagnostics = '<leader>yd'
-endif
-
-" Deoplete rules for neovim
-if has("nvim")
-    let g:python3_host_prog = '/usr/local/bin/python3'
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#file#enable_buffer_path = 1
-    let g:deoplete#enable_smart_case = 1
-
-    " tab-complete
-    inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>
-
-    " add tern support for JS files
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-    " close Tern scratch window on completion
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-endif
+let g:ycm_key_detailed_diagnostics = '<leader>yd'
 
 " Only redraw screen after a macro has completed (performance boost!)
-if !has("nvim")
-    set lazyredraw
-endif
+set lazyredraw
 
 " because apparently *.md is also a Modula-2 file, which I'm never going to edit
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -342,13 +291,6 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
-" Neomake settings
-if has('nvim')
-    autocmd! BufWritePost * Neomake
-    let g:neomake_javascript_enabled_makers = ['eslint']
-    let g:neomake_python_enabled_makers = ['flake8']
-endif
-
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
 
@@ -378,10 +320,6 @@ let g:jsdoc_allow_input_prompt = 1
 
 " turn off Tern's scratch window
 set completeopt-=preview
-
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-endif
 
 " sideways.vim shortcuts
 nnoremap <leader>sl :SidewaysLeft<cr>
