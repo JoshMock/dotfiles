@@ -9,8 +9,9 @@ brew install ctags fzf git git-extras leiningen neovim node nvm python3 reattach
 
 # install python dependencies
 easy_install pip
-pip install virtualenv virtualenvwrapper
-pip install dotfiles && dotfiles --sync
+pip install virtualenv virtualenvwrapper dotfiles
+pip3 install python-language-server
+dotfiles --sync
 
 # install vim plugins
 nvim +PluginInstall +qall
@@ -18,4 +19,4 @@ vim +PluginInstall +qall
 
 # install global Node dependencies
 npm install -g npm@latest
-npm install -g grunt-cli dj-lazy eslint@3.6.1 eslint-plugin-react@6.3.0 tern
+npm install -g grunt-cli dj-lazy eslint@3.6.1 eslint-plugin-react@6.3.0 tern javascript-typescript-langserver
