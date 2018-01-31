@@ -49,8 +49,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'Raimondi/delimitMate'
 Plug 'tomtom/tcomment_vim'
 Plug 'AndrewRadev/sideways.vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'benekastah/neomake'
 
