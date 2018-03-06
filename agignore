@@ -3,4 +3,5 @@
 *.bundle.js
 *.bundle.css
 *.map
+*-compiled.js
 scrabble.txt
