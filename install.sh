@@ -5,17 +5,20 @@ git submodule foreach git pull origin master
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # install all my dang dependencies from Homebrew
-brew install ctags fzf git git-extras leiningen neovim node nvm python3 reattach-to-user-namespace redis source-highlight the_silver_searcher tmux wget zsh
+brew install ctags fzf git git-extras leiningen neovim node nvm par python3 reattach-to-user-namespace redis source-highlight the_silver_searcher tmux wget zsh ripgrep
+
+# install fzf fuzzy auto-completion and key bindings
+$(brew --prefix)/opt/fzf/install
 
 # install python dependencies
 easy_install pip
-pip install virtualenv virtualenvwrapper dotfiles
-pip3 install python-language-server
+pip install virtualenv virtualenvwrapper dotfiles neovim
+pip3 install neovim python-language-server
 dotfiles --sync
 
 # install vim plugins
-nvim +PluginInstall +qall
-vim +PluginInstall +qall
+nvim +PlugInstall +qall
+vim +PlugInstall +qall
 
 # install global Node dependencies
 npm install -g npm@latest
