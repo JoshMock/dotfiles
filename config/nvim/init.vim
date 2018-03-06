@@ -12,6 +12,7 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-sensible'
 Plug 'easymotion/vim-easymotion'
 Plug 'tmhedberg/SimpylFold'
+Plug 'terryma/vim-expand-region'
 
 " display and colorschemes
 Plug 'luochen1990/rainbow'

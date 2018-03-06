@@ -99,3 +99,7 @@ nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>y "+y
 vnoremap <leader>p "+p
+
+" vim-expand-region setings (hitting vvv incrementally expands selection)
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
