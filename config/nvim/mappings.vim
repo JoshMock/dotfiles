@@ -33,10 +33,10 @@ fun! s:LongLineHLToggle()
 endfunction
 
 " Disables arrow keys in normal mode to enforce use of hjkl
-nnoremap <up> <nop>
+nnoremap <up> :Files<cr>
 nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+nnoremap <left> :bprevious<cr>
+nnoremap <right> :bnext<cr>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
