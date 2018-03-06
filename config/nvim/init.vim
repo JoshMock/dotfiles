@@ -45,6 +45,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
+Plug 'Alok/notational-fzf-vim'
 
 " code modification tools
 Plug 'Raimondi/delimitMate'

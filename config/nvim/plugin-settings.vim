@@ -46,3 +46,8 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" notational-fzf-vim stuff
+let g:nv_main_directory = '~/Desktop/notes'
+let g:nv_search_paths = ['~/Desktop/notes']
+let g:nv_default_extension = '.md'

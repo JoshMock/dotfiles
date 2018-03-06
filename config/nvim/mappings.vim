@@ -103,3 +103,6 @@ vnoremap <leader>p "+p
 " vim-expand-region setings (hitting vvv incrementally expands selection)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" shortcut for notational-style note panel
+nnoremap <leader>nv :NV<cr>
