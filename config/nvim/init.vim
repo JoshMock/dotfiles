@@ -116,7 +116,10 @@ set hlsearch
 " Line-wrapping options
 set wrap
 set textwidth=80
-set formatoptions+=rn1l
+set formatoptions+=rn1lt
+
+" set external formatter to par
+set formatprg=par\ -w80
 
 " Crontab uses tmp files to edit, so backup rules must change. (See
 " .bash_profile for $VIM_CRONTAB alias stuff.)
