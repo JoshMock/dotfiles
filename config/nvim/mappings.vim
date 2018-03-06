@@ -100,6 +100,12 @@ nnoremap <leader>p "+p
 vnoremap <leader>y "+y
 vnoremap <leader>p "+p
 
+" write on <leader>w
+nnoremap <leader>w :w<CR>
+
+" Stop that stupid window from popping up
+map q: :q
+
 " vim-expand-region setings (hitting vvv incrementally expands selection)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
