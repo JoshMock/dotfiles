@@ -90,3 +90,6 @@ alias sigh="rm -rf ./node_modules && npm i"
 
 # ignore noisy files in the_silver_searcher
 alias ag="ag --path-to-ignore ~/.agignore"
+
+# fzf fuzzy completion and key binding
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
