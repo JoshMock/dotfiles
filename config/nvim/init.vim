@@ -113,6 +113,9 @@ set gdefault
 set showmatch
 set hlsearch
 
+" preview text substitution live as you type
+set inccommand=split
+
 " Line-wrapping options
 set wrap
 set textwidth=80
