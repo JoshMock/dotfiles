@@ -92,7 +92,10 @@ nnoremap <leader>sl :SidewaysLeft<cr>
 nnoremap <leader>sr :SidewaysRight<cr>
 
 " tmux send-key shortcuts
+" nt = `npm test`
 nmap <leader>nt :!tmux send-keys -t right 'npm test' C-m<CR><CR>
+" lc = last-run command
+nmap <leader>lc :!tmux send-keys -t right up enter<CR><CR>
 
 " shorcuts for working with system clipboard
 nnoremap <leader>y "+y
