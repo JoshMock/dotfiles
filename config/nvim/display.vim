@@ -18,7 +18,7 @@ set list
 set listchars=tab:▸\ ,eol:¬
 
 " Makes eol/tab chars not get ugly highlighting
-hi NonText guibg=bg guifg=#111111
+hi NonText guifg=#444444
 
 " turn on rainbow plugin
 let g:rainbow_active = 1
