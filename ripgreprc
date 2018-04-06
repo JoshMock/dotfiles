@@ -1,0 +1,5 @@
+--smart-case
+
+--ignore-file=~/.agignore
+
+--max-columns=150
