@@ -13,6 +13,7 @@ Plug 'tpope/vim-sensible'
 Plug 'easymotion/vim-easymotion'
 Plug 'tmhedberg/SimpylFold'
 Plug 'terryma/vim-expand-region'
+Plug 'junegunn/vim-peekaboo'
 
 " display and colorschemes
 Plug 'luochen1990/rainbow'
