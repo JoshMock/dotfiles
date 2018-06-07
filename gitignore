@@ -3,3 +3,4 @@
 .projections.json
 .ropeproject
 npm-debug*
+.tern-port
