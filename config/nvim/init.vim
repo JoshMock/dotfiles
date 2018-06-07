@@ -23,6 +23,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/vilight.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " code syntax and language-specific tools
 Plug 'sheerun/vim-polyglot'

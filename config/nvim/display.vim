@@ -16,6 +16,7 @@ let g:rainbow_active = 1
 set noshowmode
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme='minimalist'
 
 " fancy colorscheme support in tmux
 set t_8f=^[[38;2;%lu;%lu;%lum
