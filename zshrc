@@ -66,24 +66,8 @@ export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 # NVM settings
-nvm() {
-    unset -f nvm
-    export NVM_DIR=~/.nvm
-    [ -s $(brew --prefix nvm)/nvm.sh ] && . $(brew --prefix nvm)/nvm.sh  # This loads nvm
-    nvm "$@"
-}
-node() {
-    unset -f node
-    export NVM_DIR=~/.nvm
-    [ -s $(brew --prefix nvm)/nvm.sh ] && . $(brew --prefix nvm)/nvm.sh  # This loads nvm
-    node "$@"
-}
-npm() {
-    unset -f npm
-    export NVM_DIR=~/.nvm
-    [ -s $(brew --prefix nvm)/nvm.sh ] && . $(brew --prefix nvm)/nvm.sh  # This loads nvm
-    npm "$@"
-}
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # the saddest alias
 alias sigh="rm -rf ./node_modules && npm i"

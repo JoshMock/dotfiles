@@ -4,8 +4,11 @@ git submodule foreach git pull origin master
 # install Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+# install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
 # install all my dang dependencies from Homebrew
-brew install ctags fzf git git-extras leiningen neovim node nvm par python3 reattach-to-user-namespace redis source-highlight the_silver_searcher tmux wget zsh ripgrep
+brew install ctags fzf git git-extras leiningen neovim node par python3 reattach-to-user-namespace redis source-highlight the_silver_searcher tmux wget zsh ripgrep
 
 # install fzf fuzzy auto-completion and key bindings
 $(brew --prefix)/opt/fzf/install
