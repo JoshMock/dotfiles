@@ -34,7 +34,7 @@ Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': ['html'] }
 Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'for': ['javascript', 'javascript.jsx', 'python'] }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['javascript', 'javascript.jsx', 'python'] }
 
 " source control
 Plug 'tpope/vim-fugitive'
