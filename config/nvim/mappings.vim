@@ -115,3 +115,5 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " shortcut for notational-style note panel
 nnoremap <leader>nv :NV<cr>
+
+map <leader>x :AirlineToggle<cr> :NeomakeDisable
