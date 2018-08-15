@@ -153,3 +153,6 @@ set suffixesadd+=.js
 " persist undo across file closures
 set undodir=$HOME/.config/nvim/undodir
 set undofile
+
+" enable mouse scrolling
+set mouse=a
