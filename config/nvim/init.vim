@@ -34,7 +34,7 @@ Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': ['html'] }
 Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['javascript', 'javascript.jsx', 'python'] }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 " source control
 Plug 'tpope/vim-fugitive'
@@ -54,7 +54,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tomtom/tcomment_vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 
 " autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

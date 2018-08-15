@@ -1,11 +1,6 @@
 " JSX syntax in .js files
 let g:jsx_ext_required = 0
 
-" Neomake settings
-call neomake#configure#automake('nrwi', 500)
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_python_enabled_makers = ['flake8']
-
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
 
