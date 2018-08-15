@@ -150,3 +150,7 @@ set wildignore+=*.pyc
 
 " `gf` will open JS file paths that don't end in .js (a la CommonJS/ES6 modules)
 set suffixesadd+=.js
+
+" persist undo across file closures
+set undodir=$HOME/.config/nvim/undodir
+set undofile

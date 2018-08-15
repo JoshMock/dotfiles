@@ -12,3 +12,4 @@ config/nvim/bundle
 config/nvim/plugged
 djlazy
 react-storybook-usage.json
+config/nvim/undodir/
