@@ -1,15 +1,6 @@
 " JSX syntax in .js files
 let g:jsx_ext_required = 0
 
-" javascript-libraries-syntax.vim settings
-let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
-
-" easytags options
-let g:easytags_async = 1
-
-" jsdoc settings
-let g:jsdoc_allow_input_prompt = 1
-
 " turn off Tern's scratch window
 set completeopt-=preview
 
