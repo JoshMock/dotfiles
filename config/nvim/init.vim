@@ -133,12 +133,11 @@ if $VIM_CRONTAB == "true"
 endif
 
 " backup and swap rules
-set noswapfile
 set backup 
+set writebackup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set backupskip=/tmp/*,/private/tmp/* 
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
-set writebackup
+set directory^=$HOME/.config/nvim/swapfiles//
 
 " because apparently *.md is also a Modula-2 file, which I'm never going to edit
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
