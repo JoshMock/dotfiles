@@ -99,8 +99,18 @@ set wildignorecase
 "Auto-completion menu
 set wildmode=list:longest
 
-" Switch between buffers without saving
-set hidden
+" set `hidden` for all buffer types except netrw buffers
+set nohidden
+augroup netrw_buf_hidden_fix
+    autocmd!
+
+    " Set all non-netrw buffers to bufhidden=hide
+    autocmd BufWinEnter *
+                \  if &ft != 'netrw'
+                \|     set bufhidden=hide
+                \| endif
+
+augroup end
 
 " If searching all lowercase, search case-insensitive.
 " If any characters are uppercase, search case-sensitive.
@@ -156,3 +166,6 @@ set undofile
 
 " enable mouse scrolling
 set mouse=a
+
+" drop netrw/vim-vinegar buffer upon navigating away
+autocmd FileType netrw setl bufhidden=delete
