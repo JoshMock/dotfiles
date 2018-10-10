@@ -75,5 +75,8 @@ alias sigh="rm -rf ./node_modules && npm i"
 # ignore noisy files in the_silver_searcher
 alias ag="ag --path-to-ignore ~/.agignore"
 
+# configure ripgrep
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
 # fzf fuzzy completion and key binding
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
