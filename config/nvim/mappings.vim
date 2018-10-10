@@ -59,7 +59,7 @@ nnoremap <leader>d :BD<cr>
 nnoremap <leader>D :bd!<cr>
 
 " Remap <leader>w to switch splits
-nnoremap <leader>w <C-w>w<cr>
+nnoremap <leader>w <C-w>w
 
 " Make the 0 key go to first non-whitespace char
 " TODO: wrap in conditional so it toggles between first non-whitespace char and column 0
@@ -67,18 +67,14 @@ nnoremap 0 ^
 vnoremap 0 ^
 
 " <leader>o/O adds a blank line above or below current line
-map <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
-map <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
+map <leader>o m`o<Esc>``
+map <leader>O m`O<Esc>``
 
 " Leader shortcut to replace 4 spaces with a tab
 vnoremap <leader>st :s/    /\t/<CR>
 
 " Leader shortcut to replace a tab with 4 spaces
 vnoremap <leader>ts :s/\t/    /<CR>
-
-" Trying to train myself out of using tabs vs buffers
-map <leader>] :bnext<CR>
-map <leader>[ :bprevious<CR>
 
 " fzf settings
 nmap <leader>t :GFiles<CR>
