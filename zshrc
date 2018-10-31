@@ -22,7 +22,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 alias crontab="VIM_CRONTAB=true crontab"
 
 # include external files
-[ -r ~/.emma ] && source ~/.emma # work-sensitive things I don't want on Github
+[ -r ~/.elastic ] && source ~/.elastic # work-sensitive things I don't want on Github
 [ -r ~/.echonest ] && source ~/.echonest # Echo Nest key as envvar
 [ -r ~/.djlazy ] && source ~/.djlazy # DJ Lazy envvars https://github.com/jemise111/dj-lazy
 
