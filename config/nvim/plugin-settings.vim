@@ -37,3 +37,4 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 let g:nv_main_directory = '~/Desktop/notes'
 let g:nv_search_paths = ['~/Desktop/notes']
 let g:nv_default_extension = '.md'
+let g:nv_create_note_window = 'edit'
