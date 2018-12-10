@@ -15,4 +15,4 @@
 	newNormal = green bold
 	newHighlight = green bold 22
 [merge]
-	tool = opendiff
+	tool = kdiff3
