@@ -27,6 +27,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " code syntax and language-specific tools
 Plug 'sheerun/vim-polyglot'
+Plug 'plasticboy/vim-markdown'
 Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': ['html'] }
