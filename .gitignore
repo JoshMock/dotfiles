@@ -14,3 +14,4 @@ djlazy
 react-storybook-usage.json
 config/nvim/undodir/
 *.swp
+config/yarn/
