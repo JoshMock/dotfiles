@@ -58,9 +58,6 @@ nnoremap <leader>d :BD<cr>
 " Remap <leader>D to force-close current buffer
 nnoremap <leader>D :bd!<cr>
 
-" Remap <leader>w to switch splits
-nnoremap <leader>w <C-w>w
-
 " Make the 0 key go to first non-whitespace char
 " TODO: wrap in conditional so it toggles between first non-whitespace char and column 0
 nnoremap 0 ^
@@ -100,7 +97,7 @@ vnoremap <leader>y "+y
 vnoremap <leader>p "+p
 
 " write on <leader>w
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w :w<CR><CR>
 
 " Stop that stupid window from popping up
 map q: :q
