@@ -30,11 +30,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
 Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'vim-scripts/HTML-AutoCloseTag', { 'for': ['html'] }
 Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 
 " source control
 Plug 'tpope/vim-fugitive'
@@ -54,11 +52,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'tomtom/tcomment_vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'w0rp/ale'
-
-" autocompletion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 
 " snippet plugins
 Plug 'SirVer/ultisnips'
@@ -170,3 +163,6 @@ set mouse=a
 
 " drop netrw/vim-vinegar buffer upon navigating away
 autocmd FileType netrw setl bufhidden=delete
+
+" never hide left gutter (prevents jumpiness with linter errors)
+set signcolumn=yes

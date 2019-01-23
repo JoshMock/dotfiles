@@ -1,0 +1,4 @@
+{
+  "tsserver.formatOnType": true,
+  "eslint.packageManager": "npm"
+}
