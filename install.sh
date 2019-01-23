@@ -18,8 +18,8 @@ $(brew --prefix)/opt/fzf/install
 
 # install python dependencies
 easy_install pip
-pip install virtualenv virtualenvwrapper dotfiles neovim python-language-server
-pip3 install virtualenv virtualenvwrapper dotfiles neovim python-language-server
+pip install virtualenv virtualenvwrapper dotfiles pynvim python-language-server
+pip3 install virtualenv virtualenvwrapper dotfiles pynvim python-language-server
 dotfiles --sync
 
 # install vim plugins
