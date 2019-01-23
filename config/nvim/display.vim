@@ -1,6 +1,6 @@
 " Set color scheme
 set background=dark
-colorscheme solarflare
+colorscheme jellybeans
 
 " Show TextMate-like whitespace chars for tab and end of line
 set list

@@ -17,10 +17,7 @@ Plug 'junegunn/vim-peekaboo'
 
 " display and colorschemes
 Plug 'luochen1990/rainbow'
-Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plug 'nanotech/jellybeans.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'vim-scripts/vilight.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
