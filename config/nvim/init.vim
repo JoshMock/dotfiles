@@ -1,5 +1,6 @@
 " Python support for Neovim
-runtime! python_setup.vim
+let g:python_host_prog  = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " vim-plug setup
 call plug#begin('~/.config/nvim/plugged')
@@ -24,7 +25,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " code syntax and language-specific tools
 Plug 'sheerun/vim-polyglot'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
 Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
@@ -134,11 +135,12 @@ if $VIM_CRONTAB == "true"
 endif
 
 " backup and swap rules
-set backup 
+set backup
 set writebackup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set backupskip=/tmp/*,/private/tmp/* 
 set directory^=$HOME/.config/nvim/swapfiles//
+set updatetime=300
 
 " because apparently *.md is also a Modula-2 file, which I'm never going to edit
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
