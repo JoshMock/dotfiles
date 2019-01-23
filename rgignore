@@ -5,3 +5,5 @@
 *.map
 *-compiled.js
 *scrabble.txt
+yarn.lock
+*.min.*

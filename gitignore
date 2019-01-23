@@ -4,3 +4,5 @@
 .ropeproject
 npm-debug*
 .tern-port
+jsconfig.json
+config/gcloud/

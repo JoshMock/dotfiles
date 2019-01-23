@@ -15,3 +15,4 @@ react-storybook-usage.json
 config/nvim/undodir/
 *.swp
 config/yarn/
+config/gtk-2.0/
