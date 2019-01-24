@@ -46,7 +46,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'Alok/notational-fzf-vim'
 
 " code modification tools
-Plug 'Raimondi/delimitMate'
 Plug 'tomtom/tcomment_vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'nathanaelkane/vim-indent-guides'

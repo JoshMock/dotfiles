@@ -2,11 +2,11 @@
   "dependencies": {
     "coc-css": "^1.0.6",
     "coc-eslint": "^1.0.9",
-    "coc-highlight": "^1.0.3",
     "coc-html": "^1.0.7",
     "coc-jest": "^1.0.1",
     "coc-json": "^1.0.7",
     "coc-omni": "^0.0.4",
+    "coc-pairs": "^1.0.2",
     "coc-pyls": "^1.0.6",
     "coc-stylelint": "^1.0.8",
     "coc-tsserver": "^1.1.22",
