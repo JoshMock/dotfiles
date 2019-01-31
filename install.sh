@@ -8,7 +8,7 @@ git submodule foreach git pull origin master
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # install all my dang dependencies from Homebrew
-brew install ctags fzf git git-extras leiningen neovim node par python@2 python3 reattach-to-user-namespace redis source-highlight the_silver_searcher tmux wget zsh ripgrep
+brew install ctags exa fzf git git-extras leiningen neovim node par python@2 python3 reattach-to-user-namespace redis source-highlight the_silver_searcher tmux wget zsh ripgrep
 brew unlink python && brew link python@2
 brew cask install java
 brew cask install kdiff3
