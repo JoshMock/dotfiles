@@ -49,6 +49,7 @@ Plug 'Alok/notational-fzf-vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'jiangmiao/auto-pairs'
 
 " snippet plugins
 Plug 'SirVer/ultisnips'
