@@ -1,9 +1,0 @@
-*.min.js
-*.min.css
-*.bundle.js
-*.bundle.css
-*.map
-*-compiled.js
-*scrabble.txt
-yarn.lock
-*.min.*

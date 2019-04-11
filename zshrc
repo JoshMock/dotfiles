@@ -23,8 +23,6 @@ alias crontab="VIM_CRONTAB=true crontab"
 
 # include external files
 [ -r ~/.elastic ] && source ~/.elastic # work-sensitive things I don't want on Github
-[ -r ~/.echonest ] && source ~/.echonest # Echo Nest key as envvar
-[ -r ~/.djlazy ] && source ~/.djlazy # DJ Lazy envvars https://github.com/jemise111/dj-lazy
 
 # refresh git submodules
 alias refresh_submodules='git submodule foreach git pull origin master'
@@ -41,9 +39,6 @@ alias .....='cd ../../../..'
 
 # takes JSON in your clipboard, pretty-formats it, copies it back to clipboard
 alias prettyjson='pbpaste | python -m json.tool | pbcopy'
-
-# find my Raspberry Pi on current network based on its known MAC addresses
-alias rpi_ip="arp -a | grep 'b8:27:eb|00:13:ef:d0:22:94' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'"
 
 # `sshkey <name of host>` will put my ssh key on that host so I can log into it
 # in the future without a password
@@ -63,12 +58,6 @@ export LESS=' -R '
 # NVM settings
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# the saddest alias
-alias sigh="rm -rf ./node_modules && npm i"
-
-# ignore noisy files in the_silver_searcher
-alias ag="ag --path-to-ignore ~/.agignore"
 
 # configure ripgrep
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
