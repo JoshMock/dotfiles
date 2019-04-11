@@ -6,3 +6,4 @@ npm-debug*
 .tern-port
 jsconfig.json
 config/gcloud/
+.lein-repl-history

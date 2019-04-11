@@ -1,5 +1,6 @@
 " Remap leader key from \ to space bar
 let mapleader = "\<Space>"
+let maplocalleader = "\\"
 
 " Remaps / search key to use standard regex instead of vim regex
 nnoremap / /\v
@@ -99,9 +100,6 @@ vnoremap <leader>p "+p
 " write on <leader>w
 nnoremap <leader>w :w<CR><CR>
 
-" Stop that stupid window from popping up
-map q: :q
-
 " vim-expand-region setings (hitting vvv incrementally expands selection)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -110,3 +108,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <leader>nv :NV<cr>
 
 map <leader>x :AirlineToggle<cr> :NeomakeDisable
+
+vnoremap <leader>e :'<,'>Eval<cr>
+nnoremap <leader>e :%Eval<cr>

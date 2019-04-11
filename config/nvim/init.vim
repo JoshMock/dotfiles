@@ -31,6 +31,8 @@ Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+Plug 'guns/vim-sexp', { 'for': ['clojure'] }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': ['clojure'] }
 
 " source control
 Plug 'tpope/vim-fugitive'
