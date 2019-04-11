@@ -8,6 +8,7 @@ ZSH_THEME="joshmock"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
+ZSH_DISABLE_COMPFIX="true"
 plugins=(z history git gitfast git-extras osx npm zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
