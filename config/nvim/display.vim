@@ -1,6 +1,10 @@
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 " Set color scheme
 set background=dark
-colorscheme jellybeans
+colorscheme night-owl
 
 " Show TextMate-like whitespace chars for tab and end of line
 set list

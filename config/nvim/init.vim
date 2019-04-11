@@ -19,6 +19,7 @@ Plug 'junegunn/vim-peekaboo'
 " display and colorschemes
 Plug 'luochen1990/rainbow'
 Plug 'nanotech/jellybeans.vim'
+Plug 'haishanh/night-owl.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
