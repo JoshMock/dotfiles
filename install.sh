@@ -27,6 +27,6 @@ nvim +PlugInstall +qall
 vim +PlugInstall +qall
 
 # install global Node dependencies
-nvm install 10 && nvm alias default 10 && nvm use 10
+nvm install 11 && nvm alias default 11 && nvm use 11
 npm install -g npm@latest
 npm install -g eslint eslint-plugin-react tern javascript-typescript-langserver
