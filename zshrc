@@ -39,6 +39,7 @@ alias prettyjson='pbpaste | python -m json.tool | pbcopy'
 # set default editors
 export VISUAL=/usr/local/bin/nvim
 export EDITOR=/usr/local/bin/nvim
+alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 
 # syntax highlighting when using `less` on the command line
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
