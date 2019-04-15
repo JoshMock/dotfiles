@@ -47,7 +47,7 @@ export LESS=' -R '
 
 # NVM settings
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
 # configure ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
