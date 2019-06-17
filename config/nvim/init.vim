@@ -53,6 +53,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
+Plug 'godlygeek/tabular'
 
 " snippet plugins
 Plug 'SirVer/ultisnips'

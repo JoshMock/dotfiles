@@ -111,3 +111,7 @@ map <leader>x :AirlineToggle<cr> :NeomakeDisable
 
 vnoremap <leader>e :'<,'>Eval<cr>
 nnoremap <leader>e :%Eval<cr>
+
+" Tabularize shortcuts
+nnoremap <leader>= :Tabularize /^[^=]*\zs=/l1c1l0<cr>
+vnoremap <leader>= :Tabularize /^[^=]*\zs=/l1c1l0<cr>
