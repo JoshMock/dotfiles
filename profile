@@ -2,3 +2,5 @@ export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbi
 
 # start tmux with zsh by default
 export SHELL=/usr/local/bin/zsh
+
+export PATH="$HOME/.cargo/bin:$PATH"

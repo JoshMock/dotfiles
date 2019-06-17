@@ -18,3 +18,5 @@ PS1='\[$(tput setaf 1)\]$(__git_ps1 "(%s) ")\[$(tput setaf 2)\]\w $ \[$(tput sgr
 source ~/.profile
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export PATH="$HOME/.cargo/bin:$PATH"
