@@ -55,3 +55,6 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # fzf fuzzy completion and key binding
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
+# iTerm integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
