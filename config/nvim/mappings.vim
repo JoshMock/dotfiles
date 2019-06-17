@@ -90,6 +90,8 @@ nnoremap <leader>sr :SidewaysRight<cr>
 nmap <leader>nt :!tmux send-keys -t right 'npm test' C-m<CR><CR>
 " lc = last-run command
 nmap <leader>lc :!tmux send-keys -t right up enter<CR><CR>
+" gp = `ggpush` aka git push origin $current_branch
+nmap <leader>gp :!tmux send-keys -t right 'ggpush' C-m<CR><CR>
 
 " shorcuts for working with system clipboard
 nnoremap <leader>y "+y
