@@ -81,6 +81,7 @@ set modelines=0
 " expands tabs to 2 spaces, etc
 set tabstop=2
 set shiftwidth=2
+set shiftround
 set softtabstop=2
 set expandtab
 set nowrap
@@ -88,9 +89,6 @@ set nowrap
 " Indentation rules
 set smartindent
 set cindent
-
-" Case-insensitive filename completion in Neovim
-set wildignorecase
 
 "Auto-completion menu
 set wildmode=list:longest
@@ -112,6 +110,8 @@ augroup end
 " If any characters are uppercase, search case-sensitive.
 set ignorecase
 set smartcase
+set infercase " smart autocomplete casing
+set wildignorecase " Case-insensitive filename completion in Neovim
 
 " %s/foo/bar/ will assume %s/foo/bar/g 
 set gdefault
@@ -121,7 +121,7 @@ set showmatch
 set hlsearch
 
 " preview text substitution live as you type
-set inccommand=split
+set inccommand=nosplit
 
 " Line-wrapping options
 set wrap
