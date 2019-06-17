@@ -93,14 +93,14 @@ nmap <leader>lc :!tmux send-keys -t right up enter<CR><CR>
 " gp = `ggpush` aka git push origin $current_branch
 nmap <leader>gp :!tmux send-keys -t right 'ggpush' C-m<CR><CR>
 
-" shorcuts for working with system clipboard
+" shortcuts for working with system clipboard
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>y "+y
 vnoremap <leader>p "+p
 
 " write on <leader>w
-nnoremap <leader>w :w<CR><CR>
+nnoremap <leader>w :w<CR>
 
 " vim-expand-region setings (hitting vvv incrementally expands selection)
 vmap v <Plug>(expand_region_expand)
@@ -109,8 +109,10 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " shortcut for notational-style note panel
 nnoremap <leader>nv :NV<cr>
 
-map <leader>x :AirlineToggle<cr> :NeomakeDisable
+" Disable stuff during screencasting
+map <leader>x :AirlineToggle<cr>
 
+" Eval shortcuts for Fireplace
 vnoremap <leader>e :'<,'>Eval<cr>
 nnoremap <leader>e :%Eval<cr>
 
