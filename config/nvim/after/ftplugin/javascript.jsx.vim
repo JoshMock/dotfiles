@@ -12,9 +12,6 @@ endfunction
 call JavaScriptFold()
 setl fen
 
-" tern autocompletion
-autocmd FileType javascript setlocal omnifunc=tern#Complete
-
 " Ale rules
 let b:ale_fixers = ['eslint']
 let b:ale_linters = ['eslint']

@@ -31,7 +31,13 @@ Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ 'for': ['javascript', 'javascript.jsx', 'python'],
+    \ }
+Plug 'w0rp/ale'
 Plug 'guns/vim-sexp', { 'for': ['clojure'] }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': ['clojure'] }
 

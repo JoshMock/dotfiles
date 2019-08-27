@@ -119,3 +119,6 @@ nnoremap <leader>e :%Eval<cr>
 " Tabularize shortcuts
 nnoremap <leader>= :Tabularize /^[^=]*\zs=/l1c1l0<cr>
 vnoremap <leader>= :Tabularize /^[^=]*\zs=/l1c1l0<cr>
+
+" Ale shortcuts
+nnoremap <leader>f :ALEFix<cr>
