@@ -27,7 +27,7 @@ alias refresh_submodules='git submodule foreach git pull origin master'
 alias server='python -m SimpleHTTPServer'
 
 # use `exa` for fancy `ls` replacement
-export EXA_COLORS="da=1;34;nnn:di=32;1:*.log=37;41;1"
+EXA_COLORS="da=1;34;nnn:di=32;1:*.log=37;41;1"
 alias l="exa --long --header --all"
 
 # oh-my-zsh already adds .. and ..., this just takes it a step further
