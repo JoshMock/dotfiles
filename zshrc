@@ -72,3 +72,6 @@ nfind() {
 }
 # check out a git branch
 alias gb='git checkout $(git --no-pager branch --no-color | awk "{print $1}" | grep -v \* | fzf)'
+
+# nix
+source $HOME/.nix-profile/etc/profile.d/nix.sh

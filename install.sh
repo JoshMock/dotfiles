@@ -1,20 +1,20 @@
 # install all submodules
 git submodule foreach git pull origin master
 
+# install nix
+curl https://nixos.org/nix/install | sh
+
 # install Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
-# install all my dang dependencies from Homebrew
-brew install ctags exa fzf git git-extras leiningen neovim node par python@2 python3 reattach-to-user-namespace redis source-highlight tmux wget zsh ripgrep
+# install all my dang dependencies from Homebrew and Nix
+nix-env -iA nixpkgs.myPackages
+brew install git git-extras neovim node python@2 python3 tmux zsh
 brew unlink python && brew link python@2
 brew cask install java
-brew cask install kdiff3
-
-# install fzf fuzzy auto-completion and key bindings
-$(brew --prefix)/opt/fzf/install
 
 # install python dependencies
 easy_install pip
