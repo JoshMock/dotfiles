@@ -19,7 +19,7 @@ $(brew --prefix)/opt/fzf/install
 # install python dependencies
 easy_install pip
 pip install virtualenv virtualenvwrapper dotfiles pynvim python-language-server pylint
-pip3 install virtualenv virtualenvwrapper dotfiles pynvim python-language-server black pyls-black neovim-remote pylint
+pip3 install virtualenv virtualenvwrapper dotfiles pynvim python-language-server black pyls-black neovim-remote pylint vit
 dotfiles --sync
 
 # install vim plugins
