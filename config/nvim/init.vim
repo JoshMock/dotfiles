@@ -26,10 +26,10 @@ Plug 'vim-airline/vim-airline-themes'
 
 " code syntax and language-specific tools
 Plug 'sheerun/vim-polyglot'
-Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'tpope/vim-fireplace', { 'for': ['clojure'] }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'autozimu/LanguageClient-neovim', {
@@ -38,8 +38,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'for': ['javascript', 'javascript.jsx', 'python'],
     \ }
 Plug 'w0rp/ale'
-Plug 'guns/vim-sexp', { 'for': ['clojure'] }
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': ['clojure'] }
+Plug 'guns/vim-sexp', { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
 " source control
 Plug 'tpope/vim-fugitive'
@@ -154,6 +154,9 @@ set updatetime=300
 
 " because apparently *.md is also a Modula-2 file, which I'm never going to edit
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"
+" .pcss is CSS for PostCSS
+autocmd BufNewFile,BufReadPost *.pcss set filetype=css
 
 " Ignore hidden directories/files
 set wildignore+=*/node_modules/*

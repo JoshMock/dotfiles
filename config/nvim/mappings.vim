@@ -87,11 +87,11 @@ nnoremap <leader>sr :SidewaysRight<cr>
 
 " tmux send-key shortcuts
 " nt = `npm test`
-nmap <leader>nt :!tmux send-keys -t right 'npm test' C-m<CR><CR>
+nmap <leader>nt :!tmux send-keys -t bottom-right 'npm test' C-m<CR><CR>
 " lc = last-run command
-nmap <leader>lc :!tmux send-keys -t right up enter<CR><CR>
+nmap <leader>lc :!tmux send-keys -t bottom-right up enter<CR><CR>
 " gp = `ggpush` aka git push origin $current_branch
-nmap <leader>gp :!tmux send-keys -t right 'ggpush' C-m<CR><CR>
+nmap <leader>gp :!tmux send-keys -t bottom-right 'ggpush' C-m<CR><CR>
 
 " shortcuts for working with system clipboard
 nnoremap <leader>y "+y
@@ -122,3 +122,6 @@ vnoremap <leader>= :Tabularize /^[^=]*\zs=/l1c1l0<cr>
 
 " Ale shortcuts
 nnoremap <leader>f :ALEFix<cr>
+
+" vim-projectionist defaults
+nnoremap <leader>a :A<cr>
