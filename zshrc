@@ -57,7 +57,9 @@ alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # fzf fuzzy completion and key binding
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+fi
 
 # iTerm integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
