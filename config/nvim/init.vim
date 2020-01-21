@@ -15,6 +15,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tmhedberg/SimpylFold'
 Plug 'terryma/vim-expand-region'
 Plug 'junegunn/vim-peekaboo'
+Plug 'diepm/vim-rest-console'
 
 " display and colorschemes
 Plug 'luochen1990/rainbow'

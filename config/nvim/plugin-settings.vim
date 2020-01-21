@@ -41,3 +41,13 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " ale configs
 let g:ale_completion_enabled = 1
+
+" vim-rest-console configs
+let s:vrc_auto_format_response_patterns = {
+  \ 'json': 'jq',
+\}
+let g:vrc_curl_opts = {
+  \ '-i': '',
+  \ '-s': '',
+  \ '-S': '',
+\}
