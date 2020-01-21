@@ -8,8 +8,11 @@
         exa
         fd
         fzf
+        git
+        git-extras
         jq
         leiningen
+        neovim
         par
         reattach-to-user-namespace
         ripgrep
@@ -25,6 +28,7 @@
         google-cloud-sdk
         kubectl
         minikube
+        sshuttle
       ];
     };
 

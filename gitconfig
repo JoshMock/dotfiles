@@ -3,7 +3,7 @@
 
 [core]
 	excludesfile = ~/.gitignore
-	pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+	pager = ~/.nix-profile/share/git/contrib/diff-highlight/diff-highlight | less
 [user]
 	name = Josh Mock
 	email = josh@joshmock.com
