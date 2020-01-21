@@ -13,10 +13,12 @@ I manage my dotfiles using the conveniently-named Python package
 [dotfiles](http://pypi.python.org/pypi/dotfiles), which is extremely handy for
 setting up all your $HOME symlinks for you and keeping them in sync.
 
-There's also a lot of dependencies that have to be installed from Homebrew and
-other places. [This is a script that](./install.sh), experimentally, does all that jazz.
+There's also a lot of dependencies that have to be installed from Homebrew
+(though, switching to Nix for cross-platform support and because Homebrew is
+getting annoying) and other places. [This is a script](./install.sh) that,
+experimentally, does all that jazz.
 
 ## License
 
 I can't license other people's submodules, obviously, but for anything that
-isn't already licensed, assume the [WTFPL license](http://sam.zoy.org/wtfpl/).
+isn't already licensed, assume the [GPL license](https://www.gnu.org/licenses/gpl.html).
