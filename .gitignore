@@ -16,3 +16,4 @@ config/nvim/undodir/
 *.swp
 config/yarn/
 config/gtk-2.0/
+zsh_history
