@@ -16,6 +16,7 @@
         par
         reattach-to-user-namespace
         ripgrep
+        source-highlight
         taskwarrior
         wget
         yq
