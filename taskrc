@@ -4,3 +4,6 @@ report.daily.description=Daily status report
 report.daily.columns=id,description.desc
 report.daily.filter=(start:today or end:today or modified:today)
 report.daily.sort=modified-
+
+uda.githuburl.type=string
+uda.githuburl.label=Github URL

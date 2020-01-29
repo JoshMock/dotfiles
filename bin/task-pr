@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+task _get $1.githuburl | xargs open
