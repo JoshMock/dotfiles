@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-task _get $1.githuburl | xargs open
+githuburl=$(task _get $1.githuburl)
+url=${githuburl:=$(task _get $1.url)}
+open $url

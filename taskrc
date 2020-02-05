@@ -7,3 +7,6 @@ report.daily.sort=modified-
 
 uda.githuburl.type=string
 uda.githuburl.label=Github URL
+
+uda.url.type=string
+uda.url.label=URL
