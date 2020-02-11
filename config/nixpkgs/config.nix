@@ -9,30 +9,31 @@
         fd
         fzf
         git
-        git-extras
+        "git-extras"
         jq
         leiningen
         neovim
         par
-        reattach-to-user-namespace
+        "reattach-to-user-namespace"
         ripgrep
-        source-highlight
+        "source-highlight"
         taskwarrior
         wget
         yq
       ];
+      pathsToLink = [ "/share" "/bin" "/Applications" ];
     };
 
     elasticPackages = pkgs.buildEnv {
       name = "elastic-packages";
       paths = [
-        google-cloud-sdk
+        "google-cloud-sdk"
         kubectl
         minikube
         sshuttle
+        yarn
       ];
+      pathsToLink = [ "/share" "/bin" "/Applications" ];
     };
-
-    pathsToLink = [ "/share" "/bin" "/Applications" ];
   };
 }
