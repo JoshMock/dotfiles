@@ -31,6 +31,7 @@
         kubectl
         minikube
         sshuttle
+        "terraform-lsp"
         yarn
       ];
       pathsToLink = [ "/share" "/bin" "/Applications" ];
