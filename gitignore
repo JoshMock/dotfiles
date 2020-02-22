@@ -6,5 +6,7 @@ npm-debug*
 .tern-port
 jsconfig.json
 config/gcloud/
+config/asciinema/
+config/direnv/
 .lein-repl-history
 repl-history
