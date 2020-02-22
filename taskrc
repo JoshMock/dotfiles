@@ -1,8 +1,10 @@
 data.location=~/.task
 
+editor=nvim
+
 report.daily.description=Daily status report
 report.daily.columns=id,description.desc
-report.daily.filter=(start:today or end:today or modified:today)
+report.daily.filter=((start:today or end:today or modified:today) and (+WAITING or +PENDING or +COMPLETED) and -code_review)
 report.daily.sort=modified-
 
 uda.githuburl.type=string
