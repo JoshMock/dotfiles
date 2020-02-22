@@ -5,6 +5,7 @@
       paths = [
         bat
         ctags
+        direnv
         exa
         fd
         fzf

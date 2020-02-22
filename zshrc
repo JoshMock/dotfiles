@@ -76,3 +76,6 @@ alias gb='git checkout $(git --no-pager branch --no-color | awk "{print $1}" | g
 
 # nix
 source $HOME/.nix-profile/etc/profile.d/nix.sh
+
+# direnv
+eval "$(direnv hook zsh)"
