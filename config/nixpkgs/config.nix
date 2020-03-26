@@ -1,4 +1,8 @@
 {
+  permittedInsecurePackages = [
+    "openssl-1.0.2u"
+  ];
+
   packageOverrides = pkgs: with pkgs; {
     myPackages = pkgs.buildEnv {
       name = "my-packages";
@@ -13,14 +17,16 @@
         "git-extras"
         jq
         leiningen
-        neovim
         par
         "reattach-to-user-namespace"
         ripgrep
         "source-highlight"
         taskwarrior
+        tmux
+        tmuxinator
         wget
         yq
+        zsh
       ];
       pathsToLink = [ "/share" "/bin" "/Applications" ];
     };
@@ -32,7 +38,6 @@
         kubectl
         minikube
         sshuttle
-        "terraform-lsp"
         yarn
       ];
       pathsToLink = [ "/share" "/bin" "/Applications" ];

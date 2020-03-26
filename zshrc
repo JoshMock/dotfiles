@@ -18,6 +18,9 @@ source $ZSH/oh-my-zsh.sh
 # set $PATH
 source $HOME/.profile
 
+# nix
+source $HOME/.nix-profile/etc/profile.d/nix.sh
+
 # make vim play nice when editing cron jobs
 alias crontab="VIM_CRONTAB=true crontab"
 
@@ -58,9 +61,7 @@ alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # fzf fuzzy completion and key binding
-if [ -n "${commands[fzf-share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-fi
+source "$(fzf-share)/key-bindings.zsh"
 
 # iTerm integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -73,9 +74,6 @@ nfind() {
 }
 # check out a git branch
 alias gb='git checkout $(git --no-pager branch --no-color | awk "{print $1}" | grep -v \* | fzf)'
-
-# nix
-source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 # direnv
 eval "$(direnv hook zsh)"

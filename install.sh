@@ -12,7 +12,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 
 # install all my dang dependencies from Homebrew and Nix
 nix-env -iA nixpkgs.myPackages
-brew install node python@2 python3 tmux zsh
+brew install node python@2 python3
 brew unlink python && brew link python@2
 brew cask install java
 
