@@ -24,7 +24,7 @@ github.include_user_issues = False
 github.include_user_repos = False
 github.description_template = {{githubtitle}}
 github.query = is:open is:pr archived:false user:elastic author:JoshMock 
-github.default_priority = H
+github.default_priority = M
 github.add_tags = open_pr
 
 [elastic_code_reviews]
@@ -36,5 +36,5 @@ github.include_user_issues = False
 github.include_user_repos = False
 github.description_template = {{githubtitle}}
 github.query = is:open is:pr archived:false user:elastic review-requested:JoshMock
-github.default_priority = M
+github.default_priority = H
 github.add_tags = code_review
