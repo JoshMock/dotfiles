@@ -10,3 +10,4 @@ config/asciinema/
 config/direnv/
 .lein-repl-history
 repl-history
+.lein-failures
