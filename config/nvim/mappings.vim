@@ -59,10 +59,16 @@ nnoremap <leader>d :BD<cr>
 " Remap <leader>D to force-close current buffer
 nnoremap <leader>D :bd!<cr>
 
-" Make the 0 key go to first non-whitespace char
-" TODO: wrap in conditional so it toggles between first non-whitespace char and column 0
-nnoremap 0 ^
-vnoremap 0 ^
+" Make the 0 key toggle between first column and first non-whitespace character
+function HomeToggle()
+  if col('.') == 1
+    normal! ^
+  else
+    normal! 0
+  endif
+endfunction
+vnoremap 0 :call HomeToggle()<cr>
+nnoremap 0 :call HomeToggle()<cr>
 
 " <leader>o/O adds a blank line above or below current line
 map <leader>o m`o<Esc>``
