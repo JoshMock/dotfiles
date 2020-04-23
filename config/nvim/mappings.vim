@@ -10,8 +10,8 @@ vnoremap / /\v
 nnoremap <leader>k :noh<cr>
 
 " Turn on line numbers by typing <space>num
-nnoremap <leader>num :set number<cr>
-nnoremap <leader>rnum :set relativenumber<cr>
+nnoremap <leader>num :set number!<cr>
+nnoremap <leader>rnum :set relativenumber!<cr>
 nnoremap <leader>nonum :set nonumber<cr>:set norelativenumber<cr>
 
 " Remaps % to tab to navigate matching brackets
@@ -70,9 +70,12 @@ endfunction
 vnoremap 0 :call HomeToggle()<cr>
 nnoremap 0 :call HomeToggle()<cr>
 
+" reevaluate vim config
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " <leader>o/O adds a blank line above or below current line
-map <leader>o m`o<Esc>``
-map <leader>O m`O<Esc>``
+nnoremap <leader>o m`o<Esc>``
+nnoremap <leader>O m`O<Esc>``
 
 " Leader shortcut to replace 4 spaces with a tab
 vnoremap <leader>st :s/    /\t/<CR>
@@ -81,8 +84,8 @@ vnoremap <leader>st :s/    /\t/<CR>
 vnoremap <leader>ts :s/\t/    /<CR>
 
 " fzf settings
-nmap <leader>t :GFiles<CR>
-nmap <leader>b :Buffers<CR>
+nnoremap <leader>t :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " I don't remember what this is for
 tnoremap <Esc> <C-\><C-n>
@@ -93,11 +96,11 @@ nnoremap <leader>sr :SidewaysRight<cr>
 
 " tmux send-key shortcuts
 " nt = `npm test`
-nmap <leader>nt :!tmux send-keys -t bottom-right 'npm test' C-m<CR><CR>
+nnoremap <leader>nt :!tmux send-keys -t bottom-right 'npm test' C-m<CR><CR>
 " lc = last-run command
-nmap <leader>lc :!tmux send-keys -t bottom-right up enter<CR><CR>
+nnoremap <leader>lc :!tmux send-keys -t bottom-right up enter<CR><CR>
 " gp = `ggpush` aka git push origin $current_branch
-nmap <leader>gp :!tmux send-keys -t bottom-right 'ggpush' C-m<CR><CR>
+nnoremap <leader>gp :!tmux send-keys -t bottom-right 'ggpush' C-m<CR><CR>
 
 " shortcuts for working with system clipboard
 nnoremap <leader>y "+y
@@ -116,7 +119,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 nnoremap <leader>nv :NV<cr>
 
 " Disable stuff during screencasting
-map <leader>x :AirlineToggle<cr>
+nnoremap <leader>x :AirlineToggle<cr>
 
 " Eval shortcuts for Fireplace
 vnoremap <leader>e :'<,'>Eval<cr>
