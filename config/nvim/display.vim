@@ -4,7 +4,7 @@ endif
 
 " Set color scheme
 set background=dark
-colorscheme night-owl
+colorscheme nord
 
 " Show TextMate-like whitespace chars for tab and end of line
 set list
