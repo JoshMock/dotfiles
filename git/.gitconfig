@@ -2,7 +2,7 @@
 [credential]
 
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore-global
 	pager = ~/.nix-profile/share/git/contrib/diff-highlight/diff-highlight | less
 [user]
 	name = Josh Mock
