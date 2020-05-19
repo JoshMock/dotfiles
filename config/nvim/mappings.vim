@@ -90,10 +90,6 @@ nnoremap <leader>b :Buffers<CR>
 " I don't remember what this is for
 tnoremap <Esc> <C-\><C-n>
 
-" sideways.vim shortcuts
-nnoremap <leader>sl :SidewaysLeft<cr>
-nnoremap <leader>sr :SidewaysRight<cr>
-
 " tmux send-key shortcuts
 " nt = `npm test`
 nnoremap <leader>nt :!tmux send-keys -t bottom-right 'npm test' C-m<CR><CR>
@@ -117,9 +113,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " shortcut for notational-style note panel
 nnoremap <leader>nv :NV<cr>
-
-" Disable stuff during screencasting
-nnoremap <leader>x :AirlineToggle<cr>
 
 " Eval shortcuts for Fireplace
 vnoremap <leader>e :'<,'>Eval<cr>

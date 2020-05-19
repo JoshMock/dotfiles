@@ -11,26 +11,17 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-sensible'
-Plug 'easymotion/vim-easymotion'
 Plug 'tmhedberg/SimpylFold'
 Plug 'terryma/vim-expand-region'
 Plug 'junegunn/vim-peekaboo'
-Plug 'diepm/vim-rest-console'
 
 " display and colorschemes
 Plug 'luochen1990/rainbow'
-Plug 'nanotech/jellybeans.vim'
-Plug 'haishanh/night-owl.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-scripts/CSApprox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " code syntax and language-specific tools
 Plug 'sheerun/vim-polyglot'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -58,16 +49,8 @@ Plug 'Alok/notational-fzf-vim'
 
 " code modification tools
 Plug 'tomtom/tcomment_vim'
-Plug 'AndrewRadev/sideways.vim'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
-
-" snippet plugins
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'epilande/vim-es2015-snippets', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'epilande/vim-react-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
 call plug#end()
 

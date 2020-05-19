@@ -4,15 +4,6 @@ let g:jsx_ext_required = 0
 " vim-rooter config
 let g:rooter_patterns = ['.git/']
 
-" UltiSnips config
-let g:UltiSnipsSnippetsDir="~/.config/nvim/my_snippets"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
-let g:UltiSnipsExpandTrigger="<c-j>"
-
-" Settings for Indent Guides plugin
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-
 " notational-fzf-vim stuff
 let g:nv_main_directory = '~/Desktop/notes'
 let g:nv_search_paths = ['~/Desktop/notes']
@@ -42,13 +33,3 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " ale configs
 let g:ale_completion_enabled = 1
-
-" vim-rest-console configs
-let s:vrc_auto_format_response_patterns = {
-  \ 'json': 'jq',
-\}
-let g:vrc_curl_opts = {
-  \ '-i': '',
-  \ '-s': '',
-  \ '-S': '',
-\}
