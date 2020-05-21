@@ -50,7 +50,7 @@ export EDITOR=nvim
 alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 
 # syntax highlighting when using `less` on the command line
-export LESSOPEN="| $HOME/.nix-profile/bin/src-hilite-lesspipe.sh %s"
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 # NVM settings
