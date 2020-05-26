@@ -127,3 +127,12 @@ nnoremap <leader>f :ALEFix<cr>
 
 " vim-projectionist defaults
 nnoremap <leader>a :A<cr>
+
+" add quotes around current word
+nmap <leader>" viWS"
+nmap <leader>' viWS'
+
+" uppercase current word
+nnoremap <leader>u viWU
+nnoremap <c-u> viWU
+inoremap <c-u> <esc>viWU
