@@ -9,14 +9,15 @@ These are my dotfiles, y'all. Nothing special, really.
 
 ## Installation
 
-I manage my dotfiles using the conveniently-named Python package
-[dotfiles](http://pypi.python.org/pypi/dotfiles), which is extremely handy for
-setting up all your $HOME symlinks for you and keeping them in sync.
+I manage my dotfiles using [GNU Stow](https://www.gnu.org/software/stow/), which
+is extremely handy for setting up all your `$HOME` symlinks for you and keeping
+them in sync.
 
 There's also a lot of dependencies that have to be installed from Homebrew
 (though, switching to Nix for cross-platform support and because Homebrew is
 getting annoying) and other places. [This is a script](./install.sh) that,
-experimentally, does all that jazz.
+experimentally, does all that jazz. It's probably not safe to run, but it's
+a decent way to get a sense of what needs to be installed.
 
 ## License
 
