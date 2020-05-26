@@ -2,7 +2,7 @@
 skip_global_compinit=1
 
 # virtualenvwrapper setup
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 alias python='python3'
 
 # Oh My Zsh settings
@@ -12,14 +12,14 @@ ZSH_THEME="joshmock"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_DISABLE_COMPFIX="true"
-plugins=(z git gitfast git-extras osx node npm zsh-autosuggestions virtualenvwrapper docker)
+plugins=(z git gitfast git-extras osx node npm zsh-autosuggestions docker)
 source $ZSH/oh-my-zsh.sh
 
 # set $PATH
 source $HOME/.profile
 
 # nix
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+[ -r $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 # make vim play nice when editing cron jobs
 alias crontab="VIM_CRONTAB=true crontab"
@@ -50,7 +50,7 @@ export EDITOR=nvim
 alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 
 # syntax highlighting when using `less` on the command line
-export LESSOPEN="| $HOME/.nix-profile/bin/src-hilite-lesspipe.sh %s"
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 # NVM settings
@@ -61,7 +61,7 @@ alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # fzf fuzzy completion and key binding
-source "$(fzf-share)/key-bindings.zsh"
+source "/usr/share/fzf/key-bindings.zsh"
 
 # iTerm integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

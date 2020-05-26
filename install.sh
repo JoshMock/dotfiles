@@ -12,15 +12,14 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 
 # install all my dang dependencies from Homebrew and Nix
 nix-env -iA nixpkgs.myPackages
-brew install node python@2 python3
+brew install node python@2 python3 stow
 brew unlink python && brew link python@2
 brew cask install java
 
 # install python dependencies
 easy_install pip
-pip install virtualenv virtualenvwrapper dotfiles pynvim python-language-server pylint
-pip3 install virtualenv virtualenvwrapper dotfiles pynvim python-language-server black pyls-black neovim-remote pylint vit
-dotfiles --sync
+pip install virtualenv virtualenvwrapper pynvim python-language-server pylint
+pip3 install virtualenv virtualenvwrapper pynvim python-language-server black pyls-black neovim-remote pylint vit
 
 # install vim plugins
 nvim +PlugInstall +qall
