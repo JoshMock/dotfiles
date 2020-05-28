@@ -1,0 +1,52 @@
+general {
+  colors = true
+  interval = 5
+  color_good = "#00FF00"
+  color_degraded = "#FFCC00"
+  color_bad = "#FF0000"
+}
+
+order += "wireless wlp3s0"
+order += "battery 0"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "disk /"
+order += "memory"
+order += "tztime local"
+
+wireless wlp3s0 {
+  format_up = " %essid %quality"
+  format_down = "  down"
+  format_quality  = "%02d%s"
+}
+
+battery 0 {
+  format = " %status %percentage %remaining %emptytime"
+  format_down = "no battery"
+  path = "/sys/class/power_supply/BAT%d/uevent"
+  low_threshold = 10
+}
+
+tztime local {
+  format = "%Y-%m-%d %H:%M"
+}
+
+cpu_usage {
+  format = " %usage"
+  degraded_threshold = 30
+}
+
+cpu_temperature 0 {
+  format = " %degrees°C"
+  path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+}
+
+disk "/" {
+  format = " %avail"
+}
+
+memory {
+  format = " %used"
+  threshold_degraded = "10%"
+  format_degraded = "MEM: %free"
+}
