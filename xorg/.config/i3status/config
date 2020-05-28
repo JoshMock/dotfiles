@@ -8,6 +8,7 @@ general {
 
 order += "wireless wlp3s0"
 order += "battery 0"
+order += "volume master"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "disk /"
@@ -49,4 +50,9 @@ memory {
   format = " %used"
   threshold_degraded = "10%"
   format_degraded = "MEM: %free"
+}
+
+volume master {
+  format = "  %volume"
+  format_muted = " (%volume)"
 }
