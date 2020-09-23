@@ -8,7 +8,6 @@ alias python='python3'
 # Oh My Zsh settings
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh-custom
-ZSH_THEME="joshmock"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_DISABLE_COMPFIX="true"
@@ -77,3 +76,6 @@ alias gb='git checkout $(git --no-pager branch --no-color | awk "{print $1}" | g
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# starship
+eval "$(starship init zsh)"

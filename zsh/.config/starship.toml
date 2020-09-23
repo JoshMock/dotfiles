@@ -1,0 +1,22 @@
+prompt_order = [
+  "time",
+  "cmd_duration",
+  "directory",
+  "git_branch",
+  "git_state",
+  "git_status",
+  "line_break",
+  "character",
+]
+
+[directory]
+truncate_length = 3
+style = "bold #999999"
+
+[git_branch]
+style = "bold #566C82"
+
+[git_status]
+prefix = ""
+suffix = ""
+style = "#AB5454"
