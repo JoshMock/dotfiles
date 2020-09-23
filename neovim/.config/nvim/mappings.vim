@@ -136,3 +136,7 @@ nmap <leader>' viWS'
 nnoremap <leader>u viWU
 nnoremap <c-u> viWU
 inoremap <c-u> <esc>viWU
+
+" session management
+nnoremap <leader>ms :mksession! ~/Desktop/session.vim<cr>
+nnoremap <leader>sm :source ~/Desktop/session.vim<cr>
