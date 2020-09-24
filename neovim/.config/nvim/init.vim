@@ -1,6 +1,7 @@
 " Python support for Neovim
 let g:python_host_prog  = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
+let g:ale_completion_enabled = 1
 
 " vim-plug setup
 call plug#begin('~/.config/nvim/plugged')
@@ -25,12 +26,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ 'for': ['javascript', 'javascript.jsx', 'python'],
-    \ }
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
