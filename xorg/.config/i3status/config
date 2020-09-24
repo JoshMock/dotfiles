@@ -10,7 +10,6 @@ order += "wireless wlp3s0"
 order += "battery 0"
 order += "volume master"
 order += "cpu_usage"
-order += "cpu_temperature 0"
 order += "disk /"
 order += "memory"
 order += "tztime local"
@@ -22,24 +21,19 @@ wireless wlp3s0 {
 }
 
 battery 0 {
-  format = " %status %percentage %remaining %emptytime"
+  format = " %status %percentage %remaining"
   format_down = "no battery"
   path = "/sys/class/power_supply/BAT%d/uevent"
   low_threshold = 10
 }
 
 tztime local {
-  format = "%Y-%m-%d %H:%M"
+  format = "%Y-%m-%d %I:%M %p"
 }
 
 cpu_usage {
   format = " %usage"
   degraded_threshold = 30
-}
-
-cpu_temperature 0 {
-  format = " %degrees°C"
-  path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
 }
 
 disk "/" {
@@ -53,6 +47,6 @@ memory {
 }
 
 volume master {
-  format = "  %volume"
-  format_muted = " (%volume)"
+  format = " %volume"
+  format_muted = "(%volume)"
 }
