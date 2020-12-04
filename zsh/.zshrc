@@ -71,8 +71,12 @@ nfind() {
   # drop search results into fzf, selected files open in nvim
   nvim $(rg "$1" -l | fzf -m)
 }
+
 # check out a git branch
 alias gb='git checkout $(git --no-pager branch --no-color | awk "{print $1}" | grep -v \* | fzf)'
+
+# kitty git diffs
+alias gd='git difftool --no-symlinks --dir-diff'
 
 # direnv
 eval "$(direnv hook zsh)"

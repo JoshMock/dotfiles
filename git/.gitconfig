@@ -3,7 +3,6 @@
 
 [core]
 	excludesfile = ~/.gitignore-global
-	pager = ~/.nix-profile/share/git/contrib/diff-highlight/diff-highlight | less
 [user]
 	name = Josh Mock
 	email = josh@joshmock.com
@@ -16,3 +15,13 @@
 	newHighlight = green bold 22
 [mergetool "nvim"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+[diff]
+	tool = kitty
+	guitool = kitty.gui
+[difftool]
+	prompt = false
+	trustExitCode = true
+[difftool "kitty"]
+	cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+	cmd = kitty kitty +kitten diff $LOCAL $REMOTE
