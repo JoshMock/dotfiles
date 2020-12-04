@@ -86,8 +86,10 @@ vnoremap <leader>ts :s/\t/    /<CR>
 " fzf settings
 nnoremap <leader>t :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
+" vim-bufkill adds leader mappings I don't use that slow down <leader>b above
+let g:BufKillCreateMappings = 0
 
-" I don't remember what this is for
+" Esc in terminal mode behaves like normal
 tnoremap <Esc> <C-\><C-n>
 
 " tmux send-key shortcuts
