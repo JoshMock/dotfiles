@@ -81,3 +81,6 @@ eval "$(direnv hook zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
+# use bat as default man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
