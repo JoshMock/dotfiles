@@ -65,8 +65,6 @@ source "/usr/share/fzf/key-bindings.zsh"
 # iTerm integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-alias k=kubectl
-
 nfind() {
   # drop search results into fzf, selected files open in nvim
   nvim $(rg "$1" -l | fzf -m)
