@@ -4,7 +4,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:ale_completion_enabled = 1
 
 " vim-plug setup
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin($HOME.'/.config/nvim/plugged')
 
 " vim utilities
 Plug 'sickill/vim-pasta'
@@ -51,13 +51,13 @@ Plug 'godlygeek/tabular'
 call plug#end()
 
 " set display, colorscheme, etc.
-source ~/.config/nvim/display.vim
+source $HOME/.config/nvim/display.vim
 
 " set up all key mappings
-source ~/.config/nvim/mappings.vim
+source $HOME/.config/nvim/mappings.vim
 
 " configuration for plugins
-source ~/.config/nvim/plugin-settings.vim
+source $HOME/.config/nvim/plugin-settings.vim
 
 " Enable folding
 set foldmethod=syntax
@@ -128,7 +128,7 @@ endif
 " backup and swap rules
 set backup
 set writebackup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set backupdir=$HOME/.vim-tmp,$HOME/.tmp,$HOME/tmp,/var/tmp,/tmp 
 set backupskip=/tmp/*,/private/tmp/* 
 set directory^=$HOME/.config/nvim/swapfiles//
 set updatetime=300
