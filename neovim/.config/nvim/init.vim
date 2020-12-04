@@ -19,7 +19,6 @@ Plug 'junegunn/vim-peekaboo'
 " display and colorschemes
 Plug 'luochen1990/rainbow'
 Plug 'arcticicestudio/nord-vim'
-Plug 'vim-scripts/CSApprox'
 
 " code syntax and language-specific tools
 Plug 'sheerun/vim-polyglot'
