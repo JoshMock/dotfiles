@@ -1,6 +1,6 @@
 configuration {
-  modi: "window,drun,ssh,combi";
+  modi: "combi";
   theme: "solarized";
-  font: "hack 10";
+  font: "Hack 12";
   combi-modi: "window,drun,ssh";
 }

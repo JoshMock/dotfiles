@@ -48,7 +48,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+d exec --no-startup-id "rofi -show combi -modi combi"
 
 # change focus
 bindsym $mod+j focus left
