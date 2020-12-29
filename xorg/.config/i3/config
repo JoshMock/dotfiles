@@ -37,6 +37,10 @@ bindsym $mod+Return exec kitty
 # start file explorer
 bindsym $mod+o exec thunar
 
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
