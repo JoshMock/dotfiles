@@ -1,10 +1,6 @@
 # speed up ZSH init time?
 skip_global_compinit=1
 
-# virtualenvwrapper setup
-#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-alias python='python3'
-
 # Oh My Zsh settings
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh-custom
