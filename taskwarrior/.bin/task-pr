@@ -2,4 +2,4 @@
 
 githuburl=$(task _get $1.githuburl)
 url=${githuburl:=$(task _get $1.url)}
-open $url
+xdg-open $url
