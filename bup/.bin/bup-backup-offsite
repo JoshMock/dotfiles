@@ -1,0 +1,6 @@
+#!/usr/bin/env
+
+tar cvf /tmp/bup.tar /home/joshmock/.bup
+keybase encrypt joshmock -i /tmp/bup.tar -o /tmp/bup.encrypted
+rclone copy /tmp/bup.encrypted gdrive:/bup/$(date --utc "+%Y/%m/%d/%H.%M.%S")
+rclone delete --min-age 5d gdrive:/bup
