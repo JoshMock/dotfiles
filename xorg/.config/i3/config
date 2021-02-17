@@ -140,6 +140,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# move focused workspace between monitors
+bindsym $mod+Shift+less move workspace to output left
+bindsym $mod+Shift+greater move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -180,6 +184,12 @@ bar {
   status_command i3status
   font pango:Inter, Awesome 11
   separator_symbol "     "
+
+  # disable using scroll wheel to change workspaces
+  bindsym button4 nop
+  bindsym button5 nop
+  bindsym button6 nop
+  bindsym button7 nop
 }
 
 # add gaps
@@ -188,3 +198,5 @@ gaps inner 10
 smart_gaps on
 smart_borders on
 hide_edge_borders smart_no_gaps
+# auto back and forth
+workspace_auto_back_and_forth yes
