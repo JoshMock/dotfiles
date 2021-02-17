@@ -21,8 +21,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 # exec --no-startup-id nm-applet
 
-# lock screen after 2 minutes idle
-exec --no-startup-id xautolock -time 2 -locker "i3lock -c 002b36 -e && sleep 1"
+# lock screen after 5 minutes idle
+exec --no-startup-id xautolock -time 5 -locker "i3lock -c 002b36 -e && sleep 1"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
