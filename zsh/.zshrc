@@ -33,8 +33,12 @@ alias l="exa --long --header --all"
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+# system clipboard shortcuts
+alias xcopy='xclip -selection clipboard'
+alias xpaste='xclip -selection clipboard -o'
+
 # takes JSON in your clipboard, pretty-formats it, copies it back to clipboard
-alias prettyjson='pbpaste | python -m json.tool | pbcopy'
+alias prettyjson='xclip -selection clipboard -o | jq | xclip -selection clipboard'
 
 # set default editors
 export VISUAL=nvim
