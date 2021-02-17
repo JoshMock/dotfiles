@@ -50,6 +50,8 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id "rofi -show combi -modi combi"
+bindsym $mod+Shift+d exec --no-startup-id "$HOME/.config/rofi/script_mode.sh"
+bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # change focus
 bindsym $mod+j focus left
