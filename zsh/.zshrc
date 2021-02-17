@@ -16,9 +16,6 @@ source $HOME/.profile
 # nix
 [ -r $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
 
-# make vim play nice when editing cron jobs
-alias crontab="VIM_CRONTAB=true crontab"
-
 # include external files
 [ -r $HOME/.elastic ] && source $HOME/.elastic # work-sensitive things I don't want on Github
 
@@ -57,9 +54,6 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # fzf fuzzy completion and key binding
 source "/usr/share/fzf/key-bindings.zsh"
-
-# iTerm integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 nfind() {
   # drop search results into fzf, selected files open in nvim
