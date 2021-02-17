@@ -11,7 +11,6 @@ let g:nv_default_extension = '.md'
 let g:nv_create_note_window = 'edit'
 
 " Deoplete rules
-let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"

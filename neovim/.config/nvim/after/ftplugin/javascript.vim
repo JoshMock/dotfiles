@@ -13,5 +13,5 @@ call JavaScriptFold()
 setl fen
 
 " Ale rules
-let b:ale_fixers = ['eslint']
-let b:ale_linters = ['eslint']
+let b:ale_fixers = ['eslint', 'tsserver']
+let b:ale_linters = ['eslint', 'tsserver']
