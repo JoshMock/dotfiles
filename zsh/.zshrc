@@ -7,14 +7,8 @@ ZSH_CUSTOM=$HOME/.zsh-custom
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_DISABLE_COMPFIX="true"
-plugins=(z git gitfast git-extras osx node npm zsh-autosuggestions docker)
+plugins=(z git gitfast git-extras zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
-
-# set $PATH
-source $HOME/.profile
-
-# nix
-[ -r $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 # include external files
 [ -r $HOME/.elastic ] && source $HOME/.elastic # work-sensitive things I don't want on Github
@@ -78,3 +72,6 @@ eval "$(starship init zsh)"
 
 # use bat as default man pager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# hack to make Docker commands work in makefiles
+alias make='SHELL=/bin/bash make'
