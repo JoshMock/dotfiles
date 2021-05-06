@@ -111,6 +111,8 @@ set inccommand=nosplit
 
 " Line-wrapping options
 set wrap
+set linebreak
+set nolist
 set textwidth=80
 set formatoptions+=rn1lt
 
