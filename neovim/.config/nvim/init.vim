@@ -1,7 +1,6 @@
 " Python support for Neovim
 let g:python_host_prog  = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
-let g:ale_completion_enabled = 1
 
 " vim-plug setup
 call plug#begin($HOME.'/.config/nvim/plugged')
