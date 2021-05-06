@@ -1,5 +1,0 @@
-{
-  "tsserver.formatOnType": true,
-  "eslint.packageManager": "npm",
-  "javascript.suggestionActions.enabled": false
-}
