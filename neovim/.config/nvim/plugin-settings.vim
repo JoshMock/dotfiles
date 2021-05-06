@@ -17,4 +17,7 @@ inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " ale configs
-nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> gd :ALEGoToDefinition<cr>
+
+" vim-slime configs
+let g:slime_target = "kitty"

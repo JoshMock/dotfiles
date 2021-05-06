@@ -15,6 +15,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tmhedberg/SimpylFold'
 Plug 'terryma/vim-expand-region'
 Plug 'junegunn/vim-peekaboo'
+Plug 'jpalardy/vim-slime'
 
 " display and colorschemes
 Plug 'luochen1990/rainbow'
