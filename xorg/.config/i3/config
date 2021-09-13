@@ -36,7 +36,8 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec kitty --session ~/.config/kitty/default-session.conf
+bindsym $mod+Shift+Return exec kitty --session ~/.config/kitty/scratchpad-session.conf
 
 # start file explorer
 bindsym $mod+o exec thunar
