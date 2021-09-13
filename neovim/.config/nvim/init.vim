@@ -22,12 +22,17 @@ Plug 'arcticicestudio/nord-vim'
 
 " code syntax and language-specific tools
 Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'deoplete-plugins/deoplete-lsp'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'hashivim/vim-terraform'
+Plug 'plasticboy/vim-markdown'
 
 " source control
 Plug 'tpope/vim-fugitive'

@@ -14,13 +14,10 @@ let g:nv_create_note_window = 'edit'
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-call deoplete#custom#option('sources', {
-\ 'python': ['ale'],
-\})
-
-" ale configs
-nnoremap <silent> gd :ALEGoToDefinition<cr>
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" call deoplete#custom#option('sources', {
+" \ '_': ['ale'],
+" \})
 
 " vim-slime configs
 let g:slime_target = "kitty"
