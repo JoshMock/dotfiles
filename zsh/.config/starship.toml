@@ -5,6 +5,7 @@ format = """\
   $git_state\
   $git_status\
   $python\
+  $rust\
   $line_break\
   $character\
 """
