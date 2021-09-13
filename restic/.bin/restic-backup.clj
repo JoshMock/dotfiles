@@ -20,6 +20,7 @@
 (def backups ["/home/joshmock/Desktop"
               "/home/joshmock/.gnupg"
               "/home/joshmock/dotfiles"
-              "/home/joshmock/.zsh_history"])
+              "/home/joshmock/.zsh_history"
+              "/home/joshmock/.gmailctl"])
 
 (map backup backups)
