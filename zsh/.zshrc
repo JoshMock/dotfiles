@@ -70,7 +70,8 @@ eval "$(direnv hook zsh)"
 # starship
 eval "$(starship init zsh)"
 
-# use bat as default man pager
+# use bat as default pager
+export PAGER="bat -p"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # hack to make Docker commands work in makefiles

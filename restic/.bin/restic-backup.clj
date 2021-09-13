@@ -9,7 +9,13 @@
 
 (defn backup [location]
   (println (:out (str "Indexing " location "\n")))
-  (sh "restic" "-r" repo "--verbose" "backup" location))
+  (sh "restic" "-r" repo "--verbose" "backup" location)
+  (println (:out (str "Pruning " location "\n")))
+  (sh "restic" "-r" repo "--verbose" "prune"
+      "--keep-daily" "7"
+      "--keep-weekly" "5"
+      "--keep-monthly" "12"
+      "--keep-yearly" "20"))
 
 (def backups ["/home/joshmock/Desktop"
               "/home/joshmock/.gnupg"
