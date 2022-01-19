@@ -3,4 +3,7 @@ configuration {
   theme: "Pop-Dark";
   font: "Hack 12";
   combi-modi: "window,drun,ssh,keys,calc";
+  matching: "fuzzy";
+  case-sensitive: false;
+  show-icons: true;
 }
