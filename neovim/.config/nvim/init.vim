@@ -26,13 +26,21 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'moll/vim-node', { 'for': ['javascript', 'javascript.jsx'] }
-" Plug 'deoplete-plugins/deoplete-lsp'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'hashivim/vim-terraform'
 Plug 'plasticboy/vim-markdown'
+
+" Autocomplete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 " source control
 Plug 'tpope/vim-fugitive'
@@ -46,6 +54,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'Alok/notational-fzf-vim'
+Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
 
 " code modification tools
 Plug 'tomtom/tcomment_vim'
@@ -62,9 +71,6 @@ source $HOME/.config/nvim/mappings.vim
 
 " configuration for plugins
 source $HOME/.config/nvim/plugin-settings.vim
-
-" Enable folding
-set foldmethod=syntax
 
 " prevents security exploits dealing with modelines in files
 set modelines=0
