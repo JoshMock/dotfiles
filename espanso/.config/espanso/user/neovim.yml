@@ -1,3 +1,0 @@
-filter_exec: "nvim"
-exclude_default_entries: true
-enable_passive: true

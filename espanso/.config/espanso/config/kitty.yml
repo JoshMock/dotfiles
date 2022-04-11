@@ -1,0 +1,2 @@
+filter_exec: "kitty"
+disable_x11_fast_inject: true
