@@ -163,7 +163,9 @@ require('neorg').setup {
                 default_keybinds = true,
                 neorg_leader = '<Leader>n'
             }
-        }
+        },
+        ["core.norg.qol.toc"] = {
+        },
     },
 }
 EOF
