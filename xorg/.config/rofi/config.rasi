@@ -1,9 +1,10 @@
 configuration {
-  modi: "combi,window,drun,ssh,keys,calc";
-  theme: "Pop-Dark";
-  font: "Hack 12";
-  combi-modi: "window,drun,ssh,keys,calc";
+  modi: "combi,drun,my scripts:~/.config/rofi/script_mode.sh,window,ssh,calc";
+  font: "FiraCode Nerd Font 12";
+  combi-modi: "drun,my scripts:~/.config/rofi/script_mode.sh,window,ssh,calc";
   matching: "fuzzy";
   case-sensitive: false;
   show-icons: true;
 }
+
+@theme "glue_pro_blue"
