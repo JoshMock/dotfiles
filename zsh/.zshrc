@@ -80,3 +80,7 @@ alias make='SHELL=/bin/bash make'
 # nnn config
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='a:!git annex get --jobs=4 --from nas "$nnn"*;q:!mpc add "$nnn"*;p:preview-tui;d:dragdrop'
+
+# mcfly support
+export MCFLY_FUZZY=2
+eval "$(mcfly init zsh)"
