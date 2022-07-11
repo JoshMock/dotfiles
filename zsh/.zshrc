@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 
 # include external files
 [ -r $HOME/.elastic ] && source $HOME/.elastic # work-sensitive things I don't want on Github
+[ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
 
 # refresh git submodules
 alias refresh_submodules='git submodule foreach git pull origin master'
@@ -21,7 +22,7 @@ alias server='python -m SimpleHTTPServer'
 
 # use `exa` for fancy `ls` replacement
 EXA_COLORS="da=1;34;nnn:di=32;1:*.log=37;41;1"
-alias l="exa --long --header --all"
+alias l="exa --long --header --all --icons"
 
 # oh-my-zsh already adds .. and ..., this just takes it a step further
 alias ....='cd ../../..'
