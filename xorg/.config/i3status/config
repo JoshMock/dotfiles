@@ -9,6 +9,7 @@ general {
 order += "external_script now_playing"
 order += "external_script timew"
 order += "wireless wlp0s20f3"
+order += "netdata"
 order += "battery 0"
 order += "volume master"
 order += "cpu_usage"
@@ -61,4 +62,8 @@ external_script now_playing {
 external_script timew {
   script_path = "timew summary | tail -n2 | head -n1 | awk '{$1=$1};1'"
   format = "  {output}"
+}
+
+netdata {
+  format = " {down}↓ {up}↑"
 }
