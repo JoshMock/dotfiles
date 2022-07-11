@@ -29,11 +29,17 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # system clipboard shortcuts
-alias xcopy='xclip -selection clipboard'
-alias xpaste='xclip -selection clipboard -o'
+if [[ -z "${WAYLAND_DISPLAY}" ]]
+then
+  alias ccopy='wl-copy'
+  alias cpaste='wl-paste'
+else
+  alias ccopy='xclip -selection clipboard'
+  alias cpaste='xclip -selection clipboard -o'
+fi
 
 # takes JSON in your clipboard, pretty-formats it, copies it back to clipboard
-alias prettyjson='xclip -selection clipboard -o | jq | xclip -selection clipboard'
+alias prettyjson='cpaste | jq | ccopy'
 
 # set default editors
 export VISUAL=nvim
