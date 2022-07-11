@@ -79,8 +79,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias make='SHELL=/bin/bash make'
 
 # nnn config
-export NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='a:!git annex get --jobs=4 --from nas "$nnn"*;q:!mpc add "$nnn"*;p:preview-tui;d:dragdrop'
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"'
 
 # mcfly support
 export MCFLY_FUZZY=2
