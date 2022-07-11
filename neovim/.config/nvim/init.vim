@@ -171,3 +171,6 @@ autocmd FileType netrw setl bufhidden=delete
 
 " never hide left gutter (prevents jumpiness with linter errors)
 set signcolumn=yes
+
+" read wayland clipboard
+set clipboard=unnamed,unnamedplus
