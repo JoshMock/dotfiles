@@ -11,3 +11,4 @@ config/direnv/
 .lein-repl-history
 repl-history
 .lein-failures
+.envrc
