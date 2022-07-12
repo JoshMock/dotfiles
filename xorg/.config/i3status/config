@@ -10,7 +10,8 @@ order += "external_script now_playing"
 order += "external_script timew"
 order += "wireless wlp0s20f3"
 order += "netdata"
-order += "battery 0"
+order += "wifi"
+order += "battery_level"
 order += "volume master"
 order += "cpu_usage"
 order += "disk /"
@@ -23,11 +24,13 @@ wireless wlp0s20f3 {
   format_quality  = "%02d%s"
 }
 
-battery 0 {
-  format = " %status %percentage %remaining"
-  format_down = "no battery"
-  path = "/sys/class/power_supply/BAT%d/uevent"
-  low_threshold = 10
+wifi {
+  format = " {bitrate}{bitrate_unit} {signal_percent}% {ssid}"
+}
+
+battery_level {
+  format = " {status} {percent}%[ {time_remaining}]"
+  notify_low_level = true
 }
 
 tztime local {
@@ -60,7 +63,7 @@ external_script now_playing {
 }
 
 external_script timew {
-  script_path = "timew summary | tail -n2 | head -n1 | awk '{$1=$1};1'"
+  script_path = "$HOME/.bin/timew-status"
   format = "  {output}"
 }
 

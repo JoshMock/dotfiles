@@ -78,7 +78,7 @@ lua <<EOF
 
   -- set up LSP servers
   local nvim_lsp = require('lspconfig')
-  local servers = { 'bashls', 'clojure_lsp', 'eslint', 'html', 'jsonls', 'pylsp', 'rust_analyzer', 'terraform_lsp', 'tsserver', 'yamlls' }
+  local servers = { 'bashls', 'clojure_lsp', 'eslint', 'html', 'jsonls', 'pylsp', 'rust_analyzer', 'terraform_lsp', 'tsserver' }
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       capabilities = capabilities,

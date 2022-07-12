@@ -124,11 +124,11 @@ set inccommand=nosplit
 set wrap
 set linebreak
 set nolist
-set textwidth=80
+" set textwidth=80
 set formatoptions+=rn1lt
 
 " set external formatter to par
-set formatprg=par\ -w80
+" set formatprg=par\ -w80
 
 " Crontab uses tmp files to edit, so backup rules must change. (See
 " .bash_profile for $VIM_CRONTAB alias stuff.)
@@ -142,7 +142,7 @@ set backup
 set writebackup
 set backupdir=$HOME/.vim-tmp,$HOME/.tmp,$HOME/tmp,/var/tmp,/tmp 
 set backupskip=/tmp/*,/private/tmp/* 
-set directory^=$HOME/.config/nvim/swapfiles//
+set directory^=$HOME/.config/nvim/swapfiles/
 set updatetime=300
 
 " because apparently *.md is also a Modula-2 file, which I'm never going to edit
@@ -171,6 +171,9 @@ autocmd FileType netrw setl bufhidden=delete
 
 " never hide left gutter (prevents jumpiness with linter errors)
 set signcolumn=yes
+
+" experimental lua-based filetype detection; see https://gpanders.com/blog/whats-new-in-neovim-0-7/
+let g:do_filetype_lua = 1
 
 " read wayland clipboard
 set clipboard=unnamed,unnamedplus
