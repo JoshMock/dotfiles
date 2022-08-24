@@ -10,12 +10,13 @@ lvim.keys.normal_mode["<leader>k"] = ":noh<cr>"
 lvim.keys.normal_mode["<leader>num"] = ":set number!<cr>"
 lvim.keys.normal_mode["<leader>rnum"] = ":set relativenumber!<cr>"
 lvim.keys.normal_mode["<leader>nonum"] = ":set nonumber<cr>:set norelativenumber<cr>"
-lvim.keys.normal_mode["<left>"] = ":BufferLineCycleNext<cr>"
-lvim.keys.normal_mode["<right>"] = ":BufferLineCyclePrev<cr>"
+lvim.keys.normal_mode["<left>"] = ":BufferLineCyclePrev<cr>"
+lvim.keys.normal_mode["<right>"] = ":BufferLineCycleNext<cr>"
 lvim.keys.normal_mode["<leader>o"] = "m`o<esc>``"
 lvim.keys.normal_mode["<leader>O"] = "m`O<esc>``"
 lvim.keys.visual_mode["v"] = "<Plug>(expand_region_expand)"
 lvim.keys.visual_mode["<C-v>"] = "<Plug>(expand_region_shrink)"
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -65,6 +66,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
   "css",
+  "hcl",
   "java",
   "javascript",
   "json",
@@ -96,6 +98,7 @@ lvim.plugins = {
   { 'tpope/vim-eunuch' },
   { 'tpope/vim-vinegar' },
   { 'junegunn/vim-peekaboo' },
+  { 'junegunn/fzf' },
   { 'junegunn/fzf.vim' },
   { 'Alok/notational-fzf-vim' },
   { 'terryma/vim-expand-region' },
