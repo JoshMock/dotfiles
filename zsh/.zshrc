@@ -10,6 +10,9 @@ ZSH_DISABLE_COMPFIX="true"
 plugins=(z git gitfast git-extras zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
+# add .local/bin to PATH
+export PATH=$PATH:$HOME/.local/bin
+
 # include external files
 [ -r $HOME/.elastic ] && source $HOME/.elastic # work-sensitive things I don't want on Github
 [ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
@@ -42,9 +45,9 @@ fi
 alias prettyjson='cpaste | jq | ccopy'
 
 # set default editors
-export VISUAL=nvim
-export EDITOR=nvim
-alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
+export VISUAL=lvim
+export EDITOR=lvim
+alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket lvim'
 
 # syntax highlighting when using `less` on the command line
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
@@ -61,8 +64,8 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 source "/usr/share/fzf/key-bindings.zsh"
 
 nfind() {
-  # drop search results into fzf, selected files open in nvim
-  nvim $(rg "$1" -l | fzf -m)
+  # drop search results into fzf, selected files open in lvim
+  lvim $(rg "$1" -l | fzf -m)
 }
 
 # check out a git branch
