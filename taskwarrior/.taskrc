@@ -12,3 +12,4 @@ uda.githuburl.label=Github URL
 
 uda.url.type=string
 uda.url.label=URL
+news.version=2.6.0
