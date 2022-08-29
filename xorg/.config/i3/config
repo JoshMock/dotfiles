@@ -1,28 +1,22 @@
-# i3 config file (v4)
-
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# font pango:monospace 10
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 10
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 002b36 -e
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
-
 # lock screen after 5 minutes idle
-exec --no-startup-id xautolock -corners 00+- -time 5 -locker "i3lock -c 002b36 -e && sleep 1"
+exec --no-startup-id xautolock -corners --00 -notify 20 -time 5 -locker "i3lock -c 002b36 -e && sleep 1"
+
+
+# start notification daemon
+exec --no-startup-id /usr/bin/dunst
+# close dunst notifications via ctrl+space
+bindsym Control+space exec --no-startup-id dunstctl close
+
+# start 1Password system tray
+exec --no-startup-id 1password --silent
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -36,11 +30,12 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty --session ~/.config/kitty/default-session.conf
-bindsym $mod+Shift+Return exec kitty --session ~/.config/kitty/scratchpad-session.conf
+bindsym $mod+Return exec kitty --single-instance --session ~/.config/kitty/default-session.conf
+bindsym $mod+Shift+Return exec kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf
 
 # start file explorer
-bindsym $mod+o exec thunar
+# bindsym $mod+o exec thunar
+bindsym $mod+o exec kitty --single-instance --session ~/.config/kitty/nnn.conf
 
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -193,11 +188,17 @@ bar {
   bindsym button7 nop
 }
 
+# borders
+for_window [class=".*"] border pixel 2
+
 # add gaps
-for_window [class=".*"] border pixel 0
-gaps inner 10
-smart_gaps on
+gaps inner 8
+gaps outer 0
 smart_borders on
-hide_edge_borders smart_no_gaps
+
+# floating windows
+for_window [class="(?i)pavucontrol"] floating enable
+for_window [class="1Password"] floating enable
+
 # auto back and forth
 workspace_auto_back_and_forth yes
