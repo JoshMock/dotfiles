@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import argparse
+import subprocess
+import os
+from urllib.parse import urlparse, urlunparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--path", required=False)
+args = parser.parse_args()
+
+
+def add_to_mopidy(key):
+    subprocess.call(["mpc", "-h", "::", "add", key])
+
+
+if args.path:
+    arg = args.path
+    all_files = []
+    if os.path.isfile(arg) or os.path.islink(arg):
+        all_files.append(f"file://{os.path.join(os.getcwd(), arg)}")
+    elif os.path.isdir(arg):
+        for root, dirs, files in os.walk(arg):
+            for f in files:
+                all_files.append(f"file://{os.path.join(os.getcwd(), root, f)}")
+
+    all_files.sort()
+    for f in all_files:
+        add_to_mopidy(f)
+else:
+    clipboard = subprocess.Popen(
+        ["xclip", "-selection", "clipboard", "-o"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    stdout, stderr = clipboard.communicate()
+    arg = stdout.decode("utf-8")
+
+    parsed = urlparse(arg)
+
+    if parsed.netloc == "listen.tidal.com":
+        add_to_mopidy("tidal" + ":".join(parsed.path.split("/")))
+    elif parsed.netloc == "tidal.com":
+        add_to_mopidy("tidal:" + ":".join(parsed.path.split("/")[2:]))
+    elif parsed.netloc.endswith(".bandcamp.com"):
+        add_to_mopidy(f"bandcamp:{urlunparse(parsed)}")

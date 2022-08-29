@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+url=$1
+songwhip=$(curl -s --request POST --data "{\"url\":\"$url\"}" https://songwhip.com/ | jq -r '.url')
+echo "$songwhip"
