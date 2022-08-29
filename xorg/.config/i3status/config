@@ -8,7 +8,6 @@ general {
 
 order += "external_script now_playing"
 order += "external_script timew"
-order += "wireless wlp0s20f3"
 order += "netdata"
 order += "wifi"
 order += "battery_level"
@@ -17,12 +16,6 @@ order += "cpu_usage"
 order += "disk /"
 order += "memory"
 order += "tztime local"
-
-wireless wlp0s20f3 {
-  format_up = " %essid %quality"
-  format_down = "  down"
-  format_quality  = "%02d%s"
-}
 
 wifi {
   format = " {bitrate}{bitrate_unit} {signal_percent}% {ssid}"
