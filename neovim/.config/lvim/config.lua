@@ -2,6 +2,8 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
+lvim.builtin.bufferline.options.show_tab_indicators = false
+lvim.builtin.bufferline.options.show_buffer_icons = false
 
 -- reenable wrapping
 vim.opt.wrap = true
@@ -9,16 +11,20 @@ vim.opt.wrap = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<leader>k"] = ":noh<cr>"
-lvim.keys.normal_mode["<leader>num"] = ":set number!<cr>"
-lvim.keys.normal_mode["<leader>rnum"] = ":set relativenumber!<cr>"
-lvim.keys.normal_mode["<leader>nonum"] = ":set nonumber<cr>:set norelativenumber<cr>"
 lvim.keys.normal_mode["<left>"] = ":BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<right>"] = ":BufferLineCycleNext<cr>"
-lvim.keys.normal_mode["<leader>o"] = "m`o<esc>``"
-lvim.keys.normal_mode["<leader>O"] = "m`O<esc>``"
 lvim.keys.visual_mode["v"] = "<Plug>(expand_region_expand)"
 lvim.keys.visual_mode["<C-v>"] = "<Plug>(expand_region_shrink)"
+
+lvim.builtin.which_key.mappings["o"] = { "m`o<esc>``", "Empty line below" }
+lvim.builtin.which_key.mappings["O"] = { "m`O<esc>``", "Empty line above" }
+lvim.builtin.which_key.mappings["n"] = {
+  name = "+Line numbers",
+  r = { "<cmd>set relativenumber!<cr>", "Toggle relative line numbers" },
+  n = { "<cmd>set number!<cr>", "Toggle absolute line numbers" },
+  o = { "<cmd>set nonumber<cr> <cmd>set norelativenumber<cr>", "Turn off line numbers" },
+}
+lvim.builtin.which_key.mappings["k"] = { "<cmd>noh<cr>", "No highlight" }
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -44,7 +50,7 @@ lvim.keys.visual_mode["<C-v>"] = "<Plug>(expand_region_shrink)"
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -62,7 +68,9 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.active = false
+lvim.builtin.project.patterns = { ".git" }
 lvim.builtin.project.show_hidden = true
+lvim.builtin.project.silent_chdir = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
