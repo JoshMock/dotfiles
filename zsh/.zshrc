@@ -17,6 +17,9 @@ export PATH=$PATH:$HOME/.local/bin
 [ -r $HOME/.elastic ] && source $HOME/.elastic # work-sensitive things I don't want on Github
 [ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
 
+# add .local/bin to path
+export PATH=$HOME/.local/bin:$PATH
+
 # refresh git submodules
 alias refresh_submodules='git submodule foreach git pull origin master'
 
@@ -34,11 +37,11 @@ alias .....='cd ../../../..'
 # system clipboard shortcuts
 if [[ -z "${WAYLAND_DISPLAY}" ]]
 then
-  alias ccopy='wl-copy'
-  alias cpaste='wl-paste'
-else
   alias ccopy='xclip -selection clipboard'
   alias cpaste='xclip -selection clipboard -o'
+else
+  alias ccopy='wl-copy'
+  alias cpaste='wl-paste'
 fi
 
 # takes JSON in your clipboard, pretty-formats it, copies it back to clipboard
