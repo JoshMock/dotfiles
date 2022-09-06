@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import json
+
+# get auth info
+with open('~/.config/pocket/auth.json') as f:
+    auth = json.loads(f.read())
+
+# list recent options
+# # data="{
+#   \"consumer_key\": \"$consumer_key\",
+#   \"access_token\": \"$access_token\",
+#   \"count\": 20,
+#   \"state\": \"unread\"
+# }"
+
+# curl -s -X POST \
+#   -H "Content-Type: application/json" \
+#   --data "$data" \
+#   https://getpocket.com/v3/get
