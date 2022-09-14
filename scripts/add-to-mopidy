@@ -7,11 +7,30 @@ from urllib.parse import urlparse, urlunparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--path", required=False)
+parser.add_argument("--url", required=False)
 args = parser.parse_args()
 
+def get_from_songwhip():
+    pass
+
+def build_uri(arg):
+    parsed = urlparse(arg)
+
+    if parsed.netloc == "listen.tidal.com":
+        return "tidal" + ":".join(parsed.path.split("/"))
+    elif parsed.netloc == "tidal.com":
+        return "tidal:" + ":".join(parsed.path.split("/")[2:])
+    elif parsed.netloc.endswith(".bandcamp.com"):
+        return f"bandcamp:{urlunparse(parsed)}"
+    elif parsed.netloc.endswith("songwhip.com"):
+        subprocess.call(['songwhip'])
 
 def add_to_mopidy(key):
-    subprocess.call(["mpc", "-h", "::", "add", key])
+    if key:
+        subprocess.call(["mpc", "-h", "::", "add", key])
+    else:
+        print('No valid item found')
+        exit(1)
 
 
 if args.path:
@@ -27,6 +46,8 @@ if args.path:
     all_files.sort()
     for f in all_files:
         add_to_mopidy(f)
+elif args.url:
+    add_to_mopidy(build_uri(args.url))
 else:
     clipboard = subprocess.Popen(
         ["xclip", "-selection", "clipboard", "-o"],
@@ -34,13 +55,5 @@ else:
         stderr=subprocess.STDOUT,
     )
     stdout, stderr = clipboard.communicate()
-    arg = stdout.decode("utf-8")
 
-    parsed = urlparse(arg)
-
-    if parsed.netloc == "listen.tidal.com":
-        add_to_mopidy("tidal" + ":".join(parsed.path.split("/")))
-    elif parsed.netloc == "tidal.com":
-        add_to_mopidy("tidal:" + ":".join(parsed.path.split("/")[2:]))
-    elif parsed.netloc.endswith(".bandcamp.com"):
-        add_to_mopidy(f"bandcamp:{urlunparse(parsed)}")
+    add_to_mopidy(build_uri(stdout.decode("utf-8")))

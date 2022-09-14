@@ -97,3 +97,7 @@ export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"'
 # mcfly support
 export MCFLY_FUZZY=2
 eval "$(mcfly init zsh)"
+
+pm() {
+  pocket-list --tag music --count 30 | fzf | awk '{print $(NF)}' | xargs add-to-mopidy --url
+}
