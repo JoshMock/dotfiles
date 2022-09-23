@@ -2,11 +2,16 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
-lvim.builtin.bufferline.options.show_tab_indicators = false
-lvim.builtin.bufferline.options.show_buffer_icons = false
 
 -- reenable wrapping
 vim.opt.wrap = true
+
+-- close netrw buffer when selecting a file
+vim.g.netrw_fastbrowse = 0
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern =
+-- })
+-- autocmd FileType netrw setl bufhidden=wipe
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -25,6 +30,26 @@ lvim.builtin.which_key.mappings["n"] = {
   o = { "<cmd>set nonumber<cr> <cmd>set norelativenumber<cr>", "Turn off line numbers" },
 }
 lvim.builtin.which_key.mappings["k"] = { "<cmd>noh<cr>", "No highlight" }
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Terminal",
+  t = { "<cmd>ToggleTerm<cr>", "Toggle terminal" },
+  h = { "<cmd>ToggleTerm size=8 direction=horizontal<cr>", "Horizontal terminal" },
+  v = { "<cmd>ToggleTerm size=100 direction=vertical<cr>", "Horizontal terminal" },
+}
+
+-- unmap arrow keys
+lvim.keys.normal_mode["<up>"] = "<nop>"
+lvim.keys.normal_mode["<down>"] = "<nop>"
+lvim.keys.insert_mode["<up>"] = "<nop>"
+lvim.keys.insert_mode["<down>"] = "<nop>"
+lvim.keys.insert_mode["<left>"] = "<nop>"
+lvim.keys.insert_mode["<right>"] = "<nop>"
+lvim.keys.normal_mode["j"] = "gj"
+lvim.keys.normal_mode["k"] = "gk"
+lvim.keys.insert_mode["jj"] = "<esc>"
+
+-- map escape in terminal to go to normal mode
+vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -65,6 +90,9 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Project
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.bufferline.options.show_tab_indicators = false
+lvim.builtin.bufferline.options.show_buffer_icons = false
+lvim.builtin.bufferline.options.close_command = 'Bdelete! %d'
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.active = false
@@ -113,4 +141,5 @@ lvim.plugins = {
   { 'junegunn/fzf.vim' },
   { 'Alok/notational-fzf-vim' },
   { 'terryma/vim-expand-region' },
+  { 'famiu/bufdelete.nvim' },
 }
