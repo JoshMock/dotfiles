@@ -14,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/.local/bin
 
 # include external files
-[ -r $HOME/.elastic ] && source $HOME/.elastic # work-sensitive things I don't want on Github
+[ -r $HOME/.elastic/elasticrc ] && source $HOME/.elastic/elasticrc # work-sensitive things I don't want on Github
 [ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
 
 # add .local/bin to path
@@ -92,7 +92,7 @@ alias make='SHELL=/bin/bash make'
 
 # nnn config
 export NNN_FIFO="/tmp/nnn.fifo"
-export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"'
+export NNN_PLUG='a:!git annex get --jobs=4 "$nnn"*;q:!add-to-mopidy --path "$nnn"*;p:preview-tui;d:dragdrop'
 
 # mcfly support
 export MCFLY_FUZZY=2
@@ -100,4 +100,9 @@ eval "$(mcfly init zsh)"
 
 pm() {
   pocket-list --tag music --count 30 | fzf | awk '{print $(NF)}' | xargs add-to-mopidy --url
+}
+
+# watch a PR and notify when CI finishes
+wpr () {
+  noti gh pr checks --watch $1
 }
