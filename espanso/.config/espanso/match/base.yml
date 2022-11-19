@@ -50,3 +50,9 @@ matches:
         type: date
         params:
           format: "%Y-%m-%d"
+
+  - trigger: ":xx"
+    replace: "#WXNA #WXNAFM #MusicCity #CommunityRadio #IndependentRadio #Nashville #VisitNashville"
+
+  - trigger: ":xl"
+    replace: "bit.ly/3A7GNFs"
