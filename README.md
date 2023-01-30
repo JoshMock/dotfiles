@@ -4,7 +4,7 @@ Hand-crafted and distilled for well over a decade now.
 ## My dev setup
 
 - [Arch Linux](https://archlinux.org/), currently on Lenovo ThinkPads
-- [i3wm](https://i3wm.org/) or (Sway)[https://swaywm.org/]
+- [i3wm](https://i3wm.org/) or [Sway](https://swaywm.org/)
 - [ZSA Moonlander](https://www.zsa.io/moonlander/) keyboard
 - zsh + [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/)
 - [LunarVim](https://www.lunarvim.org/) + [Kitty](https://sw.kovidgoyal.net/kitty/) as my IDE
