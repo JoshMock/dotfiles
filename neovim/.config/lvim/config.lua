@@ -231,7 +231,6 @@ linters.setup {
   { name = "codespell" },
   { name = "luacheck" },
   { name = "shellcheck" },
-  { name = "textlint", filetypes = { "markdown", "neorg" } },
   { name = "yamllint" },
   { name = "zsh" },
 }
