@@ -3,6 +3,14 @@ lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
 lvim.colorscheme = "onedarker"
 
+-- general
+lvim.log.level = "info"
+lvim.colorscheme = "onedarker"
+lvim.format_on_save = {
+  enabled = true,
+  timeout = 1000,
+}
+
 -- reenable wrapping
 vim.opt.wrap = true
 
@@ -119,7 +127,7 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 vim.g.nv_search_paths = { '~/Desktop/notes/' } -- notational-fzf-vim required config
-vim.opt.timeoutlen = 500 -- hack to get vim-fugitive to work correctly
+vim.opt.timeoutlen = 500                       -- hack to get vim-fugitive to work correctly
 
 lvim.plugins = {
   {
@@ -196,6 +204,11 @@ lvim.plugins = {
 --     filetypes = { "typescript", "typescriptreact" },
 --   },
 -- }
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { name = "black" },
+  { name = "terraform_fmt", filetypes = { "tf", "terraform" } },
+}
 
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
@@ -214,14 +227,15 @@ lvim.plugins = {
 --     filetypes = { "javascript", "python" },
 --   },
 -- }
-
--- Additional Plugins
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { name = "flake8" },
+  { name = "codespell" },
+  { name = "luacheck" },
+  { name = "shellcheck" },
+  { name = "yamllint" },
+  { name = "zsh" },
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
