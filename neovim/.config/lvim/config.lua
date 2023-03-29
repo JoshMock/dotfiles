@@ -24,6 +24,7 @@ lvim.keys.normal_mode["<left>"] = ":BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<right>"] = ":BufferLineCycleNext<cr>"
 lvim.keys.visual_mode["v"] = "<Plug>(expand_region_expand)"
 lvim.keys.visual_mode["<C-v>"] = "<Plug>(expand_region_shrink)"
+lvim.keys.normal_mode["-"] = ":e .<cr>"
 
 lvim.builtin.which_key.mappings["o"] = { "m`o<esc>``", "Empty line below" }
 lvim.builtin.which_key.mappings["O"] = { "m`O<esc>``", "Empty line above" }
@@ -70,9 +71,23 @@ lvim.builtin.terminal.active = true
 -- nvim-tree
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
-lvim.builtin.project.patterns = { ".git" }
+lvim.builtin.nvimtree.setup.sync_root_with_cwd = true
+lvim.builtin.nvimtree.setup.respect_buf_cwd = true
+lvim.builtin.nvimtree.setup.update_focused_file.enable = true
+lvim.builtin.nvimtree.setup.update_focused_file.update_root = true
+
+-- project patterns
+table.insert(lvim.builtin.project.patterns, "=neorg")
+table.insert(lvim.builtin.project.patterns, "=notes")
+table.insert(lvim.builtin.project.patterns, "=notes-personal")
 lvim.builtin.project.show_hidden = true
-lvim.builtin.project.silent_chdir = true
+
+-- try to get lir a bit closer to netrw/vim-vinegar
+lvim.builtin.lir.show_hidden_files = true
+local lir_actions = require('lir.actions')
+lvim.builtin.lir.mappings['-'] = lir_actions.up
+lvim.builtin.lir.mappings['D'] = lir_actions.mkdir
+lvim.builtin.lir.mappings['%'] = lir_actions.newfile
 
 -- treesitter
 lvim.builtin.treesitter.ensure_installed = {
@@ -106,7 +121,6 @@ lvim.plugins = {
   { 'tpope/vim-repeat' },
   { 'tpope/vim-projectionist' },
   { 'tpope/vim-eunuch' },
-  { 'tpope/vim-vinegar' },
   { 'junegunn/vim-peekaboo' },
   { 'junegunn/fzf' },
   { 'junegunn/fzf.vim' },
