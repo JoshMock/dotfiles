@@ -17,9 +17,6 @@ export PATH=$PATH:$HOME/.local/bin
 [ -r $HOME/.elastic/elasticrc ] && source $HOME/.elastic/elasticrc # work-sensitive things I don't want on Github
 [ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
 
-# add .local/bin to path
-export PATH=$HOME/.local/bin:$PATH
-
 # refresh git submodules
 alias refresh_submodules='git submodule foreach git pull origin master'
 
