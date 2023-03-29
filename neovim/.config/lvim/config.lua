@@ -83,6 +83,14 @@ table.insert(lvim.builtin.project.patterns, "=neorg")
 table.insert(lvim.builtin.project.patterns, "=notes")
 table.insert(lvim.builtin.project.patterns, "=notes-personal")
 lvim.builtin.project.show_hidden = true
+--
+-- nvim-cmp sources
+table.insert(lvim.builtin.cmp.sources, { name = "rg" })
+lvim.builtin.cmp.formatting.source_names["rg"] = "(ripgrep)"
+table.insert(lvim.builtin.cmp.sources, { name = "kitty" })
+lvim.builtin.cmp.formatting.source_names["kitty"] = "(Kitty)"
+table.insert(lvim.builtin.cmp.sources, { name = "git" })
+lvim.builtin.cmp.formatting.source_names["git"] = "(Git)"
 
 -- try to get lir a bit closer to netrw/vim-vinegar
 lvim.builtin.lir.show_hidden_files = true
@@ -134,6 +142,18 @@ lvim.plugins = {
   { 'junegunn/fzf.vim' },
   { 'Alok/notational-fzf-vim' },
   { 'terryma/vim-expand-region' },
+  {
+    'lukas-reineke/cmp-rg',
+    after = { 'nvim-cmp' }
+  },
+  {
+    'garyhurtz/cmp_kitty',
+    after = { 'nvim-cmp' }
+  },
+  {
+    'petertriho/cmp-git',
+    after = { 'nvim-cmp' }
+  },
 }
 
 -- notational-fzf-vim setup
