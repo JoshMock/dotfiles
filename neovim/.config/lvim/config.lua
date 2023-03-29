@@ -137,6 +137,18 @@ lvim.plugins = {
   { 'tpope/vim-repeat' },
   { 'tpope/vim-projectionist' },
   { 'tpope/vim-eunuch' },
+  {
+    'pwntester/octo.nvim',
+    cmd = "Octo",
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function()
+      require("octo").setup()
+    end
+  },
   { 'junegunn/vim-peekaboo' },
   { 'junegunn/fzf' },
   { 'junegunn/fzf.vim' },
