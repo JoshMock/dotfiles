@@ -43,6 +43,8 @@ lvim.builtin.which_key.mappings["t"] = {
   q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
   r = { "<cmd>TroubleToggle lsp_references<cr>", "List references" },
 }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 
 -- unmap arrow keys
 lvim.keys.normal_mode["<up>"] = "<nop>"
@@ -154,6 +156,29 @@ lvim.plugins = {
   { 'junegunn/fzf.vim' },
   { 'Alok/notational-fzf-vim' },
   { 'terryma/vim-expand-region' },
+  {
+    'nvim-neorg/neorg',
+    run = ":Neorg sync-parsers",
+    tag = "*", -- latest stable release only
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.norg.concealer"] = {},
+          ["core.norg.completion"] = {
+            config = { engine = "nvim-cmp" }
+          },
+          ["core.norg.dirman"] = {
+            config = {
+              workspaces = {
+                work = "~/Desktop/notes/neorg",
+              }
+            }
+          }
+        }
+      }
+    end
+  },
   {
     'lukas-reineke/cmp-rg',
     after = { 'nvim-cmp' }
