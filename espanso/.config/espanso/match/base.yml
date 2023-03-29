@@ -1,6 +1,7 @@
-toggle_key: OFF
-search_shortcut: OFF
-search_trigger: OFF
+---
+toggle_key: "OFF"
+search_shortcut: "OFF"
+search_trigger: "OFF"
 
 matches:
   - trigger: "@@"
@@ -12,6 +13,7 @@ matches:
   - trigger: "bc"
     replace: "because"
     word: true
+    propagate_case: true
 
   - trigger: "Bjork"
     replace: "Björk"
@@ -28,6 +30,7 @@ matches:
   - trigger: "tho"
     replace: "though"
     word: true
+    propagate_case: true
 
   - trigger: "twdy"
     replace: "This Will Destroy You"
@@ -38,6 +41,7 @@ matches:
   - trigger: "gy"
     replace: "gotcha"
     word: true
+    propagate_case: true
 
   - trigger: "fb"
     replace: "Facebook"
