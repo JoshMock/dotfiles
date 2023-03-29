@@ -36,10 +36,12 @@ lvim.builtin.which_key.mappings["n"] = {
 }
 lvim.builtin.which_key.mappings["k"] = { "<cmd>noh<cr>", "No highlight" }
 lvim.builtin.which_key.mappings["t"] = {
-  name = "+Terminal",
-  t = { "<cmd>ToggleTerm<cr>", "Toggle terminal" },
-  h = { "<cmd>ToggleTerm size=8 direction=horizontal<cr>", "Horizontal terminal" },
-  v = { "<cmd>ToggleTerm size=100 direction=vertical<cr>", "Horizontal terminal" },
+  name = "+Trouble",
+  t = { "<cmd>TroubleToggle<cr>", "Toggle" },
+  d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document diagnostics" },
+  w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace diagnostics" },
+  q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
+  r = { "<cmd>TroubleToggle lsp_references<cr>", "List references" },
 }
 
 -- unmap arrow keys
@@ -114,6 +116,12 @@ lvim.plugins = {
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        mode = "document_diagnostics",
+      }
+    end
   },
   { "tpope/vim-surround" },
   { "tpope/vim-fugitive" },
