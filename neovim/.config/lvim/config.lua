@@ -1,7 +1,7 @@
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "tokyonight-night"
 
 -- vim options
 vim.opt.shiftwidth = 2
