@@ -10,8 +10,10 @@ parser.add_argument("--path", required=False)
 parser.add_argument("--url", required=False)
 args = parser.parse_args()
 
+
 def get_from_songwhip():
     pass
+
 
 def build_uri(arg):
     parsed = urlparse(arg)
@@ -23,13 +25,16 @@ def build_uri(arg):
     elif parsed.netloc.endswith(".bandcamp.com"):
         return f"bandcamp:{urlunparse(parsed)}"
     elif parsed.netloc.endswith("songwhip.com"):
-        subprocess.call(['songwhip'])
+        subprocess.call(["songwhip"])
+    elif parsed.netloc in ['www.youtube.com', 'youtu.be']:
+        return f"youtube:{urlunparse(parsed)}"
+
 
 def add_to_mopidy(key):
     if key:
         subprocess.call(["mpc", "-h", "::", "add", key])
     else:
-        print('No valid item found')
+        print("No valid item found")
         exit(1)
 
 
