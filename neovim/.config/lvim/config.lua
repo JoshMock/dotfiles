@@ -114,13 +114,17 @@ lvim.builtin.treesitter.ensure_installed = {
   "jsonnet",
   "lua",
   "markdown",
+  "markdown_inline",
   "python",
   "rust",
   "tsx",
   "typescript",
   "yaml",
 }
-lvim.builtin.treesitter.highlight.enable = true
+lvim.builtin.treesitter.highlight = {
+  enable = true,
+  additional_vim_regex_highlighting = { "markdown" },
+}
 
 -- Additional Plugins
 lvim.plugins = {
