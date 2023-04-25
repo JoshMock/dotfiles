@@ -74,10 +74,12 @@ lvim.builtin.bufferline.options.close_command = 'Bdelete! %d'
 lvim.builtin.terminal.active = true
 
 -- nvim-tree
+lvim.builtin.nvimtree.active = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.sync_root_with_cwd = true
 lvim.builtin.nvimtree.setup.respect_buf_cwd = true
+lvim.builtin.nvimtree.setup.reload_on_bufenter = true
 lvim.builtin.nvimtree.setup.update_focused_file.enable = true
 lvim.builtin.nvimtree.setup.update_focused_file.update_root = true
 
