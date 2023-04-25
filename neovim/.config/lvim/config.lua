@@ -197,7 +197,7 @@ lvim.plugins = {
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { name = "black" },
+  { name = "black",         filetypes = { "py" } },
   { name = "terraform_fmt", filetypes = { "tf", "terraform" } },
 }
 
