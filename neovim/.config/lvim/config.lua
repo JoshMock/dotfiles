@@ -85,7 +85,7 @@ table.insert(lvim.builtin.project.patterns, "=neorg")
 table.insert(lvim.builtin.project.patterns, "=notes")
 table.insert(lvim.builtin.project.patterns, "=notes-personal")
 lvim.builtin.project.show_hidden = true
---
+
 -- nvim-cmp sources
 table.insert(lvim.builtin.cmp.sources, { name = "rg" })
 lvim.builtin.cmp.formatting.source_names["rg"] = "(ripgrep)"
@@ -152,9 +152,6 @@ lvim.plugins = {
     end
   },
   { 'junegunn/vim-peekaboo' },
-  { 'junegunn/fzf' },
-  { 'junegunn/fzf.vim' },
-  { 'Alok/notational-fzf-vim' },
   { 'terryma/vim-expand-region' },
   {
     'nvim-neorg/neorg',
@@ -192,8 +189,6 @@ lvim.plugins = {
     after = { 'nvim-cmp' }
   },
 }
-
--- notational-fzf-vim setup
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
