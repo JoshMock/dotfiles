@@ -49,6 +49,9 @@ export VISUAL=lvim
 export EDITOR=lvim
 alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket lvim'
 
+# set browser to xdg-open for urlview
+export BROWSER=xdg-open
+
 # syntax highlighting when using `less` on the command line
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
