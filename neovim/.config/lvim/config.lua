@@ -10,6 +10,7 @@ vim.opt.relativenumber = true
 vim.opt.timeoutlen = 500 -- hack to get vim-fugitive to work correctly
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.conceallevel = 3
 
 -- re-enable wrapping
 vim.opt.wrap = true
@@ -156,16 +157,16 @@ lvim.plugins = {
   {
     'nvim-neorg/neorg',
     run = ":Neorg sync-parsers",
-    tag = "*", -- latest stable release only
+    after = "nvim-treesitter",
     config = function()
       require('neorg').setup {
         load = {
           ["core.defaults"] = {},
-          ["core.norg.concealer"] = {},
-          ["core.norg.completion"] = {
+          ["core.concealer"] = {},
+          ["core.completion"] = {
             config = { engine = "nvim-cmp" }
           },
-          ["core.norg.dirman"] = {
+          ["core.dirman"] = {
             config = {
               workspaces = {
                 work = "~/Desktop/notes/neorg",
