@@ -163,7 +163,6 @@ lvim.plugins = {
   {
     'nvim-neorg/neorg',
     run = ":Neorg sync-parsers",
-    after = "nvim-treesitter",
     config = function()
       require('neorg').setup {
         load = {

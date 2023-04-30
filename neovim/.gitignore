@@ -1,4 +1,3 @@
 .config/nvim/undodir
 .config/nvim/.netrwhist
 .config/nvim/plugged/
-.config/lvim/plugin/packer_compiled.lua
