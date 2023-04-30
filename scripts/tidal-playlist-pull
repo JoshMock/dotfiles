@@ -148,6 +148,21 @@ def check_owned(track):
     return output if output else ""
 
 
+def clean_copyright(track):
+    copy = track.copyright
+    copy = re.sub(r"℗\s+", "", copy)
+    copy = re.sub(r"\(P\)", "", copy)
+    copy = re.sub(r"(19|20)\d{2}", "", copy)
+    copy = re.sub(r"\s+", " ", copy)
+    copy = copy.split(",")[0]
+    return copy.strip()
+
+
+def clean_duration(track):
+    duration = str(datetime.timedelta(seconds=track.duration))
+    return ":".join(duration.split(":")[-2:])
+
+
 def get_playlist_tracks(playlist):
     tracks = []
     for t in playlist.tracks():
@@ -159,6 +174,8 @@ def get_playlist_tracks(playlist):
                 "owned": check_owned(t),
                 "tidal_url": t.get_url(),
                 "formatted_title": f'{t.artist.name} - "{t.name}" ({t.album.name})',
+                "filename_title": f"{t.artist.name} - {t.name}",
+                "spinitron": f'"{t.artist.name}","{t.name}","{t.album.name}","{clean_copyright(t)}","{clean_duration(t)}"',
             }
         )
     return tracks
@@ -201,7 +218,8 @@ def pull_song_files(playlist_data):
         try:
             if track["owned"]:
                 pull_from_collection(
-                    track["owned"], f"/home/joshmock/wxna-session/{num_str}.mp3"
+                    track["owned"],
+                    f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.mp3",
                 )
             else:
                 pull_from_tidal(
@@ -216,6 +234,11 @@ def print_explicit(playlist_data):
     for track in playlist_data:
         if track["explicit"]:
             print(f'EXPLICIT: {track["formatted_title"]}: {track["explicit_info"]}')
+
+
+def print_spinitron(playlist_data):
+    for t in playlist_data:
+        print(t["spinitron"])
 
 
 def main():
@@ -238,6 +261,9 @@ def main():
 
         # fetch mp3s for all tracks
         pull_song_files(playlist_data)
+
+        # print setlist in a format that can be imported to Spinitron
+        print_spinitron(playlist_data)
 
     except Exception as err:
         print(err)
