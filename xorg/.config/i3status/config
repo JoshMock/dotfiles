@@ -7,7 +7,6 @@ general {
 }
 
 order += "external_script now_playing"
-order += "external_script timew"
 order += "netdata"
 order += "wifi"
 order += "battery_level"

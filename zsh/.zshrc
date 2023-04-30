@@ -92,11 +92,7 @@ alias make='SHELL=/bin/bash make'
 
 # nnn config
 export NNN_FIFO="/tmp/nnn.fifo"
-export NNN_PLUG='a:!git annex get --jobs=4 "$nnn"*;q:!add-to-mopidy --path "$nnn"*;p:preview-tui;d:dragdrop'
-
-# mcfly support
-export MCFLY_FUZZY=2
-eval "$(mcfly init zsh)"
+export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"*;x:!echo "$PWD/$nnn" >> $HOME/wxna/setlist.txt*;b:!echo "$PWD/$nnn" >> $HOME/wxna/bumper.txt*'
 
 pm() {
   pocket-list --tag music --count 30 | fzf | awk '{print $(NF)}' | xargs add-to-mopidy --url

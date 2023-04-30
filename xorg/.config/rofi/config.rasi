@@ -1,7 +1,7 @@
 configuration {
-  modi: "combi,drun,my scripts:~/.config/rofi/script_mode.sh,window,ssh,calc";
+  modi: "combi,drun,window,ssh,keys,calc";
   font: "FiraCode Nerd Font 12";
-  combi-modi: "drun,my scripts:~/.config/rofi/script_mode.sh,window,ssh,calc";
+  combi-modi: "drun,window,ssh,keys,calc";
   matching: "fuzzy";
   case-sensitive: false;
   show-icons: true;
