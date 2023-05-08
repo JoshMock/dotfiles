@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+for dir in /home/joshmock/{Desktop,.gnupg,dotfiles,.zsh_history,.gmailctl,/.local/share/mail/joshua.mock@elastic.co,.task}
+do
+  echo "backing up $dir"
+  restic --verbose backup "$dir"
+done
+
+restic --verbose forget --prune \
+  --keep-last 10 \
+  --keep-daily 7 \
+  --keep-weekly 5 \
+  --keep-monthly 12 \
+  --keep-yearly 20
