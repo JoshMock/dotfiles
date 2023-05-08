@@ -1,0 +1,17 @@
+data.location=~/.task-home
+
+editor=lvim
+
+uda.githuburl.type=string
+uda.githuburl.label=Github URL
+
+uda.url.type=string
+uda.url.label=URL
+
+news.version=2.6.0
+
+taskd.certificate=\/home\/joshmock\/.task-home\/joshmock.cert.pem
+taskd.key=\/home\/joshmock\/.task-home\/joshmock.key.pem
+taskd.ca=\/home\/joshmock\/.task-home\/ca.cert.pem
+taskd.server=task.joshmock.com:53589
+taskd.credentials=joshmock\/joshmock\/1bf5dd7b-2c36-4b46-8a89-3f988705c382
