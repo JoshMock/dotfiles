@@ -1,1 +1,4 @@
 Lock,$HOME/.config/rofi/lock.sh
+Firefox Personal,$HOME/.config/rofi/firefox-personal.sh
+Pomodoro Start,$HOME/.config/rofi/pom-start.sh
+Pomodoro Break,$HOME/.config/rofi/pom-break.sh
