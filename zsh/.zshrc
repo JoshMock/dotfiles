@@ -56,10 +56,6 @@ export BROWSER=xdg-open
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
-# NVM settings
-export NVM_DIR="$HOME/.nvm"
-alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-
 # configure ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
