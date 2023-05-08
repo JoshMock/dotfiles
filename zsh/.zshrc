@@ -94,9 +94,8 @@ alias make='SHELL=/bin/bash make'
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG='a:!git annex get --jobs=4 "$nnn"*;q:!add-to-mopidy --path "$nnn"*;p:preview-tui;d:dragdrop'
 
-# mcfly support
-export MCFLY_FUZZY=2
-eval "$(mcfly init zsh)"
+# atuin zsh history manager
+eval "$(atuin init zsh --disable-up-arrow)"
 
 pm() {
   pocket-list --tag music --count 30 | fzf | awk '{print $(NF)}' | xargs add-to-mopidy --url
