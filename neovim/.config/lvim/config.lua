@@ -133,7 +133,7 @@ lvim.plugins = {
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
-    requires = "nvim-tree/nvim-web-devicons",
+    dependencies = {"nvim-tree/nvim-web-devicons"},
     config = function()
       require("trouble").setup {
         mode = "document_diagnostics",
@@ -149,7 +149,7 @@ lvim.plugins = {
   {
     'pwntester/octo.nvim',
     cmd = "Octo",
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
       'nvim-tree/nvim-web-devicons',
@@ -162,7 +162,8 @@ lvim.plugins = {
   { 'terryma/vim-expand-region' },
   {
     'nvim-neorg/neorg',
-    run = ":Neorg sync-parsers",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-treesitter" },
     config = function()
       require('neorg').setup {
         load = {
@@ -175,7 +176,8 @@ lvim.plugins = {
             config = {
               workspaces = {
                 work = "~/Desktop/notes/neorg",
-              }
+              },
+              default_workspace = "work",
             }
           }
         }
