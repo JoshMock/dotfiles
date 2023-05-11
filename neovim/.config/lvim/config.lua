@@ -13,7 +13,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.conceallevel = 3
 
 -- re-enable wrapping
-vim.opt.wrap = true
+-- vim.opt.wrap = true
 
 -- close netrw buffer when selecting a file
 vim.g.netrw_fastbrowse = 0
@@ -215,4 +215,15 @@ linters.setup {
   { name = "shellcheck" },
   { name = "yamllint" },
   { name = "zsh" },
+}
+
+-- autocommands
+lvim.autocommands = {
+  {
+    "BufEnter",
+    {
+      pattern = { "*.md", "*.markdown", "*.norg" },
+      command = "setlocal wrap linebreak",
+    }
+  }
 }
