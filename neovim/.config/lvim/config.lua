@@ -181,7 +181,8 @@ lvim.plugins = {
               },
               default_workspace = "work",
             }
-          }
+          },
+          ["core.export"] = {},
         }
       }
     end
