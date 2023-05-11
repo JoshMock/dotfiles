@@ -10,9 +10,6 @@ ZSH_DISABLE_COMPFIX="true"
 plugins=(z git gitfast git-extras zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
-# add .local/bin to PATH
-export PATH=$PATH:$HOME/.local/bin
-
 # include external files
 [ -r $HOME/.elastic/elasticrc ] && source $HOME/.elastic/elasticrc # work-sensitive things I don't want on Github
 [ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
@@ -45,19 +42,7 @@ fi
 alias prettyjson='cpaste | jq | ccopy'
 
 # set default editors
-export VISUAL=lvim
-export EDITOR=lvim
 alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket lvim'
-
-# set browser to xdg-open for urlview
-export BROWSER=xdg-open
-
-# syntax highlighting when using `less` on the command line
-export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
-
-# configure ripgrep
-export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # fzf fuzzy completion and key binding
 source "/usr/share/fzf/key-bindings.zsh"
@@ -78,10 +63,6 @@ eval "$(direnv hook zsh)"
 
 # starship
 eval "$(starship init zsh)"
-
-# use bat as default pager
-export PAGER="bat -p"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # hack to make Docker commands work in makefiles
 alias make='SHELL=/bin/bash make'
