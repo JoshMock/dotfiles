@@ -1,3 +1,6 @@
+# fix for Junction browser
+export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
+
 # remap caps lock to esc/ctrl
 setxkbmap -option 'ctrl:nocaps'
 xcape -e 'Control_L=Escape'
