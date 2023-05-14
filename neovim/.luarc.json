@@ -1,0 +1,20 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "lvim",
+        "reload",
+        "lfs"
+    ],
+    "workspace.library": [
+        "/usr/share/nvim/runtime",
+        "/home/joshmock/.local/share/lunarvim/lvim",
+        "/home/joshmock/.local/share/lunarvim/site/pack/lazy/opt/neodev.nvim/types/stable",
+        "${3rd}/busted/library",
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library",
+        "/home/joshmock/.local/share/lunarvim/site/pack/lazy/opt/telescope.nvim/lua",
+        "/home/joshmock/.local/share/lunarvim/site/pack/lazy/opt/plenary.nvim/lua",
+        "/home/joshmock/.local/share/lunarvim/site/pack/lazy/opt/LuaSnip/lua",
+        "${3rd}/lfs/library"
+    ]
+}

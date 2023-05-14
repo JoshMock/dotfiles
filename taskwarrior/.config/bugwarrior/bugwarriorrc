@@ -1,7 +1,21 @@
 [general]
-targets = elastic_my_issues,elastic_my_prs,elastic_code_reviews,elastic_client_js_prs
+targets = joshmock_issues
 annotation_comments = False
 annotation_links = True
+
+[joshmock_issues]
+service = github
+github.login = JoshMock
+github.password = @oracle:eval:echo $BUGWARRIOR_GITHUB_TOKEN
+github.username = JoshMock
+github.include_user_issues = True
+github.include_user_repos = True
+github.exclude_repos = backbone-socketio
+github.description_template = {{githubtitle}}
+github.query = user:JoshMock is:issue is:open archived:false
+github.default_priority = M
+github.import_labels_as_tags = True
+
 
 [elastic_my_issues]
 service = github
