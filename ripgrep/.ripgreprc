@@ -1,6 +1,5 @@
+--hidden
 --smart-case
-
 --max-columns=150
-
 --type-add
 clj:*.{clj,cljs,edn}

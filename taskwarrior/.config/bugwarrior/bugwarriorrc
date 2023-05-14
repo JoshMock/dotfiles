@@ -1,5 +1,5 @@
 [general]
-targets = elastic_my_issues,elastic_my_prs,elastic_code_reviews,elastic_jira_my_tickets,elastic_jira_my_tickets_non_services
+targets = elastic_my_issues,elastic_my_prs,elastic_code_reviews,elastic_client_js_prs
 annotation_comments = False
 annotation_links = True
 
@@ -40,26 +40,14 @@ github.query = is:open is:pr archived:false user:elastic review-requested:JoshMo
 github.default_priority = H
 github.add_tags = code_review
 
-[elastic_jira_my_tickets]
-service = jira
-jira.base_uri = https://elasticco.atlassian.net
-jira.username = joshua.mock@elastic.co
-jira.password = @oracle:eval:cat $HOME/.elastic/jira-bugwarrior.token
-jira.query = assignee="62b9c0b8fbc1f7c647b786e4" AND resolution is empty and component = Services and sprint in openSprints()
-jira.import_labels_as_tags = True
-jira.import_sprints_as_tags = True
-jira.description_template = {{jirasummary}}
-jira.default_priority = M
-jira.project_template = Services
-
-[elastic_jira_my_tickets_non_services]
-service = jira
-jira.base_uri = https://elasticco.atlassian.net
-jira.username = joshua.mock@elastic.co
-jira.password = @oracle:eval:cat $HOME/.elastic/jira-bugwarrior.token
-jira.query = assignee="62b9c0b8fbc1f7c647b786e4" AND resolution is empty and component != Services and sprint in openSprints()
-jira.import_labels_as_tags = True
-jira.import_sprints_as_tags = True
-jira.description_template = {{jirasummary}}
-jira.default_priority = M
-jira.project_template = Other
+[elastic_client_js_prs]
+service = github
+github.login = JoshMock
+github.password = @oracle:eval:echo $BUGWARRIOR_GITHUB_TOKEN
+github.username = elastic
+github.include_user_issues = False
+github.include_user_repos = False
+github.description_template = {{githubtitle}}
+github.query = repo:elastic/elasticsearch-js is:open is:pr archived:false
+github.default_priority = M
+github.add_tags = code_review

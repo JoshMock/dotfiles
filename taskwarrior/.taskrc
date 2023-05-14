@@ -21,5 +21,15 @@ uda.url.type=string
 uda.url.label=URL
 news.version=2.6.0
 
-urgency.user.project.clients.coefficient=10.0
+urgency.user.project.clients.coefficient=7.0
 urgency.user.project.Services.coefficient=5.0
+urgency.user.project.licensing_portal.coefficient=0.8
+urgency.user.project.infra.coefficient=0.9
+urgency.user.project.elasticsearch-js.coefficient=8.0
+urgency.user.project.elasticsearch-client-generator-js.coefficient=8.0
+urgency.user.project.elasticsearch-transport-js.coefficient=8.0
+urgency.user.project.clients-team.coefficient=3.0
+
+urgency.user.tag.bug.coefficient=8.0
+urgency.user.tag.pending_release.coefficient=9.0
+urgency.user.tag.open_pr.coefficient=7.0

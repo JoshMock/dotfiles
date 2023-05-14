@@ -9,6 +9,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 002b36
 # lock screen after 5 minutes idle
 exec --no-startup-id xautolock -corners --00 -notify 20 -time 5 -locker "i3lock -c 002b36 -e && sleep 1"
 
+# start clipster daemon
+exec --no-startup-id clipster --daemon
 
 # start notification daemon
 exec --no-startup-id /usr/bin/dunst
@@ -179,7 +181,7 @@ bindsym $mod+r mode "resize"
 bar {
   status_command py3status -c ~/.config/i3status/config
   font pango:Inter, Awesome 9
-  separator_symbol "     "
+  separator_symbol "    "
 
   # disable using scroll wheel to change workspaces
   bindsym button4 nop

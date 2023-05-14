@@ -10,9 +10,6 @@ ZSH_DISABLE_COMPFIX="true"
 plugins=(z git gitfast git-extras zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
-# add .local/bin to PATH
-export PATH=$PATH:$HOME/.local/bin
-
 # include external files
 [ -r $HOME/.elastic/elasticrc ] && source $HOME/.elastic/elasticrc # work-sensitive things I don't want on Github
 [ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
@@ -45,23 +42,7 @@ fi
 alias prettyjson='cpaste | jq | ccopy'
 
 # set default editors
-export VISUAL=lvim
-export EDITOR=lvim
 alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket lvim'
-
-# set browser to xdg-open for urlview
-export BROWSER=xdg-open
-
-# syntax highlighting when using `less` on the command line
-export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
-
-# NVM settings
-export NVM_DIR="$HOME/.nvm"
-alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-
-# configure ripgrep
-export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # fzf fuzzy completion and key binding
 source "/usr/share/fzf/key-bindings.zsh"
@@ -83,16 +64,15 @@ eval "$(direnv hook zsh)"
 # starship
 eval "$(starship init zsh)"
 
-# use bat as default pager
-export PAGER="bat -p"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
 # hack to make Docker commands work in makefiles
 alias make='SHELL=/bin/bash make'
 
 # nnn config
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"*;x:!echo "$PWD/$nnn" >> $HOME/wxna/setlist.txt*;b:!echo "$PWD/$nnn" >> $HOME/wxna/bumper.txt*'
+
+# atuin zsh history manager
+eval "$(atuin init zsh --disable-up-arrow)"
 
 pm() {
   pocket-list --tag music --count 30 | fzf | awk '{print $(NF)}' | xargs add-to-mopidy --url

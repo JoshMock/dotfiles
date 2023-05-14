@@ -17,11 +17,11 @@ order += "memory"
 order += "tztime local"
 
 wifi {
-  format = " {bitrate}{bitrate_unit} {signal_percent}% {ssid}"
+  format = "  {bitrate}{bitrate_unit} {signal_percent}% {ssid}"
 }
 
 battery_level {
-  format = " {status} {percent}%[ {time_remaining}]"
+  format = "  {status} {percent}%[ {time_remaining}]"
   notify_low_level = true
 }
 
@@ -30,22 +30,22 @@ tztime local {
 }
 
 cpu_usage {
-  format = " %usage"
+  format = "  %usage"
   degraded_threshold = 30
 }
 
 disk "/" {
-  format = " %avail"
+  format = "  %avail"
 }
 
 memory {
-  format = " %used"
+  format = "  %used"
   threshold_degraded = "10%"
   format_degraded = "MEM: %free"
 }
 
 volume master {
-  format = " %volume"
+  format = "  %volume"
   format_muted = "(%volume)"
 }
 
@@ -56,9 +56,9 @@ external_script now_playing {
 
 external_script timew {
   script_path = "$HOME/.bin/timew-status"
-  format = "  {output}"
+  format = "   {output}"
 }
 
 netdata {
-  format = " {down}↓ {up}↑"
+  format = "  {down}↓ {up}↑"
 }

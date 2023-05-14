@@ -13,10 +13,11 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.conceallevel = 3
 
 -- re-enable wrapping
-vim.opt.wrap = true
+-- vim.opt.wrap = true
 
 -- close netrw buffer when selecting a file
 vim.g.netrw_fastbrowse = 0
+vim.g.netrw_menu = 0
 
 -- keymappings
 lvim.leader = "space"
@@ -25,7 +26,7 @@ lvim.keys.normal_mode["<left>"] = ":BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<right>"] = ":BufferLineCycleNext<cr>"
 lvim.keys.visual_mode["v"] = "<Plug>(expand_region_expand)"
 lvim.keys.visual_mode["<C-v>"] = "<Plug>(expand_region_shrink)"
-lvim.keys.normal_mode["-"] = ":e .<cr>"
+lvim.keys.normal_mode["-"] = ":e %:h<cr>"
 
 lvim.builtin.which_key.mappings["o"] = { "m`o<esc>``", "Empty line below" }
 lvim.builtin.which_key.mappings["O"] = { "m`O<esc>``", "Empty line above" }
@@ -74,7 +75,8 @@ lvim.builtin.bufferline.options.close_command = 'Bdelete! %d'
 lvim.builtin.terminal.active = true
 
 -- nvim-tree
-lvim.builtin.nvimtree.active = false
+lvim.builtin.nvimtree.active = true
+lvim.builtin.nvimtree.setup.disable_netrw = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.sync_root_with_cwd = true
@@ -133,7 +135,7 @@ lvim.plugins = {
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
-    requires = "nvim-tree/nvim-web-devicons",
+    dependencies = {"nvim-tree/nvim-web-devicons"},
     config = function()
       require("trouble").setup {
         mode = "document_diagnostics",
@@ -149,7 +151,7 @@ lvim.plugins = {
   {
     'pwntester/octo.nvim',
     cmd = "Octo",
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
       'nvim-tree/nvim-web-devicons',
@@ -162,7 +164,8 @@ lvim.plugins = {
   { 'terryma/vim-expand-region' },
   {
     'nvim-neorg/neorg',
-    run = ":Neorg sync-parsers",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-treesitter" },
     config = function()
       require('neorg').setup {
         load = {
@@ -175,9 +178,11 @@ lvim.plugins = {
             config = {
               workspaces = {
                 work = "~/Desktop/notes/neorg",
-              }
+              },
+              default_workspace = "work",
             }
-          }
+          },
+          ["core.export"] = {},
         }
       }
     end
@@ -210,4 +215,15 @@ linters.setup {
   { name = "shellcheck" },
   { name = "yamllint" },
   { name = "zsh" },
+}
+
+-- autocommands
+lvim.autocommands = {
+  {
+    "BufEnter",
+    {
+      pattern = { "*.md", "*.markdown", "*.norg" },
+      command = "setlocal wrap linebreak",
+    }
+  }
 }
