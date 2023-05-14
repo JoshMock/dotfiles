@@ -19,7 +19,7 @@
 import argparse
 import datetime
 import json
-import os.path
+import os
 import re
 import shutil
 import subprocess
@@ -131,21 +131,28 @@ def check_explicit(track):
 
 
 def check_owned(track):
-    run = subprocess.run(
-        [
-            "beet",
-            "list",
-            "-p",
-            f"{track.artist.name}",
-            f"title:{track.name}",
-            "|",
-            "head",
-            "-n1",
-        ],
-        capture_output=True,
-    )
-    output = run.stdout.decode("utf-8").strip()
-    return output if output else ""
+    cmd = ['beet', 'list', '-p']
+    cmd.extend(track.artist.name.split(' '))
+    cmd.append('title:')
+    cmd.extend(track.name.split(' '))
+    run = subprocess.run(cmd, capture_output=True)
+    # run = subprocess.run(
+    #     [
+    #         "beet",
+    #         "list",
+    #         "-p",
+    #         f"'{track.artist.name}'",
+    #         f"'title:{track.name}'",
+    #         "|",
+    #         "head",
+    #         "-n1",
+    #     ],
+    #     capture_output=True,
+    # )
+    output = run.stdout.decode("utf-8").strip().split('\n')
+    if not output:
+        print(f'Not found in personal library: {track.artist.name} - {track.name}')
+    return output[0] if output else ""
 
 
 def clean_copyright(track):
@@ -198,15 +205,10 @@ def pull_from_tidal(url, output_path):
     print(f"pulling Tidal URL to {output_path}")
     subprocess.run(
         [
-            "/usr/bin/ffmpeg",
-            "-y",
-            "-i",
-            url,
-            "-codec:a",
-            "libmp3lame",
-            "-qscale:a",
-            "0",
+            "/usr/bin/wget",
+            "--output-document",
             output_path,
+            url,
         ],
     )
 
@@ -223,7 +225,7 @@ def pull_song_files(playlist_data):
                 )
             else:
                 pull_from_tidal(
-                    track["tidal_url"], f"/home/joshmock/wxna-session/{num_str}.mp3"
+                    track["tidal_url"], f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.flac"
                 )
         except Exception as err:
             print(f'ERROR: {err} in track {track["formatted_title"]}')
