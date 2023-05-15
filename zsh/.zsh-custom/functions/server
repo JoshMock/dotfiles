@@ -1,0 +1,2 @@
+# easy static server host
+python -m http.server
