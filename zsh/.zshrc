@@ -2,8 +2,7 @@ source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
 
 # autoload functions
-export ZDOTDIR=$HOME/.zsh-custom
-ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
+ZFUNCDIR=${ZFUNCDIR:-$HOME/.zsh-custom/functions}
 fpath=($ZFUNCDIR $fpath)
 autoload -Uz $fpath[1]/*(.:t)
 
