@@ -1,0 +1,21 @@
+# completions and suggestions
+belak/zsh-utils path:completion
+zsh-users/zsh-completions kind:fpath
+zsh-users/zsh-autosuggestions
+Aloxaf/fzf-tab
+
+# navigation
+rupa/z
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+
+# history management
+ohmyzsh/ohmyzsh path:lib/history.zsh
+
+# keyboard bindings
+ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+
+# syntax and code things
+ohmyzsh/ohmyzsh path:lib/git.zsh
+ohmyzsh/ohmyzsh path:plugins/git/git.plugin.zsh
+zsh-users/zsh-syntax-highlighting
+hlissner/zsh-autopair
