@@ -1,32 +1,26 @@
-# speed up ZSH init time?
-skip_global_compinit=1
+source '/usr/share/zsh-antidote/antidote.zsh'
+antidote load
 
-# Oh My Zsh settings
-ZSH=$HOME/.oh-my-zsh
-ZSH_CUSTOM=$HOME/.zsh-custom
-DISABLE_AUTO_UPDATE="true"
-COMPLETION_WAITING_DOTS="true"
-ZSH_DISABLE_COMPFIX="true"
-plugins=(z git gitfast git-extras zsh-autosuggestions)
-source $ZSH/oh-my-zsh.sh
+# autoload functions
+ZFUNCDIR=${ZFUNCDIR:-$HOME/.zsh-custom/functions}
+fpath=($ZFUNCDIR $fpath)
+autoload -Uz $fpath[1]/*(.:t)
 
-# include external files
-[ -r $HOME/.elastic/elasticrc ] && source $HOME/.elastic/elasticrc # work-sensitive things I don't want on Github
-[ -r $HOME/.personal ] && source $HOME/.personal # personal machine things
+# tool setup
+eval "$(direnv hook zsh)" # direnv
+eval "$(starship init zsh)" #starship
+source "/usr/share/fzf/key-bindings.zsh" # fzf
+export NNN_FIFO="/tmp/nnn.fifo" NNN_PLUG='a:!git annex get --jobs=4 "$nnn"*;q:!add-to-mopidy --path "$nnn"*;p:preview-tui;d:dragdrop' # nnn
+eval "$(atuin init zsh --disable-up-arrow)" # atuin
 
-# refresh git submodules
-alias refresh_submodules='git submodule foreach git pull origin master'
-
-# easy server
-alias server='python -m SimpleHTTPServer'
+# source external files that aren't source-controlled (or always available)
+for f in $HOME/.elastic/elasticrc $HOME/.personal; do
+  [ -r $f ] && source $f
+done
 
 # use `exa` for fancy `ls` replacement
-EXA_COLORS="da=1;34;nnn:di=32;1:*.log=37;41;1"
+export EXA_COLORS="da=1;34;nnn:di=32;1:*.log=37;41;1"
 alias l="exa --long --header --all --icons"
-
-# oh-my-zsh already adds .. and ..., this just takes it a step further
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
 
 # system clipboard shortcuts
 if [[ -z "${WAYLAND_DISPLAY}" ]]
@@ -38,34 +32,10 @@ else
   alias cpaste='wl-paste'
 fi
 
-# takes JSON in your clipboard, pretty-formats it, copies it back to clipboard
 alias prettyjson='cpaste | jq | ccopy'
 
-# set default editors
-alias n='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket lvim'
-
-# fzf fuzzy completion and key binding
-source "/usr/share/fzf/key-bindings.zsh"
-
-nfind() {
-  # drop search results into fzf, selected files open in lvim
-  lvim $(rg "$1" -l | fzf -m)
-}
-
-# check out a git branch
-alias gb='git checkout $(git --no-pager branch --no-color | awk "{print $1}" | grep -v \* | fzf)'
-
-# kitty git diffs
-alias gd='git difftool --no-symlinks --dir-diff'
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# starship
-eval "$(starship init zsh)"
-
 # hack to make Docker commands work in makefiles
-alias make='SHELL=/bin/bash make'
+# alias make='SHELL=/bin/bash make'
 
 # nnn config
 export NNN_FIFO="/tmp/nnn.fifo"
