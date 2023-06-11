@@ -1,6 +1,8 @@
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
 
+source ~/.zprofile
+
 # autoload functions
 ZFUNCDIR=${ZFUNCDIR:-$HOME/.zsh-custom/functions}
 fpath=($ZFUNCDIR $fpath)
