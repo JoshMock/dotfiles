@@ -156,7 +156,7 @@ def check_owned(track):
 
 
 def clean_copyright(track):
-    copy = track.copyright
+    copy = track.copyright or ""
     copy = re.sub(r"℗\s+", "", copy)
     copy = re.sub(r"\(P\)", "", copy)
     copy = re.sub(r"(19|20)\d{2}", "", copy)
@@ -248,27 +248,24 @@ def main():
     parser.add_argument("playlist", help="Name of the playlist")
     args = parser.parse_args()
     session = login()
-    try:
-        # fetch playlist data from Tidal
-        playlist = find_playlist(session, args.playlist)
-        playlist_data = get_playlist_tracks(playlist)
 
-        # write setlist to file
-        tracklist = playlist_tracks_string(playlist_data)
-        with open(f"/home/joshmock/wxna-session/setlist-{args.playlist}.md", "w") as f:
-            f.write(tracklist)
+    # fetch playlist data from Tidal
+    playlist = find_playlist(session, args.playlist)
+    playlist_data = get_playlist_tracks(playlist)
 
-        # print warnings about explicit content
-        print_explicit(playlist_data)
+    # write setlist to file
+    tracklist = playlist_tracks_string(playlist_data)
+    with open(f"/home/joshmock/wxna-session/setlist-{args.playlist}.md", "w") as f:
+        f.write(tracklist)
 
-        # fetch mp3s for all tracks
-        pull_song_files(playlist_data)
+    # fetch mp3s for all tracks
+    pull_song_files(playlist_data)
 
-        # print setlist in a format that can be imported to Spinitron
-        print_spinitron(playlist_data)
+    # print warnings about explicit content
+    print_explicit(playlist_data)
 
-    except Exception as err:
-        print(err)
+    # print setlist in a format that can be imported to Spinitron
+    print_spinitron(playlist_data)
 
 
 if __name__ == "__main__":
