@@ -1,6 +1,8 @@
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
 
+source ~/.zprofile
+
 # autoload functions
 ZFUNCDIR=${ZFUNCDIR:-$HOME/.zsh-custom/functions}
 fpath=($ZFUNCDIR $fpath)
@@ -37,5 +39,18 @@ alias prettyjson='cpaste | jq | ccopy'
 # hack to make Docker commands work in makefiles
 # alias make='SHELL=/bin/bash make'
 
-# home taskwarrior alt
-alias htask='TASKRC=$HOME/.taskrc-home task'
+# nnn config
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"*;x:!echo "$PWD/$nnn" >> $HOME/wxna/setlist.txt*;b:!echo "$PWD/$nnn" >> $HOME/wxna/bumper.txt*'
+
+# atuin zsh history manager
+eval "$(atuin init zsh --disable-up-arrow)"
+
+pm() {
+  pocket-list --tag music --count 30 | fzf | awk '{print $(NF)}' | xargs add-to-mopidy --url
+}
+
+# watch a PR and notify when CI finishes
+wpr () {
+  noti gh pr checks --watch $1
+}
