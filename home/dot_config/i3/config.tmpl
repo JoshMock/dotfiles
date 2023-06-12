@@ -12,6 +12,11 @@ exec --no-startup-id xautolock -corners --00 -notify 20 -time 5 -locker "i3lock 
 # start clipster daemon
 exec --no-startup-id clipster --daemon
 
+{{ if eq .chezmoi.hostname "windsorhum" -}}
+# attempt connecting bluetooth mouse
+exec --no-startup-id bluetoothctl connect 30:D9:D9:90:55:2B
+{{- end }}
+
 # start notification daemon
 exec --no-startup-id /usr/bin/dunst
 # close dunst notifications via ctrl+space
@@ -19,6 +24,11 @@ bindsym Control+space exec --no-startup-id dunstctl close
 
 # start 1Password system tray
 exec --no-startup-id 1password --silent
+
+{{ if eq .chezmoi.hostname "windsorhum" -}}
+# start auto-close script
+exec --no-startup-id ~/.local/bin/autoclose
+{{- end }}
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -201,6 +211,41 @@ smart_borders on
 # floating windows
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="1Password"] floating enable
+for_window [class="Junction"] floating enable
+
+{{ if eq .chezmoi.hostname "windsorhum" -}}
+# autorandr for multiple monitor detection
+exec --no-startup-id autorandr -c
+{{- end }}
 
 # auto back and forth
 workspace_auto_back_and_forth yes
+
+{{ if eq .chezmoi.hostname "windsorhum" -}}
+# workspace assignments
+assign [class="(?i)slack"] 3
+assign [class="(?i)discord"] 3
+assign [class="(?i)element"] 3
+assign [class="(?i)zoom"] 5
+
+# load layouts and default apps
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.config/i3/workspace-2.json'"
+exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.config/i3/workspace-3.json'"
+exec --no-startup-id "i3-msg 'workspace 4; append_layout ~/.config/i3/workspace-4.json'"
+exec --no-startup-id firefox-developer-edition --class="firefox-work"
+exec --no-startup-id firefox-developer-edition -P personal --class="firefox-personal"
+exec --no-startup-id kitty --single-instance --session ~/.config/kitty/default-session.conf
+exec --no-startup-id kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf
+exec --no-startup-id slack
+exec --no-startup-id element-desktop
+exec --no-startup-id discord
+
+# hyper key shortcuts
+bindsym Mod1+Control+Shift+Mod4+4 exec --no-startup-id flameshot gui
+bindsym Mod1+Control+Shift+Mod4+1 exec --no-startup-id 1password --quick-access
+bindsym Mod1+Control+Shift+Mod4+m exec --no-startup-id add-to-mopidy
+bindsym Mod1+Control+Shift+Mod4+z exec --no-startup-id zoom-mute-toggle
+bindsym Mod1+Control+Shift+Mod4+c exec --no-startup-id rofi-clipster
+bindsym Mod1+Control+Shift+Mod4+t exec --no-startup-id rofi-tidal
+{{- end }}

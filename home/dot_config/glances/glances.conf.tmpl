@@ -141,3 +141,17 @@ disable=False
 
 [graph]
 generate_every=0
+
+{{ if eq .chezmoi.hostname "windsorhum" -}}
+[amp_elastic_endpoint]
+enable=True
+regex=.*elastic-endpoint.*
+refresh=30
+countmin=1
+
+[amp_esensor]
+enable=True
+regex=.*esensor.*
+refresh=30
+countmin=1
+{{- end }}

@@ -10,7 +10,7 @@ vim.opt.relativenumber = true
 vim.opt.timeoutlen = 500 -- hack to get vim-fugitive to work correctly
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.conceallevel = 3
+vim.opt.conceallevel = 1
 
 -- re-enable wrapping
 -- vim.opt.wrap = true
@@ -222,8 +222,15 @@ lvim.autocommands = {
   {
     "BufEnter",
     {
-      pattern = { "*.md", "*.markdown", "*.norg" },
+      pattern = { "*.md", "*.markdown", "*.norg", "*.mdx" },
       command = "setlocal wrap linebreak",
+    }
+  },
+  {
+    "BufEnter",
+    {
+      pattern = "*.mdx",
+      command = "set ft=markdown",
     }
   }
 }

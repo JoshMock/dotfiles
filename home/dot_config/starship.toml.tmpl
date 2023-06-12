@@ -1,0 +1,39 @@
+format = """\
+  $cmd_duration\
+  $sudo\
+  $directory\
+  $git_branch\
+  $git_state\
+  $git_status\
+  $python\
+  $rust\
+  $nodejs\
+  ${env_var.TEST_SUITE}\
+  ${env_var.STACK_VERSION}\
+  $line_break\
+  $character\
+"""
+
+[directory]
+style = "bold #999999"
+
+[git_branch]
+style = "bold #566C82"
+
+[git_status]
+style = "#AB5454"
+
+[python]
+style = "#AAEEAA"
+
+{{ if eq .chezmoi.hostname "windsorhum" -}}
+[env_var.TEST_SUITE]
+format = "ste:$env_value($style)"
+
+[env_var.STACK_VERSION]
+format = "v$env_value($style)"
+{{- end }}
+
+[nodejs]
+version_format = "v${major}.${minor}"
+format = "[$symbol($version )]($style)"
