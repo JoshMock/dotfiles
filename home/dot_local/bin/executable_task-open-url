@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
 githuburl="$(task _get "$1.githuburl")"
-jiraurl="$(task _get "$1.jiraurl")"
 url="$(task _get "$1.url")"
 
 if [ -n "$githuburl" ]; then
   url="$githuburl"
-elif [ -n "$jiraurl" ]; then
-  url="$jiraurl"
 fi
 
-xdg-open "$url"
+firefox-developer-edition "$url"

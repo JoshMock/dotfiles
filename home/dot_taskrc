@@ -33,3 +33,10 @@ urgency.user.project.clients-team.coefficient=3.0
 urgency.user.tag.bug.coefficient=8.0
 urgency.user.tag.pending_release.coefficient=9.0
 urgency.user.tag.open_pr.coefficient=7.0
+
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
