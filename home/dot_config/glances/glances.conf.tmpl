@@ -142,7 +142,7 @@ disable=False
 [graph]
 generate_every=0
 
-{{ if eq .chezmoi.hostname "windsorhum" -}}
+{{ if .work -}}
 [amp_elastic_endpoint]
 enable=True
 regex=.*elastic-endpoint.*

@@ -26,7 +26,7 @@ style = "#AB5454"
 [python]
 style = "#AAEEAA"
 
-{{ if eq .chezmoi.hostname "windsorhum" -}}
+{{ if .work -}}
 [env_var.TEST_SUITE]
 format = "ste:$env_value($style)"
 

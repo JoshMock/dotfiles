@@ -12,7 +12,7 @@ exec --no-startup-id xautolock -corners --00 -notify 20 -time 5 -locker "i3lock 
 # start clipster daemon
 exec --no-startup-id clipster --daemon
 
-{{ if eq .chezmoi.hostname "windsorhum" -}}
+{{ if .work -}}
 # attempt connecting bluetooth mouse
 exec --no-startup-id bluetoothctl connect 30:D9:D9:90:55:2B
 {{- end }}
@@ -25,7 +25,7 @@ bindsym Control+space exec --no-startup-id dunstctl close
 # start 1Password system tray
 exec --no-startup-id 1password --silent
 
-{{ if eq .chezmoi.hostname "windsorhum" -}}
+{{ if .work -}}
 # start auto-close script
 exec --no-startup-id ~/.local/bin/autoclose
 {{- end }}
@@ -213,7 +213,7 @@ for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="1Password"] floating enable
 for_window [class="Junction"] floating enable
 
-{{ if eq .chezmoi.hostname "windsorhum" -}}
+{{ if .work -}}
 # autorandr for multiple monitor detection
 exec --no-startup-id autorandr -c
 {{- end }}
@@ -221,7 +221,7 @@ exec --no-startup-id autorandr -c
 # auto back and forth
 workspace_auto_back_and_forth yes
 
-{{ if eq .chezmoi.hostname "windsorhum" -}}
+{{ if .work -}}
 # workspace assignments
 assign [class="(?i)slack"] 3
 assign [class="(?i)discord"] 3
