@@ -49,7 +49,7 @@ def main():
     album_id = artist_albums[index].id
     run = subprocess.run(
         [
-            "/usr/local/bin/add-to-mopidy",
+            "/home/joshmock/.local/bin/add-to-mopidy",
             "--url",
             f'https://listen.tidal.com/album/{album_id}',
         ],
