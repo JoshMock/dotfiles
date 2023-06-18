@@ -54,3 +54,6 @@ pm() {
 wpr () {
   noti gh pr checks --watch $1
 }
+
+# set up asdf
+. /opt/asdf-vm/asdf.sh
