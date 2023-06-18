@@ -6,7 +6,9 @@ general {
   color_bad = "#FF0000"
 }
 
+{{ if .mopidy -}}
 order += "external_script now_playing"
+{{- end -}}
 {{ if .work -}}
 order += "external_script timew"
 {{- end -}}
