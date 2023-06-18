@@ -45,6 +45,8 @@ packages:
   - name: gmailctl
     features: [work]
   - name: htop
+  - name: inter-font
+    features: [desktop]
   - name: jq
   - name: junction
     features: [desktop]
@@ -85,7 +87,11 @@ packages:
     features: [desktop]
   - name: notmuch
     features: [email]
+  - name: noto-fonts-emoji
+    features: [desktop]
   - name: obsidian-appimage
+    features: [desktop]
+  - name: otf-font-awesome-4
     features: [desktop]
   - name: p7zip
   - name: pass
@@ -114,6 +120,7 @@ packages:
   - name: slack-desktop
     features: [desktop]
   - name: starship
+  - name: stow
   - name: strace
   - name: tailscale
   - name: task
@@ -122,6 +129,18 @@ packages:
     features: [taskwarrior]
   - name: tmux
   - name: traceroute
+  - name: ttf-ancient-fonts
+    features: [desktop]
+  - name: ttf-arimo-nerd
+    features: [desktop]
+  - name: ttf-dejavu
+    features: [desktop]
+  - name: ttf-font-awesome-4
+    features: [desktop]
+  - name: ttf-hack
+    features: [desktop]
+  - name: ttf-liberation
+    features: [desktop]
   - name: unzip
   - name: urlview
     features: [desktop, email]
