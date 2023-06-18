@@ -7,7 +7,9 @@ general {
 }
 
 order += "external_script now_playing"
+{{ if .work -}}
 order += "external_script timew"
+{{- end -}}
 order += "netdata"
 order += "wifi"
 order += "battery_level"
@@ -55,10 +57,12 @@ external_script now_playing {
   format = "  {output}"
 }
 
+{{ if .work -}}
 external_script timew {
   script_path = "$HOME/.bin/timew-status"
   format = "   {output}"
 }
+{{- end -}}
 
 netdata {
   format = "  {down}↓ {up}↑"
