@@ -1,7 +1,9 @@
+# vim:ft=zsh
+
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
 
-source ~/.zprofile
+source $HOME/.zprofile
 
 # autoload functions
 ZFUNCDIR=${ZFUNCDIR:-$HOME/.zsh-custom/functions}
@@ -12,7 +14,8 @@ autoload -Uz $fpath[1]/*(.:t)
 eval "$(direnv hook zsh)" # direnv
 eval "$(starship init zsh)" #starship
 source "/usr/share/fzf/key-bindings.zsh" # fzf
-export NNN_FIFO="/tmp/nnn.fifo" NNN_PLUG='a:!git annex get --jobs=4 "$nnn"*;q:!add-to-mopidy --path "$nnn"*;p:preview-tui;d:dragdrop' # nnn
+export NNN_FIFO="/tmp/nnn.fifo" # nnn
+export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"*' # nnn
 eval "$(atuin init zsh --disable-up-arrow)" # atuin
 
 # source external files that aren't source-controlled (or always available)
