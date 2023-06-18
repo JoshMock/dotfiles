@@ -6,13 +6,14 @@
 import json
 import subprocess
 
+
 def not_installed(package):
-    result = subprocess.run(["yay", "-T", package['name']], capture_output=True)
+    result = subprocess.run(["yay", "-T", package["name"]], capture_output=True)
     return result.returncode != 0
 
 
 def matches_features(package, features):
-    package_features = package.get('features')
+    package_features = package.get("features")
     if package_features:
         for name, enabled in features.items():
             if enabled and name in package_features:
@@ -24,14 +25,15 @@ def matches_features(package, features):
 
 
 def install_packages(package_names):
-    print('Packages that will be installed:')
-    print('\n'.join(package_names))
+    print("Packages that will be installed:")
+    print("\n".join(package_names))
     command = [
         "yay",
         "-S",
+        "--norebuild",
         "--noconfirm",
         "--answerclean",
-        "All",
+        "None",
         "--answerdiff",
         "None",
         "--answeredit",
@@ -40,24 +42,28 @@ def install_packages(package_names):
     command.extend(package_names)
     subprocess.run(command)
 
+
 def get_config():
-    result = subprocess.run(['chezmoi', 'data'], capture_output=True)
+    result = subprocess.run(["chezmoi", "data"], capture_output=True)
     data = json.loads(result.stdout)
-    return data['chezmoi']['config']['data']
+    return data["chezmoi"]["config"]["data"]
+
 
 def get_packages():
-    result = subprocess.run(['chezmoi', 'data'], capture_output=True)
+    result = subprocess.run(["chezmoi", "data"], capture_output=True)
     data = json.loads(result.stdout)
-    return data['packages']
+    return data["packages"]
+
 
 def main():
     packages = get_packages()
     to_install = filter(not_installed, packages)
     to_install = list(filter(lambda p: matches_features(p, get_config()), to_install))
     if to_install:
-        install_packages(list(map(lambda p: p['name'], to_install)))
+        install_packages(list(map(lambda p: p["name"], to_install)))
     else:
-        print('No packages to install')
+        print("No packages to install")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

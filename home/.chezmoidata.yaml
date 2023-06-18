@@ -146,7 +146,7 @@ packages:
     features: [desktop, email]
   - name: vault
     features: [work]
-  - name: vit-git
+  - name: vit
     features: [taskwarrior]
   - name: vivaldi
     features: [desktop]
