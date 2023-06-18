@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
 cd /home/joshmock/.local/share/chezmoi/cron || exit 1
-echo 'Adding/updating source-controlled cron jobs to /etc/cron.*'
-sudo stow -R --target /etc/cron.daily daily
-sudo stow -R --target /etc/cron.hourly hourly
+
+restow() {
+  pkg=$1
+  echo "Updating cron jobs in /etc/cron.$pkg"
+  sudo stow -Rv --target "/etc/cron.$pkg" "$pkg"
+}
+
+for pkg in daily hourly; do
+  stow --simulate -v --target "/etc/cron.$pkg" "$pkg" 2>&1 | \
+    grep 'LINK' > /dev/null && \
+    restow $pkg || echo > /dev/null
+done
