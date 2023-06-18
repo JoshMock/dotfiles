@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cd /home/joshmock/.local/share/chezmoi/cron || exit 1
+echo 'Adding/updating source-controlled cron jobs to /etc/cron.*'
+sudo stow -R --target /etc/cron.daily daily
+sudo stow -R --target /etc/cron.hourly hourly
