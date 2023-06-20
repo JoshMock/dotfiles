@@ -1,0 +1,19 @@
+{{ if .mopidy -}}
+[Unit]
+Description=Mopidy music server
+After=avahi-daemon.service
+After=dbus.service
+After=network-online.target
+Wants=network-online.target
+After=nss-lookup.target
+After=pulseaudio.service
+After=pipewire.service
+After=remote-fs.target
+After=sound.target
+
+[Service]
+ExecStart=/usr/bin/mopidy --config /home/joshmock/.config/mopidy/mopidy.conf
+
+[Install]
+WantedBy=default.target
+{{ end -}}
