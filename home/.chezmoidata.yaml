@@ -99,6 +99,7 @@ packages:
   - name: playerctl
     features: [mopidy]
   - name: python-black
+  - name: python-build
   - name: python-httpx
   - name: python-mopidy-tidal
     features: [mopidy]
