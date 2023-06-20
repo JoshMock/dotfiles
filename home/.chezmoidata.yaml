@@ -47,6 +47,8 @@ packages:
   - name: htop
   - name: inter-font
     features: [desktop]
+  - name: interception-caps2esc
+    features: [desktop]
   - name: jq
   - name: junction
     features: [desktop]
