@@ -8,7 +8,7 @@ targets = elastic_my_issues,elastic_my_prs,elastic_code_reviews,elastic_client_j
 [elastic_my_issues]
 service = github
 github.login = JoshMock
-github.password = {{ onepasswordRead "op://Personal/Bugwarrior Github token - personal/password" }}
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
 github.username = elastic
 github.include_user_issues = False
 github.include_user_repos = False
@@ -21,7 +21,7 @@ github.import_labels_as_tags = True
 [elastic_my_prs]
 service = github
 github.login = JoshMock
-github.password = {{ onepasswordRead "op://Personal/Bugwarrior Github token - personal/password" }}
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
 github.username = elastic
 github.include_user_issues = False
 github.include_user_repos = False
@@ -33,7 +33,7 @@ github.add_tags = open_pr
 [elastic_code_reviews]
 service = github
 github.login = JoshMock
-github.password = {{ onepasswordRead "op://Personal/Bugwarrior Github token - personal/password" }}
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
 github.username = elastic
 github.include_user_issues = False
 github.include_user_repos = False
@@ -45,7 +45,7 @@ github.add_tags = code_review
 [elastic_client_js_prs]
 service = github
 github.login = JoshMock
-github.password = {{ onepasswordRead "op://Personal/Bugwarrior Github token - personal/password" }}
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
 github.username = elastic
 github.include_user_issues = False
 github.include_user_repos = False
