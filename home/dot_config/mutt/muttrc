@@ -1,0 +1,26 @@
+# vim: filetype=neomuttrc
+source /usr/share/mutt-wizard/mutt-wizard.muttrc
+source /home/joshmock/.config/mutt/accounts/joshua.mock@elastic.co.muttrc
+macro index,pager i1 '<sync-mailbox><enter-command>source /home/joshmock/.config/mutt/accounts/joshua.mock@elastic.co.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to joshua.mock@elastic.co"
+macro index,pager i2 '<sync-mailbox><enter-command>source /home/joshmock/.config/mutt/accounts/josh@joshmock.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to josh@joshmock.com"
+
+alternative_order text/html text/enriched text/plain 
+
+set sort = 'threads'
+set confirm_append = no
+
+# colors
+color index white black "~D"
+color index_subject white black "~D"
+color index_author white black "~D"
+color body red yellow 'josh(ua)? ?(mock)?'
+
+# show/hide messages based on scoring rules
+bind index . noop
+macro index .i "<limit> ~n10-100<enter>" "show interesting"
+macro index .u "<limit> ~n0-9<enter>" "show uninteresting"
+macro index .z "<collapse-all><enter>" "Collapse all threads"
+macro index .d0 "T ~n0<enter>;D" "Delete all zero-scored emails"
+
+# add message score to message list
+set index_format="%2C %N %Z %?X?A& ? %D %-15.15F %s (%-4.4c)"
