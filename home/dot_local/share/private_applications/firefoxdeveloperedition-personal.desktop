@@ -1,0 +1,24 @@
+[Desktop Entry]
+Version=1.0
+Name=Firefox Developer Edition - Personal profile
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Keywords=Internet;WWW;Browser;Web;Explorer
+Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" --profile Personal %u
+Icon=firefox-developer-edition
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+StartupNotify=true
+StartupWMClass=firefoxdeveloperedition
+Categories=Network;WebBrowser;
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" --new-window --profile Personal %u
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" --private-window --profile Personal %u
