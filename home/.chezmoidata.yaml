@@ -15,6 +15,7 @@ packages:
     features: [taskwarrior]
   - name: clipster
     features: [desktop]
+  - name: cronie
   - name: direnv
   - name: discord
     features: [desktop]
@@ -76,6 +77,8 @@ packages:
   - name: mopidy-scrobbler
     features: [mopidy]
   - name: mopidy-youtube
+    features: [mopidy]
+  - name: mpc
     features: [mopidy]
   - name: msmtp
     features: [email]
