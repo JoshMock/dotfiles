@@ -20,7 +20,7 @@ set $term-float kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi -c ~/.config/wofi/config -I
+# set $menu wofi -c ~/.config/wofi/config -I
 
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
 
@@ -49,7 +49,9 @@ bindsym $mod+Shift+e exec $powermenu
 bindsym $mod+q kill
 
 # Start your launcher
-bindsym $mod+d exec $menu
+bindsym $mod+d exec "rofi -show combi -modi combi"
+bindsym $mod+Shift+d exec "$HOME/.config/rofi/script_mode.sh"
+bindsym $mod+c exec "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # Activities
 bindsym $mod+p exec ~/.config/wofi/windows.py
@@ -200,3 +202,14 @@ bindsym Shift+print exec ~/.config/sway/scripts/screenshot.sh
 
 # Keybindings List
 bindsym $mod+t exec xed ~/.config/sway/cheatsheet
+
+
+# ZSA Moonlander hyper/meh
+set $hyper Mod1+Control+Shift+Mod4
+set $meh Control+Shift+Mod1
+bindsym $meh+4 exec flameshot gui
+bindsym $meh+1 exec 1password --quick-access
+bindsym $hyper+m exec add-to-mopidy
+bindsym $meh+z exec zoom-mute-toggle
+bindsym $meh+c exec rofi-clipster
+bindsym $meh+t exec rofi-tidal

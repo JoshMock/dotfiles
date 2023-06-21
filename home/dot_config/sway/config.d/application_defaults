@@ -1,23 +1,16 @@
 # Assign workspaces
-assign [app_id="firefox"] 2
-for_window [app_id="firefox"] focus
 
-assign [class="firefox"] 2
-for_window [class="firefox"] focus
-
-assign [app_id=thunar] 3
-for_window [app_id=thunar] focus
-
-assign [class="Telegram"] 4
-for_window [class="Telegram"] focus
-
+assign [class="(?i)slack"] 3
+assign [class="(?i)discord"] 3
+assign [class="(?i)element"] 3
+assign [class="(?i)zoom"] 5
+assign [class="firefoxdeveloperedition"] 1
+assign [class="firefox-personal"] 4
 
 for_window [app_id="xed"] focus
 
 
-# set floating (nontiling)for apps needing it:
-for_window [class="Yad" instance="yad"] floating enable
-for_window [app_id="yad"] floating enable
+# set floating (nontiling) for apps needing it:
 for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
 
 # set floating (nontiling) for special apps:

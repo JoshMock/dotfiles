@@ -2,8 +2,6 @@
 {
     "layer": "top",
     "position": "top",
-
-    // If height property would be not present, it'd be calculated dynamically
     "height": 26,
 
     "modules-left": [
@@ -11,7 +9,7 @@
       "sway/mode",
     ],
  
-    "modules-center": [],
+    "modules-center": ["sway/window"],
 
     "modules-right": [
       "network",
@@ -62,8 +60,8 @@
     "clock": {
       "interval": 10,
       "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
-      "format": "{:%H:%M}",
-      "tooltip-format": "{:%e %B %Y}"
+      "format": "{:%I:%M}",
+      "tooltip-format": "{:%Y-%m-%d}"
     },
 
     "cpu": {
@@ -125,7 +123,7 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "disable-markup" : false,
-        "all-outputs": true,
+        "all-outputs": false,
         "format": "  {icon}  "
     },
 
@@ -151,8 +149,6 @@
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
     },
 
-    // to use the weather module replace <your_location> with your city or town
-    // note: do not use spaces: new york would be newyork
     "custom/weather": {
         "exec": "~/.config/waybar/scripts/weather.sh nashville", 
         "return-type": "json",

@@ -20,3 +20,15 @@ exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 
 # Sway Fader
 # exec python3 ~/.config/sway/scripts/swayfader.py      
+
+# clipster
+exec clipster --daemon
+
+# terminal
+exec kitty --single-instance --session ~/.config/kitty/default-session.conf
+exec kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf
+
+# chat apps
+exec slack
+exec element-desktop
+exec discord

@@ -9,7 +9,7 @@ gaps outer 0
 default_border pixel 1
 
 # Default Font
-font pango:DejaVu Sans Mono 10
+font pango:Noto Sans Regular 10
 
 # smart borders and gaps
 smart_gaps on
@@ -30,10 +30,7 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
-#
 # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
 }
