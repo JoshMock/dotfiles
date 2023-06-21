@@ -60,6 +60,8 @@ packages:
   - name: calcurse
     features: [desktop]
   - name: lazygit
+  - name: lynx
+    features: [email]
   - name: mopidy
     features: [mopidy]
   - name: mopidy-bandcamp
