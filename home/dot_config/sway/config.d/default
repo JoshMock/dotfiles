@@ -6,14 +6,6 @@ set $down k
 set $up l
 set $right semicolon
 
-# audio control
-set $sink_volume pactl get-sink-volume @DEFAULT_SINK@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
-set $source_volume pactl get-source-volume @DEFAULT_SOURCE@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
-set $volume_down $(pactl set-sink-volume @DEFAULT_SINK@ -5% && $sink_volume)
-set $volume_up $(pactl set-sink-volume @DEFAULT_SINK@ +5% && $sink_volume)
-set $volume_mute $(pactl set-sink-mute @DEFAULT_SINK@ toggle && pactl get-sink-mute @DEFAULT_SINK@ | sed -En "/no/ s/.*/$($sink_volume)/p; /yes/ s/.*/0/p")
-set $mic_mute $(pactl set-source-mute @DEFAULT_SOURCE@ toggle && pactl get-source-mute @DEFAULT_SOURCE@ | sed -En "/no/ s/.*/$($source_volume)/p; /yes/ s/.*/0/p")
-
 # Your preferred terminal emulators
 set $term-float kitty
 
@@ -115,8 +107,8 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 # move focused workspace between monitors
-bindsym $mod+Shift+less move workspace to output left
-bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+less move workspace to output left
+bindsym $mod+greater move workspace to output right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -179,13 +171,17 @@ bindsym --whole-window --border $mod+Shift+button4 resize shrink width 5 px or 5
 bindsym --whole-window --border $mod+Shift+button5 resize grow width 5 px or 5 ppt
 
 # Control volume via pactl
+set $sink_volume pactl get-sink-volume @DEFAULT_SINK@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
+set $source_volume pactl get-source-volume @DEFAULT_SOURCE@ | grep '^Volume:' | cut -d / -f 2 | tr -d ' ' | sed 's/%//'
+set $volume_down $(pactl set-sink-volume @DEFAULT_SINK@ -5% && $sink_volume)
+set $volume_up $(pactl set-sink-volume @DEFAULT_SINK@ +5% && $sink_volume)
+set $volume_mute $(pactl set-sink-mute @DEFAULT_SINK@ toggle && pactl get-sink-mute @DEFAULT_SINK@ | sed -En "/no/ s/.*/$($sink_volume)/p; /yes/ s/.*/0/p")
+set $mic_mute $(pactl set-source-mute @DEFAULT_SOURCE@ toggle && pactl get-source-mute @DEFAULT_SOURCE@ | sed -En "/no/ s/.*/$($source_volume)/p; /yes/ s/.*/0/p")
 bindsym --locked XF86AudioRaiseVolume exec $volume_up
 bindsym --locked XF86AudioLowerVolume exec $volume_down
 bindsym --locked XF86AudioMute exec $volume_mute
-
-# Player
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
