@@ -1,15 +1,14 @@
 # laptop monitor
 output eDP-1 {
   resolution 3456x2160
-  position 1882,0
+  position 2560,0
   scale 2
 }
 
 # external LG monitor
 output DP-2 {
-  resolution 3200x1800
+  resolution 2560x1440
   position 0,0
-  scale 1.648438
 }
 
 output DP-3 disable
