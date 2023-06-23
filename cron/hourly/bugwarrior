@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 export BUGWARRIORRC=/home/joshmock/.config/bugwarrior/bugwarriorrc
-/usr/bin/bugwarrior-pull
+/usr/bin/bugwarrior-pull 2> /home/joshmock/bugwarrior.error.log

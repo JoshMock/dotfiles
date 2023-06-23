@@ -3,4 +3,4 @@
 env \
   RESTIC_PASSWORD_FILE=/home/joshmock/.config/restic-nas-backup \
   RESTIC_REPOSITORY=sftp:dietpi@nas:/mnt/raid1/shared/device-backups/lateral-am/restic \
-  /home/joshmock/.local/bin/restic-backup
+  /home/joshmock/.local/bin/restic-backup 2> /home/joshmock/restic.error.log
