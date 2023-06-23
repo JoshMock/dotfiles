@@ -189,15 +189,15 @@ lvim.plugins = {
   },
   {
     'lukas-reineke/cmp-rg',
-    after = { 'nvim-cmp' }
+    dependencies = { 'nvim-cmp' }
   },
   {
     'garyhurtz/cmp_kitty',
-    after = { 'nvim-cmp' }
+    dependencies = { 'nvim-cmp' }
   },
   {
     'petertriho/cmp-git',
-    after = { 'nvim-cmp' }
+    dependencies = { 'nvim-cmp' }
   },
 }
 
