@@ -24,6 +24,10 @@ exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 # clipster
 exec clipster --daemon
 
+# browser
+exec firefox-developer-edition # work profile
+exec firefox-developer-edition -P Personal # personal profile
+
 # terminal
 exec kitty --single-instance --session ~/.config/kitty/default-session.conf
 exec kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf
