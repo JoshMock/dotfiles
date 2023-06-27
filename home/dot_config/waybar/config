@@ -7,6 +7,7 @@
     "modules-left": [
       "sway/workspaces",
       "sway/mode",
+      "custom/timew",
     ],
  
     "modules-center": ["sway/window"],
@@ -19,7 +20,6 @@
       "pulseaudio",
       // "custom/keyboard-layout",
       "battery",
-      // "custom/PBPbattery",
       "backlight#icon",
       "backlight#value",
       "clock",
@@ -40,21 +40,14 @@
 
     "battery": {
       "states": {
-        // "good": 95,
         "warning": 30,
         "critical": 15
       },
       "format": "{capacity}% {icon}",
-      "format-charging": "{capacity}% ",
+      "format-charging": "{capacity}% ",
       "format-plugged": "{capacity}% ",
-      // "format-good": "", // An empty format will hide the module
-      // "format-full": "",
+      "format-full": "",
       "format-icons": ["", "", "", "", ""]
-    },
-
-    "custom/PBPbattery": {
-      "exec": "~/.config/waybar/scripts/PBPbattery.sh",
-      "format": "{}",
     },
 
     "clock": {
@@ -117,7 +110,7 @@
 
     "sway/window": {
         "format": "{}",
-        "max-length": 120
+        "max-length": 80
     },
 
     "sway/workspaces": {
@@ -131,14 +124,14 @@
         "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}  {format_source}",
-        "format-bluetooth-muted": " {icon}  {format_source}",
-        "format-muted": "婢 {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
+            "headphone": "",
             "hands-free": "וֹ",
-            "headset": "  ",
+            "headset": "  ",
             "phone": "",
             "portable": "",
             "car": "",
@@ -184,4 +177,10 @@
         "on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
         "tooltip": false,
     },
+
+    "custom/timew": {
+      "exec": "~/.config/waybar/scripts/timewstatus.sh",
+      "return-=type": "string",
+      "interval": 10
+    }
 }
