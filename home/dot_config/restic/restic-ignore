@@ -1,0 +1,12 @@
+.cache
+.asdf
+.1password
+.cargo
+.gnome
+.npm
+go
+.mozilla
+.docker
+.gcalcli_*
+.vault-token
+.restic

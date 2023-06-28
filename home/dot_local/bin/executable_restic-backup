@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+restic --verbose backup --exclude-file=/home/joshmock/.config/restic/restic-ignore /home/joshmock
+
+restic --verbose forget --prune \
+  --keep-last 10 \
+  --keep-daily 7 \
+  --keep-weekly 5 \
+  --keep-monthly 12 \
+  --keep-yearly 20
