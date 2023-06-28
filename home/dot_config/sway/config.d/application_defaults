@@ -1,7 +1,8 @@
 # Assign workspaces
 
 assign [class="firefoxdeveloperedition"] 1
-assign [class="(?i)kitty"] 2
+assign [app_id="(?i)kitty"] 2
+assign [app_id="(?i)kitty-scratchpad"] __i3_scratch
 assign [class="(?i)slack"] 3
 assign [class="(?i)discord"] 3
 assign [class="(?i)element"] 3
@@ -41,5 +42,5 @@ for_window [title="Save File"] floating enable
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
 
 # Inhibit idle
-for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [class="(?i)zoom"] inhibit_idle focus
+for_window [app_id="(?i)zoom"] inhibit_idle focus

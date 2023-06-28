@@ -30,9 +30,14 @@ exec firefox-developer-edition -P Personal # personal profile
 
 # terminal
 exec kitty --single-instance --session ~/.config/kitty/default-session.conf
-exec kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf
+exec kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad
 
 # chat apps
 exec slack
 exec element-desktop
 exec discord
+
+{{ if .work -}}
+# autoclose script
+exec ~/.local/bin/autoclose
+{{- end }}
