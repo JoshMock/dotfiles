@@ -7,10 +7,12 @@
     "modules-left": [
       "sway/workspaces",
       "sway/mode",
-      "custom/timew",
     ],
  
-    "modules-center": ["sway/window"],
+    "modules-center": [
+      "custom/timew",
+      "custom/nowplaying",
+    ],
 
     "modules-right": [
       "network",
@@ -22,8 +24,8 @@
       "backlight#icon",
       "backlight#value",
       "clock",
-      "tray",
       "custom/weather",
+      "tray",
       "custom/power",
     ],
 
@@ -131,7 +133,7 @@
     },
 
     "custom/weather": {
-        "exec": "~/.config/waybar/scripts/weather.sh nashville", 
+        "exec": "~/.config/waybar/scripts/weather.sh", 
         "return-type": "json",
         "interval": 600,
     },
@@ -145,7 +147,8 @@
         "format": "{icon}",
         "format-icons": [""],
         "on-scroll-down": "brightnessctl -c backlight set 1%-",
-        "on-scroll-up": "brightnessctl -c backlight set +1%"
+        "on-scroll-up": "brightnessctl -c backlight set +1%",
+        "spacing": 10
     },
 
     "backlight#value" :{
@@ -168,7 +171,18 @@
 
     "custom/timew": {
       "exec": "~/.config/waybar/scripts/timewstatus.sh",
-      "return-=type": "string",
-      "interval": 10
+      "return-type": "string",
+      "format": " {}"
+      "interval": 10,
+      "spacing": 10
+    },
+
+    "custom/nowplaying": {
+      "exec": "~/.local/bin/now-playing",
+      "return-type": "string",
+      "format": " {}",
+      "interval": 10,
+      "max-length": 80,
+      "spacing": 10
     }
 }
