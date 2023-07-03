@@ -11,6 +11,11 @@ report.daily.sort=modified-
 report.standup.description=Standup report
 report.standup.columns=id,description.desc
 report.standup.filter=((end.after:now-1wk) or (+open_pr and start.after:now-1wk))
+
+report.monthly.description=Monthly status report
+report.monthly.columns=id,description.desc
+report.monthly.filter=((start.after:today-30d or end.after:today-30d or modified.after:today-30d) and (-WAITING or +PENDING or +COMPLETED) and -code_review)
+report.monthly.sort=modified-
 {{- end }}
 
 uda.githuburl.type=string
