@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
+# refresh nnn plugins
 sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
+
+# delete old plugins
+find "$HOME/.config/nnn" -name 'plugins*.tar.gz' -mtime 10 -delete
