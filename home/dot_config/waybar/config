@@ -2,7 +2,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 26,
+    "height": 38,
 
     "modules-left": [
       "sway/workspaces",
@@ -145,7 +145,7 @@
 
     "backlight#icon": {
         "format": "{icon}",
-        "format-icons": [""],
+        "format-icons": [" "],
         "on-scroll-down": "brightnessctl -c backlight set 1%-",
         "on-scroll-up": "brightnessctl -c backlight set +1%",
         "spacing": 10
@@ -172,17 +172,15 @@
     "custom/timew": {
       "exec": "~/.config/waybar/scripts/timewstatus.sh",
       "return-type": "string",
-      "format": " {}"
-      "interval": 10,
-      "spacing": 10
+      "format": " {}",
+      "interval": 10
     },
 
     "custom/nowplaying": {
       "exec": "~/.local/bin/now-playing",
       "return-type": "string",
-      "format": " {}",
+      "format": "     {}",
       "interval": 10,
-      "max-length": 80,
-      "spacing": 10
+      "max-length": 80
     }
 }
