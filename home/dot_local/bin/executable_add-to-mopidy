@@ -34,7 +34,7 @@ def add_to_mopidy(key):
     if key:
         subprocess.call(["mpc", "-h", "::", "add", key])
     else:
-        print("No valid item found")
+        print(f"No valid item found in:\n\n{key}")
         exit(1)
 
 
@@ -54,11 +54,24 @@ if args.path:
 elif args.url:
     add_to_mopidy(build_uri(args.url))
 else:
-    clipboard = subprocess.Popen(
-        ["xclip", "-selection", "clipboard", "-o"],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-    )
+    # get from clipboard
+    if os.environ.get('XDG_SESSION_TYPE') == 'wayland':
+        clipboard = subprocess.Popen(
+            ["wl-paste", "-n"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+    else:
+        clipboard = subprocess.Popen(
+            ["xclip", "-selection", "clipboard", "-o"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+
     stdout, stderr = clipboard.communicate()
+
+    if stderr:
+        print(str(stderr).strip())
+        exit(1)
 
     add_to_mopidy(build_uri(stdout.decode("utf-8")))
