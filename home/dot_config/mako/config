@@ -22,3 +22,4 @@ max-visible=10
 [urgency=high]
 background-color=#FF0000
 text-color=#FFFFFF
+default-timeout=0
