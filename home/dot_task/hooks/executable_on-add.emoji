@@ -11,6 +11,5 @@ except AttributeError:
     input_stream = sys.stdin
 
 # strip emojis out of data, turn into text. Vit hates weird unicode.
-old = input_stream.readline().decode("utf-8", errors="replace")
-new = input_stream.readline().decode("utf-8", errors="replace")
-print(emoji.demojize(new))
+task = input_stream.readline().decode("utf-8", errors="replace")
+print(emoji.demojize(task))
