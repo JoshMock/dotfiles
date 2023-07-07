@@ -199,7 +199,6 @@ bindsym Shift+print exec ~/.config/sway/scripts/screenshot.sh
 # Keybindings List
 bindsym $mod+t exec xed ~/.config/sway/cheatsheet
 
-
 # ZSA Moonlander hyper/meh
 set $hyper Mod1+Control+Shift+Mod4
 set $meh Control+Shift+Mod1
@@ -209,3 +208,6 @@ bindsym $hyper+m exec add-to-mopidy
 bindsym $meh+z exec zoom-mute-toggle
 bindsym $meh+c exec rofi-clipster
 bindsym $meh+t exec rofi-tidal
+
+# notification dismiss
+bindsym Control+space exec makoctl dismiss -g
