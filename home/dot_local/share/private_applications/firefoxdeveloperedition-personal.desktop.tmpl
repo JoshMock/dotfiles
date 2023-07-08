@@ -1,3 +1,4 @@
+{{ if .work -}}
 [Desktop Entry]
 Version=1.0
 Name=Firefox Developer Edition - Personal profile
@@ -22,3 +23,4 @@ Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" --new
 [Desktop Action new-private-window]
 Name=New Private Window
 Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" --private-window -P Personal %u
+{{ end -}}

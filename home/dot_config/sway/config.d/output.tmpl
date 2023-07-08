@@ -1,3 +1,5 @@
+# vim:ft=swayconfig
+{{ if .work -}}
 # laptop monitor
 output eDP-1 {
   resolution 3456x2160
@@ -12,3 +14,8 @@ output DP-2 {
 }
 
 output DP-3 disable
+{{ else -}}
+output LVDS-1 {
+  resolution 1920x1080
+}
+{{- end }}

@@ -10,3 +10,7 @@ go
 .gcalcli_*
 .vault-token
 .restic
+annex
+.electron-gyp
+.node-gyp
+.rustup

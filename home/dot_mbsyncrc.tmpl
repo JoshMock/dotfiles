@@ -1,5 +1,4 @@
-
-
+{{ if .work -}}
 IMAPStore joshua.mock@elastic.co-remote
 Host imap.gmail.com
 Port 993
@@ -24,3 +23,4 @@ SyncState *
 MaxMessages 0
 ExpireUnread no
 # End profile
+{{ end -}}

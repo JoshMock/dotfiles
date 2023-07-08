@@ -10,7 +10,9 @@
     ],
  
     "modules-center": [
+      {{ if .work -}}
       "custom/timew",
+      {{ end -}}
       "custom/nowplaying",
     ],
 
@@ -148,7 +150,7 @@
         "format-icons": [" "],
         "on-scroll-down": "brightnessctl -c backlight set 1%-",
         "on-scroll-up": "brightnessctl -c backlight set +1%",
-        "spacing": 10
+        "spacing": 10,
     },
 
     "backlight#value" :{
@@ -173,7 +175,7 @@
       "exec": "~/.config/waybar/scripts/timewstatus.sh",
       "return-type": "string",
       "format": " {}",
-      "interval": 10
+      "interval": 10,
     },
 
     "custom/nowplaying": {
@@ -181,6 +183,6 @@
       "return-type": "string",
       "format": "     {}",
       "interval": 10,
-      "max-length": 80
-    }
+      "max-length": 80,
+    },
 }

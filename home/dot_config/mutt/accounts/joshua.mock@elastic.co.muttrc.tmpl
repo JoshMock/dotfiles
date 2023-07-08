@@ -1,3 +1,4 @@
+{{ if .work -}}
 # vim: filetype=neomuttrc
 # muttrc file for account joshua.mock@elastic.co
 set realname = "Josh Mock"
@@ -24,3 +25,4 @@ mailboxes "=INBOX" "=Trash" "=Sent" "=Archive"
 
 color body red yellow 'clients'
 {{ onepasswordRead "op://Elastic/neomutt scoring rules - elastic/notesPlain" }}
+{{ end -}}

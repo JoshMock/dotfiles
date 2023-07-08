@@ -5,4 +5,8 @@ client_id = {{ onepasswordRead "op://Elastic/rclone credentials - Elastic google
 client_secret = {{ onepasswordRead "op://Elastic/rclone credentials - Elastic google drive/add more/client_secret" }}
 scope = drive
 token = {{ onepasswordRead "op://Elastic/rclone credentials - Elastic google drive/add more/token" }}
+{{ else -}}
+[dropbox]
+type = dropbox
+token = {{ onepasswordRead "op://Personal/rclone token - personal dropbox/password" }}
 {{- end }}

@@ -10,6 +10,8 @@ packages:
   - name: bat
   - name: barrier
     features: [desktop]
+  - name: beeper
+    features: [desktop]
   - name: beets
   - name: bugwarrior
     features: [taskwarrior]
@@ -62,6 +64,8 @@ packages:
   - name: lazygit
   - name: lynx
     features: [email]
+  - name: mako
+    features: [desktop]
   - name: mopidy
     features: [mopidy]
   - name: mopidy-bandcamp
@@ -88,6 +92,8 @@ packages:
     features: [email]
   - name: neomutt
     features: [email]
+  - name: network-manager-applet
+    features: [desktop]
   - name: neovim
   - name: nnn
   - name: noti
@@ -161,6 +167,8 @@ packages:
   - name: vivaldi-ffmpeg-codecs
     features: [desktop]
   - name: vlc
+    features: [desktop]
+  - name: waybar
     features: [desktop]
   - name: wget
   - name: which

@@ -17,19 +17,27 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
      
+{{ if .endeavour -}}
 # Welcome App
 exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
+{{ end -}}
 
 # clipster
 exec clipster --daemon
 
 # browser
+{{ if .work -}}
 exec firefox-developer-edition # work profile
 exec firefox-developer-edition -P Personal # personal profile
+{{ else -}}
+exec firefox-developer-edition
+{{ end -}}
 
 # terminal
 exec kitty --single-instance --session ~/.config/kitty/default-session.conf
+{{ if .work -}}
 exec kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad
+{{ end -}}
 
 # chat apps
 exec slack
