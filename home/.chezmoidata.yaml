@@ -173,6 +173,8 @@ packages:
   - name: wget
   - name: which
   - name: whois
+  - name: wofi
+    features: [desktop]
   - name: go-yq
   - name: zeal
     features: [desktop]
