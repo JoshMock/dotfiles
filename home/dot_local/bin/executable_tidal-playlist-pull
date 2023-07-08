@@ -2,10 +2,10 @@
 
 # Collects all the content necessary to prep, pre-record or pre-mix an FM broadcast radio show.
 
-# Given a Tidal playlist name, running this via Bash will:
+# Given a Tidal playlist name, running this will:
 
 # 1. Fetch the list of songs in the playlist
-# 2. Write the tracklist to a markdown file in a nice format
+# 2. Write the tracklist to a markdown file
 # 3. Check if the song has bad language (I don't care about swears but the FCC sure does)
 # 4. Check if this song exists in my personal music library (managed with Beets and git-annex)
 # 5. If so, copy the music file from my library to my working directory
@@ -14,7 +14,6 @@
 # I-AM-NOT-A-LAWYER WARNING: pulling content from Tidal and keeping it indefinitely may violate their terms of service. I only stream these to my machine while mixing my radio show offline, then immediately delete them.
 
 # Future goal: load the tracks in the working directory into a session in Ardour, my DAW of choice
-# Future goal: generate tracklist text in a format that can be imported into Spinitron, where my station records what songs are played at what times.
 
 import argparse
 import datetime
@@ -131,27 +130,15 @@ def check_explicit(track):
 
 
 def check_owned(track):
-    cmd = ['beet', 'list', '-p']
-    cmd.extend(track.artist.name.split(' '))
-    cmd.append('title:')
-    cmd.extend(track.name.split(' '))
+    cmd = ["beet", "list", "-p"]
+    cmd.extend(track.artist.name.split(" "))
+    cmd.append("title:")
+    cmd.extend(track.name.split(" "))
     run = subprocess.run(cmd, capture_output=True)
-    # run = subprocess.run(
-    #     [
-    #         "beet",
-    #         "list",
-    #         "-p",
-    #         f"'{track.artist.name}'",
-    #         f"'title:{track.name}'",
-    #         "|",
-    #         "head",
-    #         "-n1",
-    #     ],
-    #     capture_output=True,
-    # )
-    output = run.stdout.decode("utf-8").strip().split('\n')
+    output = run.stdout.decode("utf-8").strip().split("\n")
+    # TODO: if multiple lines of output, let user select the right one
     if not output:
-        print(f'Not found in personal library: {track.artist.name} - {track.name}')
+        print(f"Not found in personal library: {track.artist.name} - {track.name}")
     return output[0] if output else ""
 
 
@@ -206,6 +193,7 @@ def pull_from_tidal(url, output_path):
     subprocess.run(
         [
             "/usr/bin/wget",
+            "--no-verbose",
             "--output-document",
             output_path,
             url,
@@ -225,7 +213,8 @@ def pull_song_files(playlist_data):
                 )
             else:
                 pull_from_tidal(
-                    track["tidal_url"], f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.flac"
+                    track["tidal_url"],
+                    f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.flac",
                 )
         except Exception as err:
             print(f'ERROR: {err} in track {track["formatted_title"]}')
