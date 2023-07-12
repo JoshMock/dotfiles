@@ -136,6 +136,8 @@ packages:
   - name: starship
   - name: stow
   - name: strace
+  - name: swaylock-effects-git
+    features: [desktop]
   - name: tailscale
   - name: task
     features: [taskwarrior]
