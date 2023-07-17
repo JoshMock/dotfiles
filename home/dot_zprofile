@@ -14,4 +14,5 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # use bat as default pager
 export PAGER="bat -p"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT='-c'
+export MANPAGER="sh -c 'col -bx | bat --theme=default -l man -p'"
