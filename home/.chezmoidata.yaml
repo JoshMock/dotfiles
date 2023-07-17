@@ -26,7 +26,7 @@ packages:
   - name: docker-compose
   - name: element-desktop
     features: [desktop]
-  - name: espanso-bin
+  - name: espanso-wayland
     features: [desktop]
   - name: etckeeper
   - name: exa
@@ -178,7 +178,7 @@ packages:
   - name: wofi
     features: [desktop]
   - name: go-yq
-  - name: zeal
+  - name: zeal-git
     features: [desktop]
   - name: zip
   - name: zoom
