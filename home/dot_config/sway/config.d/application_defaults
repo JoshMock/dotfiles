@@ -1,6 +1,4 @@
 # Assign workspaces
-
-assign [class="firefoxdeveloperedition"] 1
 assign [app_id="(?i)kitty"] 2
 assign [app_id="(?i)kitty-scratchpad"] __i3_scratch
 assign [class="(?i)slack"] 3
@@ -9,10 +7,8 @@ assign [class="(?i)element"] 3
 assign [class="(?i)zoom"] 3
 assign [app_id="(?i)zoom"] 3
 assign [class="(?i)beeper"] 3
-assign [class="firefox-personal"] 4
 
 for_window [app_id="xed"] focus
-
 
 # set floating (nontiling) for apps needing it:
 for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt

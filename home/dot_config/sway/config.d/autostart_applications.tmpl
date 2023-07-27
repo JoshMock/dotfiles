@@ -16,36 +16,43 @@ exec nm-applet --indicator
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-     
+
 {{ if .endeavour -}}
 # Welcome App
 exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
-{{ end -}}
-
-# clipster
-exec clipster --daemon
-
-# browser
-{{ if .work -}}
-exec firefox-developer-edition # work profile
-exec firefox-developer-edition -P Personal # personal profile
-{{ else -}}
-exec firefox-developer-edition
-{{ end -}}
+{{- end }}
 
 # terminal
-exec kitty --single-instance --session ~/.config/kitty/default-session.conf
+exec swaymsg "workspace 2"
+exec ~/.config/sway/scripts/sway-toolwait --verbose kitty -- --session ~/.config/kitty/default-session.conf
 {{ if .work -}}
-exec kitty --single-instance --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad
-{{ end -}}
+exec ~/.config/sway/scripts/sway-toolwait --verbose --waitfor kitty-scratchpad kitty -- --single-instance --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad && swaymsg "move scratchpad"
+{{- end }}
 
-# chat apps
+# chat apps, tabbed layout
+exec swaymsg "workspace 3; layout tabbed;"
 exec slack
 exec element-desktop
 exec discord
 exec beeper
 
+# browser; runs last because it takes the longest to load
+exec swaymsg "workspace 1"
+exec ~/.config/sway/scripts/sway-toolwait --verbose firefox-developer-edition
 {{ if .work -}}
-# autoclose script
-exec ~/.local/bin/autoclose
+exec swaymsg "workspace 4"
+exec ~/.config/sway/scripts/sway-toolwait --verbose firefox-developer-edition -- -P Personal
 {{- end }}
+
+{{ if .work -}}
+# hacky way to default all containers to main monitor if it's present
+exec swaymsg "workspace 1; move workspace to output DP-2"
+exec swaymsg "workspace 2; move workspace to output DP-2"
+exec swaymsg "workspace 3; move workspace to output DP-2"
+exec swaymsg "workspace 4; move workspace to output DP-2"
+{{- end }}
+     
+# {{ if .work -}}
+# autoclose script TODO: only works on xorg
+# exec ~/.local/bin/autoclose
+# {{- end }}
