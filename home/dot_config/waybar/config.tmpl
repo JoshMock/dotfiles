@@ -1,0 +1,187 @@
+// vim:ft=json5
+{
+    "layer": "top",
+    "position": "top",
+
+    "modules-left": [
+      "sway/workspaces",
+      "sway/mode",
+    ],
+ 
+    "modules-center": [
+      {{ if .work -}}
+      "custom/timew",
+      {{ end -}}
+      "custom/nowplaying",
+    ],
+
+    "modules-right": [
+      "network",
+      "idle_inhibitor",
+      "memory",
+      "cpu",
+      "pulseaudio",
+      "battery",
+      "backlight#icon",
+      "backlight#value",
+      "clock",
+      "custom/weather",
+      "tray",
+      "custom/power",
+    ],
+
+    // Modules
+
+    "idle_inhibitor": {
+      "format": "{icon} ",
+      "format-icons":{
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-full": "",
+      "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+      "interval": 10,
+      "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
+      "format": "{:%I:%M}",
+      "tooltip-format": "{:%Y-%m-%d}"
+    },
+
+    "cpu": {
+      "interval": 5,
+      "format": "  {usage}% ({load})", // Icon: microchip
+      "states": {
+        "warning": 70,
+        "critical": 90,
+      },
+      "on-click": "kitty --single-instance glances",
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": " {}%", // Icon: memory
+        "on-click": "kitty --single-instance glances", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "xfce4-terminal -e 'nmtui'",
+    },
+    "network#vpn": {
+        "interface": "tun0",
+        "format": "  {essid} ({signalStrength}%)",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    },
+
+    "sway/mode": {
+        "format": "{}",
+        "tooltip": false
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 80
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup" : false,
+        "all-outputs": false,
+        "format": "  {icon}  "
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "וֹ",
+            "headset": "  ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [""]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    },
+
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh", 
+        "return-type": "json",
+        "interval": 600,
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing":10,
+     },
+
+    "backlight#icon": {
+        "format": "{icon}",
+        "format-icons": [" "],
+        "on-scroll-down": "brightnessctl -c backlight set 1%-",
+        "on-scroll-up": "brightnessctl -c backlight set +1%",
+        "spacing": 10,
+    },
+
+    "backlight#value" :{
+         "format": "{percent}%",
+         "on-scroll-down": "brightnessctl -c backlight set 1%-",
+         "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+
+    "custom/launcher": {
+        "format":" ",
+        "on-click": "exec wofi -c ~/.config/wofi/config -I",
+        "tooltip": false,
+    },
+
+    "custom/power": {
+        "format":"⏻",
+        "on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+        "tooltip": false,
+    },
+
+    "custom/timew": {
+      "exec": "~/.config/waybar/scripts/timewstatus.sh",
+      "return-type": "string",
+      "format": " {}",
+      "interval": 10,
+    },
+
+    "custom/nowplaying": {
+      "exec": "~/.local/bin/now-playing",
+      "return-type": "string",
+      "format": "     {}",
+      "interval": 10,
+      "max-length": 80,
+    },
+}

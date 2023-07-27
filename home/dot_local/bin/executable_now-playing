@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ "$(playerctl status)" = "Playing" ]; then
+  echo "$(playerctl metadata artist) - \"$(playerctl metadata title)\" ($(playerctl metadata album))"
+else
+  echo ""
+fi

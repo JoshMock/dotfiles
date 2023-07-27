@@ -1,0 +1,5 @@
+[Desktop Entry]
+Version=0.1.0
+Name=Splitter
+Exec=/home/joshmock/.local/bin/splitter %u
+MimeType=x-scheme-handler/http;x-scheme-handler/https;

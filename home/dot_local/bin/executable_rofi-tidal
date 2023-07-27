@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+
+import datetime
+import json
+
+from rofi import Rofi
+import subprocess
+import tidalapi
+
+TIDAL_SESSION_FILE = "/home/joshmock/.config/tidal-oauth.json"
+
+
+def login():
+    config = tidalapi.Config(quality=tidalapi.Quality.lossless)
+    session = tidalapi.Session(config)
+
+    # load from file first
+    try:
+        with open(TIDAL_SESSION_FILE) as file:
+            session_file = file.read()
+        session_data = json.loads(session_file)
+        session_data["expiry_time"] = datetime.datetime.fromisoformat(
+            session_data["expiry_time"]
+        )
+        session.load_oauth_session(**session_data)
+
+    # reauth if no file exists
+    except Exception as err:
+        print(f"Not logged in: {err}")
+        session.login_oauth_simple()
+        keys = ["token_type", "access_token", "refresh_token"]
+        session_data = {k: getattr(session, k) for k in keys}
+        session_data["expiry_time"] = session.expiry_time.isoformat()
+        with open(TIDAL_SESSION_FILE, "w") as file:
+            file.write(json.dumps(session_data))
+
+    return session
+
+
+def main():
+    tidal = login()
+    r = Rofi()
+
+    search_term = r.text_entry("Search Tidal")
+    if not search_term or not search_term.strip():
+        return
+
+    r.status("Searching...")
+    results = tidal.search(search_term)
+    index, key = r.select(
+        "Artists",
+        [a.name for a in results["artists"]],
+    )
+    if key == -1:
+        return
+
+    selected_artist = results["artists"][index]
+    r.status("Looking up albums...")
+    artist_albums = selected_artist.get_albums()
+    index, key = r.select(
+        f"Albums by {selected_artist.name}",
+        [a.name for a in artist_albums],
+    )
+    if key == -1:
+        return
+
+    album_id = artist_albums[index].id
+    r.status("Adding to Mopidy queue...")
+    run = subprocess.run(
+        [
+            "/home/joshmock/.local/bin/add-to-mopidy",
+            "--url",
+            f"https://listen.tidal.com/album/{album_id}",
+        ],
+        capture_output=True,
+    )
+    r.close()
+    output = run.stdout.decode("utf-8").strip()
+    if output:
+        r.exit_with_error(output)
+
+
+if __name__ == "__main__":
+    main()

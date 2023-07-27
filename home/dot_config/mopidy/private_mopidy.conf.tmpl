@@ -1,0 +1,113 @@
+{{ if .mopidy -}}
+[core]
+restore_state = true
+
+[logging]
+#verbosity = 0
+#format = %(levelname)-8s %(asctime)s [%(process)d:%(threadName)s] %(name)s\n  %(message)s
+#color = true
+#config_file =
+
+[audio]
+#mixer = software
+#mixer_volume = 
+#output = autoaudiosink
+#buffer_time = 
+
+[proxy]
+#scheme = 
+#hostname = 
+#port = 
+#username = 
+#password = 
+
+[file]
+enabled = true
+media_dirs = 
+  ~/Music|Music
+excluded_file_extensions = 
+  .directory
+  .html
+  .jpeg
+  .jpg
+  .log
+  .nfo
+  .pdf
+  .png
+  .txt
+  .zip
+show_dotfiles = false
+follow_symlinks = true
+metadata_timeout = 1000
+
+[http]
+enabled = true
+hostname = 127.0.0.1
+port = 6680
+#zeroconf = Mopidy HTTP server on $hostname
+allowed_origins = 127.0.0.1:6680
+#csrf_protection = true
+#default_app = mopidy
+
+[m3u]
+#enabled = true
+#base_dir =
+#default_encoding = latin-1
+#default_extension = .m3u8
+#playlists_dir =
+
+[softwaremixer]
+#enabled = true
+
+[stream]
+#enabled = true
+#protocols = 
+#  http
+#  https
+#  mms
+#  rtmp
+#  rtmps
+#  rtsp
+#metadata_blacklist = 
+#timeout = 5000
+
+# [beets]
+# enabled = false
+# hostname = nas.local
+# port = 8337
+
+[bandcamp]
+enabled = true
+identity = {{ onepasswordRead "op://Personal/Bandcamp - mopidy identity/password" }}
+
+[tidal]
+enabled = true
+quality = LOSSLESS
+
+[scrobbler]
+enabled = true
+username = Perfect13thStep
+password = {{ onepasswordRead "op://Personal/Last.fm/Password" }}
+
+[mpris]
+enabled = true
+
+[mpd]
+hostname = ::
+
+[youtube]
+enabled = true
+
+[mowecl]
+enabled = true
+
+[iris]
+enabled = false
+
+[jellyfin]
+enabled = true
+hostname = nas:8096
+username = root
+password = {{ onepasswordRead "op://Personal/nas.local jellyfin admin/password" }}
+libraries = Music
+{{ end -}}

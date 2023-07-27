@@ -1,0 +1,19 @@
+# navigation
+agkozak/zsh-z
+
+# history
+ohmyzsh/ohmyzsh path:lib/history.zsh
+ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+
+# code things
+ohmyzsh/ohmyzsh path:lib/git.zsh
+zsh-users/zsh-syntax-highlighting
+hlissner/zsh-autopair
+
+# completions and suggestions
+zsh-users/zsh-completions kind:fpath
+belak/zsh-utils path:completion
+zsh-users/zsh-autosuggestions
+Aloxaf/fzf-tab
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+ohmyzsh/ohmyzsh path:plugins/git/git.plugin.zsh

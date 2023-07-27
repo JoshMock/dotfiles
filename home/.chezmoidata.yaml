@@ -1,0 +1,187 @@
+---
+packages:
+  - name: 1password
+    features: [desktop]
+  - name: 1password-cli
+  - name: abook
+    features: [email]
+  - name: asdf-vm
+  - name: atuin
+  - name: bat
+  - name: barrier
+    features: [desktop]
+  - name: beeper
+    features: [desktop]
+  - name: beets
+  - name: bugwarrior
+    features: [taskwarrior]
+  - name: clipster
+    features: [desktop]
+  - name: cronie
+  - name: direnv
+  - name: discord
+    features: [desktop]
+  - name: docker
+  - name: docker-buildx
+  - name: docker-compose
+  - name: element-desktop
+    features: [desktop]
+  - name: espanso-wayland
+    features: [desktop]
+  - name: etckeeper
+  - name: exa
+  - name: fd
+  - name: feh
+    features: [desktop]
+  - name: firefox-developer-edition
+    features: [desktop]
+  - name: flameshot
+    features: [desktop]
+  - name: fzf
+  - name: gcalcli
+    features: [work]
+  - name: git
+  - name: git-annex
+  - name: git-extras
+  - name: github-cli
+  - name: glances
+  - name: gmailctl
+    features: [work]
+  - name: htop
+  - name: inter-font
+    features: [desktop]
+  - name: interception-caps2esc
+    features: [desktop]
+  - name: jq
+  - name: junction
+    features: [desktop]
+  - name: kitty
+    features: [desktop]
+  - name: kitty-terminfo
+    features: [desktop]
+  - name: calcurse
+    features: [desktop]
+  - name: lazygit
+  - name: lynx
+    features: [email]
+  - name: mako
+    features: [desktop]
+  - name: mopidy
+    features: [mopidy]
+  - name: mopidy-bandcamp
+    features: [mopidy]
+  - name: mopidy-beets
+    features: [mopidy]
+  - name: mopidy-iris
+    features: [mopidy]
+  - name: mopidy-jellyfin
+    features: [mopidy]
+  - name: mopidy-mpd
+    features: [mopidy]
+  - name: mopidy-mpris
+    features: [mopidy]
+  - name: mopidy-scrobbler
+    features: [mopidy]
+  - name: mopidy-youtube
+    features: [mopidy]
+  - name: mpc
+    features: [mopidy]
+  - name: msmtp
+    features: [email]
+  - name: mutt-wizard
+    features: [email]
+  - name: neomutt
+    features: [email]
+  - name: network-manager-applet
+    features: [desktop]
+  - name: neovim
+  - name: nnn
+  - name: noti
+    features: [desktop]
+  - name: notmuch
+    features: [email]
+  - name: noto-fonts-emoji
+    features: [desktop]
+  - name: obsidian-appimage
+    features: [desktop]
+  - name: otf-font-awesome-4
+    features: [desktop]
+  - name: p7zip
+  - name: pass
+    features: [email]
+  - name: playerctl
+    features: [mopidy]
+  - name: python-black
+  - name: python-build
+  - name: python-httpx
+  - name: python-mopidy-tidal
+    features: [mopidy]
+  - name: python-pip
+  - name: python-pipx
+  - name: python-rofi
+    features: [desktop]
+  - name: python-taskw
+    features: [taskwarrior]
+  - name: python-tidalapi
+    features: [desktop, mopidy]
+  - name: rclone
+  - name: restic
+  - name: ripgrep
+  - name: rofi
+    features: [desktop]
+  - name: rofi-calc
+    features: [desktop]
+  - name: slack-desktop
+    features: [desktop]
+  - name: starship
+  - name: stow
+  - name: strace
+  - name: swaylock-effects-git
+    features: [desktop]
+  - name: tailscale
+  - name: task
+    features: [taskwarrior]
+  - name: timew
+    features: [taskwarrior]
+  - name: tmux
+  - name: traceroute
+  - name: ttf-ancient-fonts
+    features: [desktop]
+  - name: ttf-arimo-nerd
+    features: [desktop]
+  - name: ttf-dejavu
+    features: [desktop]
+  - name: ttf-font-awesome-4
+    features: [desktop]
+  - name: ttf-hack
+    features: [desktop]
+  - name: ttf-liberation
+    features: [desktop]
+  - name: unzip
+  - name: urlview
+    features: [desktop, email]
+  - name: vault
+    features: [work]
+  - name: vit
+    features: [taskwarrior]
+  - name: vivaldi
+    features: [desktop]
+  - name: vivaldi-ffmpeg-codecs
+    features: [desktop]
+  - name: vlc
+    features: [desktop]
+  - name: waybar
+    features: [desktop]
+  - name: wget
+  - name: which
+  - name: whois
+  - name: wofi
+    features: [desktop]
+  - name: go-yq
+  - name: zeal-git
+    features: [desktop]
+  - name: zip
+  - name: zoom
+    features: [desktop]
+  - name: zsh
+  - name: zsh-antidote

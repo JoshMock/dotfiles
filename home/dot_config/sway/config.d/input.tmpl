@@ -1,0 +1,22 @@
+# mouse config
+input type:pointer {
+  tap disabled
+  natural_scroll enabled
+}
+
+input type:touchpad {
+  dwt enabled
+  tap disabled
+  natural_scroll enabled
+}
+
+# Read `man 5 sway-input` for more information about this section.
+input type:keyboard xkb_layout "us"
+
+exec_always {
+  'swaymsg input type:keyboard xkb_layout "$(localectl status | grep "X11 Layout" | sed -e "s/^.*X11 Layout://")"'
+  'swaymsg input type:keyboard xkb_variant "$(localectl status | grep "X11 Variant" | sed -e "s/^.*X11 Variant://")"'
+  {{ if .work -}}
+  'bluetoothctl connect 30:D9:D9:90:55:2B'
+  {{ end -}}
+}

@@ -1,0 +1,26 @@
+{{ if .work -}}
+IMAPStore joshua.mock@elastic.co-remote
+Host imap.gmail.com
+Port 993
+User joshua.mock@elastic.co
+PassCmd "pass joshua.mock@elastic.co"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore joshua.mock@elastic.co-local
+Subfolders Verbatim
+Path /home/joshmock/.local/share/mail/joshua.mock@elastic.co/
+Inbox /home/joshmock/.local/share/mail/joshua.mock@elastic.co/INBOX
+
+Channel joshua.mock@elastic.co
+Expunge Both
+Far :joshua.mock@elastic.co-remote:
+Near :joshua.mock@elastic.co-local:
+Patterns "INBOX"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+{{ end -}}

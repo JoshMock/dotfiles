@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+from __future__ import print_function
+
+import sys
+import emoji
+
+try:
+    input_stream = sys.stdin.buffer
+except AttributeError:
+    input_stream = sys.stdin
+
+# strip emojis out of data, turn into text. Vit hates weird unicode.
+old = input_stream.readline().decode("utf-8", errors="replace")
+new = input_stream.readline().decode("utf-8", errors="replace")
+print(emoji.demojize(new))

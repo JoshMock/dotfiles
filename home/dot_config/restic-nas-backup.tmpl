@@ -1,0 +1,3 @@
+{{ if eq .chezmoi.hostname "lateral-am" -}}
+{{ onepasswordRead "op://Personal/Restic - lateral-am nas.local backup/password" }}
+{{- end }}

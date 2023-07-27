@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+import subprocess
+import time
+import os
+
+apps = {
+    "slack": 1200,
+    "discord": 600,
+    "element": 600,
+}
+
+INTERVAL = 5
+
+FNULL = open(os.devnull, "w")
+
+
+def get(cmd):
+    try:
+        return subprocess.check_output(cmd, stderr=FNULL).decode("utf-8").strip()
+    except subprocess.CalledProcessError:
+        return None
+
+
+idle_times = {}
+
+while True:
+    time.sleep(INTERVAL)
+    for app in apps.keys():
+        windows = get(["xdotool", "search", "--all", "--classname", app])
+        if windows:
+            windows = windows.splitlines()
+            for w in windows:
+                if w in idle_times:
+                    idle_times[w] += INTERVAL
+                    # if window has been unfocused for too long, quit app
+                    if idle_times[w] >= apps[app]:
+                        subprocess.Popen(["xdotool", "windowquit", w])
+                        idle_times.pop(w, None)
+                else:
+                    idle_times[w] = 0
+
+            # if window is focused, reset its timer
+            if get(["xdotool", "getactivewindow"]) in windows:
+                idle_times[get(["xdotool", "getactivewindow"])] = 0

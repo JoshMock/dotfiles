@@ -1,0 +1,71 @@
+[general]
+taskrc = /home/joshmock/.taskrc
+annotation_comments = False
+annotation_links = True
+{{ if .work -}}
+targets = elastic_my_issues,elastic_my_prs,elastic_code_reviews,elastic_client_js_prs
+
+[elastic_my_issues]
+service = github
+github.login = JoshMock
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
+github.username = elastic
+github.include_user_issues = False
+github.include_user_repos = False
+github.description_template = {{ "{{githubtitle}}" }}
+github.query = is:open is:issue assignee:JoshMock archived:false user:elastic
+github.default_priority = M
+github.add_tags = task
+github.import_labels_as_tags = True
+
+[elastic_my_prs]
+service = github
+github.login = JoshMock
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
+github.username = elastic
+github.include_user_issues = False
+github.include_user_repos = False
+github.description_template = {{ "{{githubtitle}}" }}
+github.query = is:open is:pr archived:false user:elastic author:JoshMock 
+github.default_priority = M
+github.add_tags = open_pr
+
+[elastic_code_reviews]
+service = github
+github.login = JoshMock
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
+github.username = elastic
+github.include_user_issues = False
+github.include_user_repos = False
+github.description_template = {{ "{{githubtitle}}" }}
+github.query = is:open is:pr archived:false user:elastic review-requested:JoshMock
+github.default_priority = H
+github.add_tags = code_review
+
+[elastic_client_js_prs]
+service = github
+github.login = JoshMock
+github.password = {{ onepasswordRead "op://Elastic/Bugwarrior Github token - Elastic/password" }}
+github.username = elastic
+github.include_user_issues = False
+github.include_user_repos = False
+github.description_template = {{ "{{githubtitle}}" }}
+github.query = repo:elastic/elasticsearch-js is:open is:pr archived:false
+github.default_priority = M
+github.add_tags = code_review
+{{ else -}}
+targets = joshmock_issues
+
+[joshmock_issues]
+service = github
+github.login = JoshMock
+github.password = {{ onepasswordRead "op://Personal/Bugwarrior Github token - personal/password" }}
+github.username = JoshMock
+github.include_user_issues = True
+github.include_user_repos = True
+github.exclude_repos = backbone-socketio
+github.description_template = {{ "{{githubtitle}}" }}
+github.query = user:JoshMock is:issue is:open archived:false
+github.default_priority = M
+github.import_labels_as_tags = True
+{{- end }}

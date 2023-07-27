@@ -1,0 +1,261 @@
+#!/usr/bin/env python3
+
+# Collects all the content necessary to prep, pre-record or pre-mix an FM broadcast radio show.
+
+# Given a Tidal playlist name, running this will:
+
+# 1. Fetch the list of songs in the playlist
+# 2. Write the tracklist to a markdown file
+# 3. Check if the song has bad language (I don't care about swears but the FCC sure does)
+# 4. Check if this song exists in my personal music library (managed with Beets and git-annex)
+# 5. If so, copy the music file from my library to my working directory
+# 6. If not, stream the lossless version of the song from Tidal to an mp3 file in my working directory
+
+# I-AM-NOT-A-LAWYER WARNING: pulling content from Tidal and keeping it indefinitely may violate their terms of service. I only stream these to my machine while mixing my radio show offline, then immediately delete them.
+
+# Future goal: load the tracks in the working directory into a session in Ardour, my DAW of choice
+
+import argparse
+import datetime
+import json
+import os
+import re
+import shutil
+import subprocess
+import tidalapi
+
+# show me an easier way to build a list of swears, I dare you
+SWEARS = [
+    "fuck",
+    "shit",
+    "bitch",
+    "(^ass|ass$)",
+    "(^tit|tit$)",
+    "cunt",
+    "piss",
+    "bastard",
+    "chink",
+    "beaner",
+    "nigga",
+    "nigger",
+    "clit",
+    "chode",
+    "cock",
+    "coon",
+    "cum",
+    "slut",
+    "dick",
+    "dyke",
+    "fag",
+    "gay",
+    "goddam",
+    "gooch",
+    "gook",
+    "guido",
+    "handjob",
+    "heeb",
+    "hoe",
+    "homo",
+    "jizz",
+    "kike",
+    "kunt",
+    "kyke",
+    "^lame",
+    "minge",
+    "^poon",
+    "prick",
+    "pussy",
+    "queef",
+    "queer",
+    "shiznit",
+    "splooge",
+    "tard",
+    "twat",
+    "whore",
+    "wop",
+    "wetback",
+]
+SWEARS = [re.compile(s) for s in SWEARS]
+
+
+def login():
+    config = tidalapi.Config(quality=tidalapi.Quality.lossless)
+    session = tidalapi.Session(config)
+
+    # load from file first
+    try:
+        with open("/home/joshmock/.tidal-session") as file:
+            session_file = file.read()
+        session_data = json.loads(session_file)
+        session_data["expiry_time"] = datetime.datetime.fromisoformat(
+            session_data["expiry_time"]
+        )
+        session.load_oauth_session(**session_data)
+
+    # reauth if no file exists
+    except Exception as err:
+        print(f"Not logged in: {err}")
+        session.login_oauth_simple()
+        keys = ["token_type", "access_token", "refresh_token"]
+        session_data = {k: getattr(session, k) for k in keys}
+        session_data["expiry_time"] = session.expiry_time.isoformat()
+        with open("/home/joshmock/.tidal-session", "w") as file:
+            file.write(json.dumps(session_data))
+
+    return session
+
+
+def find_playlist(session, name):
+    for p in session.user.playlists():
+        if p.name == name:
+            return p
+    raise Exception(f'No playlist found with name "{name}"')
+
+
+def check_explicit(track):
+    if track.explicit:
+        return "  Explicit: Tidal flagged as explicit"
+
+    # check lyrics for swears
+    possible_swears = []
+    try:
+        words = set(track.lyrics().text.lower().split())
+    except Exception:
+        return "  Explicit? no lyrics found"
+    for swear in SWEARS:
+        for word in words:
+            if swear.search(word):
+                possible_swears.append(f'  Explicit: possible swear found: "{word}"')
+    return "\n".join(possible_swears)
+
+
+def check_owned(track):
+    cmd = ["beet", "list", "-p"]
+    cmd.extend(track.artist.name.split(" "))
+    cmd.append("title:")
+    cmd.extend(track.name.split(" "))
+    run = subprocess.run(cmd, capture_output=True)
+    output = run.stdout.decode("utf-8").strip().split("\n")
+    # TODO: if multiple lines of output, let user select the right one
+    if not output:
+        print(f"Not found in personal library: {track.artist.name} - {track.name}")
+    return output[0] if output else ""
+
+
+def clean_copyright(track):
+    copy = track.copyright or ""
+    copy = re.sub(r"℗\s+", "", copy)
+    copy = re.sub(r"\(P\)", "", copy)
+    copy = re.sub(r"(19|20)\d{2}", "", copy)
+    copy = re.sub(r"\s+", " ", copy)
+    copy = copy.split(",")[0]
+    return copy.strip()
+
+
+def clean_duration(track):
+    duration = str(datetime.timedelta(seconds=track.duration))
+    return ":".join(duration.split(":")[-2:])
+
+
+def get_playlist_tracks(playlist):
+    tracks = []
+    for t in playlist.tracks():
+        explicit = check_explicit(t)
+        tracks.append(
+            {
+                "explicit": bool(explicit),
+                "explicit_info": f"\n{explicit}" if explicit else "",
+                "owned": check_owned(t),
+                "tidal_url": t.get_url(),
+                "formatted_title": f'{t.artist.name} - "{t.name}" ({t.album.name})',
+                "filename_title": f"{t.artist.name} - {t.name}",
+                "spinitron": f'"{t.artist.name}","{t.name}","{t.album.name}","{clean_copyright(t)}","{clean_duration(t)}"',
+            }
+        )
+    return tracks
+
+
+def playlist_tracks_string(playlist_data):
+    return "\n".join(t["formatted_title"] for t in playlist_data)
+
+
+def pull_from_collection(filepath, output_path):
+    usbpath = filepath.replace("~/Music/", "/mnt/usb-files/annex/music/")
+    print(f"pulling {usbpath} to {output_path}")
+    dir, filename = os.path.split(usbpath)
+    os.chdir(dir)
+    subprocess.run(["/usr/bin/git-annex", "get", filename])
+    shutil.copyfile(f"{dir}/{filename}", output_path, follow_symlinks=True)
+
+
+def pull_from_tidal(url, output_path):
+    print(f"pulling Tidal URL to {output_path}")
+    subprocess.run(
+        [
+            "/usr/bin/wget",
+            "--no-verbose",
+            "--output-document",
+            output_path,
+            url,
+        ],
+    )
+
+
+def pull_song_files(playlist_data):
+    track_num = 1
+    for track in playlist_data:
+        num_str = str(track_num).zfill(2)
+        try:
+            if track["owned"]:
+                pull_from_collection(
+                    track["owned"],
+                    f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.mp3",
+                )
+            else:
+                pull_from_tidal(
+                    track["tidal_url"],
+                    f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.flac",
+                )
+        except Exception as err:
+            print(f'ERROR: {err} in track {track["formatted_title"]}')
+        track_num += 1
+
+
+def print_explicit(playlist_data):
+    for track in playlist_data:
+        if track["explicit"]:
+            print(f'EXPLICIT: {track["formatted_title"]}: {track["explicit_info"]}')
+
+
+def print_spinitron(playlist_data):
+    for t in playlist_data:
+        print(t["spinitron"])
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("playlist", help="Name of the playlist")
+    args = parser.parse_args()
+    session = login()
+
+    # fetch playlist data from Tidal
+    playlist = find_playlist(session, args.playlist)
+    playlist_data = get_playlist_tracks(playlist)
+
+    # write setlist to file
+    tracklist = playlist_tracks_string(playlist_data)
+    with open(f"/home/joshmock/wxna-session/setlist-{args.playlist}.md", "w") as f:
+        f.write(tracklist)
+
+    # fetch mp3s for all tracks
+    pull_song_files(playlist_data)
+
+    # print warnings about explicit content
+    print_explicit(playlist_data)
+
+    # print setlist in a format that can be imported to Spinitron
+    print_spinitron(playlist_data)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+{{ if not .work -}}
+curl -m 10 --retry 5 "https://hc-ping.com/52b87cac-fd18-4b7d-8ca7-191e0373a740/start"
+{{- end }}
+
+restic --verbose backup --exclude-file=/home/joshmock/.config/restic/restic-ignore /home/joshmock
+
+restic --verbose forget --prune \
+  --keep-last 10 \
+  --keep-daily 7 \
+  --keep-weekly 5 \
+  --keep-monthly 12 \
+  --keep-yearly 20
+
+{{ if not .work -}}
+curl -fsS -m 10 --retry 5 -o /dev/null \
+  "https://hc-ping.com/52b87cac-fd18-4b7d-8ca7-191e0373a740
+{{ end -}}

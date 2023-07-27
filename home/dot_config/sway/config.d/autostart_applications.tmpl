@@ -1,0 +1,58 @@
+# vim:ft=swayconfig
+
+# Auth with polkit-gnome:
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# start 1password
+exec 1password --silent
+
+# Desktop notifications
+exec mako
+
+# Network Applet
+exec nm-applet --indicator
+
+# GTK3 applications take a long time to start
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+{{ if .endeavour -}}
+# Welcome App
+exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
+{{- end }}
+
+# terminal
+exec swaymsg "workspace 2"
+exec ~/.config/sway/scripts/sway-toolwait --verbose kitty -- --session ~/.config/kitty/default-session.conf
+{{ if .work -}}
+exec ~/.config/sway/scripts/sway-toolwait --verbose --waitfor kitty-scratchpad kitty -- --single-instance --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad && swaymsg "move scratchpad"
+{{- end }}
+
+# chat apps, tabbed layout
+exec swaymsg "workspace 3; layout tabbed;"
+exec slack
+exec element-desktop
+exec discord
+exec beeper
+
+# browser; runs last because it takes the longest to load
+exec swaymsg "workspace 1"
+exec ~/.config/sway/scripts/sway-toolwait --verbose firefox-developer-edition
+{{ if .work -}}
+exec swaymsg "workspace 4"
+exec ~/.config/sway/scripts/sway-toolwait --verbose firefox-developer-edition -- -P Personal
+{{- end }}
+
+{{ if .work -}}
+# hacky way to default all containers to main monitor if it's present
+exec swaymsg "workspace 1; move workspace to output DP-2"
+exec swaymsg "workspace 2; move workspace to output DP-2"
+exec swaymsg "workspace 3; move workspace to output DP-2"
+exec swaymsg "workspace 4; move workspace to output DP-2"
+{{- end }}
+     
+# {{ if .work -}}
+# autoclose script TODO: only works on xorg
+# exec ~/.local/bin/autoclose
+# {{- end }}
