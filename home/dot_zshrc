@@ -42,3 +42,11 @@ alias prettyjson='cpaste | jq | ccopy'
 
 # set up asdf
 . /opt/asdf-vm/asdf.sh
+
+alias lastcommit="git rev-parse HEAD | tr -d '\n' | xclip -selection clipboard"
+alias k=kubectl
+alias t=timew
+alias td='timew start "dev environment"'
+alias te='timew start email'
+alias tc='timew start clients js'
+alias tp='timew start clients python'
