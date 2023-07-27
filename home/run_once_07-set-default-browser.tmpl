@@ -1,0 +1,6 @@
+{{ if .work -}}
+#!/usr/bin/env bash
+
+unset BROWSER
+xdg-settings set default-web-browser splitter.desktop
+{{- end }}

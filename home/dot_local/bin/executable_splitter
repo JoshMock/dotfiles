@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+import argparse
+import subprocess
+from urllib.parse import urlparse
+
+
+def pick_browser(url) -> str:
+    parsed = urlparse(url)
+    work = "firefox-developer-edition"
+    personal = "firefox-developer-edition -P Personal"
+
+    if parsed.hostname.endswith(".elastic.co"):
+        return work
+    elif parsed.hostname.endswith('.github.com'):
+        return work
+    elif parsed.hostname == 'elastic.okta.com':
+        return work
+
+    return personal
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Rule-based default browser for sending URLs to different sessions"
+    )
+    parser.add_argument("url")
+    args = parser.parse_args()
+    cmd = pick_browser(args.url).split(' ')
+    cmd.append(args.url)
+    subprocess.run(cmd)
+
+
+if __name__ == "__main__":
+    main()
