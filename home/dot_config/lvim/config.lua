@@ -177,7 +177,7 @@ lvim.plugins = {
           ["core.dirman"] = {
             config = {
               workspaces = {
-                work = "~/Desktop/notes/neorg",
+                work = "~/Documents/notes-work/neorg",
               },
               default_workspace = "work",
             }
