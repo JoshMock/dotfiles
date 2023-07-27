@@ -1,0 +1,30 @@
+defaults
+auth	on
+tls	on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/joshmock/.config/msmtp/msmtp.log
+
+account joshua.mock@elastic.co
+host smtp.gmail.com
+port 465
+from joshua.mock@elastic.co
+user joshua.mock@elastic.co
+passwordeval "pass joshua.mock@elastic.co"
+auth on
+tls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/joshmock/.config/msmtp/msmtp.log
+tls_starttls off
+
+account josh@joshmock.com
+host smtp.fastmail.com
+port 465
+from josh@joshmock.com
+user josh@joshmock.com
+passwordeval "pass josh@joshmock.com"
+auth on
+tls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/joshmock/.config/msmtp/msmtp.log
+tls_starttls off
+
