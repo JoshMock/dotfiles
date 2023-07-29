@@ -102,7 +102,7 @@ packages:
     features: [email]
   - name: noto-fonts-emoji
     features: [desktop]
-  - name: obsidian-appimage
+  - name: obsidian
     features: [desktop]
   - name: otf-font-awesome-4
     features: [desktop]
