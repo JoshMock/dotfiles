@@ -1,0 +1,2 @@
+# reinstall python packages after python version is upgraded on arch linux
+yay -S $(pacman -Qq | grep '^python\-')
