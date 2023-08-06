@@ -169,7 +169,7 @@ def get_playlist_tracks(playlist):
                 "tidal_url": t.get_url(),
                 "formatted_title": f'{t.artist.name} - "{t.name}" ({t.album.name})',
                 "filename_title": f"{t.artist.name} - {t.name}",
-                "spinitron": f'"{t.artist.name}","{t.name}","{t.album.name}","{clean_copyright(t)}","{clean_duration(t)}"',
+                "spinitron": f'"{t.artist.name}","{t.name}","{t.album.name}","{clean_copyright(t)}","{clean_duration(t)}"\n',
             }
         )
     return tracks
@@ -193,7 +193,8 @@ def pull_from_tidal(url, output_path):
     subprocess.run(
         [
             "/usr/bin/wget",
-            "--no-verbose",
+            "--quiet",
+            "--continue",
             "--output-document",
             output_path,
             url,
@@ -221,15 +222,19 @@ def pull_song_files(playlist_data):
         track_num += 1
 
 
-def print_explicit(playlist_data):
+def get_explicit(playlist_data):
+    explicit = []
     for track in playlist_data:
         if track["explicit"]:
-            print(f'EXPLICIT: {track["formatted_title"]}: {track["explicit_info"]}')
+            explicit.append(f'EXPLICIT: {track["formatted_title"]}: {track["explicit_info"]}')
+    return explicit
 
 
-def print_spinitron(playlist_data):
+def get_spinitron(playlist_data):
+    songs = []
     for t in playlist_data:
-        print(t["spinitron"])
+        songs.append(t["spinitron"])
+    return songs
 
 
 def main():
@@ -251,10 +256,18 @@ def main():
     pull_song_files(playlist_data)
 
     # print warnings about explicit content
-    print_explicit(playlist_data)
+    explicit = get_explicit(playlist_data)
+    if explicit:
+        with open(f"/home/joshmock/wxna-session/setlist-{args.playlist}.md", "a") as f:
+            f.write("\n\nEXPLICIT:")
+            f.writelines(explicit)
+            f.write("\n\n")
 
     # print setlist in a format that can be imported to Spinitron
-    print_spinitron(playlist_data)
+    spinitron = get_spinitron(playlist_data)
+    with open(f"/home/joshmock/wxna-session/setlist-{args.playlist}.md", "a") as f:
+        f.write("\n\nSPINITRON:\n")
+        f.writelines(spinitron)
 
 
 if __name__ == "__main__":
