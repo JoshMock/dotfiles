@@ -12,9 +12,11 @@ def pick_browser(url) -> str:
 
     if parsed.hostname.endswith(".elastic.co"):
         return work
-    elif parsed.hostname.endswith('.github.com'):
+    elif parsed.hostname.endswith("github.com"):
         return work
-    elif parsed.hostname == 'elastic.okta.com':
+    elif parsed.hostname.endswith(".google.com"):
+        return work
+    elif parsed.hostname == "elastic.okta.com":
         return work
 
     return personal
@@ -22,11 +24,11 @@ def pick_browser(url) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Rule-based default browser for sending URLs to different sessions"
+        description="Rule-based default 'browser' that opens URLs in different browsers"
     )
     parser.add_argument("url")
     args = parser.parse_args()
-    cmd = pick_browser(args.url).split(' ')
+    cmd = pick_browser(args.url).split(" ")
     cmd.append(args.url)
     subprocess.run(cmd)
 
