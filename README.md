@@ -16,7 +16,7 @@ Any time I can do something without using a mouse, I will.
 ### Software
 
 - [Arch Linux](https://archlinux.org/) or [EndeavourOS](https://endeavouros.com/) (based on Arch)
-- [i3wm](https://i3wm.org/) or [Sway](https://swaywm.org/)
+- [Sway](https://swaywm.org/)
 - [Rofi](https://github.com/davatorium/rofi) for launching desktop apps and streamlining various tasks
 - zsh + [antidote](https://getantidote.github.io/) + [various zsh plugins](./home/dot_zsh_plugins.txt)
 - [LunarVim](https://www.lunarvim.org/) + [Kitty](https://sw.kovidgoyal.net/kitty/) as my IDE
@@ -32,9 +32,7 @@ If you want something simpler that just symlinks things to `$HOME` for you, I hi
 With Chezmoi installed, running the following will clone this repo and move all the pieces into place:
 
 ```shell
-
-git clone git@github.com:JoshMock/dotfiles.git ~/.local/share/chezmoi
-chezmoi apply
+chezmoi init --apply --ssh JoshMock
 ```
 
 ### Automatically installed dependencies
