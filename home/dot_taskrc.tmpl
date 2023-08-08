@@ -31,18 +31,24 @@ uda.url.label=URL
 news.version=2.6.0
 
 {{ if .work -}}
-urgency.user.project.clients.coefficient=7.0
-urgency.user.project.Services.coefficient=5.0
-urgency.user.project.licensing_portal.coefficient=0.8
-urgency.user.project.infra.coefficient=0.9
+urgency.user.project.clients.coefficient=8.0
+urgency.user.project.clients-team.coefficient=8.0
+
 urgency.user.project.elasticsearch-js.coefficient=8.0
 urgency.user.project.elasticsearch-client-generator-js.coefficient=8.0
 urgency.user.project.elasticsearch-transport-js.coefficient=8.0
-urgency.user.project.clients-team.coefficient=3.0
+
+urgency.user.project.elasticsearch-py.coefficient=9.0
+urgency.user.project.elasticsearch-client-generator-python.coefficient=9.0
+urgency.user.project.elasticsearch-transport-python.coefficient=9.0
 
 urgency.user.tag.bug.coefficient=8.0
 urgency.user.tag.pending_release.coefficient=9.0
 urgency.user.tag.open_pr.coefficient=7.0
+
+urgency.user.project.Services.coefficient=0.5
+urgency.user.project.licensing_portal.coefficient=0.3
+urgency.user.project.infra.coefficient=0.4
 {{- end }}
 
 uda.reviewed.type=date
