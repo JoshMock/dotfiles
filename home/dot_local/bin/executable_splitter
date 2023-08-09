@@ -18,6 +18,8 @@ def pick_browser(url) -> str:
         return work
     elif parsed.hostname == "elastic.okta.com":
         return work
+    elif parsed.hostname == "elastic.zoom.us":
+        return work
 
     return personal
 
