@@ -47,6 +47,7 @@ packages:
   - name: glances
   - name: gmailctl
     features: [work]
+  - name: gping
   - name: htop
   - name: inter-font
     features: [desktop]
