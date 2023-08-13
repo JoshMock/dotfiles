@@ -10,7 +10,7 @@ packages:
   - name: bat
   - name: barrier
     features: [desktop]
-  - name: beeper
+  - name: beeper-latest-bin
     features: [desktop]
   - name: beets
   - name: bugwarrior
