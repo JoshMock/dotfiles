@@ -24,6 +24,8 @@ def pick_browser(url) -> str:
         return work
     elif parsed.hostname == "app.slack.com":
         return work
+    elif "elastic" in url:
+        return work
 
     return personal
 
