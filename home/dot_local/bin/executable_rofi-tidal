@@ -11,7 +11,7 @@ TIDAL_SESSION_FILE = "/home/joshmock/.config/tidal-oauth.json"
 
 
 def login():
-    config = tidalapi.Config(quality=tidalapi.Quality.lossless)
+    config = tidalapi.Config(quality=tidalapi.Quality.high_lossless)
     session = tidalapi.Session(config)
 
     # load from file first
