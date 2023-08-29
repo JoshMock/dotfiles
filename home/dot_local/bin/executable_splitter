@@ -10,20 +10,21 @@ def pick_browser(url) -> str:
     work = "firefox-developer-edition"
     personal = "firefox-developer-edition -P Personal"
 
-    if parsed.hostname.endswith(".elastic.co"):
-        return work
-    elif parsed.hostname.endswith("github.com"):
-        return work
-    elif parsed.hostname.endswith(".google.com"):
-        return work
-    elif parsed.hostname == "elastic.okta.com":
-        return work
-    elif parsed.hostname == "elastic.zoom.us":
-        return work
-    elif parsed.hostname == "elasticco.atlassian.net":
-        return work
-    elif parsed.hostname == "app.slack.com":
-        return work
+    if parsed.hostname:
+        if parsed.hostname.endswith(".elastic.co"):
+            return work
+        elif parsed.hostname.endswith("github.com"):
+            return work
+        elif parsed.hostname.endswith(".google.com"):
+            return work
+        elif parsed.hostname == "elastic.okta.com":
+            return work
+        elif parsed.hostname == "elastic.zoom.us":
+            return work
+        elif parsed.hostname == "elasticco.atlassian.net":
+            return work
+        elif parsed.hostname == "app.slack.com":
+            return work
     elif "elastic" in url:
         return work
 
