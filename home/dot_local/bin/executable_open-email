@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# takes a raw email message from mutt or similar, parses the Message-ID header out and uses it to open the message in Gmail in a browser
+
+awk '/^Message-ID/ {print $2}' \
+  | sed 's/[<>]//g' \
+  | jq -sRr @uri \
+  | xargs -I _ "$BROWSER" 'https://mail.google.com/mail/u/0/#search/rfc822msgid%3A_'

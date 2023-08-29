@@ -17,10 +17,12 @@ color body red yellow 'josh(ua)? ?(mock)?'
 
 # show/hide messages based on scoring rules
 bind index . noop
+bind pager . noop
 macro index .i "<limit> ~n10-100<enter>" "show interesting"
 macro index .u "<limit> ~n0-9<enter>" "show uninteresting"
 macro index .z "<collapse-all><enter>" "Collapse all threads"
 macro index .d0 "T ~n0<enter>;D" "Delete all zero-scored emails"
+macro index,pager .v "<pipe-message>open-email<enter>" "View in browser"
 
 # add message score to message list
 set index_format="%2C %N %Z %?X?A& ? %D %-15.15F %s (%-4.4c)"
