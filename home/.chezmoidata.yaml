@@ -63,6 +63,8 @@ packages:
   - name: calcurse
     features: [desktop]
   - name: lazygit
+  - name: leiningen
+    features: [work]
   - name: lynx
     features: [email]
   - name: mako
