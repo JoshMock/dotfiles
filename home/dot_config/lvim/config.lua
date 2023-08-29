@@ -222,7 +222,7 @@ lvim.autocommands = {
   {
     "BufEnter",
     {
-      pattern = { "*.md", "*.markdown", "*.norg", "*.mdx" },
+      pattern = { "*.md", "*.markdown", "*.norg", "*.mdx", "*.asciidoc", "*.txt" },
       command = "setlocal wrap linebreak",
     }
   },
