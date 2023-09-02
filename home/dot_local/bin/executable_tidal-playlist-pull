@@ -79,7 +79,7 @@ SWEARS = [re.compile(s) for s in SWEARS]
 
 
 def login():
-    config = tidalapi.Config(quality=tidalapi.Quality.lossless)
+    config = tidalapi.Config(quality=tidalapi.Quality.high_lossless)
     session = tidalapi.Session(config)
 
     # load from file first
