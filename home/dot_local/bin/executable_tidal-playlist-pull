@@ -121,7 +121,7 @@ def check_explicit(track):
     try:
         words = set(track.lyrics().text.lower().split())
     except Exception:
-        return "  Explicit? no lyrics found"
+        return "  Explicit? no lyrics found\n"
     for swear in SWEARS:
         for word in words:
             if swear.search(word):
@@ -129,17 +129,17 @@ def check_explicit(track):
     return "\n".join(possible_swears)
 
 
-def check_owned(track):
-    cmd = ["beet", "list", "-p"]
-    cmd.extend(track.artist.name.split(" "))
-    cmd.append("title:")
-    cmd.extend(track.name.split(" "))
-    run = subprocess.run(cmd, capture_output=True)
-    output = run.stdout.decode("utf-8").strip().split("\n")
-    # TODO: if multiple lines of output, let user select the right one
-    if not output:
-        print(f"Not found in personal library: {track.artist.name} - {track.name}")
-    return output[0] if output else ""
+# def check_owned(track):
+#     cmd = ["beet", "list", "-p"]
+#     cmd.extend(track.artist.name.split(" "))
+#     cmd.append("title:")
+#     cmd.extend(track.name.split(" "))
+#     run = subprocess.run(cmd, capture_output=True)
+#     output = run.stdout.decode("utf-8").strip().split("\n")
+#     # TODO: if multiple lines of output, let user select the right one
+#     if not output:
+#         print(f"Not found in personal library: {track.artist.name} - {track.name}")
+#     return output[0] if output else ""
 
 
 def clean_copyright(track):
@@ -165,7 +165,7 @@ def get_playlist_tracks(playlist):
             {
                 "explicit": bool(explicit),
                 "explicit_info": f"\n{explicit}" if explicit else "",
-                "owned": check_owned(t),
+                # "owned": check_owned(t),
                 "tidal_url": t.get_url(),
                 "formatted_title": f'{t.artist.name} - "{t.name}" ({t.album.name})',
                 "filename_title": f"{t.artist.name} - {t.name}",
@@ -207,16 +207,16 @@ def pull_song_files(playlist_data):
     for track in playlist_data:
         num_str = str(track_num).zfill(2)
         try:
-            if track["owned"]:
-                pull_from_collection(
-                    track["owned"],
-                    f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.mp3",
-                )
-            else:
-                pull_from_tidal(
-                    track["tidal_url"],
-                    f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.flac",
-                )
+            # if track["owned"]:
+            #     pull_from_collection(
+            #         track["owned"],
+            #         f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.mp3",
+            #     )
+            # else:
+            pull_from_tidal(
+                track["tidal_url"],
+                f"/home/joshmock/wxna-session/{num_str} - {track['filename_title']}.flac",
+            )
         except Exception as err:
             print(f'ERROR: {err} in track {track["formatted_title"]}')
         track_num += 1
@@ -226,7 +226,7 @@ def get_explicit(playlist_data):
     explicit = []
     for track in playlist_data:
         if track["explicit"]:
-            explicit.append(f'EXPLICIT: {track["formatted_title"]}: {track["explicit_info"]}')
+            explicit.append(f'EXPLICIT: {track["formatted_title"]}: {track["explicit_info"]}\n')
     return explicit
 
 

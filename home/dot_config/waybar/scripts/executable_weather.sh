@@ -1,7 +1,12 @@
 #!/bin/bash
 
-content=$(curl -sS 'https://wttr.in/?format=j1')
-current="$(echo "$content" | jq -r '.current_condition[0]')"
-TEMP="$(echo "$current" | jq -r .temp_F)"
-TOOLTIP=$(echo "$current" | jq -r '. | "\(.temp_F)°F, feels like \(.FeelsLikeF)°F"' | sed 's/"//g')
-echo "{\"text\": \"$TEMP°F\", \"tooltip\": \"$TOOLTIP\", \"class\": \"\" }"
+location='37207'
+content_f=$(curl -sS "https://thisdavej.azurewebsites.net/api/weather/current?loc=$location&deg=F")
+content_c=$(curl -sS "https://thisdavej.azurewebsites.net/api/weather/current?loc=$location&deg=C")
+temp_f="$(echo "$content_f" | jq -r .temperature)"
+feelslike_f="$(echo "$content_f" | jq -r .feelslike)"
+text="$(echo "$content_f" | jq -r .skytext)"
+temp_c="$(echo "$content_c" | jq -r .temperature)"
+feelslike_c="$(echo "$content_c" | jq -r .feelslike)"
+tooltip="$temp_f°F ($temp_c°C), feels like $feelslike_f°F ($feelslike_c°C)\n$text"
+echo "{\"text\": \"$temp_f°F\", \"tooltip\": \"$tooltip\", \"class\": \"\" }"
