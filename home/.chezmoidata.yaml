@@ -117,6 +117,8 @@ packages:
   - name: python-black
   - name: python-build
   - name: python-httpx
+  - name: python-i3ipc
+    features: [desktop]
   - name: python-mopidy-tidal
     features: [mopidy]
   - name: python-pip
