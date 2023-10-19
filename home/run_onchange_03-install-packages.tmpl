@@ -43,22 +43,18 @@ def install_packages(package_names):
     subprocess.run(command)
 
 
-def get_config():
+def get_packages_and_config():
     result = subprocess.run(["chezmoi", "data"], capture_output=True)
     data = json.loads(result.stdout)
-    return data["chezmoi"]["config"]["data"]
-
-
-def get_packages():
-    result = subprocess.run(["chezmoi", "data"], capture_output=True)
-    data = json.loads(result.stdout)
-    return data["packages"]
+    packages = data["packages"]
+    config = data["chezmoi"]["config"]["data"]
+    return packages, config
 
 
 def main():
-    packages = get_packages()
+    packages, config = get_packages_and_config()
     to_install = filter(not_installed, packages)
-    to_install = list(filter(lambda p: matches_features(p, get_config()), to_install))
+    to_install = list(filter(lambda p: matches_features(p, config), to_install))
     if to_install:
         install_packages(list(map(lambda p: p["name"], to_install)))
     else:
