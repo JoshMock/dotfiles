@@ -168,7 +168,7 @@ def get_playlist_tracks(playlist):
                 # "owned": check_owned(t),
                 "tidal_url": t.get_url(),
                 "formatted_title": f'{t.artist.name} - "{t.name}" ({t.album.name})',
-                "filename_title": f"{t.artist.name} - {t.name}",
+                "filename_title": f"{t.artist.name} - {t.name}".replace('/', '_'),
                 "spinitron": f'"{t.artist.name}","{t.name}","{t.album.name}","{clean_copyright(t)}","{clean_duration(t)}"\n',
             }
         )
