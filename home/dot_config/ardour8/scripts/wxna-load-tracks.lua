@@ -13,7 +13,7 @@ end
 
 local function get_songs()
   local session_dir = '/home/joshmock/wxna-session/'
-  local files_raw = system('find ' .. session_dir .. ' -type f')
+  local files_raw = system('find ' .. session_dir .. ' -type f | sort -r')
   local files = {}
   for file in string.gmatch(files_raw, '[^\n]+') do
     if string.find(file, ".flac") or string.find(file, '.mp3') then
