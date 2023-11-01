@@ -26,8 +26,10 @@ def build_uri(arg):
         return f"bandcamp:{urlunparse(parsed)}"
     elif parsed.netloc.endswith("songwhip.com"):
         subprocess.call(["songwhip"])
-    elif parsed.netloc in ['www.youtube.com', 'youtu.be']:
+    elif parsed.netloc in ["www.youtube.com", "youtu.be"]:
         return f"youtube:{urlunparse(parsed)}"
+    elif parsed.netloc.endswith("archive.org"):
+        return "internetarchive:" + parsed.path.split("/")[2]
 
 
 def add_to_mopidy(key):
@@ -55,7 +57,7 @@ elif args.url:
     add_to_mopidy(build_uri(args.url))
 else:
     # get from clipboard
-    if os.environ.get('XDG_SESSION_TYPE') == 'wayland':
+    if os.environ.get("XDG_SESSION_TYPE") == "wayland":
         clipboard = subprocess.Popen(
             ["wl-paste", "-n"],
             stdout=subprocess.PIPE,
