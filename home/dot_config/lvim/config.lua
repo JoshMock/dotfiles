@@ -17,7 +17,7 @@ vim.opt.conceallevel = 1
 
 -- close netrw buffer when selecting a file
 vim.g.netrw_fastbrowse = 0
-vim.g.netrw_menu = 0
+vim.g.netrw_menu = 1
 
 -- keymappings
 lvim.leader = "space"
