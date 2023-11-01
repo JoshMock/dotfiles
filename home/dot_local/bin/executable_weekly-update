@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+echo "Tasks:"
+echo "-----------------"
+
+task standup
+
+one_week_ago=$(date -d "${date} - 1 week" '+%Y-%m-%d')
+
+echo "Issues and PRs created"
+echo "-----------------"
+
+gh search issues \
+  "updated:>=$one_week_ago" \
+  --include-prs \
+  --owner=elastic \
+  --author=joshmock \
+  --json=repository,title \
+  --template='{{range .}}{{tablerow .repository.name .title}}{{end}}'
+
+echo "Issues and PRs assigned"
+echo "-----------------"
+
+gh search issues \
+  "updated:>=$one_week_ago" \
+  --include-prs \
+  --owner=elastic \
+  --assignee=joshmock \
+  --json=repository,title \
+  --template='{{range .}}{{tablerow .repository.name .title}}{{end}}'
