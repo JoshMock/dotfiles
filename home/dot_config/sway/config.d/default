@@ -41,9 +41,9 @@ bindsym $mod+Shift+e exec $powermenu
 bindsym $mod+q kill
 
 # Start your launcher
-bindsym $mod+d exec "wofi -show combi -modi combi"
+bindsym $mod+d exec "rofi -show combi -modi combi"
 bindsym $mod+Shift+d exec "$HOME/.config/rofi/script_mode.sh"
-bindsym $mod+c exec "wofi -show calc -modi calc -no-show-match -no-sort"
+bindsym $mod+c exec "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # Activities
 bindsym $mod+p exec ~/.config/wofi/windows.py
