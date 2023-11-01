@@ -15,15 +15,17 @@
 [mergetool "nvim"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [diff]
-	tool = kitty
+	tool = difftastic
 	guitool = kitty.gui
 [difftool]
 	prompt = false
 	trustExitCode = true
 [difftool "kitty"]
-	cmd = kitty +kitten diff $LOCAL $REMOTE
+	cmd = kitty +kitten diff "$LOCAL" "$REMOTE"
 [difftool "kitty.gui"]
-	cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+	cmd = kitty kitty +kitten diff "$LOCAL" "$REMOTE"
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 [pull]
 	ff = only
 [init]
@@ -35,3 +37,6 @@
 	smudge = git-lfs smudge -- %f
 [commit]
 	gpgsign = true
+[alias]
+  dft = difftool
+  dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
