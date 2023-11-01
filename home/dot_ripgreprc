@@ -3,3 +3,5 @@
 --max-columns=150
 --type-add
 clj:*.{clj,cljs,edn}
+--type-add
+js:*.{js,mjs,cjs,ts}
