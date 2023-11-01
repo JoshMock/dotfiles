@@ -13,9 +13,15 @@ def pick_browser(url) -> str:
     if parsed.hostname:
         if parsed.hostname.endswith(".elastic.co"):
             return work
+        if parsed.hostname.endswith(".elastic.dev"):
+            return work
         elif parsed.hostname.endswith("github.com"):
             return work
         elif parsed.hostname.endswith(".google.com"):
+            return work
+        elif parsed.hostname.endswith("elstc.co"):
+            return work
+        elif parsed.hostname.endswith("ela.st"):
             return work
         elif parsed.hostname == "elastic.okta.com":
             return work
@@ -24,6 +30,10 @@ def pick_browser(url) -> str:
         elif parsed.hostname == "elasticco.atlassian.net":
             return work
         elif parsed.hostname == "app.slack.com":
+            return work
+        elif parsed.hostname == "buildkite.com":
+            return work
+        elif parsed.hostname.endswith(".benevity.org"):
             return work
     elif "elastic" in url:
         return work
