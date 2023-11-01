@@ -5,7 +5,7 @@ MAP="$WORKINGDIR/cmd.csv"
 
 cat "$MAP" \
     | cut -d ',' -f 1 \
-    | rofi -dmenu -p "Util " -show combi -modi combi \
+    | wofi -dmenu -p "Util " -show combi -modi combi \
     | head -n 1 \
     | xargs -i --no-run-if-empty grep "{}" "$MAP" \
     | cut -d ',' -f 2 \
