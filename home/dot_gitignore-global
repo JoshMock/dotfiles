@@ -12,3 +12,6 @@ config/direnv/
 repl-history
 .lein-failures
 .envrc
+pyrightconfig.json
+.tool-versions
+.env
