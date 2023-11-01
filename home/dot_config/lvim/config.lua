@@ -148,6 +148,7 @@ lvim.plugins = {
   { 'tpope/vim-repeat' },
   { 'tpope/vim-projectionist' },
   { 'tpope/vim-eunuch' },
+  { 'Olical/conjure' },
   {
     'pwntester/octo.nvim',
     cmd = "Octo",
