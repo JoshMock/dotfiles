@@ -7,6 +7,7 @@ assign [class="(?i)element"] 3
 assign [class="(?i)zoom"] 3
 assign [app_id="(?i)zoom"] 3
 assign [class="(?i)beeper"] 3
+assign [app_id="(?i)floorp"] 4
 
 for_window [app_id="xed"] focus
 
