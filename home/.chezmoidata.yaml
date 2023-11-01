@@ -18,6 +18,7 @@ packages:
   - name: clipster
     features: [desktop]
   - name: cronie
+  - name: difftastic
   - name: direnv
   - name: discord
     features: [desktop]
@@ -36,6 +37,8 @@ packages:
   - name: firefox-developer-edition
     features: [desktop]
   - name: flameshot
+    features: [desktop]
+  - name: floorp
     features: [desktop]
   - name: fzf
   - name: gcalcli
