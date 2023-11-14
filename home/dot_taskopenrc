@@ -1,0 +1,42 @@
+[General]
+path_ext=/usr/share/taskopen/scripts
+
+[Actions]
+watch.target=annotations
+watch.labelregex="watch"
+watch.regex="^[\\.\\/~]+.*\\.(.*)"
+watch.command="vlc --playlist-enqueue --one-instance \"$FILE\""
+watch.modes="batch,any,normal"
+
+files.target=annotations
+files.labelregex=".*"
+files.regex="^[\\.\\/~]+.*\\.(.*)"
+files.command="nvr --remote \"$FILE\""
+files.modes="batch,any,normal"
+
+notes.target=annotations
+notes.labelregex=".*"
+notes.regex="^Notes(\\..*)?"
+notes.command="""editnote ~/Documents/notes-work/$UUID$LAST_MATCH "$TASK_DESCRIPTION" $UUID"""
+notes.modes="batch,any,normal"
+
+url.target=annotations
+url.labelregex=".*"
+url.regex="((?:www|http).*)"
+url.command="xdg-open $LAST_MATCH"
+url.modes="batch,any,normal"
+
+urlattr.target=url
+urlattr.regex="((?:www|http).*)"
+urlattr.command="firefox-developer-edition $LAST_MATCH"
+urlattr.modes="batch,any,normal"
+
+jiraurl.target=jiraurl
+jiraurl.regex="((?:www|http).*)"
+jiraurl.command="firefox-developer-edition $LAST_MATCH"
+jiraurl.modes="batch,any,normal"
+
+githuburl.target=githuburl
+githuburl.regex="((?:www|http).*)"
+githuburl.command="firefox-developer-edition $LAST_MATCH"
+githuburl.modes="batch,any,normal"

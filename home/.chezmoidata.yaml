@@ -101,6 +101,7 @@ packages:
   - name: network-manager-applet
     features: [desktop]
   - name: neovim
+  - name: neovim-remote
   - name: nnn
   - name: noti
     features: [desktop]
@@ -148,6 +149,8 @@ packages:
     features: [desktop]
   - name: tailscale
   - name: task
+    features: [taskwarrior]
+  - name: taskopen
     features: [taskwarrior]
   - name: timew
     features: [taskwarrior]
