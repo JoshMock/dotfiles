@@ -4,4 +4,6 @@
 --type-add
 clj:*.{clj,cljs,edn}
 --type-add
-js:*.{js,mjs,cjs,ts}
+js:*.{js,mjs,cjs,ts,jsx}
+--type-add
+md:*.{mdx,md,markdown}
