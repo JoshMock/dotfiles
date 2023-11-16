@@ -1,3 +1,5 @@
+-- luacheck: globals lvim vim
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
@@ -47,6 +49,7 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
+lvim.builtin.which_key.mappings["s"]["B"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
 
 -- unmap arrow keys
 lvim.keys.normal_mode["<up>"] = "<nop>"
