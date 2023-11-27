@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-if [ "$(playerctl status)" = "Playing" ]; then
-  echo "$(playerctl metadata artist) - \"$(playerctl metadata title)\" ($(playerctl metadata album))"
+player=$(playerctl metadata --format "{{ playerName }}")
+if [ "$player" = "mopidy" ]; then
+  playerctl metadata --format "{{ emoji(status) }} {{ artist }} - {{ title }} ({{ album }})"
 else
-  echo ""
+  playerctl metadata --format "{{ title }}"
 fi
