@@ -203,6 +203,7 @@ lvim.plugins = {
     'petertriho/cmp-git',
     dependencies = { 'nvim-cmp' }
   },
+  { 'github/copilot.vim' },
 }
 
 local formatters = require "lvim.lsp.null-ls.formatters"
