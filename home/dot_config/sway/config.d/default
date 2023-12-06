@@ -1,3 +1,5 @@
+# vim:ft=swayconfig
+
 set $mod Mod1
 
 # Home row direction keys, like vim
