@@ -35,7 +35,13 @@ def pick_browser(url) -> str:
             return work
         elif parsed.hostname.endswith(".benevity.org"):
             return work
+        elif parsed.hostname.endswith(".found.io"):
+            return work
     elif "elastic" in url:
+        return work
+    elif "logstash" in url:
+        return work
+    elif "kibana" in url:
         return work
 
     return personal
