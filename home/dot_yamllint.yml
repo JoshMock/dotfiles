@@ -1,2 +1,6 @@
 ---
 extends: relaxed
+
+rules:
+  colons: disable
+  brackets: disable
