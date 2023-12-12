@@ -50,6 +50,7 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 lvim.builtin.which_key.mappings["s"]["B"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
+lvim.builtin.which_key.mappings["A"] = { "<cmd>A<CR>", "Switch to alternate file"}
 
 -- unmap arrow keys
 lvim.keys.normal_mode["<up>"] = "<nop>"
