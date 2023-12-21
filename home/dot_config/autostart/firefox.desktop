@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/firefox-developer-edition
+Comment=Firefox
+Name=Firefox

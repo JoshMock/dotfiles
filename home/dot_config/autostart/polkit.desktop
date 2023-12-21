@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PolicyKit Authentication Agent
+Comment=PolicyKit Authentication Agent
+Exec=/usr/lib/polkit-kde-authentication-agent-1
+Icon=dialog-password
+Terminal=false
+Type=Application
+NoDisplay=true

@@ -57,7 +57,7 @@ packages:
   - name: interception-caps2esc
     features: [desktop]
   - name: jq
-  - name: junction
+  - name: polkit-kde-agent
     features: [desktop]
   - name: kitty
     features: [desktop]
