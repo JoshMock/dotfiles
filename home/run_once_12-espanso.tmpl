@@ -1,0 +1,7 @@
+{{ if .desktop -}}
+#!/usr/bin/env bash
+
+sudo setcap "cap_dac_override+p" $(which espanso)
+espanso service register
+espanso start
+{{- end }}
