@@ -56,6 +56,7 @@ packages:
     features: [desktop]
   - name: interception-caps2esc
     features: [desktop]
+  - name: jless
   - name: jq
   - name: polkit-kde-agent
     features: [desktop]
