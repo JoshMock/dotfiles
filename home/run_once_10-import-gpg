@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo "Importing personal GPG key"
+
+pub=/tmp/pub.key
+priv=/tmp/priv.key
+
+# public key
+
+op item get hchnpne6oy7lpeo3ojym2p25im --fields api6e5wu45n4h5uebnarpfh3ja --format json | jq -r .value > "$pub"
+gpg --import "$pub"
+rm "$pub"
+
+# private key
+op item get hchnpne6oy7lpeo3ojym2p25im --fields fyneba3b5apx5wmdsibfabm24y --format json | jq -r .value > "$priv"
+gpg --import "$priv"
+rm "$priv"
