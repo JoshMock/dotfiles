@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import urllib.request
+import json
+
+
+def weather_data(location=None):
+    url = 'https://wttr.in/?format=j1'
+    if location is not None:
+        if isinstance(location, str):
+            locs = [location]
+        url = f'https://wttr.in/{":".join(locs)}?format=j1'
+        
+    res = urllib.request.urlopen(url)
+    return json.loads(res.read())
+
+def weather_short(data):
+    current = data['current_condition'][0]
+    temp_f = current['temp_F']
+    return f'{temp_f}°F'
+
+def weather_long(data):
+    current = data['current_condition'][0]
+    temp_f = current['temp_F']
+    feels_f = current['FeelsLikeF']
+    temp_c = current['temp_C']
+    feels_c = current['FeelsLikeC']
+    descs = [c['value'] for c in current['weatherDesc']]
+    desc = ', '.join(descs)
+    loc_name = data['nearest_area'][0]['areaName'][0]['value']
+    return f'{loc_name}: {temp_f}°F ({temp_c}°C), feels like {feels_f}°F | {desc}'
+
+here = weather_data()
+text = weather_short(here)
+tooltip = weather_long(here)
+
+elsewhere = weather_data('37207')
+alt = tooltip + '\n' + weather_long(elsewhere)
+
+print(json.dumps({'text': text, 'alt': alt, 'tooltip': tooltip}))
