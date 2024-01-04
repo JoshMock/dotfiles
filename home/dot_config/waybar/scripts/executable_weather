@@ -34,7 +34,8 @@ here = weather_data()
 text = weather_short(here)
 tooltip = weather_long(here)
 
-elsewhere = weather_data('37207')
-alt = tooltip + '\n' + weather_long(elsewhere)
+if here['nearest_area'][0]['areaName'][0]['value'] != 'Nashville':
+    elsewhere = weather_data('37207')
+    alt = tooltip + '\n' + weather_long(elsewhere)
 
 print(json.dumps({'text': text, 'alt': alt, 'tooltip': tooltip}))
