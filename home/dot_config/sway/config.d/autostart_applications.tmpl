@@ -6,6 +6,8 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # autostart
+exec mako
+exec /usr/lib/polkit-kde-authentication-agent-1
 exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
 
 {{ if .work -}}
