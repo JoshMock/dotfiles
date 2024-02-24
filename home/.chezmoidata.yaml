@@ -38,7 +38,7 @@ packages:
     features: [desktop]
   - name: flameshot
     features: [desktop]
-  - name: floorp
+  - name: floorp-bin
     features: [desktop]
   - name: fzf
   - name: gcalcli
