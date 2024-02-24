@@ -58,6 +58,7 @@ packages:
     features: [desktop]
   - name: jless
   - name: jq
+  - name: luacheck
   - name: polkit-kde-agent
     features: [desktop]
   - name: kitty
