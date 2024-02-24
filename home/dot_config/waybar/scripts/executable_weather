@@ -14,10 +14,12 @@ def weather_data(location=None):
     res = urllib.request.urlopen(url)
     return json.loads(res.read())
 
+
 def weather_short(data):
     current = data['current_condition'][0]
     temp_f = current['temp_F']
     return f'{temp_f}°F'
+
 
 def weather_long(data):
     current = data['current_condition'][0]
@@ -30,9 +32,10 @@ def weather_long(data):
     loc_name = data['nearest_area'][0]['areaName'][0]['value']
     return f'{loc_name}: {temp_f}°F ({temp_c}°C), feels like {feels_f}°F | {desc}'
 
+
 here = weather_data()
 text = weather_short(here)
-tooltip = weather_long(here)
+alt = tooltip = weather_long(here)
 
 if here['nearest_area'][0]['areaName'][0]['value'] != 'Nashville':
     elsewhere = weather_data('37207')
