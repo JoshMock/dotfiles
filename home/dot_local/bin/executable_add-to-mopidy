@@ -30,6 +30,8 @@ def build_uri(arg):
         return f"youtube:{urlunparse(parsed)}"
     elif parsed.netloc.endswith("archive.org"):
         return "internetarchive:" + parsed.path.split("/")[2]
+    elif parsed.netloc.endswith("soundcloud.com"):
+        return f"sc:{urlunparse(parsed)}"
 
 
 def add_to_mopidy(key):

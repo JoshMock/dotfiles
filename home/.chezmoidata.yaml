@@ -98,6 +98,8 @@ packages:
     features: [mopidy]
   - name: mopidy-scrobbler
     features: [mopidy]
+  - name: mopidy-soundcloud
+    features: [mopidy]
   - name: mopidy-youtube
     features: [mopidy]
   - name: mpc
