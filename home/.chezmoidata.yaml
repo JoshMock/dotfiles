@@ -37,6 +37,7 @@ packages:
     features: [desktop]
   - name: firefox-developer-edition
     features: [desktop]
+  - name: flake8
   - name: flameshot
     features: [desktop]
   - name: floorp-bin
