@@ -11,11 +11,11 @@ exec /usr/lib/polkit-kde-authentication-agent-1
 exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
 
 {{ if .work -}}
-assign [window="1"] output DP-2
-assign [window="2"] output DP-2
-assign [window="3"] output DP-2
-assign [window="4"] output DP-2
-assign [window="5"] output DP-2
+assign [workspace="1"] output DP-2
+assign [workspace="2"] output DP-2
+assign [workspace="3"] output DP-2
+assign [workspace="4"] output DP-2
+assign [workspace="5"] output DP-2
 {{- end }}
 
 # {{ if .work -}}
