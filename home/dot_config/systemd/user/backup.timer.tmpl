@@ -1,0 +1,11 @@
+{{- if .chezmoi.config.data.backup.enabled }}
+[Unit]
+Description=Scheduled backups, powered by autorestic.
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=5min
+
+[Install]
+WantedBy=timers.target
+{{ end }}
