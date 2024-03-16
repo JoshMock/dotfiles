@@ -15,7 +15,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.conceallevel = 1
 
 -- re-enable wrapping
--- vim.opt.wrap = true
+vim.opt.wrap = true
 
 -- close netrw buffer when selecting a file
 vim.g.netrw_fastbrowse = 0
