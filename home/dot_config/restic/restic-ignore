@@ -14,3 +14,10 @@ annex
 .electron-gyp
 .node-gyp
 .rustup
+.local/share/
+!.local/share/atuin
+!.local/share/chezmoi
+.config
+.floorp
+.kube
+.steam

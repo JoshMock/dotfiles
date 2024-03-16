@@ -6,8 +6,10 @@ locations:
   home:
     from: /home/joshmock
     to:
-      - b2
       - local
+    copy:
+      local:
+        - b2
     options:
       forget:
         keep-last: 10
