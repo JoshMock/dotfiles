@@ -205,6 +205,16 @@ lvim.plugins = {
     dependencies = { 'nvim-cmp' }
   },
   { 'github/copilot.vim' },
+  {
+    'mikesmithgh/kitty-scrollback.nvim',
+    enabled = true,
+    lazy = true,
+    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
+    event = { 'User KittyScrollbackLaunch' },
+    config = function()
+      require('kitty-scrollback').setup()
+    end,
+  },
 }
 
 local formatters = require "lvim.lsp.null-ls.formatters"
