@@ -53,6 +53,13 @@ packages:
     features: [work]
   - name: gping
   - name: htop
+  - name: hyprland
+    features: [desktop]
+  - name: hyprlock-git
+    features: [desktop]
+  - name: hypridle-git
+    features: [desktop]
+  - name: hyprpaper
   - name: inter-font
     features: [desktop]
   - name: interception-caps2esc
@@ -190,6 +197,8 @@ packages:
   - name: which
   - name: whois
   - name: wofi
+    features: [desktop]
+  - name: xdg-desktop-portal-hyprland
     features: [desktop]
   - name: go-yq
   - name: zeal-git
