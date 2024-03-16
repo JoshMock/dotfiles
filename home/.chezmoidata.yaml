@@ -55,7 +55,7 @@ packages:
   - name: htop
   - name: hyprland
     features: [desktop]
-  - name: hyprlock-git
+  - name: hyprlock
     features: [desktop]
   - name: hypridle-git
     features: [desktop]
