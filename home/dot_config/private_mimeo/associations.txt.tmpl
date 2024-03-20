@@ -1,0 +1,50 @@
+# open youtube vids in vlc
+/usr/bin/vlc --one-instance --playlist-enqueue %U
+  ^https?://(\w+\.)?youtube.com/watch\?.*v=
+  ^https?://youtu\.be/
+
+{{ if .work }}
+# work URLs
+/usr/bin/firefox-developer-edition %U
+  ^https?://.*elastic
+  ^https?://.*logstash
+  ^https?://.*kibana
+  ^https?://(\w+\.)?github\.com/
+  ^https?://(\w+\.)?google\.com/
+  ^https?://ela\.st/
+  ^https?://elastic\.zoom\.us/
+  ^https?://elasticco\.atlassian\.net/
+  ^https?://app\.slack\.com/
+  ^https?://buildkite\.com/
+  ^https?://(\w+\.)?benevity\.com/
+  ^https?://(\w+\.)?found\.io/
+
+# all other URLs
+/usr/bin/floorp %U
+  ^https?:/
+{{ end }}
+
+# open text files in existing Neovim session
+/usr/bin/nvr --remote %F
+  \.py$
+  \.html?$
+  \.js$
+  \.ts$
+  \.ts\.d$
+  \.ndjson$
+  \.json$
+  \.txt$
+  \.md$
+  \.markdown$
+  \.asciidoc$
+  \.ya?ml$
+  \.sh$
+  \.zsh$
+
+/usr/bin/mpc -h :: add %U
+  \.mp3$
+  \.wav$
+  \.flac$
+
+/usr/bin/vlc --one-instance --playlist-enqueue %F
+  \.mp4$

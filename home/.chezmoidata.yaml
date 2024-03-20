@@ -203,6 +203,8 @@ packages:
     features: [desktop]
   - name: xdg-desktop-portal-hyprland
     features: [desktop]
+  - name: xdg-utils-mimeo
+    features: [desktop]
   - name: go-yq
   - name: zeal-git
     features: [desktop]
