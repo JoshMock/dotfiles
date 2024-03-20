@@ -21,7 +21,7 @@ macro index o "<shell-escape>mw -y joshua.mock@elastic.co<enter>" "run mbsync to
 macro index \eg "<enter-command>unset wait_key<enter><shell-escape>gpg --list-secret-keys; printf 'Enter email ID of user to publish: '; read eID; printf 'Enter fingerprint of GPG key to publish: '; read eFGPT; /usr/libexec/gpg-wks-client --create \$eFGPT \$eID | msmtp --read-envelope-from --read-recipients -a joshua.mock@elastic.co<enter>"  "publish GPG key to WKS provider"
 macro index \eh "<pipe-message>/usr/libexec/gpg-wks-client --receive | msmtp --read-envelope-from --read-recipients -a joshua.mock@elastic.co<enter>" "confirm GPG publication"
 
-mailboxes "=INBOX" "=Trash" "=Sent" "=Archive"
+mailboxes "=INBOX" "=Trash" "=Sent" "=Archive" "=sightings"
 
 color body red yellow 'clients'
 
