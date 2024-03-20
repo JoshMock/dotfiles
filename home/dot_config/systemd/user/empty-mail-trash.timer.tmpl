@@ -1,0 +1,10 @@
+{{ if .email -}}
+[Unit]
+Description=empty email trash
+
+[Timer]
+OnCalendar=daily
+
+[Install]
+WantedBy=timers.target
+{{ end }}

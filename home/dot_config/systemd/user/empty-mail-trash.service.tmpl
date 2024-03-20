@@ -1,0 +1,11 @@
+{{ if .email -}}
+[Unit]
+Description=empty email trash
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/fd --older=1month . /home/joshmock/.local/share/mail/*/Trash -X rm
+
+[Install]
+WantedBy=empty-mail-trash.timer
+{{ end }}
