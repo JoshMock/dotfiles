@@ -149,7 +149,7 @@ packages:
   - name: rclone
   - name: restic
   - name: ripgrep
-  - name: rofi
+  - name: rofi-lbonn-wayland-git
     features: [desktop]
   - name: rofi-calc
     features: [desktop]
