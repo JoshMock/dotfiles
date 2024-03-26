@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+if [[ "$(hyprctl monitors)" =~ "\sDP-[0-9]+" ]]; then
+  # if external monitor, closing laptop lid enables clamshell mode
+  if [[ $1 == "open" ]]; then
+    hyprctl keyword monitor "eDP-1, 3456x2160, 2560x0, 2"
+  else
+    hyprctl keyword monitor "eDP-1,disable"
+  fi
+else
+  # if no external monitor, closing laptop lid locks the screen
+  if [[ $1 == "close" ]]; then
+    hyprlock
+  fi
+fi
