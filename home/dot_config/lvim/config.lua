@@ -205,6 +205,7 @@ lvim.plugins = {
     dependencies = { 'nvim-cmp' }
   },
   { 'github/copilot.vim' },
+  { 'theRealCarneiro/hyprland-vim-syntax' },
   {
     'mikesmithgh/kitty-scrollback.nvim',
     enabled = true,
