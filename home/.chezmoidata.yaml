@@ -14,11 +14,15 @@ packages:
   - name: beeper-latest-bin
     features: [desktop]
   - name: beets
+  - name: blueman
+    features: [desktop]
   - name: bugwarrior
     features: [taskwarrior]
   - name: clipster
     features: [desktop]
   - name: cronie
+  - name: dex
+    features: [desktop]
   - name: difftastic
   - name: direnv
   - name: discord
@@ -67,6 +71,10 @@ packages:
     features: [desktop]
   - name: jless
   - name: jq
+  - name: kwallet
+    features: [desktop]
+  - name: kwallet-pam
+    features: [desktop]
   - name: luacheck
   - name: polkit-kde-agent
     features: [desktop]

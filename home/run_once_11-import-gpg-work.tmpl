@@ -7,12 +7,12 @@ pub=/tmp/pub.key
 priv=/tmp/priv.key
 
 # public key
-op item get t2kufaquiekeizruwe3oh2rmfu --fields t2kufaquiekeizruwe3oh2rmfu --format json | jq -r .value > "$pub"
+op item get ssvjejhlyhmxjajik6glnnbuku --fields t2kufaquiekeizruwe3oh2rmfu --format json | jq -r .value > "$pub"
 gpg --import "$pub"
 rm "$pub"
 
 # private key
-op item get t2kufaquiekeizruwe3oh2rmfu --fields ievnirymczaze2te4jyukvud24 --format json | jq -r .value > "$priv"
+op item get ssvjejhlyhmxjajik6glnnbuku --fields ievnirymczaze2te4jyukvud24 --format json | jq -r .value > "$priv"
 gpg --import "$priv"
 rm "$priv"
 {{- end }}
