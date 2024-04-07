@@ -17,15 +17,15 @@ locations:
         keep-yearly: 20
       backup:
         exclude-file: /home/joshmock/.config/restic/restic-ignore
-      {{- if .chezmoi.config.data.backup.healthcheck_id }}
-      hooks:
-        before:
-          - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}/start"
-        failure:
-          - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}/fail"
-        success:
-          - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}"
-      {{- end }}
+    {{- if .chezmoi.config.data.backup.healthcheck_id }}
+    hooks:
+      before:
+        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}/start"
+      failure:
+        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}/fail"
+      success:
+        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}"
+    {{- end }}
 
 backends:
   b2:
