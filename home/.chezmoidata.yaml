@@ -141,6 +141,8 @@ packages:
     features: [mopidy]
   - name: python-black
   - name: python-build
+  - name: python-emoji
+    features: [taskwarrior]
   - name: python-httpx
   - name: python-i3ipc
     features: [desktop]
