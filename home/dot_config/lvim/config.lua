@@ -168,9 +168,13 @@ lvim.plugins = {
   { 'junegunn/vim-peekaboo' },
   { 'terryma/vim-expand-region' },
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+  {
     'nvim-neorg/neorg',
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-treesitter" },
+    dependencies = { "luarocks.nvim" },
     config = function()
       require('neorg').setup {
         load = {
