@@ -20,6 +20,7 @@ packages:
     features: [desktop]
   - name: clipster
     features: [desktop]
+  - name: codespell
   - name: cronie
   - name: dex
     features: [desktop]
@@ -87,6 +88,7 @@ packages:
   - name: lazygit
   - name: leiningen
     features: [work]
+  - name: luarocks
   - name: lynx
     features: [email]
   - name: mako
@@ -179,11 +181,14 @@ packages:
     features: [taskwarrior]
   - name: tmux
   - name: traceroute
+  - name: tree-sitter
   - name: ttf-ancient-fonts
     features: [desktop]
   - name: ttf-arimo-nerd
     features: [desktop]
   - name: ttf-dejavu
+    features: [desktop]
+  - name: ttf-firacode-nerd
     features: [desktop]
   - name: ttf-font-awesome-4
     features: [desktop]
