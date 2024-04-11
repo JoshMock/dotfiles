@@ -1,0 +1,9 @@
+[output]
+method = sdl
+
+[color]
+background = '#FFFFFF'
+foreground = '#000000'
+
+[smoothing]
+noise_reduction = 85

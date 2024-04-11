@@ -18,6 +18,8 @@ packages:
     features: [desktop]
   - name: bugwarrior
     features: [taskwarrior]
+  - name: cava
+    features: [desktop]
   - name: clipster
     features: [desktop]
   - name: cronie
