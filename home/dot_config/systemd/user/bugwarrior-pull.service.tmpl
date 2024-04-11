@@ -1,0 +1,11 @@
+{{ if .taskwarrior }}
+[Unit]
+Description=bugwarrior-pull
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bugwarrior-pull
+
+[Install]
+WantedBy=bugwarrior-pull.timer
+{{ end }}

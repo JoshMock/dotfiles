@@ -1,0 +1,10 @@
+{{ if .taskwarrior }}
+[Unit]
+Description=bugwarrior-pull (hourly)
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
+{{ end }}
