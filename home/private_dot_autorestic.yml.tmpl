@@ -1,13 +1,12 @@
-#{{ if .chezmoi.config.data.backup.enabled }}
+{{ if .backup.enabled }}
 # vim: ft=yaml
 version: 2
-
 locations:
   home:
     from: /home/joshmock
     to:
       - local
-      - b2
+      - {{ if .work }}gdrive{{ else }}b2{{ end }}
     options:
       forget:
         keep-last: 10
@@ -17,17 +16,23 @@ locations:
         keep-yearly: 20
       backup:
         exclude-file: /home/joshmock/.config/restic/restic-ignore
-    {{- if .chezmoi.config.data.backup.healthcheck_id }}
+    {{- if .backup.healthcheck_id }}
     hooks:
       before:
-        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}/start"
+        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .backup.healthcheck_id }}/start"
       failure:
-        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}/fail"
+        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .backup.healthcheck_id }}/fail"
       success:
-        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .chezmoi.config.data.backup.healthcheck_id }}"
+        - curl -m 10 --retry 5 "https://hc-ping.com/{{ .backup.healthcheck_id }}"
     {{- end }}
 
 backends:
+  {{- if .work }}
+  gdrive:
+    type: rclone
+    path: 'gdrive:rclone-{{ .chezmoi.hostname }}'
+    key: {{ onepasswordRead "op://Elastic/restic password - tunnelblanket cloud/password" }}
+  {{- else }}
   b2:
     type: b2
     path: 'joshmock-backups:{{ .chezmoi.hostname }}/'
@@ -35,8 +40,9 @@ backends:
     env:
       B2_ACCOUNT_ID: '{{ onepasswordRead "op://Homelab/b2 backup - joshmock-backups bucket /add more/key ID" }}'
       B2_ACCOUNT_KEY: '{{ onepasswordRead "op://Homelab/b2 backup - joshmock-backups bucket /add more/key secret" }}'
+  {{- end }}
   local:
     type: local
     path: /home/joshmock/.local/share/restic
-    key: {{ onepasswordRead "op://Personal/restic backup password - all/password" }}
+    key: {{ if .work }}{{ onepasswordRead "op://Elastic/restic password - tunnelblanket local/password" }}{{ else }}{{ onepasswordRead "op://Personal/restic backup password - all/password" }}{{ end }}
 {{- end }}
