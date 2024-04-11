@@ -11,9 +11,9 @@ zsh-users/zsh-syntax-highlighting
 hlissner/zsh-autopair
 
 # completions and suggestions
+Aloxaf/fzf-tab
 zsh-users/zsh-completions kind:fpath
 zsh-users/zsh-autosuggestions
-Aloxaf/fzf-tab
 belak/zsh-utils path:completion
 ohmyzsh/ohmyzsh path:lib/directories.zsh
 ohmyzsh/ohmyzsh path:plugins/git/git.plugin.zsh
