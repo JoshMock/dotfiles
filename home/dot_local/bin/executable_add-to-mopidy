@@ -36,9 +36,41 @@ def build_uri(arg):
 
 def add_to_mopidy(key):
     if key:
-        subprocess.call(["mpc", "-h", "::", "add", key])
+        returncode = subprocess.call(["mpc", "-h", "::", "add", key])
+        if returncode == 0:
+            subprocess.call(
+                [
+                    "notify-send",
+                    "-a",
+                    "add-to-mopidy",
+                    "--transient",
+                    "--expire-time=20000",
+                    f"Queued: {key}",
+                ]
+            )
+        else:
+            subprocess.call(
+                [
+                    "notify-send",
+                    "-a",
+                    "add-to-mopidy",
+                    "-u",
+                    "critical",
+                    f"Failed to queue: {key}",
+                ]
+            )
     else:
         print(f"No valid item found in:\n\n{key}")
+        subprocess.call(
+            [
+                "notify-send",
+                "-a",
+                "add-to-mopidy",
+                "-u",
+                "critical",
+                f"No valid item found in: {key}",
+            ]
+        )
         exit(1)
 
 
