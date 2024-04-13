@@ -1,9 +1,9 @@
 export PATH=$HOME/.cargo/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/lib/node_modules:/usr/local/sbin:$HOME/.local/bin:$PATH
 [ -r "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-# lunarvim as default editor
-export VISUAL=lvim
-export EDITOR=lvim
+# neovim as default editor
+export VISUAL=nvim
+export EDITOR=nvim
 
 # syntax highlighting when using `less` on the command line
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
