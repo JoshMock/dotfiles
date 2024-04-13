@@ -9,18 +9,18 @@ Any time I can do something without using a mouse, I will.
 
 ### Hardware
 
-- Laptops: Lenovo ThinkPad and/or Dell XPS
+- Laptops: Lenovo ThinkPad and Dell XPS
 - Keyboard: [ZSA Moonlander](https://www.zsa.io/moonlander/)
 - Mouse: whatever's nearby, preferably Bluetooth-based
 
 ### Software
 
-- [Arch Linux](https://archlinux.org/) or [EndeavourOS](https://endeavouros.com/) (based on Arch)
-- [Sway](https://swaywm.org/)
+- [Arch Linux](https://archlinux.org/) or [EndeavourOS](https://endeavouros.com/) (Arch-based)
+- [Hyprland](https://hyprland.org/)
 - [Rofi](https://github.com/davatorium/rofi) for launching desktop apps and streamlining various tasks
 - zsh + [antidote](https://getantidote.github.io/) + [various zsh plugins](./home/dot_zsh_plugins.txt)
-- [LunarVim](https://www.lunarvim.org/) + [Kitty](https://sw.kovidgoyal.net/kitty/) as my IDE
-- [Several Vim plugins](./home/dot_config/lvim/config.lua#L133) not packaged with LunarVim
+- Neovim ([LazyVim](https://www.lazyvim.org)-based setup) + [Kitty](https://sw.kovidgoyal.net/kitty/) as my IDE
+- [Several Vim plugins](./home/dot_config/nvim/lua/plugins) not included with LazyVim
 - [Mopidy](https://mopidy.com/) for listening to music
 - [Taskwarrior](https://taskwarrior.org/) and related tools for to-do list management and time tracking
 
