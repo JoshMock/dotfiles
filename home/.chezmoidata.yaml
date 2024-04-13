@@ -93,6 +93,8 @@ packages:
     features: [email]
   - name: mako
     features: [desktop]
+  - name: mimeo
+    features: [desktop]
   - name: mopidy
     features: [mopidy]
   - name: mopidy-bandcamp
