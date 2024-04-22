@@ -1,4 +1,4 @@
-{{ if .work }}
+{{- if .work }}
 monitor = eDP-1, 3456x2160, 2560x0, 2
 monitor = DP-2, 2560x1440, 0x0, 1
 monitor = DP-3, disable
@@ -7,7 +7,8 @@ workspace = 1, monitor:DP-2, default:true
 workspace = 2, monitor:DP-2
 workspace = 3, monitor:DP-2
 workspace = 4, monitor:DP-2
-workspace = special:scratchpad, bordersize:200
+workspace = special:scratchpad, on-created-empty:foot
+workspace = special:hide, on-created-empty:foot
 {{ else }}
 monitor=,preferred,auto,auto
-{{ end }}
+{{ end -}}
