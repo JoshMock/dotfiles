@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if chezmoi data | jq -e '.taskwarrior == true'; then
+  # bugwarrior doesn't work on 3.12 yet
+  if pipx list --json | jq -e '.venvs | has("bugwarrior")'; then
+    pipx upgrade bugwarrior
+  else
+    pipx install --preinstall=setuptools --fetch-missing-python --python 3.11 bugwarrior
+  fi
+
+  # vit doesn't work on 3.12 yet
+  if pipx list --json | jq -e '.venvs | has("vit")'; then
+    pipx upgrade vit
+  else
+    pipx install --fetch-missing-python --python 3.11 vit
+  fi
+fi
