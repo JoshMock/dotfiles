@@ -13,6 +13,7 @@ return {
       },
       formatters_by_ft = {
         typescript = { "tsstandard" },
+        javascript = { "tsstandard" },
       },
     },
   },
