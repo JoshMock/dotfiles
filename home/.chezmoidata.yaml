@@ -16,8 +16,6 @@ packages:
     features: [desktop]
   - name: brightnessctl
     features: [desktop]
-  - name: bugwarrior
-    features: [taskwarrior]
   - name: cava
     features: [desktop]
   - name: clipster
@@ -205,8 +203,6 @@ packages:
     features: [desktop, email]
   - name: vault
     features: [work]
-  - name: vit
-    features: [taskwarrior]
   - name: vivaldi
     features: [desktop]
   - name: vivaldi-ffmpeg-codecs

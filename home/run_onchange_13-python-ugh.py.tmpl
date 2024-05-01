@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# vim:ft=bash
+# run_onchange_13-python-ugh.py.tmpl hash: {{ include "run_onchange_13-python-ugh.py.tmpl" | sha256sum }}
+
+# bugwarrior doesn't work on 3.12 yet
+if chezmoi data | jq -e '.taskwarrior == true'; then
+  echo "installing Taskwarrior Python tools"
+
+  pipx install --preinstall=setuptools,emoji --fetch-missing-python --python 3.11 bugwarrior
+  pipx install --fetch-missing-python --python 3.11 vit
+  vit emoji
+fi
