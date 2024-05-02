@@ -7,3 +7,6 @@ vim.keymap.set("n", "<leader>p", "<cmd>Telescope projects<cr>", { desc = "Select
 vim.keymap.set("n", "<leader>o", "m`o<esc>``", { desc = "Empty line below" })
 vim.keymap.set("n", "<leader>O", "m`O<esc>``", { desc = "Empty line above" })
 vim.keymap.set("n", "<leader>k", "<cmd>noh<cr>", { desc = "No highlight" })
+vim.keymap.set("v", "v", "<Plug>(expand_region_expand)", { desc = "Expand selection" })
+vim.keymap.set("v", "<C-v>", "<Plug>(expand_region_shrink)", { desc = "Shrink selection" })
+vim.keymap.set("n", "<leader>A", "<cmd>A<cr>", { desc = "Switch to alternate file" })
