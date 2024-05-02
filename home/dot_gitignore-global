@@ -16,3 +16,5 @@ pyrightconfig.json
 .tool-versions
 .env
 .neoconf.json
+.markdownlint.yaml
+venv
