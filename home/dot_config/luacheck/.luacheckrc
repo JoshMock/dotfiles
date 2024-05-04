@@ -1,2 +1,2 @@
-globals = { "lvim", "vim" }
+globals = { "vim" }
 max_line_length = false
