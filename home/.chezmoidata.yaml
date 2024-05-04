@@ -225,6 +225,6 @@ packages:
     features: [desktop]
   - name: zip
   - name: zoom
-    features: [desktop]
+    features: [work]
   - name: zsh
   - name: zsh-antidote
