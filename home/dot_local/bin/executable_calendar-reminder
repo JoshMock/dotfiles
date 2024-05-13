@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+current=$(date +%M)
+replace=''
+
+if [[ "$current" == '00' ]] || [[ "$current" == '30' ]]; then
+  replace=$(gcalcli remind 60 'notify-send --print-id -u normal -a gcalcli %s')
+fi
+
+if [[ ${current:1:1} == '0' ]]; then
+  replace=$(gcalcli remind 10 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s")
+  replace=$(gcalcli remind 5 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s")
+fi
+
+if [[ ${current:1:1} == '5' ]]; then
+  replace=$(gcalcli remind 5 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s")
+fi
+
+gcalcli remind 2 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s"

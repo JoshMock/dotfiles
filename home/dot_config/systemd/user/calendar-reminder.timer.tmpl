@@ -1,0 +1,10 @@
+{{ if .work }}
+[Unit]
+Description=Calendar reminders
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target
+{{ end }}

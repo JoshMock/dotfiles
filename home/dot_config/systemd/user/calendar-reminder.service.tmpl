@@ -1,0 +1,11 @@
+{{ if .work }}
+[Unit]
+Description=Calendar reminders
+
+[Service]
+Type=oneshot
+ExecStart=/home/joshmock/.local/bin/calendar-reminder
+
+[Install]
+WantedBy=calendar-reminder.timer
+{{ end }}
