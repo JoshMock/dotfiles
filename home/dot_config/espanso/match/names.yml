@@ -1,0 +1,22 @@
+matches:
+  - trigger: "Bjork"
+    replace: "Björk"
+    word: true
+
+  - trigger: "Beyonce"
+    replace: "Beyoncé"
+    word: true
+
+  - trigger: "Ros"
+    replace: "Rós"
+    word: true
+
+  - trigger: "twdy"
+    replace: "This Will Destroy You"
+
+  - trigger: "gybe"
+    replace: "Godspeed You! Black Emperor"
+
+  - trigger: "fb"
+    replace: "Facebook"
+    word: true

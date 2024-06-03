@@ -15,37 +15,15 @@ matches:
     word: true
     propagate_case: true
 
-  - trigger: "Bjork"
-    replace: "Björk"
-    word: true
-
-  - trigger: "Beyonce"
-    replace: "Beyoncé"
-    word: true
-
-  - trigger: "Ros"
-    replace: "Rós"
-    word: true
-
   - trigger: "tho"
     replace: "though"
     word: true
     propagate_case: true
 
-  - trigger: "twdy"
-    replace: "This Will Destroy You"
-
-  - trigger: "gybe"
-    replace: "Godspeed You! Black Emperor"
-
   - trigger: "gy"
     replace: "gotcha"
     word: true
     propagate_case: true
-
-  - trigger: "fb"
-    replace: "Facebook"
-    word: true
 
   - trigger: ":date"
     replace: "{{mydate}}"
@@ -54,9 +32,3 @@ matches:
         type: date
         params:
           format: "%Y-%m-%d"
-
-  - trigger: ":xx"
-    replace: "#WXNA #WXNAFM #MusicCity #CommunityRadio #IndependentRadio #Nashville #VisitNashville"
-
-  - trigger: ":xl"
-    replace: "bit.ly/3A7GNFs"

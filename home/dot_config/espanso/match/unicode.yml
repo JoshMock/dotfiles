@@ -1,0 +1,9 @@
+matches:
+  - trigger: "(tm)"
+    replace: "™"
+
+  - trigger: "(r)"
+    replace: "®"
+
+  - trigger: "(c)"
+    replace: "©"
