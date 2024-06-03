@@ -18,3 +18,4 @@ pyrightconfig.json
 .neoconf.json
 .markdownlint.yaml
 venv
+.worktrees
