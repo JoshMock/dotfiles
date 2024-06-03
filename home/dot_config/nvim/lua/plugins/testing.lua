@@ -3,10 +3,6 @@ local function test_file()
   neotest.run.run(vim.fn.expand("%"))
 end
 
-vim.keymap.set("n", "<leader>tf", test_file, { desc = "Run this unit test file" })
-vim.keymap.set("n", "<leader>to", "<cmd>Neotest output-panel<cr>", { desc = "Show test output" })
-vim.keymap.set("n", "<leader>ts", "<cmd>Neotest summary<cr>", { desc = "Show test output" })
-
 vim.g["test#javascript#tap#file_pattern"] = "\\.test\\.ts$"
 
 return {
@@ -27,6 +23,12 @@ return {
         },
       })
     end,
+    keys = {
+      { "<leader>t", desc = "+testing" },
+      { "<leader>tf", test_file, desc = "Run this unit test file" },
+      { "<leader>to", "<cmd>Neotest output-panel<cr>", desc = "Show test output" },
+      { "<leader>ts", "<cmd>Neotest summary<cr>", desc = "Show test output" },
+    },
   },
   {
     "nvim-neotest/neotest-vim-test",
