@@ -1,7 +1,7 @@
 {
   "extras": [
     "lazyvim.plugins.extras.dap.core",
-    "lazyvim.plugins.extras.editor.trouble-v3",
+    "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.formatting.black",
     "lazyvim.plugins.extras.lang.docker",
     "lazyvim.plugins.extras.lang.json",
@@ -11,11 +11,12 @@
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.lsp.none-ls",
+    "lazyvim.plugins.extras.ui.mini-indentscope",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.project"
   ],
   "news": {
-    "NEWS.md": "4964"
+    "NEWS.md": "5204"
   },
-  "version": 4
+  "version": 6
 }
