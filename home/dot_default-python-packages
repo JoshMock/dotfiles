@@ -2,3 +2,4 @@ build
 pip
 pynvim
 wheel
+requests
