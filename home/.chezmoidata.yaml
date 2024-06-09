@@ -167,6 +167,7 @@ packages:
     features: [desktop]
   - name: rofi-calc
     features: [desktop]
+  - name: rust-analyzer
   - name: slack-desktop
     features: [desktop]
   - name: starship
