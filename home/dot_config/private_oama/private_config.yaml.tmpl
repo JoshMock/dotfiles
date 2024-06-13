@@ -1,0 +1,10 @@
+{{ if .work -}}
+encryption:
+  tag: GPG
+  contents: joshua.mock@elastic.co
+
+services:
+  google:
+    client_id: '{{ onepasswordRead "op://Private/gcalcli oauth secret/add more/access token" }}'
+    client_secret: '{{ onepasswordRead "op://Private/gcalcli oauth secret/add more/client secret" }}'
+{{ end -}}

@@ -134,6 +134,8 @@ packages:
     features: [email]
   - name: noto-fonts-emoji
     features: [desktop]
+  - name: oama-bin
+    features: [email]
   - name: obsidian
     features: [desktop]
   - name: otf-font-awesome-4
