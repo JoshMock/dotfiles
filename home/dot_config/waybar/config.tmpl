@@ -9,7 +9,7 @@
       "sway/mode",
       "hyprland/mode",
     ],
- 
+
     "modules-center": [
       {{ if .work -}}
       "custom/timew",
@@ -29,6 +29,7 @@
       "clock",
       "custom/weather",
       "tray",
+      "custom/notification",
       "custom/power",
     ],
 
@@ -74,7 +75,7 @@
     "memory": {
         "interval": 5,
         "format": " {}%", // Icon: memory
-        "on-click": "kitty --single-instance glances", 
+        "on-click": "kitty --single-instance glances",
         "states": {
             "warning": 70,
             "critical": 90
@@ -148,7 +149,7 @@
     },
 
     "custom/weather": {
-        "exec": "~/.config/waybar/scripts/weather", 
+        "exec": "~/.config/waybar/scripts/weather",
         "return-type": "json",
         "interval": 600,
     },
@@ -197,5 +198,26 @@
       "format": "     {}",
       "interval": 10,
       "max-length": 80,
+    },
+
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
     },
 }
