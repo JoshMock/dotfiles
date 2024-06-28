@@ -1,0 +1,27 @@
+history_filter = ["^vault write", "^op item edit", "^docker login"]
+enter_accept = true
+
+[stats]
+common_subcommands = [
+  "cargo",
+  "chezmoi",
+  "docker",
+  "git",
+  "kubectl",
+  "npm",
+  "pip",
+  "systemctl",
+  "tmux",
+  "yarn",
+  "yay",
+  "vault",
+  "gh",
+  "task",
+  "hyprctl",
+  "fwupdmgr",
+  "asdf",
+  "restic",
+  "autorestic",
+]
+
+common_prefix = ["sudo"]
