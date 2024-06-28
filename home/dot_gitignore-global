@@ -19,3 +19,4 @@ pyrightconfig.json
 .markdownlint.yaml
 venv
 .worktrees
+.markdownlint*
