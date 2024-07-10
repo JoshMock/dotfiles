@@ -177,6 +177,8 @@ packages:
   - name: strace
   - name: swaylock-effects-git
     features: [desktop]
+  - name: swww
+    features: [desktop]
   - name: tailscale
   - name: task
     features: [taskwarrior]
