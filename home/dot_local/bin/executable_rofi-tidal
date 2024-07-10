@@ -9,6 +9,8 @@ import tidalapi
 
 TIDAL_SESSION_FILE = "/home/joshmock/.config/tidal-oauth.json"
 
+r = Rofi()
+
 
 def login():
     config = tidalapi.Config(quality=tidalapi.Quality.high_lossless)
@@ -37,9 +39,64 @@ def login():
     return session
 
 
+def album_title(album):
+    title = album.name
+    if album.explicit:
+        title = f"{title} (Explicit)"
+    return f"{title} ({album.type})"
+
+
+def track_title(track):
+    title = track.name
+    if track.explicit:
+        title = f"{title} (Explicit)"
+    return title
+
+
+def select_album(artist):
+    r.status("Looking up albums...")
+    artist_albums = artist.get_albums()
+    index, key = r.select(
+        f"Albums by {artist.name}",
+        [album_title(a) for a in artist_albums],
+    )
+    if key == -1:
+        return
+
+    id = artist_albums[index].id
+    return f"https://listen.tidal.com/album/{id}"
+
+
+def select_ep_single(artist):
+    r.status("Looking up albums...")
+    artist_albums = artist.get_ep_singles()
+    index, key = r.select(
+        f"EPs/singles by {artist.name}",
+        [album_title(a) for a in artist_albums],
+    )
+    if key == -1:
+        return
+
+    id = artist_albums[index].id
+    return f"https://listen.tidal.com/album/{id}"
+
+
+def select_track(artist):
+    r.status("Looking up albums...")
+    tracks = artist.get_top_tracks()
+    index, key = r.select(
+        f"Tracks by {artist.name}",
+        [track_title(a) for a in tracks],
+    )
+    if key == -1:
+        return
+
+    track = tracks[index]
+    return f"https://listen.tidal.com/album/{track.album.id}/track/{track.id}"
+
+
 def main():
     tidal = login()
-    r = Rofi()
 
     search_term = r.text_entry("Search Tidal")
     if not search_term or not search_term.strip():
@@ -55,22 +112,28 @@ def main():
         return
 
     selected_artist = results["artists"][index]
-    r.status("Looking up albums...")
-    artist_albums = selected_artist.get_albums()
     index, key = r.select(
-        f"Albums by {selected_artist.name}",
-        [a.name for a in artist_albums],
+        "What are you looking for?", ["Albums", "EPS/Singles", "Tracks"]
     )
-    if key == -1:
+    item = None
+    if index == 0:
+        item = select_album(selected_artist)
+    elif index == 1:
+        item = select_ep_single(selected_artist)
+    elif index == 2:
+        item = select_track(selected_artist)
+    else:
         return
 
-    album_id = artist_albums[index].id
+    if not item:
+        return
+
     r.status("Adding to Mopidy queue...")
     run = subprocess.run(
         [
             "/home/joshmock/.local/bin/add-to-mopidy",
             "--url",
-            f"https://listen.tidal.com/album/{album_id}",
+            item,
         ],
         capture_output=True,
     )
