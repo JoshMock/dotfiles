@@ -18,7 +18,7 @@ packages:
     features: [desktop]
   - name: cava
     features: [desktop]
-  - name: clipster
+  - name: cliphist
     features: [desktop]
   - name: codespell
   - name: cronie
