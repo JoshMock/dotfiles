@@ -91,8 +91,6 @@ packages:
   - name: luarocks
   - name: lynx
     features: [email]
-  - name: mako
-    features: [desktop]
   - name: mimeo
     features: [desktop]
   - name: mopidy
@@ -176,6 +174,8 @@ packages:
   - name: stow
   - name: strace
   - name: swaylock-effects-git
+    features: [desktop]
+  - name: swaync
     features: [desktop]
   - name: swww
     features: [desktop]

@@ -212,4 +212,4 @@ bindsym $meh+c exec rofi-clipster
 bindsym $meh+t exec rofi-tidal
 
 # notification dismiss
-bindsym Control+space exec makoctl dismiss -g
+bindsym Control+space exec swaync-client --hide-latest
