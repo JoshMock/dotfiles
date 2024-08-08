@@ -18,6 +18,7 @@ packages:
     features: [desktop]
   - name: cava
     features: [desktop]
+  - name: clipboard-bin
   - name: cliphist
     features: [desktop]
   - name: codespell
