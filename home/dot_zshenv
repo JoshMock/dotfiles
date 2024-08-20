@@ -2,11 +2,6 @@
 
 export PATH=$HOME/.cargo/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/lib/node_modules:/usr/local/sbin:$HOME/.local/bin:$PATH
 
-# XDG
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$XDG_CONFIG_HOME/local/share
-export XDG_CACHE_HOME=$XDG_CONFIG_HOME/cache
-
 # neovim as default editor
 export VISUAL=nvim
 export EDITOR=nvim
