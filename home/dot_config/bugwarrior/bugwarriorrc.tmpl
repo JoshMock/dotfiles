@@ -2,6 +2,8 @@
 taskrc = /home/joshmock/.taskrc
 annotation_comments = False
 annotation_links = True
+merge_tags = True
+replace_tags = False
 {{ if .work -}}
 targets = elastic_my_issues,elastic_my_prs,elastic_code_reviews,elastic_client_js_prs,elastic_client_js_unassigned_bugs,elastic_transport_js_unassigned_bugs
 
@@ -28,6 +30,7 @@ github.description_template = {{ "{{githubtitle}}" }}
 github.query = is:open is:pr archived:false user:elastic author:JoshMock
 github.default_priority = M
 github.add_tags = open_pr
+github.import_labels_as_tags = True
 
 [elastic_code_reviews]
 service = github
@@ -40,6 +43,7 @@ github.description_template = {{ "{{githubtitle}}" }}
 github.query = is:open is:pr archived:false user:elastic review-requested:JoshMock
 github.default_priority = H
 github.add_tags = code_review
+github.import_labels_as_tags = True
 
 [elastic_client_js_prs]
 service = github
@@ -52,6 +56,7 @@ github.description_template = {{ "{{githubtitle}}" }}
 github.query = repo:elastic/elasticsearch-js is:open is:pr archived:false
 github.default_priority = M
 github.add_tags = code_review
+github.import_labels_as_tags = True
 
 [elastic_client_js_unassigned_bugs]
 service = github
@@ -64,6 +69,7 @@ github.description_template = {{ "{{githubtitle}}" }}
 github.query = repo:elastic/elasticsearch-js is:open is:issue archived:false label:"Category: Bug"
 github.default_priority = L
 github.add_tags = unassigned
+github.import_labels_as_tags = True
 
 [elastic_transport_js_unassigned_bugs]
 service = github
@@ -76,6 +82,7 @@ github.description_template = {{ "{{githubtitle}}" }}
 github.query = repo:elastic/elastic-transport-js is:open is:issue archived:false label:"Category: Bug"
 github.default_priority = L
 github.add_tags = unassigned
+github.import_labels_as_tags = True
 {{ else -}}
 targets = joshmock_issues
 
