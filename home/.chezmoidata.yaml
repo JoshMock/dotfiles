@@ -7,7 +7,7 @@ packages:
     features: [email]
   - name: asdf-vm
   - name: atuin
-  - name: autorestic
+  - name: autorestic-bin
   - name: bat
   - name: barrier
     features: [desktop]
