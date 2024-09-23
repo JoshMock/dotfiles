@@ -15,14 +15,20 @@ Any time I can do something without using a mouse, I will.
 
 ### Software
 
-- [Arch Linux](https://archlinux.org/) or [EndeavourOS](https://endeavouros.com/) (Arch-based)
-- [Hyprland](https://hyprland.org/)
-- [Rofi](https://github.com/davatorium/rofi) for launching desktop apps and streamlining various tasks
-- zsh + [antidote](https://getantidote.github.io/) + [various zsh plugins](./home/dot_zsh_plugins.txt)
-- Neovim ([LazyVim](https://www.lazyvim.org)-based setup) + [Kitty](https://sw.kovidgoyal.net/kitty/) as my IDE
-- [Several Vim plugins](./home/dot_config/nvim/lua/plugins) not included with LazyVim
-- [Mopidy](https://mopidy.com/) for listening to music
-- [Taskwarrior](https://taskwarrior.org/) and related tools for to-do list management and time tracking
+- **Operating system:** [Arch Linux](https://archlinux.org/) or [EndeavourOS](https://endeavouros.com/) (Arch-based)
+- **Window manager:** [Hyprland](https://hyprland.org/)
+- **Shell:** zsh + [antidote](https://getantidote.github.io/) + [various zsh plugins](./home/dot_zsh_plugins.txt)
+- **IDE:** Neovim ([LazyVim](https://www.lazyvim.org)-based setup) + [Kitty](https://sw.kovidgoyal.net/kitty/)
+
+#### Various utilities
+
+- **App launcher:** [Rofi](https://github.com/davatorium/rofi)
+- **Music player:** [Mopidy](https://mopidy.com/) for listening to music
+- **To-do list manager:** [Taskwarrior](https://taskwarrior.org/)
+- **Text expansion:** [Espanso](https://espanso.org/)
+- **Backups:** [Restic](https://restic.net/) + [Rclone](https://rclone.org/)
+- **Email:** [Neomutt](https://neomutt.org/) (via [mutt-wizard](https://github.com/LukeSmithxyz/mutt-wizard))
+- **File syncing:** [git-annex](https://git-annex.branchable.com/)
 
 ## Installation
 
@@ -42,6 +48,7 @@ I'm currently experimenting with using Chezmoi to handle this, by maintaining [a
 This is handled by [a Python script](./home/run_onchange_01-install-packages.tmpl) that runs whenever the list of packages or my feature flags in `~/.config/chezmoi/chezmoi.toml` changes.
 
 An example `chezmoi.toml`:
+
 ```toml
 [data]
 taskwarrior = true
