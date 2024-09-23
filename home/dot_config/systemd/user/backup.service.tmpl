@@ -4,7 +4,7 @@ Description=Scheduled backups, powered by autorestic.
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/autorestic --ci backup -a
+ExecStart=/usr/local/bin/autorestic --ci backup -a
 
 [Install]
 WantedBy=backup.timer
