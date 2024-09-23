@@ -23,7 +23,7 @@ Any time I can do something without using a mouse, I will.
 #### Various utilities
 
 - **App launcher:** [Rofi](https://github.com/davatorium/rofi)
-- **Music player:** [Mopidy](https://mopidy.com/) for listening to music
+- **Music player:** [Mopidy](https://mopidy.com/)
 - **To-do list manager:** [Taskwarrior](https://taskwarrior.org/)
 - **Text expansion:** [Espanso](https://espanso.org/)
 - **Backups:** [Restic](https://restic.net/) + [Rclone](https://rclone.org/)
