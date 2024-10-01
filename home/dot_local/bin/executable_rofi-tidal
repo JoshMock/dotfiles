@@ -11,6 +11,11 @@ TIDAL_SESSION_FILE = "/home/joshmock/.config/tidal-oauth.json"
 
 r = Rofi()
 
+global alert_artist
+global alert_title
+alert_artist = "no artist"
+alert_title = "no title"
+
 
 def login():
     config = tidalapi.Config(quality=tidalapi.Quality.high_lossless)
@@ -56,42 +61,53 @@ def track_title(track):
 def select_album(artist):
     r.status("Looking up albums...")
     artist_albums = artist.get_albums()
+    titles = [album_title(a) for a in artist_albums]
     index, key = r.select(
         f"Albums by {artist.name}",
-        [album_title(a) for a in artist_albums],
+        titles,
     )
     if key == -1:
         return
 
-    id = artist_albums[index].id
+    album = artist_albums[index]
+    id = album.id
+    global alert_title
+    alert_title = titles[index]
     return f"https://listen.tidal.com/album/{id}"
 
 
 def select_ep_single(artist):
     r.status("Looking up albums...")
     artist_albums = artist.get_ep_singles()
+    titles = [album_title(a) for a in artist_albums]
     index, key = r.select(
         f"EPs/singles by {artist.name}",
-        [album_title(a) for a in artist_albums],
+        titles,
     )
     if key == -1:
         return
 
-    id = artist_albums[index].id
+    album = artist_albums[index]
+    id = album.id
+    global alert_title
+    alert_title = titles[index]
     return f"https://listen.tidal.com/album/{id}"
 
 
 def select_track(artist):
     r.status("Looking up albums...")
     tracks = artist.get_top_tracks()
+    titles = [track_title(a) for a in tracks]
     index, key = r.select(
         f"Tracks by {artist.name}",
-        [track_title(a) for a in tracks],
+        titles,
     )
     if key == -1:
         return
 
     track = tracks[index]
+    global alert_title
+    alert_title = titles[index]
     return f"https://listen.tidal.com/album/{track.album.id}/track/{track.id}"
 
 
@@ -112,6 +128,7 @@ def main():
         return
 
     selected_artist = results["artists"][index]
+    alert_artist = selected_artist.name
     index, key = r.select(
         "What are you looking for?", ["Albums", "EPS/Singles", "Tracks"]
     )
@@ -129,6 +146,9 @@ def main():
         return
 
     r.status("Adding to Mopidy queue...")
+
+    subprocess.call(["notify-send", f"Queueing music: {alert_artist} - {alert_title}"])
+
     run = subprocess.run(
         [
             "/home/joshmock/.local/bin/add-to-mopidy",
