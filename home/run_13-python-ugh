@@ -15,3 +15,12 @@ if chezmoi data | jq -e '.taskwarrior == true'; then
     pipx install --fetch-missing-python --python 3.11 vit
   fi
 fi
+
+# install gcalcli
+if chezmoi data | jq -e '.work == true'; then
+  if pipx list --json | jq -e '.venvs | has("gcalcli")'; then
+    pipx upgrade gcalcli
+  else
+    pipx install --fetch-missing-python --python 3.12 gcalcli
+  fi
+fi

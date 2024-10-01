@@ -49,8 +49,6 @@ packages:
   - name: floorp-bin
     features: [desktop]
   - name: fzf
-  - name: gcalcli
-    features: [work]
   - name: git
   - name: git-annex
   - name: git-extras
