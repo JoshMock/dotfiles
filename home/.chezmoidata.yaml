@@ -47,7 +47,7 @@ packages:
   - name: flameshot
     features: [desktop]
   - name: floorp-bin
-    features: [desktop]
+    features: [work]
   - name: fzf
   - name: git
   - name: git-annex
@@ -64,7 +64,6 @@ packages:
     features: [desktop]
   - name: hypridle-git
     features: [desktop]
-  - name: hyprpaper
   - name: inter-font
     features: [desktop]
   - name: interception-caps2esc
@@ -82,11 +81,7 @@ packages:
     features: [desktop]
   - name: kitty-terminfo
     features: [desktop]
-  - name: calcurse
-    features: [desktop]
   - name: lazygit
-  - name: leiningen
-    features: [work]
   - name: luarocks
   - name: lynx
     features: [email]
