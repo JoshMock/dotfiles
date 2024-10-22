@@ -87,26 +87,6 @@ packages:
     features: [email]
   - name: mimeo
     features: [desktop]
-  - name: mopidy
-    features: [mopidy]
-  - name: mopidy-bandcamp
-    features: [mopidy]
-  - name: mopidy-beets
-    features: [mopidy]
-  - name: mopidy-iris
-    features: [mopidy]
-  - name: mopidy-jellyfin
-    features: [mopidy]
-  - name: mopidy-mpd
-    features: [mopidy]
-  - name: mopidy-mpris
-    features: [mopidy]
-  - name: mopidy-scrobbler
-    features: [mopidy]
-  - name: mopidy-soundcloud
-    features: [mopidy]
-  - name: mopidy-youtube
-    features: [mopidy]
   - name: mpc
     features: [mopidy]
   - name: msmtp
@@ -144,8 +124,6 @@ packages:
   - name: python-httpx
   - name: python-i3ipc
     features: [desktop]
-  - name: python-mopidy-tidal
-    features: [mopidy]
   - name: python-pip
   - name: python-pipx
   - name: python-rofi
@@ -220,6 +198,8 @@ packages:
   - name: xdg-utils-mimeo
     features: [desktop]
   - name: go-yq
+  - name: yt-dlp
+    features: [desktop, mopidy]
   - name: zeal-git
     features: [desktop]
   - name: zip

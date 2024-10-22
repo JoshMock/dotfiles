@@ -12,7 +12,7 @@ After=remote-fs.target
 After=sound.target
 
 [Service]
-ExecStart=/usr/bin/mopidy --config /home/joshmock/.config/mopidy/mopidy.conf
+ExecStart=/home/joshmock/.local/bin/mopidy --config /home/joshmock/.config/mopidy/mopidy.conf
 ExecStartPost=sleep 10
 ExecStartPost=/usr/bin/curl -d '{"jsonrpc": "2.0", "id": 1, "method": "core.tracklist.set_consume", "params": [true] }' -H 'Content-Type: application/json' "http://localhost:6680/mopidy/rpc"
 

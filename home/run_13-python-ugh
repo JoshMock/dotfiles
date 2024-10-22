@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-if chezmoi data | jq -e '.taskwarrior == true'; then
+chez=$(chezmoi data)
+pypkgs=$(pipx list --json)
+
+if echo "$chez" | jq -e '.taskwarrior == true'; then
   # bugwarrior doesn't work on 3.12 yet
-  if pipx list --json | jq -e '.venvs | has("bugwarrior")'; then
+  if echo "$pypkgs" | jq -e '.venvs | has("bugwarrior")'; then
     pipx upgrade bugwarrior
   else
     pipx install --preinstall=setuptools --fetch-missing-python --python 3.11 bugwarrior
   fi
 
   # vit doesn't work on 3.12 yet
-  if pipx list --json | jq -e '.venvs | has("vit")'; then
+  if echo "$pypkgs" | jq -e '.venvs | has("vit")'; then
     pipx upgrade vit
   else
     pipx install --fetch-missing-python --python 3.11 vit
@@ -17,10 +20,32 @@ if chezmoi data | jq -e '.taskwarrior == true'; then
 fi
 
 # install gcalcli
-if chezmoi data | jq -e '.work == true'; then
-  if pipx list --json | jq -e '.venvs | has("gcalcli")'; then
+if echo "$chez" | jq -e '.work == true'; then
+  if echo "$pypkgs" | jq -e '.venvs | has("gcalcli")'; then
     pipx upgrade gcalcli
   else
     pipx install --fetch-missing-python --python 3.12 gcalcli
+  fi
+fi
+
+# install mopidy
+if echo "$chez" | jq -e '.mopidy == true'; then
+  if echo "$pypkgs" | jq -e '.venvs | has("Mopidy")'; then
+    pipx upgrade Mopidy
+  else
+    pipx install --fetch-missing-python --python 3.12 Mopidy
+    # gst-python
+    pipx inject Mopidy \
+      Mopidy-Bandcamp \
+      Mopidy-Beets \
+      Mopidy-Iris \
+      Mopidy-Jellyfin \
+      Mopidy-MPD \
+      Mopidy-MPRIS \
+      Mopidy-Scrobbler \
+      Mopidy-SoundCloud \
+      Mopidy-YouTube \
+      mopidy-tidal \
+      PyGObject
   fi
 fi
