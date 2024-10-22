@@ -1,8 +1,3 @@
-# open youtube vids in vlc
-/usr/bin/vlc --one-instance --playlist-enqueue %U
-  ^https?://(\w+\.)?youtube.com/watch\?.*v=
-  ^https?://youtu\.be/
-
 {{ if .work }}
 # work URLs
 /usr/bin/firefox-developer-edition %U
