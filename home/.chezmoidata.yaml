@@ -62,7 +62,7 @@ packages:
     features: [desktop]
   - name: hyprlock
     features: [desktop]
-  - name: hypridle-git
+  - name: hypridle
     features: [desktop]
   - name: inter-font
     features: [desktop]
