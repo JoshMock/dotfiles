@@ -175,6 +175,8 @@ packages:
     features: [desktop]
   - name: ttf-liberation
     features: [desktop]
+  - name: ulauncher
+    featuers: [desktop]
   - name: unzip
   - name: urlview
     features: [desktop, email]
