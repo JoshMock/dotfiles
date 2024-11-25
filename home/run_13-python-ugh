@@ -30,8 +30,8 @@ fi
 
 # install mopidy
 if echo "$chez" | jq -e '.mopidy == true'; then
-  if echo "$pypkgs" | jq -e '.venvs | has("Mopidy")'; then
-    pipx upgrade Mopidy
+  if echo "$pypkgs" | jq -e '.venvs | has("mopidy")'; then
+    pipx upgrade mopidy --include-injected
   else
     pipx install --fetch-missing-python --python 3.12 Mopidy
     # gst-python
