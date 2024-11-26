@@ -7,6 +7,7 @@ return {
       table.insert(opts.sources, { name = "rg" })
       table.insert(opts.sources, { name = "kitty" })
       table.insert(opts.sources, { name = "git" })
+      table.insert(opts.sources, { name = "conjure" })
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -36,6 +37,10 @@ return {
   },
   {
     "petertriho/cmp-git",
+    dependencies = { "nvim-cmp" },
+  },
+  {
+    "PaterJason/cmp-conjure",
     dependencies = { "nvim-cmp" },
   },
 }
