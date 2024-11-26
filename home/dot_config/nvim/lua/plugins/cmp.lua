@@ -34,10 +34,16 @@ return {
   {
     "garyhurtz/cmp_kitty",
     dependencies = { "nvim-cmp" },
+    init = function()
+      require("cmp_kitty"):setup()
+    end,
   },
   {
     "petertriho/cmp-git",
     dependencies = { "nvim-cmp" },
+    init = function()
+      require("cmp_git"):setup()
+    end,
   },
   {
     "PaterJason/cmp-conjure",
