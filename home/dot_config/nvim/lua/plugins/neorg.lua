@@ -8,9 +8,6 @@ return {
         load = {
           ["core.defaults"] = {},
           ["core.concealer"] = {},
-          ["core.completion"] = {
-            config = { engine = "nvim-cmp" },
-          },
           ["core.dirman"] = {
             config = {
               workspaces = {
@@ -20,8 +17,22 @@ return {
             },
           },
           ["core.export"] = {},
+          ["external.interim-ls"] = {
+            config = {
+              completion_provider = {
+                enable = true,
+                documentation = true,
+                categories = false,
+              },
+            },
+          },
         },
       })
     end,
+  },
+  {
+    "benlubas/neorg-interim-ls",
+    ft = { "norg", "neorg" },
+    lazy = true,
   },
 }
