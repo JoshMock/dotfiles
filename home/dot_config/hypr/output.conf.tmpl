@@ -13,3 +13,12 @@ monitor=,preferred,auto,2
 {{ end -}}
 workspace = special:scratchpad, on-created-empty:foot
 workspace = special:hide, on-created-empty:foot
+
+render {
+  explicit_sync = 0
+  explicit_sync_kms = 0
+}
+
+xwayland {
+  force_zero_scaling = true
+}
