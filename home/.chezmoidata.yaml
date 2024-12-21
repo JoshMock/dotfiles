@@ -60,6 +60,8 @@ packages:
   - name: htop
   - name: hyprland
     features: [desktop]
+  - name: hyprland-qtutils
+    feature: [desktop]
   - name: hyprlock
     features: [desktop]
   - name: hypridle
@@ -194,6 +196,8 @@ packages:
   - name: which
   - name: whois
   - name: wofi
+    features: [desktop]
+  - name: xdg-desktop-portal-gtk
     features: [desktop]
   - name: xdg-desktop-portal-hyprland
     features: [desktop]
