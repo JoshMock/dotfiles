@@ -3,7 +3,7 @@ return {
     "saghen/blink.cmp",
     opts = {
       sources = {
-        compat = { "rg", "kitty", "git", "conjure" },
+        compat = { "rg", "kitty", "conjure" },
       },
     },
   },
@@ -14,10 +14,6 @@ return {
   },
   {
     "garyhurtz/cmp_kitty",
-    dependencies = { "saghen/blink.cmp" },
-  },
-  {
-    "petertriho/cmp-git",
     dependencies = { "saghen/blink.cmp" },
   },
   {
