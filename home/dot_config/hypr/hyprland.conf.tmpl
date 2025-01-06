@@ -1,6 +1,6 @@
 source = ~/.config/hypr/env.conf
-{{- $nvidia := output "/usr/bin/bash" "-c" "lspci -k | grep -i vga | grep -o NVIDIA; exit 0" }}
-{{- if eqFold "NVIDIA" $nvidia }}
+{{- $nvidia := output "/usr/bin/bash" "-c" "lspci -k | grep -iE '(vga|3d)' | grep -o NVIDIA; exit 0" }}
+{{- if eqFold "NVIDIA\n" $nvidia }}
 source = ~/.config/hypr/nvidia.conf
 {{- end }}
 source = ~/.config/hypr/input.conf
