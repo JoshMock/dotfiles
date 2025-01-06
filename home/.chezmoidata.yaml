@@ -175,6 +175,8 @@ packages:
     features: [desktop]
   - name: ttf-liberation
     features: [desktop]
+  - name: ttf-ubuntu-mono-nerd
+    features: [desktop]
   - name: ulauncher
     featuers: [desktop]
   - name: unzip
