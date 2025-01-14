@@ -1,2 +1,4 @@
 neovim
 zeal-user-contrib
+ts-node
+yarn
