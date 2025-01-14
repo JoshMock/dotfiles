@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+from __future__ import print_function
+
+import sys
+from html import unescape
+
+try:
+    input_stream = sys.stdin.buffer
+except AttributeError:
+    input_stream = sys.stdin
+
+custom_replace = [
+    ("&dquot;", '"'),
+    ("&open;", "["),
+    ("&close;", "]"),
+]
+
+# strip html entities
+old = input_stream.readline().decode("utf-8", errors="replace")
+new = input_stream.readline().decode("utf-8", errors="replace")
+
+for before, after in custom_replace:
+    new = new.replace(before, after)
+
+new = unescape(new)
+print(new)
