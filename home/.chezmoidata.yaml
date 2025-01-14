@@ -79,6 +79,8 @@ packages:
   - name: luacheck
   - name: polkit-kde-agent
     features: [desktop]
+  - name: pyprland
+    features: [desktop]
   - name: kitty
     features: [desktop]
   - name: kitty-terminfo
