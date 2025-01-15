@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 
-from __future__ import print_function
-
+import json
 import sys
 from html import unescape
-
-try:
-    input_stream = sys.stdin.buffer
-except AttributeError:
-    input_stream = sys.stdin
 
 custom_replace = [
     ("&dquot;", '"'),
@@ -16,12 +10,20 @@ custom_replace = [
     ("&close;", "]"),
 ]
 
-# strip html entities
-task = input_stream.readline().decode("utf-8", errors="replace")
 
-for before, after in custom_replace:
-    task = task.replace(before, after)
+def clean_str(input):
+    for before, after in custom_replace:
+        input = input.replace(before, after)
+    return unescape(input)
 
-task = unescape(task)
 
-print(task)
+task = json.loads(sys.stdin.readline())
+
+props = ["description", "githubbody", "githubtitle"]
+
+for prop in props:
+    val = task.get(prop)
+    if prop:
+        task[prop] = clean_str(task[prop])
+
+print(json.dumps(task))
