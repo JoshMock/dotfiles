@@ -1,0 +1,7 @@
+library: ~/Music/library.db
+paths:
+  default: "$albumartist/$album%aunique{}/$track - $title"
+  comp: "Compilations/$album%aunique{}/$track - $title"
+plugins: play
+play:
+  command: "play"

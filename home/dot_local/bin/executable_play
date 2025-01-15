@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+playlist=$1
+
+pushd /home/joshmock/Music >/dev/null || exit 1
+
+while read -r line; do
+  echo "$line"
+  git annex get "$line" >/dev/null
+  mpc -h :: add "file://$line" >/dev/null
+done <"$playlist"
+
+popd >/dev/null || exit 1
