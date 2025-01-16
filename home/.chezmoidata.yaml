@@ -211,7 +211,5 @@ packages:
   - name: zeal-git
     features: [desktop]
   - name: zip
-  - name: zoom
-    features: [work]
   - name: zsh
   - name: zsh-antidote
