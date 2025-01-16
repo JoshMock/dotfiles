@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# remove old packages from pacman cache directory
+sudo paccache -r
+
+# remove unneeded packages
+yay -Y -cc
+
+# remove orphaned packages
+sudo pacman -Qqd | sudo pacman -Rsu -
