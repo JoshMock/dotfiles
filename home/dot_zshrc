@@ -64,9 +64,6 @@ alias prettyjson='cpaste | jq | ccopy'
 # hack to make Docker commands work in makefiles
 # alias make='SHELL=/bin/bash make'
 
-# set up asdf
-. /opt/asdf-vm/asdf.sh
-
 # aliases
 alias lastcommit="git rev-parse HEAD | tr -d '\n' | xclip -selection clipboard"
 alias k=kubectl

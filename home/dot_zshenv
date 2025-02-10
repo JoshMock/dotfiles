@@ -1,6 +1,8 @@
 # vim:ft=zsh
 
-export PATH=$HOME/.cargo/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/lib/node_modules:/usr/local/sbin:$HOME/.local/bin:$PATH
+export ASDF_DATA_DIR=/home/joshmock/.asdf
+
+export PATH=$ASDF_DATA_DIR/shims:$HOME/.cargo/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/lib/node_modules:/usr/local/sbin:$HOME/.local/bin:$PATH
 
 # neovim as default editor
 export VISUAL=nvim
