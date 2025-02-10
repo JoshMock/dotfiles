@@ -3,17 +3,28 @@
 current=$(date +%M)
 replace=''
 
+remind() {
+  time=$1
+  replace_id=$2
+
+  if [[ -z "$replace_id" ]]; then
+    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id --replace-id=$replace_id -u normal -a gcalcli %s"
+  else
+    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id -u normal -a gcalcli %s"
+  fi
+}
+
 if [[ "$current" == '00' ]] || [[ "$current" == '30' ]]; then
-  replace=$(gcalcli --calendar joshua.mock@elastic.co remind 60 'notify-send --print-id -u normal -a gcalcli %s')
+  replace=$(remind 60 "$replace")
 fi
 
 if [[ ${current:1:1} == '0' ]]; then
-  replace=$(gcalcli --calendar joshua.mock@elastic.co remind 10 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s")
-  replace=$(gcalcli --calendar joshua.mock@elastic.co remind 5 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s")
+  replace=$(remind 10 "$replace")
+  replace=$(remind 5 "$replace")
 fi
 
 if [[ ${current:1:1} == '5' ]]; then
-  replace=$(gcalcli --calendar joshua.mock@elastic.co remind 5 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s")
+  replace=$(remind 5 "$replace")
 fi
 
-gcalcli remind 2 "notify-send --print-id --replace-id=$replace -u critical -a gcalcli %s"
+remind 2 "$replace"
