@@ -51,3 +51,11 @@ if echo "$chez" | jq -e '.mopidy == true'; then
       PyGObject
   fi
 fi
+
+# install beets
+if echo "$pypkgs" | jq -e '.venvs | has("beets")'; then
+  pipx upgrade beets --include-injected
+else
+  pipx install beets
+  pipx inject beets 'beets[lastgenre]'
+fi
