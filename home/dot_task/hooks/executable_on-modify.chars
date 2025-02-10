@@ -28,7 +28,7 @@ props = ["description", "githubbody", "githubtitle"]
 
 for prop in props:
     val = task.get(prop)
-    if prop:
+    if val is not None:
         task[prop] = clean_str(task[prop])
 
 print(json.dumps(task))
