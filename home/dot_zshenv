@@ -20,3 +20,4 @@ export PAGER="bat -p"
 export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat --theme=default -l man -p'"
 
+export BROWSER=/usr/bin/mimeo
