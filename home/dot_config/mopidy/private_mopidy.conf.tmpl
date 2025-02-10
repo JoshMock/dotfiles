@@ -2,30 +2,14 @@
 [core]
 restore_state = true
 
-[logging]
-#verbosity = 0
-#format = %(levelname)-8s %(asctime)s [%(process)d:%(threadName)s] %(name)s\n  %(message)s
-#color = true
-#config_file =
-
 [audio]
-#mixer = software
-#mixer_volume = 
-#output = autoaudiosink
-#buffer_time = 
-
-[proxy]
-#scheme = 
-#hostname = 
-#port = 
-#username = 
-#password = 
+mixer = software
 
 [file]
 enabled = true
-media_dirs = 
+media_dirs =
   ~/Music|Music
-excluded_file_extensions = 
+excluded_file_extensions =
   .directory
   .html
   .jpeg
@@ -44,32 +28,7 @@ metadata_timeout = 1000
 enabled = true
 hostname = 127.0.0.1
 port = 6680
-#zeroconf = Mopidy HTTP server on $hostname
 allowed_origins = 127.0.0.1:6680
-#csrf_protection = true
-#default_app = mopidy
-
-[m3u]
-#enabled = true
-#base_dir =
-#default_encoding = latin-1
-#default_extension = .m3u8
-#playlists_dir =
-
-[softwaremixer]
-#enabled = true
-
-[stream]
-#enabled = true
-#protocols = 
-#  http
-#  https
-#  mms
-#  rtmp
-#  rtmps
-#  rtsp
-#metadata_blacklist = 
-#timeout = 5000
 
 [beets]
 enabled = false
@@ -82,7 +41,7 @@ identity = {{ onepasswordRead "op://Personal/Bandcamp - mopidy identity/password
 
 [tidal]
 enabled = true
-quality = LOSSLESS
+quality = HI_RES_LOSSLESS
 
 [scrobbler]
 enabled = true
@@ -112,10 +71,10 @@ hostname = nas:8096
 username = root
 password = {{ onepasswordRead "op://Personal/nas.local jellyfin admin/password" }}
 libraries = Music
-{{ end -}}
 
 [internetarchive]
 enabled = true
 
 [soundcloud]
 auth_token = {{ onepasswordRead "op://Personal/Soundcloud/add more/api auth token" }}
+{{ end -}}
