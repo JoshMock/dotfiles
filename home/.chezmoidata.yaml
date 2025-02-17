@@ -123,8 +123,6 @@ packages:
   - name: python-emoji
     features: [taskwarrior]
   - name: python-httpx
-  - name: python-i3ipc
-    features: [desktop]
   - name: python-pip
   - name: python-pipx
   - name: python-rofi
