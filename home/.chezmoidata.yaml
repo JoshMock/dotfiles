@@ -15,8 +15,7 @@ packages:
     features: [desktop]
   - name: brightnessctl
     features: [desktop]
-  - name: cava
-    features: [desktop]
+  - name: calc
   - name: clipboard-bin
   - name: cliphist
     features: [desktop]
@@ -135,8 +134,6 @@ packages:
   - name: restic
   - name: ripgrep
   - name: rofi-lbonn-wayland-git
-    features: [desktop]
-  - name: rofi-calc
     features: [desktop]
   - name: rust-analyzer
   - name: slack-desktop
