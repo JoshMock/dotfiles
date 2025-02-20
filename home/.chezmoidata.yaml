@@ -71,7 +71,6 @@ packages:
     features: [desktop]
   - name: kwallet-pam
     features: [desktop]
-  - name: luacheck
   - name: podman-docker
   - name: polkit-kde-agent
     features: [desktop]
@@ -133,7 +132,6 @@ packages:
   - name: ripgrep
   - name: rofi-lbonn-wayland-git
     features: [desktop]
-  - name: rust-analyzer
   - name: slack-desktop
     features: [desktop]
   - name: starship
