@@ -27,9 +27,6 @@ packages:
   - name: direnv
   - name: discord
     features: [desktop]
-  - name: docker
-  - name: docker-buildx
-  - name: docker-compose
   - name: element-desktop
     features: [desktop]
   - name: espanso-wayland
@@ -75,6 +72,7 @@ packages:
   - name: kwallet-pam
     features: [desktop]
   - name: luacheck
+  - name: podman-docker
   - name: polkit-kde-agent
     features: [desktop]
   - name: pyprland
