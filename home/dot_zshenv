@@ -21,3 +21,7 @@ export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat --theme=default -l man -p'"
 
 export BROWSER=/usr/bin/mimeo
+
+# wayland clipboard annoyance
+# see https://github.com/Slackadays/Clipboard/issues/171
+export CLIPBOARD_NOGUI=1
