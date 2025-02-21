@@ -1,0 +1,10 @@
+{{ if .email -}}
+[Unit]
+Description=remove oldest messages from email archive
+
+[Timer]
+OnCalendar=weekly
+
+[Install]
+WantedBy=timers.target
+{{ end }}
