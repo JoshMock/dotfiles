@@ -6,8 +6,10 @@ pushd /home/joshmock/Music >/dev/null || exit 1
 
 while read -r line; do
   echo "$line"
-  git annex get "$line" >/dev/null
-  mpc -h :: add "file://$line" >/dev/null
+  git annex get "$line" &>/dev/null
+  mpc -h :: add "file://$line" &>/dev/null
 done <"$playlist"
+
+playerctl --player=mopidy status | grep -sq '^Playing$' || playerctl --player=mopidy play
 
 popd >/dev/null || exit 1
