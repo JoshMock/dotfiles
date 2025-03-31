@@ -6,7 +6,7 @@
 	name = Josh Mock
 	email = josh@joshmock.com
 [color]
-	ui = always
+	ui = auto
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -25,7 +25,7 @@
 [difftool "kitty.gui"]
 	cmd = kitty kitty +kitten diff "$LOCAL" "$REMOTE"
 [difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
+  cmd = difft "$LOCAL" "$REMOTE" --color=always | less -R
 [pull]
 	ff = only
 [init]
