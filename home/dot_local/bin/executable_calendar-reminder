@@ -6,11 +6,16 @@ replace=''
 remind() {
   time=$1
   replace_id=$2
+  urgency='normal'
+
+  if [[ $time == 2 ]]; then
+    urgency='critical'
+  fi
 
   if [[ -z "$replace_id" ]]; then
-    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id --replace-id=$replace_id -u normal -a gcalcli %s"
+    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id -u $urgency -a gcalcli %s"
   else
-    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id -u normal -a gcalcli %s"
+    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id --replace-id=$replace_id -u $urgency -a gcalcli %s"
   fi
 }
 
