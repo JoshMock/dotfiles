@@ -1,5 +1,5 @@
 [pyprland]
-plugins = ["scratchpads"]
+plugins = ["scratchpads", "menubar"]
 
 [scratchpads.tasks]
 command = "/usr/bin/kitty --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad"
@@ -13,3 +13,6 @@ class = "org.pulseaudio.pavucontrol"
 size = "50% 80%"
 animation = "fromTop"
 lazy = true
+
+[menubar]
+command = "waybar"
