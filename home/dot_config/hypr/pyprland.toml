@@ -16,3 +16,4 @@ lazy = true
 
 [menubar]
 command = "waybar"
+monitors = ["eDP-1", "DP-1", "DP-2", "DP-3"]
