@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-export TASKRC=/home/joshmock/.taskrc-home
-/usr/bin/task sync 2> /home/joshmock/task-sync.error.log
