@@ -1,12 +1,9 @@
-{{ $endeavour := false -}}
-{{- if eq .chezmoi.osRelease.id "endeavouros" -}}
-{{-   $endeavour = "true" -}}
-{{- end -}}
-
 [data]
 work = {{ promptBool "work" }}
 taskwarrior = {{ promptBool "taskwarrior" }}
 mopidy = {{ promptBool "mopidy" }}
 desktop = {{ promptBool "desktop" }}
 email = {{ promptBool "email" }}
-endeavour = {{ $endeavour }}
+
+[data.backup]
+enabled = {{ promptBool "backup" }}
