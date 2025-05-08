@@ -1,10 +1,10 @@
 {{ if .work -}}
 [gdrive]
 type = drive
-client_id = {{ onepasswordRead "op://Elastic/rclone credentials - Elastic google drive/add more/client_id" }}
-client_secret = {{ onepasswordRead "op://Elastic/rclone credentials - Elastic google drive/add more/client_secret" }}
+client_id = {{ pass "rclone/google-drive/client-id" }}
+client_secret = {{ pass "rclone/google-drive/client-secret" }}
 scope = drive
-token = {{ onepasswordRead "op://Elastic/rclone credentials - Elastic google drive/add more/token" }}
+token = {{ pass "rclone/google-drive/token" }}
 {{ else -}}
 [dropbox]
 type = dropbox

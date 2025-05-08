@@ -31,7 +31,8 @@ backends:
   gdrive:
     type: rclone
     path: 'gdrive:rclone-{{ .chezmoi.hostname }}'
-    key: {{ onepasswordRead "op://Elastic/restic password - tunnelblanket cloud/password" }}
+    key: {{ pass "restic/tunnelblanket/cloud" }}
+
   {{- else }}
   b2:
     type: b2
@@ -44,5 +45,5 @@ backends:
   local:
     type: local
     path: /home/joshmock/.local/share/restic
-    key: {{ if .work }}{{ onepasswordRead "op://Elastic/restic password - tunnelblanket local/password" }}{{ else }}{{ onepasswordRead "op://Personal/restic backup password - all/password" }}{{ end }}
+    key: {{ if .work }}{{ pass "restic/tunnelblanket/local" }}{{ else }}{{ onepasswordRead "op://Personal/restic backup password - all/password" }}{{ end }}
 {{- end }}
