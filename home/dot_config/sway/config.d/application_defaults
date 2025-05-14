@@ -10,7 +10,6 @@ assign [class="(?i)element"] 3
 assign [class="(?i)zoom"] 3
 assign [app_id="(?i)zoom"] 3
 assign [class="(?i)beeper"] 3
-assign [app_id="(?i)floorp"] 4
 
 for_window [app_id="xed"] focus
 
@@ -27,7 +26,7 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [window_role="About"] floating enable
-for_window [title="^zoom$"] floating enable 
+for_window [title="^zoom$"] floating enable
 for_window [title="^zoom$" title="Zoom - Free Account"] floating disable
 for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
 for_window [app_id="firefox" title="^Library$"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt

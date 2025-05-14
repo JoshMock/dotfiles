@@ -28,15 +28,15 @@ url.modes="batch,any,normal"
 
 urlattr.target=url
 urlattr.regex="((?:www|http).*)"
-urlattr.command="firefox-developer-edition $LAST_MATCH"
+urlattr.command="librewolf $LAST_MATCH"
 urlattr.modes="batch,any,normal"
 
 jiraurl.target=jiraurl
 jiraurl.regex="((?:www|http).*)"
-jiraurl.command="firefox-developer-edition $LAST_MATCH"
+jiraurl.command="librewolf $LAST_MATCH"
 jiraurl.modes="batch,any,normal"
 
 githuburl.target=githuburl
 githuburl.regex="((?:www|http).*)"
-githuburl.command="firefox-developer-edition $LAST_MATCH"
+githuburl.command="librewolf $LAST_MATCH"
 githuburl.modes="batch,any,normal"

@@ -1,0 +1,26 @@
+{{ if .work -}}
+[Desktop Entry]
+Version=1.0
+Name=Librewolf - Personal profile
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Keywords=Internet;WWW;Browser;Web;Explorer
+Exec=/usr/bin/librewolf --class="librewolf-personal" -P personal %u
+Icon=librewolf
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+StartupNotify=true
+StartupWMClass=librewolf-personal
+Categories=Network;WebBrowser;
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=/usr/bin/librewolf --class="librewolf-personal" --new-window -P Personal %u
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Exec=/usr/bin/librewolf --class="librewolf-personal" --private-window -P Personal %u
+{{ end -}}
