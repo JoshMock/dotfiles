@@ -23,3 +23,6 @@
 .vault-token
 annex
 go
+.m2
+.zoom
+.gradle
