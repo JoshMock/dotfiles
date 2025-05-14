@@ -1,12 +1,13 @@
 {{ if .work -}}
-monitor = eDP-1, preferred, 2560x0, 2
-monitor = DP-2, 2560x1440, 0x0, 1
-monitor = DP-3, disable
+monitor = eDP-1, preferred, 2560x0, 1
+monitor = DP-2, disable
+monitor = DP-3, 2560x1440, 0x0, 1
+monitor = DP-4, disable
 
-workspace = 1, monitor:DP-2, default:true
-workspace = 2, monitor:DP-2
-workspace = 3, monitor:DP-2
-workspace = 4, monitor:DP-2
+workspace = 1, monitor:DP-3, default:true
+workspace = 2, monitor:DP-3
+workspace = 3, monitor:DP-3
+workspace = 4, monitor:DP-3
 workspace = 5, monitor:eDP-1
 {{ else }}
 monitor=,preferred,auto,2
