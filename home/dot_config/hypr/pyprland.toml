@@ -8,9 +8,9 @@ size = "70% 70%"
 animation = "fromTop"
 
 [scratchpads.volume]
-command = "pwvucontrol"
-class = "com.saivert.pwvucontrol"
-size = "50% 80%"
+command = "pavucontrol"
+class = "org.pulseaudio.pavucontrol"
+size = "70% 60%"
 animation = "fromTop"
 lazy = true
 
