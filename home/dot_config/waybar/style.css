@@ -13,8 +13,8 @@
 /*
 Arc-Dark Color Scheme
 */
-@define-color highlight #5294e2 ;
-@define-color base1  #404552 ;
+@define-color highlight #33B1FF;
+@define-color base1  #161616;
 
 @keyframes blink-warning {
     70% {
@@ -54,10 +54,10 @@ Arc-Dark Color Scheme
 /* The whole bar */
 #waybar {
     background: transparent;
-    color: #bebebe;
+    color: #f2f4f8;
     background-color: @base1;
     font-family: 'FiraCode Nerd Font', 'FontAwesome';
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 /* Every modules */
@@ -75,7 +75,7 @@ Arc-Dark Color Scheme
 #tray,
 #idle_inhibitor,
 #custom-PBPbattery {
-    padding:0.5rem 0.6rem;
+    padding:0.5rem 1rem;
     margin: 1px 0px;
 }
 
