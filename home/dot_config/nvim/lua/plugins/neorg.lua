@@ -12,8 +12,9 @@ return {
             config = {
               workspaces = {
                 work = "~/Documents/notes-work",
+                clients = "~/Documents/notes-work/clients",
               },
-              default_workspace = "work",
+              default_workspace = "clients",
             },
           },
           ["core.export"] = {},
