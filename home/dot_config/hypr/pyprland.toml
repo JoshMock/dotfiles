@@ -14,6 +14,13 @@ size = "70% 60%"
 animation = "fromTop"
 lazy = true
 
+[scratchpads.system]
+command = "kitty --hold=no --app-id=kitty-btop btop"
+class = "kitty-btop"
+size = "70% 70%"
+animation = "fromTop"
+lazy = true
+
 [menubar]
 command = "waybar"
 monitors = ["eDP-1", "DP-1", "DP-2", "DP-3"]

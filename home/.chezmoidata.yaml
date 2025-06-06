@@ -11,6 +11,7 @@ packages:
   - name: bat
   - name: barrier
     features: [desktop]
+  - name: btop
   - name: blueman
     features: [desktop]
   - name: brightnessctl
@@ -133,8 +134,6 @@ packages:
   - name: starship
   - name: stow
   - name: strace
-  - name: swaylock-effects-git
-    features: [desktop]
   - name: swaync
     features: [desktop]
   - name: swww

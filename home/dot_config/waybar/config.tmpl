@@ -4,9 +4,7 @@
     "position": "top",
 
     "modules-left": [
-      "sway/workspaces",
       "hyprland/workspaces",
-      "sway/mode",
       "hyprland/mode",
     ],
 
@@ -20,8 +18,6 @@
     "modules-right": [
       "network",
       "idle_inhibitor",
-      "memory",
-      "cpu",
       "pulseaudio",
       "battery",
       "backlight#icon",
@@ -30,7 +26,6 @@
       "custom/weather",
       "tray",
       "custom/notification",
-      "custom/power",
     ],
 
     // Modules
@@ -62,26 +57,6 @@
       "tooltip-format": "{:%Y-%m-%d}"
     },
 
-    "cpu": {
-      "interval": 5,
-      "format": "  {usage}% ({load})", // Icon: microchip
-      "states": {
-        "warning": 70,
-        "critical": 90,
-      },
-      "on-click": "kitty --single-instance glances",
-    },
-
-    "memory": {
-        "interval": 5,
-        "format": " {}%", // Icon: memory
-        "on-click": "kitty --single-instance glances",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        }
-    },
-
     "network": {
         "interval": 5,
         "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
@@ -95,23 +70,6 @@
         "format": "  {essid} ({signalStrength}%)",
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-    },
-
-    "sway/mode": {
-        "format": "{}",
-        "tooltip": false
-    },
-
-    "sway/window": {
-        "format": "{}",
-        "max-length": 80
-    },
-
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "disable-markup" : false,
-        "all-outputs": false,
-        "format": "  {icon}  "
     },
 
     "hyprland/workspaces": {
@@ -176,12 +134,6 @@
     "custom/launcher": {
         "format":" ",
         "on-click": "exec wofi -c ~/.config/wofi/config -I",
-        "tooltip": false,
-    },
-
-    "custom/power": {
-        "format":"⏻",
-        "on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
         "tooltip": false,
     },
 
