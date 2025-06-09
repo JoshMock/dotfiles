@@ -36,6 +36,17 @@ packages:
   - name: fd
   - name: feh
     features: [desktop]
+  - name: gstreamer
+    features: [mopidy]
+  - name: gst-plugins-base
+    features: [mopidy]
+  - name: gst-plugins-good
+    features: [mopidy]
+  - name: gst-plugins-ugly
+    features: [mopidy]
+  - name: gst-python
+    features: [mopidy]
+  - name: librewolf
     features: [desktop]
   - name: flake8
   - name: flameshot
@@ -127,7 +138,7 @@ packages:
   - name: rclone
   - name: restic
   - name: ripgrep
-  - name: rofi-lbonn-wayland-git
+  - name: rofi-wayland
     features: [desktop]
   - name: slack-desktop
     features: [desktop]
