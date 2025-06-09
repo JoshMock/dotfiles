@@ -1,0 +1,6 @@
+[Wallet]
+Default Wallet=kdewallet
+First Use=false
+
+[org.freedesktop.secrets]
+apiEnabled=true
