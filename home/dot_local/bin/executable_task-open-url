@@ -7,4 +7,4 @@ if [ -n "$githuburl" ]; then
   url="$githuburl"
 fi
 
-librewolf "$url"
+firefox-developer-edition "$url"

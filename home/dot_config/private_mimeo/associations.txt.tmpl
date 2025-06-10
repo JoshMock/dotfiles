@@ -1,6 +1,6 @@
 {{ if .work }}
 # work URLs
-/usr/bin/librewolf %U
+/usr/bin/firefox-developer-edition %U
   ^https?://.*elastic
   ^https?://.*logstash
   ^https?://.*kibana
@@ -18,7 +18,7 @@
   ^https?://(\w+\.)*foundit\.no/
 
 # all other URLs
-/usr/bin/librewolf --profile=personal %U
+/usr/bin/firefox-developer-edition --profile=personal %U
   ^https?:/
 {{ end }}
 

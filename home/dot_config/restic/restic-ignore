@@ -5,7 +5,6 @@
 .config
 .docker
 .electron-gyp
-.librewolf
 .gcalcli_*
 .gnome
 .kube
