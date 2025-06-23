@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+mkdir -p /home/joshmock/annex
+pushd /home/joshmock/annex
+hostname=$(cat /etc/hostname)
+
+for repo in books music personal; do
+  git clone "git-annex@git-annex:/mnt/annex/$repo"
+  pushd "./$repo"
+  git annex init "$hostname"
+  popd
+done
+
+popd
