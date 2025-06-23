@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+action=$1
+value=$2
+
+dir_prefix="/home/joshmock/Documents/notes/Daily notes/"
+date_dir=$(date +%Y/%m)
+day_file="$(date +%d).md"
+
+timestamp=$(date +%H:%M:%S)
+
+line=''
+case "$action" in
+"link")
+  # if it's a link, add a link line
+  line="- <$value>"
+  ;;
+"todo")
+  # if it's a todo, add a todo list item
+  line="- [ ] $value"
+  ;;
+*)
+  # otherwise, append as a general text line
+  value="${@:1}"
+  if [ "$value" != '' ]; then
+    line="- $value"
+  fi
+  ;;
+esac
+
+if [ "$line" != '' ]; then
+  line="$line ($timestamp)"
+  mkdir -p "$dir_prefix/$date_dir"
+  filepath="$dir_prefix/$date_dir/$day_file"
+  echo "$line" >>"$filepath"
+fi
