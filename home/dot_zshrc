@@ -15,7 +15,7 @@ autoload -Uz $fpath[1]/*(.:t)
 # tool setup
 eval "$(direnv hook zsh)" # direnv
 eval "$(starship init zsh)" #starship
-source "/usr/share/fzf/key-bindings.zsh" # fzf
+source <(fzf --zsh) #fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 FZF_COLORS="bg+:-1,\
