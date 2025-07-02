@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ ! -d ~/.config/discord/settings.json ]; then
+  mkdir -p ~/.config/discord
+  echo '{"SKIP_HOST_UPDATE": true}' >~/.config/discord/settings.json
+else
+  # add property to json file using jq
+  jq --arg key "SKIP_HOST_UPDATE" --arg value "true" '.[$key] = $value' ~/.config/discord/settings.json >~/.config/discord/settings.json
+fi
