@@ -2,6 +2,9 @@ library: ~/Music/library.db
 paths:
   default: "$albumartist/$album%aunique{}/$track - $title"
   comp: "Compilations/$album%aunique{}/$track - $title"
-plugins: play
+plugins: play fetchart
 play:
   command: "play"
+fetchart:
+  minwidth: 100
+  quality: 90

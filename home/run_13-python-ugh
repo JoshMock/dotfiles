@@ -59,4 +59,5 @@ if echo "$pypkgs" | jq -e '.venvs | has("beets")'; then
 else
   pipx install beets
   pipx inject beets 'beets[lastgenre]'
+  pipx inject beets 'beets[fetchart]'
 fi
