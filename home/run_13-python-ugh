@@ -48,6 +48,7 @@ if echo "$chez" | jq -e '.mopidy == true'; then
       mopidy-tidal \
       Mopidy-InternetArchive \
       Mopidy-Mowecl \
+      Mopidy-Local \
       PyGObject
   fi
 fi
