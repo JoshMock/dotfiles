@@ -11,4 +11,12 @@ for repo in books music personal; do
   popd
 done
 
+pushd /home/joshmock/annex/music
+export AWS_ACCESS_KEY_ID=$(op item get --reveal ubrshou7ihezxnpqgccfjsmi7m --fields='access key id')
+export AWS_SECRET_ACCESS_KEY=$(op item get --reveal ubrshou7ihezxnpqgccfjsmi7m --fields='secret access key')
+git annex enableremote backblaze
+popd
+mv /home/joshmock/Music /home/joshmock/Music.bak
+ln -s /home/joshmock/annex/music /home/joshmock/Music
+
 popd
