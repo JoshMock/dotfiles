@@ -31,3 +31,7 @@ go
 .guix-profile
 .net
 .nv
+Music
+*.iso
+.bun
+.bazel-cache
