@@ -2,8 +2,11 @@
 
 if [ ! -d ~/.config/discord/settings.json ]; then
   mkdir -p ~/.config/discord
-  echo '{"SKIP_HOST_UPDATE": true}' >~/.config/discord/settings.json
+  echo '{"SKIP_HOST_UPDATE": true, "MINIMIZE_TO_TRAY": false, "OPEN_ON_STARTUP": false}' >~/.config/discord/settings.json
+
 else
   # add property to json file using jq
   jq --arg key "SKIP_HOST_UPDATE" --arg value "true" '.[$key] = $value' ~/.config/discord/settings.json >~/.config/discord/settings.json
+  jq --arg key "MINIMIZE_TO_TRAY" --arg value "false" '.[$key] = $value' ~/.config/discord/settings.json >~/.config/discord/settings.json
+  jq --arg key "OPEN_ON_STARTUP" --arg value "false" '.[$key] = $value' ~/.config/discord/settings.json >~/.config/discord/settings.json
 fi
