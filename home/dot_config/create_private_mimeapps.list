@@ -1,0 +1,23 @@
+[Added Associations]
+application/x-extension-htm=firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+application/x-extension-html=firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+application/x-extension-shtml=firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+application/x-extension-xht=firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+application/x-extension-xhtml=firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+application/xhtml+xml=firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+text/html=splitter.desktop;firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+x-scheme-handler/chrome=firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+x-scheme-handler/http=splitter.desktop;firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+x-scheme-handler/https=splitter.desktop;firefoxdeveloperedition.desktop;firefox-developer-edition.desktop;
+
+[Default Applications]
+application/x-extension-htm=firefox-developer-edition.desktop
+application/x-extension-html=firefox-developer-edition.desktop
+application/x-extension-shtml=firefox-developer-edition.desktop
+application/x-extension-xht=firefox-developer-edition.desktop
+application/x-extension-xhtml=firefox-developer-edition.desktop
+application/xhtml+xml=firefox-developer-edition.desktop
+text/html=firefox-developer-edition.desktop
+x-scheme-handler/chrome=firefox-developer-edition.desktop
+x-scheme-handler/http=firefox-developer-edition.desktop
+x-scheme-handler/https=firefox-developer-edition.desktop
