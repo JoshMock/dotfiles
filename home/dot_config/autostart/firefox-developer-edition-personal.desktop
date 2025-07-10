@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/firefox-developer-edition --profile=personal --class=firefox-developer-edition-personal
+Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" -P personal
 Comment=Firefox
 Name=Firefox
