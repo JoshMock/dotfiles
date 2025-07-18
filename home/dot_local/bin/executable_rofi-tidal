@@ -150,7 +150,7 @@ def main():
     subprocess.call(["notify-send", f"Queueing music: {alert_artist} - {alert_title}"])
 
     run = subprocess.run(
-        i[
+        [
             "/home/joshmock/.local/bin/add-to-mopidy",
             "--url",
             item,
