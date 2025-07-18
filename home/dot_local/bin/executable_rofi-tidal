@@ -119,7 +119,7 @@ def main():
         return
 
     r.status("Searching...")
-    results = tidal.search(search_term)
+    results = tidal.search(query=search_term, models=[tidalapi.artist.Artist])
     index, key = r.select(
         "Artists",
         [a.name for a in results["artists"]],
@@ -150,7 +150,7 @@ def main():
     subprocess.call(["notify-send", f"Queueing music: {alert_artist} - {alert_title}"])
 
     run = subprocess.run(
-        [
+        i[
             "/home/joshmock/.local/bin/add-to-mopidy",
             "--url",
             item,
