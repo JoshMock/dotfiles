@@ -552,6 +552,7 @@ require("lazy").setup({
       })
     end,
   },
+  "gelguy/wilder.nvim",
 
   -- coding utils
   "b0o/SchemaStore.nvim",
