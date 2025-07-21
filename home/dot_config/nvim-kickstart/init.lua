@@ -229,20 +229,12 @@ require("lazy").setup({
       local servers = {
         pyright = {},
         ts_ls = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
+        lua_ls = {},
       }
 
       -- Ensure the servers and tools above are installed
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, { "stylua" })
+      vim.list_extend(ensure_installed, { "stylua", "ts-standard", "black", "isort" })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
@@ -662,8 +654,7 @@ require("lazy").setup({
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "isort", "black" },
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { "prettierd", stop_after_first = true },
+        javascript = { "ts-standard", "prettierd", stop_after_first = true },
       },
     },
   },
