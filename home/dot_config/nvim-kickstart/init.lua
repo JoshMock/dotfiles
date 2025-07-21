@@ -186,7 +186,7 @@ require("lazy").setup({
           end
 
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map("<leader>th", function()
+            map("<leader>ch", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
             end, "[T]oggle Inlay [H]ints")
           end
@@ -342,7 +342,7 @@ require("lazy").setup({
       local project = require("project_nvim")
       project.setup({
         patterns = { ".git", "index.norg", "package.json", ">Code", "!.worktrees", "!js-test" },
-        scope_chdir = "win",
+        scope_chdir = "global",
       })
 
       require("telescope").load_extension("projects")
@@ -444,10 +444,33 @@ require("lazy").setup({
       },
       scratch = { enabled = true },
       statuscolumn = { enabled = true },
-      toggle = { enabled = true },
+      toggle = {
+        enabled = true,
+        map = vim.keymap.set,
+        which_key = true,
+        notify = true,
+        icon = {
+          enabled = " ",
+          disabled = " ",
+        },
+        color = {
+          enabled = "green",
+          disabled = "yellow",
+        },
+        wk_desc = {
+          enabled = "Disable ",
+          disabled = "Enable ",
+        },
+      },
       words = { enabled = true },
       zen = { enabled = true },
     },
+    config = function()
+      Snacks.toggle.diagnostics():map("<leader>ud")
+      Snacks.toggle.inlay_hints():map("<leader>ui")
+      Snacks.toggle.words():map("<leader>uw")
+      Snacks.toggle.zen():map("<leader>uz")
+    end,
     keys = {
       {
         "<leader>gb",
@@ -485,20 +508,6 @@ require("lazy").setup({
         desc = "Delete buffer",
       },
       {
-        "<leader>.",
-        function()
-          Snacks.scratch()
-        end,
-        desc = "Toggle Scratch Buffer",
-      },
-      {
-        "<leader>S",
-        function()
-          Snacks.scratch.select()
-        end,
-        desc = "Select [S]cratch Buffer",
-      },
-      {
         "<leader>n",
         function()
           Snacks.notifier.show_history()
@@ -517,14 +526,7 @@ require("lazy").setup({
         function()
           Snacks.scratch.select()
         end,
-        desc = "Select scratch buffer",
-      },
-      {
-        "<leader>z",
-        function()
-          Snacks.zen()
-        end,
-        desc = "Zen mode",
+        desc = "Select [S]cratch Buffer",
       },
     },
   },
@@ -549,6 +551,8 @@ require("lazy").setup({
         { "<leader>f", group = "find" },
         { "<leader>q", group = "session" },
         { "<leader>c", group = "code" },
+        { "<leader>x", group = "trouble" },
+        { "<leader>u", group = "ui toggles" },
       })
     end,
   },
