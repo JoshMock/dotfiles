@@ -363,6 +363,7 @@ require("lazy").setup({
       require("mini.statusline").setup({})
       require("mini.tabline").setup({})
       require("mini.trailspace").setup({})
+      require("mini.visits").setup({})
 
       local starter = require("mini.starter")
       starter.setup({
@@ -426,6 +427,22 @@ require("lazy").setup({
           note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
         },
       })
+
+      vim.keymap.set("n", "<leader>va", function()
+        MiniVisits.add_label()
+      end, { desc = "Add visit label" })
+      vim.keymap.set("n", "<leader>vr", function()
+        MiniVisits.remove_label()
+      end, { desc = "Remove visit label" })
+      vim.keymap.set("n", "<leader>vp", function()
+        MiniVisits.select_path()
+      end, { desc = "Select visit path" })
+      vim.keymap.set("n", "<leader>vl", function()
+        MiniVisits.select_label()
+      end, { desc = "Select visit label" })
+      vim.keymap.set("n", "<leader>gd", function()
+        MiniDiff.toggle_overlay()
+      end, { desc = "Toggle Git diff" })
     end,
   },
   {
@@ -551,6 +568,7 @@ require("lazy").setup({
         { "<leader>f", group = "find" },
         { "<leader>q", group = "session" },
         { "<leader>c", group = "code" },
+        { "<leader>v", group = "visits" },
         { "<leader>x", group = "trouble" },
         { "<leader>u", group = "ui toggles" },
       })
