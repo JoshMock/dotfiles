@@ -378,6 +378,10 @@ require("lazy").setup({
       require("mini.trailspace").setup({})
       require("mini.visits").setup({})
 
+      local misc = require("mini.misc")
+      misc.setup({})
+      misc.setup_auto_root()
+
       local starter = require("mini.starter")
       starter.setup({
         evaluate_single = true,
