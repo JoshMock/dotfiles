@@ -113,6 +113,23 @@ rtp:prepend(lazypath)
 require("lazy").setup({
   -- LSP things
   {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+    },
+    config = function()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.completion.spell,
+          require("none-ls.diagnostics.eslint"),
+        },
+      })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
@@ -230,7 +247,7 @@ require("lazy").setup({
 
       -- Ensure the servers and tools above are installed
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, { "stylua", "ts-standard", "black", "isort" })
+      vim.list_extend(ensure_installed, { "stylua", "eslint_d", "ts-standard", "black", "isort" })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
@@ -670,25 +687,62 @@ require("lazy").setup({
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
-    opts = {
-      notify_on_error = false,
-      format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true }
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
+    config = function()
+      require("conform").setup({
+        notify_on_error = false,
+        format_on_save = function(bufnr)
+          local disable_filetypes = { c = true, cpp = true }
+          if disable_filetypes[vim.bo[bufnr].filetype] then
+            return nil
+          elseif vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return nil
+          else
+            return {
+              timeout_ms = 500,
+              lsp_format = "fallback",
+            }
+          end
+        end,
+        formatters_by_ft = {
+          lua = { "stylua" },
+          python = { "isort", "black" },
+          javascript = { "eslint_d", "ts-standard", stop_after_first = true },
+        },
+      })
+
+      vim.api.nvim_create_user_command("FormatDisable", function(args)
+        if args.bang then
+          -- FormatDisable! will disable formatting just for this buffer
+          vim.b.disable_autoformat = true
         else
-          return {
-            timeout_ms = 500,
-            lsp_format = "fallback",
-          }
+          vim.g.disable_autoformat = true
         end
-      end,
-      formatters_by_ft = {
-        lua = { "stylua" },
-        python = { "isort", "black" },
-        javascript = { "ts-standard", "prettierd", stop_after_first = true },
-      },
-    },
+      end, {
+        desc = "Disable autoformat-on-save",
+        bang = true,
+      })
+
+      vim.api.nvim_create_user_command("FormatEnable", function()
+        vim.b.disable_autoformat = false
+        vim.g.disable_autoformat = false
+      end, {
+        desc = "Re-enable autoformat-on-save",
+      })
+
+      vim.api.nvim_create_user_command("FormatToggle", function(args)
+        if args.bang then
+          vim.b.disable_autoformat = not vim.b.disable_autoformat
+        else
+          vim.g.disable_autoformat = not vim.g.disable_autoformat
+        end
+      end, {
+        desc = "Toggle autoformat-on-save",
+        bang = true,
+      })
+
+      vim.keymap.set("n", "<leader>uF", "<cmd>FormatToggle<cr>", { desc = "Toggle autoformat (global)" })
+      vim.keymap.set("n", "<leader>uf", "<cmd>FormatToggle!<cr>", { desc = "Toggle autoformat (buffer)" })
+    end,
   },
 
   -- autocompletion
