@@ -59,10 +59,6 @@ vim.o.scrolloff = 10
 -- deal with unsaved changes
 vim.o.confirm = true
 
--- code folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
 -- [[ Keymaps ]]
 
 vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uick[f]ix list" })
@@ -596,20 +592,33 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "diff",
-        "javascript",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "typescript",
-      },
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "bash",
+          "diff",
+          "javascript",
+          "markdown",
+          "markdown_inline",
+          "python",
+          "typescript",
+        },
+        auto_install = true,
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+
+      -- code folding
+      vim.opt.foldmethod = "expr"
+      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
     },
+    opts = {},
   },
 
   -- telescope
