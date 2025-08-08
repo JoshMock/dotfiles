@@ -79,6 +79,7 @@ packages:
     features: [desktop]
   - name: kwallet-pam
     features: [desktop]
+  - name: pinentry-dispatch
   - name: podman-docker
   - name: polkit-kde-agent
     features: [desktop]
