@@ -437,11 +437,20 @@ require("lazy").setup({
         try_as_border = true,
       })
 
-      require("mini.hipatterns").setup({
-        highlighers = {
+      -- see https://www.lua.org/pil/20.2.html for how to write Lua string pattern matching expressions
+      local hipatterns = require("mini.hipatterns")
+      hipatterns.setup({
+        highlighters = {
+          -- TODO: implement a quicklist that shows all of these matches
           fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+          hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
           todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
           note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+
+          -- TODO: implement my own highligher patterns instead of hijacking
+          console_log = { pattern = "console%.log", group = "@comment.note" },
+          console_warn = { pattern = "console%.warn", group = "@comment.warning" },
+          console_error = { pattern = "console%.error", group = "@comment.error" },
         },
       })
 
