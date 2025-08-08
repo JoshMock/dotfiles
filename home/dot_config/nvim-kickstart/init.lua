@@ -94,6 +94,43 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- [[ Util functions ]]
+--- Tries to detect a JS project's preferred formatter by parsing package.json
+local detect_js_formatter = function(bufnr)
+  local root = MiniMisc.find_root(bufnr, { "package.json" })
+  local pkg = root .. "/package.json"
+
+  -- detect if it has a fixer configured
+  local handle = io.popen("jq -r '.scripts[\"lint:fix\"]' " .. pkg, "r")
+  if not handle then
+    handle = io.popen("jq -r '.scripts.lint' " .. pkg, "r")
+    if not handle then
+      return nil
+    end
+  end
+  local output = handle:read("*all")
+  handle:close()
+
+  local cmd = vim.split(output, " ")[0]
+
+  if cmd == nil then
+    return nil
+  else
+    return cmd
+  end
+end
+
+local pick_js_formatter = function(bufnr)
+  local formatter = detect_js_formatter(bufnr)
+  if formatter == "ts-standard" then
+    return { "ts-standard", lsp_format = "fallback" }
+  elseif formatter == "eslint" then
+    return { "eslint_d", lsp_format = "fallback" }
+  else
+    return { "eslint_d", lsp_format = "fallback" }
+  end
+end
+
 -- [[ Plugins ]]
 
 -- [[ install lazy.nvim ]]
@@ -749,10 +786,17 @@ require("lazy").setup({
             }
           end
         end,
+        formatters = {
+          ["ts-standard"] = {
+            command = "ts-standard",
+            args = { "--fix", "--stdin" },
+          },
+        },
         formatters_by_ft = {
           lua = { "stylua" },
           python = { "isort", "black" },
-          javascript = { "eslint_d", "ts-standard", stop_after_first = true },
+          javascript = pick_js_formatter,
+          typescript = pick_js_formatter,
         },
       })
 
