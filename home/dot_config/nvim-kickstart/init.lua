@@ -637,7 +637,14 @@ require("lazy").setup({
       })
     end,
   },
-  "gelguy/wilder.nvim",
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
 
   -- coding utils
   "b0o/SchemaStore.nvim",
