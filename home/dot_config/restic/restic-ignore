@@ -35,3 +35,7 @@ Music
 *.iso
 .bun
 .bazel-cache
+Downloads/*.mp4
+.codeium
+.luarocks
+.windsurf
