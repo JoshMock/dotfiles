@@ -380,7 +380,7 @@ require("lazy").setup({
 
       local misc = require("mini.misc")
       misc.setup({})
-      misc.setup_auto_root()
+      misc.setup_auto_root({ ".git", "index.norg", "package.json", "Makefile" })
 
       local starter = require("mini.starter")
       starter.setup({
