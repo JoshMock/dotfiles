@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+basedir=$HOME/.local/share/chezmoi/containers/_base
+distrodir=$HOME/.local/share/chezmoi/containers/distrobox
+
+for base in $basedir/*.dockerfile; do
+  base_name=distrobox-base-$(basename ${base%.*})
+  podman build --file "$base" -t "$base_name"
+done
+
+distrobox stop --all --yes
+for box in $distrodir/*.ini; do
+  distrobox list | cut -d ' ' -f3 | grep "$box" && distrobox upgrade "$box" || distrobox assemble create --file "$box"
+done
+
+podman system prune -y
