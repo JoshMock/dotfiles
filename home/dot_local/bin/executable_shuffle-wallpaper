@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-wall_dir=/home/joshmock/Pictures/wallpaper/
+wall_dir=/usr/share/wallpapers/
 wall_file=$(ls $wall_dir | sort -R | tail -1 | xargs find $wall_dir -name)
 
 echo "Loading $wall_file"
