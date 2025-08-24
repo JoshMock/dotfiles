@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/slack
+Exec=/bin/flatpak run com.slack.Slack
 Comment=Slack
 Name=Slack
