@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/discord
+Exec=/bin/flatpak run com.discordapp.Discord
 Comment=Discord
 Name=Discord

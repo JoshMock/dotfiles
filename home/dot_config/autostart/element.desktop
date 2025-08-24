@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/element-desktop
+Exec=/bin/flatpak run im.riot.Riot
 Comment=Element
 Name=Element
