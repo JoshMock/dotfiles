@@ -6,14 +6,13 @@ RUN useradd --system --create-home $user \
 USER $user
 WORKDIR /home/$user
 
+RUN curl -s 'https://archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on' | sed 's/^#Server/Server/' | grep -v '^#' | sudo tee /etc/pacman.d/mirrorlist
+
 RUN git clone https://aur.archlinux.org/yay.git \
   && cd yay \
   && makepkg -sri --needed --noconfirm \
   && cd \
   && rm -rf .cache yay
-
-RUN yay -Syyu --noconfirm reflector && \
-  sudo reflector --save /etc/pacman.d/mirrorlist --protocol https --country US --score 15 --sort age
 
 RUN yay -S --noconfirm \
   atuin \
