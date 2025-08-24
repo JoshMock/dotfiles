@@ -21,6 +21,7 @@ RUN yay -S --noconfirm \
   fd \
   fzf \
   neovim \
+  python-pipx \
   ripgrep \
   starship \
   traceroute \
