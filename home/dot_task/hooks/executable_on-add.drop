@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+from html import unescape
+
+custom_replace = [
+    ("&dquot;", '"'),
+    ("&open;", "["),
+    ("&close;", "]"),
+]
+
+
+def clean_str(input):
+    for before, after in custom_replace:
+        input = input.replace(before, after)
+    return unescape(input)
+
+
+task = json.loads(sys.stdin.readline())
+
+if (
+    "rest-api-spec" in task["githubtitle"]
+    and task["githubrepo"] == "elastic/elasticsearch-specification"
+):
+    print("")
+else:
+    print(json.dumps(task))
