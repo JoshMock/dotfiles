@@ -173,6 +173,7 @@ require("lazy").setup({
       "mason-org/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
+      "b0o/SchemaStore.nvim",
     },
     config = function()
       -- function will be executed to configure the current buffer
@@ -276,10 +277,32 @@ require("lazy").setup({
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+      local lspconfig = require("lspconfig")
+      local schemastore = require("schemastore")
+
       local servers = {
         pyright = {},
         ts_ls = {},
         lua_ls = {},
+        jsonls = {
+          settings = {
+            json = {
+              schemas = schemastore.json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemaStore = {
+                enable = false,
+                url = "",
+              },
+              schemas = schemastore.yaml.schemas(),
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -297,7 +320,7 @@ require("lazy").setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
+            lspconfig[server_name].setup(server)
           end,
         },
       })
@@ -647,7 +670,6 @@ require("lazy").setup({
   },
 
   -- coding utils
-  "b0o/SchemaStore.nvim",
   "NMAC427/guess-indent.nvim",
   "terryma/vim-expand-region",
   "tpope/vim-surround",
