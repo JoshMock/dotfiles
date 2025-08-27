@@ -196,8 +196,6 @@ packages:
   - name: whois
   - name: wofi
     features: [desktop]
-  - name: xdg-desktop-portal-gtk
-    features: [desktop]
   - name: xdg-desktop-portal-hyprland
     features: [desktop]
   - name: xdg-utils-mimeo
