@@ -20,7 +20,7 @@ def clean_str(input):
 task = json.loads(sys.stdin.readline())
 
 if (
-    "rest-api-spec" in task["githubtitle"]
+    "rest-api-spec" in task.get("githubtitle", "")
     and task["githubrepo"] == "elastic/elasticsearch-specification"
 ):
     print("")
