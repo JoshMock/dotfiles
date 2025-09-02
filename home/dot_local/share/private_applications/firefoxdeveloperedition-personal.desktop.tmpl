@@ -5,7 +5,7 @@ Name=Firefox Developer Edition - Personal profile
 GenericName=Web Browser
 Comment=Browse the World Wide Web
 Keywords=Internet;WWW;Browser;Web;Explorer
-Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" -P personal %u
+Exec=/usr/lib/firefox-developer-edition/firefox -P personal --name="firefox-personal" %u
 Icon=firefox-developer-edition
 Terminal=false
 X-MultipleArgs=false
@@ -18,9 +18,9 @@ Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" --new-window -P personal %u
+Exec=/usr/lib/firefox-developer-edition/firefox -P personal --name="firefox-personal" --new-window %u
 
 [Desktop Action new-private-window]
 Name=New Private Window
-Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" --private-window -P personal %u
+Exec=/usr/lib/firefox-developer-edition/firefox -P personal --name="firefox-personal" --private-window %u
 {{ end -}}
