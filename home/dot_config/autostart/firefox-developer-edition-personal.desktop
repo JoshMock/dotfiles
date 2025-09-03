@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/usr/lib/firefox-developer-edition/firefox --class="firefox-personal" -P personal --no-remote --new-instance --name="firefox-personal"
-Comment=Firefox
-Name=Firefox
