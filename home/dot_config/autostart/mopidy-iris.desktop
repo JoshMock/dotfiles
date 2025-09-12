@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/firefox-developer-edition -P default-release --kiosk --new-instance http://localhost:6680/iris/queue --name="firefox-mopidy-iris"
+Comment=Mopidy - Iris
+Name=Mopidy - Iris
+
+
