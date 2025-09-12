@@ -21,8 +21,10 @@ task = json.loads(sys.stdin.readline())
 
 if (
     "rest-api-spec" in task.get("githubtitle", "")
-    and task["githubrepo"] == "elastic/elasticsearch-specification"
+    and task.get("githubrepo") == "elastic/elasticsearch-specification"
 ):
+    print("")
+elif task.get("githubrepo") == "elastic/elasticsearch-php":
     print("")
 else:
     print(json.dumps(task))
