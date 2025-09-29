@@ -13,23 +13,23 @@ remind() {
   fi
 
   if [[ -z "$replace_id" ]]; then
-    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id -u $urgency -a gcalcli %s"
+    replace=$(gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --expire-time 14400000 --print-id -u $urgency -a gcalcli %s")
   else
-    gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --print-id --replace-id=$replace_id -u $urgency -a gcalcli %s"
+    replace=$(gcalcli --calendar joshua.mock@elastic.co remind "$time" "notify-send --expire-time 14400000 --print-id --replace-id=$replace_id -u $urgency -a gcalcli %s")
   fi
 }
 
 if [[ "$current" == '00' ]] || [[ "$current" == '30' ]]; then
-  replace=$(remind 60 "$replace")
+  remind 60 "$replace"
 fi
 
 if [[ ${current:1:1} == '0' ]]; then
-  replace=$(remind 10 "$replace")
-  replace=$(remind 5 "$replace")
+  remind 10 "$replace"
+  remind 5 "$replace"
 fi
 
 if [[ ${current:1:1} == '5' ]]; then
-  replace=$(remind 5 "$replace")
+  remind 5 "$replace"
 fi
 
 remind 2 "$replace"
