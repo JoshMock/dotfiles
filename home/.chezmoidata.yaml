@@ -176,7 +176,7 @@ packages:
     features: [desktop]
   - name: ttf-ubuntu-mono-nerd
     features: [desktop]
-  - name: ulauncher
+  - name: vicinae-bin
     featuers: [desktop]
   - name: unzip
   - name: urlview
