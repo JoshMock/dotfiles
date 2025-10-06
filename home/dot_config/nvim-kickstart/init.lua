@@ -924,6 +924,38 @@ require("lazy").setup({
     },
   },
 
+  -- LLM
+  {
+    "dlants/magenta.nvim",
+    lazy = false,
+    build = "npm ci",
+    opts = {
+      profiles = {
+        -- available models found via curl
+        -- see https://aider.chat/docs/llms/github.html#discover-available-models
+        -- oauth token found in ~/.config/github-copilot/
+        {
+          name = "claude-sonnet-4",
+          provider = "copilot",
+          model = "claude-sonnet-4",
+          fastModel = "o3-mini",
+        },
+        {
+          name = "claude-3-7-sonnet",
+          provider = "copilot",
+          model = "claude-3-7-sonnet-latest",
+          fastModel = "o3-mini",
+        },
+        {
+          name = "gpt-4-1",
+          provider = "copilot",
+          model = "gpt-4.1-2025-04-14",
+          fastModel = "o3-mini",
+        },
+      },
+    },
+  },
+
   -- colorscheme
   {
     "EdenEast/nightfox.nvim",
