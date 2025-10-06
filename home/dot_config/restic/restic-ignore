@@ -39,3 +39,7 @@ Downloads/*.mp4
 .codeium
 .luarocks
 .windsurf
+Downloads/windows-vm
+*.iso.part
+*.iso
+.qemu
