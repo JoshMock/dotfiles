@@ -749,8 +749,8 @@ require("lazy").setup({
       })
 
       -- code folding
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+      -- vim.opt.foldmethod = "expr"
+      -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     end,
   },
   {
@@ -761,6 +761,16 @@ require("lazy").setup({
     opts = {},
   },
   { "aaronik/treewalker.nvim" },
+
+  -- code-folding
+  {
+    "chrisgrieser/nvim-origami",
+    event = "VeryLazy",
+    opts = {
+      pauseFoldsOnSearch = false,
+    },
+    init = function() end,
+  },
 
   -- telescope
   {
