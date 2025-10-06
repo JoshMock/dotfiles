@@ -30,3 +30,4 @@ export CLIPBOARD_NOGUI=1
 
 # docker commands that try to write to a mounted volume seem to fail without this
 export PODMAN_USERNS=keep-id
+export PODMAN_COMPOSE_WARNING_LOGS=false
