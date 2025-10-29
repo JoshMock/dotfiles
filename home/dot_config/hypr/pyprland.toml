@@ -1,5 +1,5 @@
 [pyprland]
-plugins = ["scratchpads", "menubar"]
+plugins = ["scratchpads", "menubar", "shortcuts_menu"]
 
 [scratchpads.tasks]
 command = "/usr/bin/kitty --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad"
@@ -24,3 +24,30 @@ lazy = true
 [menubar]
 command = "waybar"
 monitors = ["eDP-1", "DP-1", "DP-2", "DP-3"]
+
+[shortcuts_menu]
+engine = "wofi"
+
+[shortcuts_menu.entries]
+"lock screen" = "loginctl lock-session"
+"take screenshot" = "grim -g \"$(slurp)\" ~/Pictures/$(date -u '+%Y-%m-%dT%H-%M-%S').png"
+"Add clipboard to Mopidy" = "add-to-mopidy"
+"Browse Tidal" = "rofi-tidal"
+"system monitor" = "pypr toggle system"
+"volume control" = "pypr toggle volume"
+
+[shortcuts_menu.entries.systemd]
+"journalctl" = [
+  { name = "service", command = "systemctl list-units -t service --state running | tail -n+2 | head -n-6 | awk '{print $1}'" },
+  "kitty sudo journalctl -b0 -u [service]"
+]
+"user services" = [
+  { name = "service", command = "systemctl --user list-units -t service --state running | tail -n+2 | head -n-6 | awk '{print $1}'" },
+  { name = "action", options = ["start", "stop", "restart"] },
+  "systemctl --user [action] [service]"
+]
+"system services" = [
+  { name = "service", command = "systemctl list-units -t service --state running | tail -n+2 | head -n-6 | awk '{print $1}'" },
+  { name = "action", options = ["start", "stop", "restart"] },
+  "sudo systemctl --user [action] [service]"
+]
