@@ -49,7 +49,7 @@ for f in $HOME/.elastic/elasticrc $HOME/.personal; do
   [ -r $f ] && source $f
 done
 
-# system clipboard shortcuts
+# aliases
 if [[ -z "${WAYLAND_DISPLAY}" ]]
 then
   alias ccopy='xclip -selection clipboard'
@@ -58,13 +58,7 @@ else
   alias ccopy='wl-copy'
   alias cpaste='wl-paste'
 fi
-
 alias prettyjson='cpaste | jq | ccopy'
-
-# hack to make Docker commands work in makefiles
-# alias make='SHELL=/bin/bash make'
-
-# aliases
 alias lastcommit="git rev-parse HEAD | tr -d '\n' | xclip -selection clipboard"
 alias k=kubectl
 alias t=timew
