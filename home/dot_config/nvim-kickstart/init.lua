@@ -311,6 +311,7 @@ require("lazy").setup({
             },
           },
         },
+        copilot = { enabled = false },
       }
 
       -- Ensure the servers and tools above are installed
@@ -897,6 +898,9 @@ require("lazy").setup({
     opts = {
       keymap = {
         preset = "default",
+        ["<cr>"] = { "select_and_accept", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
       },
 
       appearance = {
@@ -905,10 +909,23 @@ require("lazy").setup({
 
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        menu = {
+          draw = {
+            treesitter = { "lsp" },
+          },
+        },
       },
 
       sources = {
-        default = { "lsp", "path", "lazydev", "buffer" },
+        default = { "lsp", "buffer", "path" },
+        per_filetype = {
+          lua = { inherit_defaults = true, "lazydev" },
+        },
         providers = {
           lazydev = {
             name = "LazyDev",
@@ -925,6 +942,20 @@ require("lazy").setup({
   },
 
   -- LLM
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    event = "BufReadPost",
+    opts = {
+      suggestion = {
+        keymap = {
+          accept = "<C-y>",
+        },
+      },
+      panel = { enabled = true },
+    },
+  },
   {
     "dlants/magenta.nvim",
     lazy = false,
