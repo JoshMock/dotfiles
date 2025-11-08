@@ -1,42 +1,39 @@
 [credential]
 
 [core]
-	excludesfile = ~/.gitignore-global
+  excludesfile = ~/.gitignore-global
 [user]
-	name = Josh Mock
-	email = josh@joshmock.com
+  name = Josh Mock
+  email = josh@joshmock.com
 [color]
-	ui = auto
+  ui = auto
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [mergetool "nvim"]
-	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+  cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [diff]
-	tool = difftastic
-	guitool = kitty.gui
+  tool = difftastic
+  guitool = kitty.gui
 [difftool]
-	prompt = false
-	trustExitCode = true
+  prompt = false
+  trustExitCode = true
 [difftool "kitty"]
-	cmd = kitty +kitten diff "$LOCAL" "$REMOTE"
+  cmd = kitty +kitten diff "$LOCAL" "$REMOTE"
 [difftool "kitty.gui"]
-	cmd = kitty kitty +kitten diff "$LOCAL" "$REMOTE"
+  cmd = kitty kitty +kitten diff "$LOCAL" "$REMOTE"
 [difftool "difftastic"]
   cmd = difft "$LOCAL" "$REMOTE" --color=always | less -R
 [pull]
-	ff = only
+  ff = only
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
 [commit]
-	gpgsign = true
-[alias]
-  dft = difftool
-  dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
+  gpgsign = true
