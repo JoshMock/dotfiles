@@ -134,8 +134,6 @@ local pick_js_formatter = function(bufnr)
     return { "ts-standard", lsp_format = "fallback" }
   elseif formatter == "eslint" then
     return { "eslint_d", lsp_format = "fallback" }
-  else
-    return { "eslint_d", lsp_format = "fallback" }
   end
 end
 
