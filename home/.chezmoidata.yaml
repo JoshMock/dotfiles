@@ -63,8 +63,6 @@ packages:
   - name: htop
   - name: hyprland
     features: [desktop]
-  - name: hyprland-qtutils
-    feature: [desktop]
   - name: hyprlock
     features: [desktop]
   - name: hypridle
