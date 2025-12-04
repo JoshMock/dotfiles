@@ -23,8 +23,15 @@ if (
     "rest-api-spec" in task.get("githubtitle", "")
     and task.get("githubrepo") == "elastic/elasticsearch-specification"
 ):
-    print("")
+    task["status"] = "deleted"
 elif task.get("githubrepo") == "elastic/elasticsearch-php":
-    print("")
-else:
-    print(json.dumps(task))
+    task["status"] = "deleted"
+elif task.get("project") == "elasticsearch-specification" and "backport_" in " ".join(
+    task.get("tags", [])
+):
+    task["status"] = "deleted"
+elif task.get("project") == "search-o11y-resources":
+    task["status"] = "deleted"
+
+
+print(json.dumps(task))
