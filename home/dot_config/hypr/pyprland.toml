@@ -1,5 +1,5 @@
 [pyprland]
-plugins = ["scratchpads", "menubar", "shortcuts_menu"]
+plugins = ["scratchpads", "menubar", "shortcuts_menu", "system_notifier"]
 
 [scratchpads.tasks]
 command = "/usr/bin/kitty --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad"
@@ -51,3 +51,30 @@ engine = "wofi"
   { name = "action", options = ["start", "stop", "restart"] },
   "sudo systemctl --user [action] [service]"
 ]
+
+[system_notifier]
+use_notify_send = true
+
+[[system_notifier.sources]]
+command = "journalctl -fx"
+parser = "journal"
+
+[[system_notifier.parsers.journal]]
+pattern = "backup\\.service:.*FAILURE$"
+filter = "s/.*/Backup failed/"
+color = "#FF0000"
+
+[[system_notifier.parsers.journal]]
+pattern = "backup\\.service: Failed with result"
+filter = "s/.*/Backup failed/"
+color = "#FF0000"
+
+[[system_notifier.parsers.journal]]
+pattern = "bugwarrior.*ERROR"
+filter = "s/.*/Bugwarrior sync failed/"
+color = "#FF0000"
+
+[[system_notifier.parsers.journal]]
+pattern = "bugwarrior.*ERROR"
+filter = "s/.*/Bugwarrior sync failed/"
+color = "#FF0000"
