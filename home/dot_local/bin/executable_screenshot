@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+path="/home/joshmock/Pictures/$(date -u '+%Y-%m-%dT%H-%M-%S').png"
+sleep 5;
+grim -g "$(slurp)" "$path" && \
+  notify-send "Screenshot saved: $path" -a screenshot -t 10000 ||
+  notify-send "Screenshot failed" -a screenshot -t 5000
