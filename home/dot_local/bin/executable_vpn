@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+
+case "$1" in
+  "on")
+    node=$(tailscale exit-node suggest |  head -n1 | cut -d ' ' -f4)
+    echo "Enabling VPN exit node: $node"
+    echo "Old IP: $(curl -s ifconfig.io)"
+    tailscale set --exit-node="$node"
+    echo "New IP: $(curl -s ifconfig.io)"
+    ;;
+  "off")
+    echo "Disabling VPN exit node"
+    echo "Old IP: $(curl -s ifconfig.io)"
+    tailscale set --exit-node=""
+    echo "New IP: $(curl -s ifconfig.io)"
+    ;;
+  "status")
+    exitnode=$(tailscale status --peers --json | jq -r '.ExitNodeStatus.ID as $node_id | .Peer[] | select(.ID==$node_id) | .HostName')
+    if [ -z "$exitnode" ]; then
+      echo "No exit node in use"
+    else
+      echo "Exit node: $exitnode"
+    fi
+    echo "Current IP: $(curl -s ifconfig.io)"
+    ;;
+esac
+
