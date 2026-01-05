@@ -30,9 +30,9 @@ engine = "wofi"
 
 [shortcuts_menu.entries]
 "lock screen" = "loginctl lock-session"
-"take screenshot" = "grim -g \"$(slurp)\" ~/Pictures/$(date -u '+%Y-%m-%dT%H-%M-%S').png"
-"Add clipboard to Mopidy" = "add-to-mopidy"
-"Browse Tidal" = "rofi-tidal"
+"take screenshot" = "/home/joshmock/.local/bin/screenshot"
+"Add clipboard to Mopidy" = "/home/joshmock/.local/bin/add-to-mopidy"
+"Browse Tidal" = "/home/joshmock/.local/bin/rofi-tidal"
 "system monitor" = "pypr toggle system"
 "volume control" = "pypr toggle volume"
 
