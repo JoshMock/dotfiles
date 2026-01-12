@@ -63,18 +63,22 @@ parser = "journal"
 pattern = "backup\\.service:.*FAILURE$"
 filter = "s/.*/Backup failed/"
 color = "#FF0000"
+duration = 20
 
 [[system_notifier.parsers.journal]]
 pattern = "backup\\.service: Failed with result"
 filter = "s/.*/Backup failed/"
 color = "#FF0000"
+duration = 20
 
 [[system_notifier.parsers.journal]]
 pattern = "bugwarrior.*ERROR"
 filter = "s/.*/Bugwarrior sync failed/"
 color = "#FF0000"
+duration = 20
 
 [[system_notifier.parsers.journal]]
 pattern = "bugwarrior.*ERROR"
 filter = "s/.*/Bugwarrior sync failed/"
 color = "#FF0000"
+duration = 20
