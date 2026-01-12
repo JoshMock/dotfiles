@@ -26,6 +26,8 @@ if (
     task["status"] = "deleted"
 elif task.get("githubrepo") == "elastic/elasticsearch-php":
     task["status"] = "deleted"
+elif task.get("githubrepo") == "elastic/ecp-synthetics-monitors":
+    task["status"] = "deleted"
 elif task.get("project") == "elasticsearch-specification" and "backport_" in " ".join(
     task.get("tags", [])
 ):
