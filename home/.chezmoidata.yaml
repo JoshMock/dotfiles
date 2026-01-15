@@ -9,8 +9,6 @@ packages:
   - name: atuin
   - name: autorestic-bin
   - name: bat
-  - name: barrier
-    features: [desktop]
   - name: btop
   - name: blueman
     features: [desktop]
@@ -28,8 +26,6 @@ packages:
   - name: discord
     features: [desktop]
   - name: element-desktop
-    features: [desktop]
-  - name: espanso-wayland
     features: [desktop]
   - name: etckeeper
   - name: exa
@@ -49,8 +45,6 @@ packages:
   - name: firefox-developer-edition
     features: [desktop]
   - name: flake8
-  - name: flameshot
-    features: [desktop]
   - name: fzf
   - name: git
   - name: git-annex
@@ -67,6 +61,8 @@ packages:
     features: [desktop]
   - name: hypridle
     features: [desktop]
+  - name: hyprpolkitagent
+    features: [desktop]
   - name: inter-font
     features: [desktop]
   - name: interception-caps2esc
@@ -79,8 +75,6 @@ packages:
     features: [desktop]
   - name: pinentry-dispatch
   - name: podman-docker
-  - name: polkit-kde-agent
-    features: [desktop]
   - name: pyprland
     features: [desktop]
   - name: kitty
@@ -143,7 +137,6 @@ packages:
     features: [desktop]
   - name: starship
   - name: stow
-  - name: strace
   - name: swaync
     features: [desktop]
   - name: swww
@@ -175,7 +168,7 @@ packages:
   - name: ttf-ubuntu-mono-nerd
     features: [desktop]
   - name: vicinae-bin
-    featuers: [desktop]
+    features: [desktop]
   - name: unzip
   - name: urlview
     features: [desktop, email]
