@@ -164,8 +164,18 @@ require("lazy").setup({
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.completion.spell,
-          require("none-ls.diagnostics.eslint"),
+          null_ls.builtins.completion.spell.with({
+            filetypes = { "markdown", "text", "norg", "neorg" },
+          }),
+          -- TODO: enable dynamically using detect_js_formatter
+          require("none-ls.formatting.jq"),
+          null_ls.builtins.code_actions.ts_node_action,
+          null_ls.builtins.diagnostics.codespell,
+          null_ls.builtins.diagnostics.clj_kondo,
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.isort,
+          null_ls.builtins.diagnostics.trail_space,
+          null_ls.builtins.hover.dictionary,
         },
       })
     end,
