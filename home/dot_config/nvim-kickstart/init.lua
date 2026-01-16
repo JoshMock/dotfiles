@@ -317,7 +317,7 @@ require("lazy").setup({
             },
           },
         },
-        copilot = { enabled = false },
+        copilot = { enabled = true },
       }
 
       -- Ensure the servers and tools above are installed
@@ -919,60 +919,6 @@ require("lazy").setup({
     end,
   },
 
-  -- autocompletion
-  {
-    "saghen/blink.cmp",
-    event = "VimEnter",
-    version = "1.*",
-    dependencies = {
-      "folke/lazydev.nvim",
-    },
-    opts = {
-      keymap = {
-        preset = "default",
-        ["<cr>"] = { "select_and_accept", "fallback" },
-        ["<S-Tab>"] = { "select_prev", "fallback" },
-        ["<Tab>"] = { "select_next", "fallback" },
-      },
-
-      appearance = {
-        nerd_font_variant = "mono",
-      },
-
-      completion = {
-        documentation = { auto_show = true, auto_show_delay_ms = 500 },
-        accept = {
-          auto_brackets = {
-            enabled = true,
-          },
-        },
-        menu = {
-          draw = {
-            treesitter = { "lsp" },
-          },
-        },
-      },
-
-      sources = {
-        default = { "lsp", "buffer", "path" },
-        per_filetype = {
-          lua = { inherit_defaults = true, "lazydev" },
-        },
-        providers = {
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            score_offset = 100,
-          },
-        },
-      },
-
-      fuzzy = { implementation = "prefer_rust" },
-
-      signature = { enabled = true },
-    },
-  },
-
   -- LLM
   {
     "zbirenbaum/copilot.lua",
@@ -1016,6 +962,64 @@ require("lazy").setup({
           fastModel = "o3-mini",
         },
       },
+    },
+  },
+
+  -- autocompletion
+  {
+    "saghen/blink.cmp",
+    event = "VimEnter",
+    version = "1.*",
+    dependencies = {
+      "folke/lazydev.nvim",
+      "fang2hou/blink-copilot",
+    },
+    opts = {
+      keymap = {
+        preset = "super-tab",
+      },
+
+      appearance = {
+        nerd_font_variant = "mono",
+      },
+
+      completion = {
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        menu = {
+          draw = {
+            treesitter = { "lsp" },
+          },
+        },
+      },
+
+      sources = {
+        default = { "lsp", "copilot", "buffer", "path" },
+        per_filetype = {
+          lua = { inherit_defaults = true, "lazydev" },
+        },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 200,
+            async = true,
+          },
+        },
+      },
+
+      fuzzy = { implementation = "prefer_rust" },
+
+      signature = { enabled = true },
     },
   },
 
