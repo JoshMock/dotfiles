@@ -1,44 +1,89 @@
-#!/usr/bin/env python
+#!/usr/bin/env node
 
-import urllib.request
-import json
+import { writeFile, readFile, stat } from 'fs/promises'
 
+const CACHE_FILE = '/home/joshmock/.cache/weather.json'
+const URL = 'https://api.open-meteo.com/v1/forecast?latitude=44.6453&longitude=-73.3024&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m&timezone=America%2FNew_York&forecast_days=1&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch'
 
-def weather_data(location=None):
-    url = 'https://wttr.in/?format=j1'
-    if location is not None:
-        if isinstance(location, str):
-            locs = [location]
-        url = f'https://wttr.in/{":".join(locs)}?format=j1'
-        
-    res = urllib.request.urlopen(url)
-    return json.loads(res.read())
+async function fetchWeather() {
+  let data, stats
+  try {
+    stats = await stat(CACHE_FILE)
+  } catch (err) {
+    console.error(err)
+  }
 
+  // only fetch every hour as API only allows 10 non-commercial fetches per day
+  if (stats != null && stats.isFile() && stats.mtime.getTime() > Date.now() - (60 * 1000)) {
+    data = JSON.parse(await readFile(CACHE_FILE, 'utf-8'))
+  } else {
+    const response = await fetch(URL)
+    if (!response.ok) throw new Error('Failed to fetch weather data')
+    data = await response.json()
+    await writeFile(CACHE_FILE, JSON.stringify(data), 'utf-8')
+  }
 
-def weather_short(data):
-    current = data['current_condition'][0]
-    temp_f = current['temp_F']
-    return f'{temp_f}°F'
+  return data
+}
 
+function toCelcius(temp) {
+  return (temp - 32) * 5 / 9
+}
 
-def weather_long(data):
-    current = data['current_condition'][0]
-    temp_f = current['temp_F']
-    feels_f = current['FeelsLikeF']
-    temp_c = current['temp_C']
-    feels_c = current['FeelsLikeC']
-    descs = [c['value'] for c in current['weatherDesc']]
-    desc = ', '.join(descs)
-    loc_name = data['nearest_area'][0]['areaName'][0]['value']
-    return f'{loc_name}: {temp_f}°F ({temp_c}°C), feels like {feels_f}°F | {desc}'
+function precipitation(data) {
+  const date = new Date()
+  const dateIndex = data.hourly.time.findIndex(t => new Date(t) > date)
+  const probability = data.hourly.precipitation_probability[dateIndex]
+  let output = `precipitation: ${probability}% chance in the next hour`
 
+  let upcoming = probability
+  let upcomingIndex = dateIndex
+  for (let i = dateIndex; i < data.hourly.precipitation_probability.length; i++) {
+    if (data.hourly.precipitation_probability[i] > upcoming) {
+      upcoming = data.hourly.precipitation_probability[i]
+      upcomingIndex = i
+    }
+  }
+  if (upcomingIndex > dateIndex) {
+    const upcomingTime = new Date(data.hourly.time[upcomingIndex])
+    output += `, increasing to ${upcoming}% at ${upcomingTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`
+  }
 
-here = weather_data()
-text = weather_short(here)
-alt = tooltip = weather_long(here)
+  return output
+}
 
-if here['nearest_area'][0]['areaName'][0]['value'] != 'Nashville':
-    elsewhere = weather_data('37207')
-    alt = tooltip + '\n' + weather_long(elsewhere)
+fetchWeather()
+  .then(data => {
+    precipitation(data)
+    const temp = `${data.current.temperature_2m}°F`
+    const tempCelcius = `${toCelcius(data.current.temperature_2m).toFixed(1)}°C`
+    const feelsLike = `${data.current.apparent_temperature}${data.current_units.apparent_temperature}`
+    const feelsLikeCelcius = `${toCelcius(data.current.apparent_temperature).toFixed(1)}°C`
+    const { latitude, longitude } = data
+    let town
+    if (Math.floor(latitude) === 44 && Math.floor(longitude) === -74) {
+      town = 'South Hero'
+    }
 
-print(json.dumps({'text': text, 'alt': alt, 'tooltip': tooltip}))
+    let altText = `${town != null ? town + ': ' : ''}${temp} (${tempCelcius})
+feels like ${feelsLike} (${feelsLikeCelcius})`
+
+    if (data.current.wind_speed_10m > 5) {
+      altText += `\nwind speed: ${data.current.wind_speed_10m}mph; gusts: ${data.current.wind_gusts_10m}mph`
+    }
+
+    altText += `\n${precipitation(data)}`
+
+    const timestamp = new Date(data.current.time)
+    altText += `\nlast updated: ${timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`
+    const out = {
+      text: temp,
+      alt: altText,
+      tooltip: altText
+    }
+    console.log(JSON.stringify(out))
+  })
+  .catch(err => {
+  console.error(err)
+  process.exit(1)
+})
