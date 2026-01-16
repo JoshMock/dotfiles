@@ -322,7 +322,21 @@ require("lazy").setup({
 
       -- Ensure the servers and tools above are installed
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, { "stylua", "eslint_d", "ts-standard", "black", "isort" })
+      vim.list_extend(ensure_installed, {
+        "black",
+        "clojure_lsp",
+        "copilot",
+        "eslint_d",
+        "isort",
+        "jsonls",
+        "lua_ls",
+        "pyright",
+        "stylua",
+        "ts-standard",
+        "ts_ls",
+        "yamlls",
+      })
+
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
