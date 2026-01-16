@@ -148,9 +148,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     error("Error cloning lazy.nvim:\n" .. out)
   end
 end
----@type vim.Option
-local rtp = vim.opt.rtp
-rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 -- [[ install plugins ]]
 require("lazy").setup({
@@ -514,7 +512,7 @@ require("lazy").setup({
           todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
           note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
 
-          -- TODO: implement my own highligher patterns instead of hijacking
+          -- TODO: implement my own highlighter patterns instead of hijacking
           console_log = { pattern = "console%.log", group = "@comment.note" },
           console_warn = { pattern = "console%.warn", group = "@comment.warning" },
           console_error = { pattern = "console%.error", group = "@comment.error" },
@@ -651,7 +649,7 @@ require("lazy").setup({
       {
         "<leader>?",
         function()
-          require("which-key").show({ global = false })
+          require("which-key").show({ global = true })
         end,
         desc = "Buffer Local Keymaps (which-key)",
       },
