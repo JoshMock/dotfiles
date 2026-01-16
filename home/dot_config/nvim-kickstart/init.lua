@@ -439,6 +439,33 @@ require("lazy").setup({
   },
   "tpope/vim-projectionist",
   {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      options = {
+        disabled_filetypes = { "statusline", "ministarter", "winbar" },
+      },
+      sections = {
+        lualine_a = {
+          "mode",
+          function()
+            local reg = vim.fn.reg_recording()
+            if reg == "" then
+              return ""
+            end -- not recording
+            return "@" .. reg
+          end,
+        },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = { "filename" },
+        lualine_x = { "filetype" },
+        lualine_y = { "searchcount" },
+        lualine_z = { "location" },
+      },
+      extensions = { "man", "mason", "quickfix", "trouble" },
+    },
+  },
+  {
     "echasnovski/mini.nvim",
     config = function()
       require("mini.ai").setup({})
@@ -448,7 +475,6 @@ require("lazy").setup({
       require("mini.icons").setup({})
       require("mini.clue").setup({})
       require("mini.cursorword").setup({})
-      require("mini.statusline").setup({})
       require("mini.tabline").setup({})
       require("mini.trailspace").setup({})
       require("mini.visits").setup({})
