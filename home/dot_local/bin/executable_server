@@ -1,2 +1,4 @@
+#!/usr/bin/env bash
+
 # easy static server host
 python -m http.server

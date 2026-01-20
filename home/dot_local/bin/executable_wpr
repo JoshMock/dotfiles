@@ -1,4 +1,4 @@
-# vim: ft=zsh
+#!/usr/bin/env bash
 
 # watch a PR and notify when CI finishes
 noti gh pr checks --watch $1

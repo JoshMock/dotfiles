@@ -1,1 +1,3 @@
+#!/usr/bin/env bash
+
 tmux attach || tmux new

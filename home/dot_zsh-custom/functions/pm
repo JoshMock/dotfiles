@@ -1,4 +1,0 @@
-# vim: ft=zsh
-
-# list music bookmarks in Pocket, pick one, add its URL to Mopidy queue
-pocket-list --tag music --count 30 | fzf | awk '{print $(NF)}' | xargs add-to-mopidy --url
