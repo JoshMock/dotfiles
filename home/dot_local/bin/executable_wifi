@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+case "$1" in
+  "on")
+    nmcli radio wifi on
+    echo "Wifi is on"
+    ;;
+  "off")
+    nmcli radio wifi off
+    echo "Wifi is off"
+    ;;
+  "toggle")
+    nmcli radio wifi off
+    echo "Wifi is off"
+    nmcli radio wifi on
+    echo "Wifi is on"
+    ;;
+esac
+
+nmcli device status | grep 'wlan0' | grep -v p2p | awk '{print $4 ": " $3}'
