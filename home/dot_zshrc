@@ -7,11 +7,6 @@ antidote load
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
-# autoload functions
-ZFUNCDIR=${ZFUNCDIR:-$HOME/.zsh-custom/functions}
-fpath=($ZFUNCDIR $fpath)
-autoload -Uz $fpath[1]/*(.:t)
-
 # tool setup
 eval "$(direnv hook zsh)" # direnv
 eval "$(starship init zsh)" #starship
@@ -66,3 +61,8 @@ alias td='timew start "dev environment"'
 alias te='timew start email'
 alias tc='timew start clients js'
 alias tp='timew start clients python'
+
+mkcd () {
+  mkdir -p "$1"
+  pushd "$1"
+}
