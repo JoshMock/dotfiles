@@ -1,0 +1,48 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[user]
+name = "Josh Mock"
+email = "josh@joshmock.com"
+
+[[--scope]]
+--when.commands = ["diff", "show"]
+[--scope.ui]
+pager = "delta"
+diff-formatter = ":git"
+
+[ui]
+default-command = ["status"]
+merge-editor = "mergiraf"
+
+[[--scope]]
+--when.repositories = [
+  "~/Code/cloud",
+  "~/Code/docs",
+  "~/Code/elastic-client-generator-js",
+  "~/Code/elastic-client-generator-lua",
+  "~/Code/elastic-transport-js",
+  "~/Code/elasticsearch-clients-tests",
+  "~/Code/elasticsearch-js",
+  "~/Code/elasticsearch-js-mock",
+  "~/Code/elasticsearch-lua",
+  "~/Code/elasticsearch-py",
+  "~/Code/elasticsearch-specification",
+  "~/Code/gemini-cli-elasticsearch",
+  "~/Code/kibana",
+  "~/Code/mcp-server-elasticsearch",
+  "~/Code/request-converter",
+  "~/Code/search-team",
+  "~/Code/devtools-team",
+  "~/Code/elastic-neovim/*",
+  "~/Code/search-labs-elastic-co",
+  "~/Code/start-local",
+  "~/Code/telemetry"
+]
+[--scope.user]
+email = "joshua.mock@elastic.co"
+
+[aliases]
+push = ["git", "push", "--all"]
+pull = ["git", "fetch"]
+fetch = ["git", "fetch"]
+start = ["new", "trunk()"]
