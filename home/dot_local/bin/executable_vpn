@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 case "$1" in
   "on")
     node=$(tailscale exit-node suggest |  head -n1 | cut -d ' ' -f4)
@@ -25,4 +24,3 @@ case "$1" in
     echo "Current IP: $(curl -s ifconfig.io)"
     ;;
 esac
-
