@@ -1,0 +1,11 @@
+{{- if .mopidy }}
+[Unit]
+Description=Keep the music playing
+
+[Service]
+Type=oneshot
+ExecStart=/home/joshmock/.local/bin/mopidy-queue-manager
+
+[Install]
+WantedBy=mopidy-queue.timer
+{{ end }}

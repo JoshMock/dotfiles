@@ -1,0 +1,202 @@
+#!/usr/bin/env python3
+
+import subprocess
+import random
+import os
+import sys
+from pathlib import Path
+
+
+def get_mopidy_queue_length():
+    """Get the number of tracks currently in Mopidy queue."""
+    try:
+        result = subprocess.run(
+            ["mpc", "-h", "::", "playlist"], capture_output=True, text=True, check=True
+        )
+        # Count lines in playlist output
+        return len([line for line in result.stdout.strip().split("\n") if line.strip()])
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return 0
+
+
+def get_random_album():
+    """Get a random album from beet library."""
+    try:
+        # Use machine-parseable format with delimiter and path
+        result = subprocess.run(
+            ["beet", "ls", "-a", "-f", "$albumartist|$album|$year|$path"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        albums = []
+        for line in result.stdout.strip().split("\n"):
+            if line.strip():
+                parts = line.strip().split("|")
+                if len(parts) >= 4:
+                    albums.append(
+                        {
+                            "albumartist": parts[0],
+                            "album": parts[1],
+                            "year": parts[2],
+                            "path": parts[3],
+                        }
+                    )
+        if not albums:
+            return None
+        return random.choice(albums)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+
+
+def get_album_path(album_data):
+    """Get the file path for an album from beet."""
+    if "path" in album_data and album_data["path"]:
+        # Return the directory containing the track
+        return str(Path(album_data["path"]).parent)
+
+    # Fallback to query if path not available
+    try:
+        # Use structured query for precise matching
+        query = f"albumartist:{album_data['albumartist']} album:{album_data['album']}"
+        result = subprocess.run(
+            ["beet", "ls", "-a", "-p", query],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        paths = [
+            line.strip() for line in result.stdout.strip().split("\n") if line.strip()
+        ]
+        if paths:
+            # Return the directory containing the first track
+            return str(Path(paths[0]).parent)
+        return None
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+
+
+def check_files_present(directory):
+    """Check if files in directory are present or just symlinks."""
+    if not directory or not os.path.exists(directory):
+        return False
+
+    try:
+        for item in os.listdir(directory):
+            item_path = os.path.join(directory, item)
+            if os.path.isfile(item_path) and not os.path.islink(item_path):
+                return True  # Found at least one real file
+        return False  # All files are symlinks or no files found
+    except (OSError, PermissionError):
+        return False
+
+
+def fetch_files_with_git_annex(directory):
+    """Fetch files using git annex get."""
+    if not directory or not os.path.exists(directory):
+        return False
+
+    try:
+        # Change to the directory and run git annex get
+        result = subprocess.run(
+            ["git", "annex", "get", ".", "--from=backblaze", "--jobs=cpus"],
+            cwd=directory,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.returncode == 0
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
+
+
+def play_album(album_data):
+    """Play an album using beet play."""
+    try:
+        # Use structured query for precise matching
+        result = subprocess.run(
+            [
+                "beet",
+                "play",
+                "-a",
+                f"albumartist:{album_data['albumartist']}",
+                f"album:{album_data['album']}",
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.returncode == 0
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
+
+
+def check_playing_status():
+    result = subprocess.run(
+        ["playerctl", "status"], capture_output=True, text=True, check=True
+    )
+    return result.stdout.strip() == "Playing"
+
+
+def main():
+    """Main script logic."""
+    # check if playing
+    if not check_playing_status():
+        print("Not playing. Exiting.")
+        return 0
+
+    # Get current queue length
+    queue_length = get_mopidy_queue_length()
+    print(f"Current Mopidy queue length: {queue_length}")
+
+    # If queue has 3 or more songs, exit
+    if queue_length >= 3:
+        print("Queue has sufficient songs. Exiting.")
+        return 0
+
+    print("Queue has fewer than 3 songs. Selecting random album...")
+
+    # Get random album
+    album = get_random_album()
+    if not album:
+        print("Error: Could not get random album from beet.")
+        return 1
+
+    print(
+        f"Selected album: {album['albumartist']} - {album['album']} ({album['year']})"
+    )
+
+    # Get album path
+    album_path = get_album_path(album)
+    if not album_path:
+        print(
+            f"Error: Could not find path for album '{album['albumartist']} - {album['album']}'"
+        )
+        return 1
+
+    print(f"Album path: {album_path}")
+
+    # Check if files are present
+    if not check_files_present(album_path):
+        print("Files are symlinks. Fetching with git annex...")
+        if not fetch_files_with_git_annex(album_path):
+            print("Error: Failed to fetch files with git annex.")
+            return 1
+        print("Files fetched successfully.")
+    else:
+        print("Files are present locally.")
+
+    # Play the album
+    print(f"Queuing album '{album['albumartist']} - {album['album']}'...")
+    if not play_album(album):
+        print(
+            f"Error: Failed to play album '{album['albumartist']} - {album['album']}'"
+        )
+        return 1
+
+    print(f"Successfully queued album '{album['albumartist']} - {album['album']}'")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
