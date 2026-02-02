@@ -59,3 +59,12 @@ if echo "$pypkgs" | jq -e '.venvs | has("beets")'; then
 else
   pipx install --fetch-missing-python --python 3.13 'beets[lastgenre,fetchart]'
 fi
+
+# install mutt-oauth2
+if echo "$chez" | jq -e '.email == true'; then
+  if echo "$pypkgs" | jq -e '.venvs | has("mutt-oauth2")'; then
+    pipx upgrade mutt-oauth2
+  else
+    pipx install mutt-oauth2
+  fi
+fi

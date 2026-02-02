@@ -19,6 +19,8 @@ packages:
   - name: cliphist
     features: [desktop]
   - name: codespell
+  - name: cyrus-sasl-xoauth2-git
+    features: [email]
   - name: dex
     features: [desktop]
   - name: difftastic
