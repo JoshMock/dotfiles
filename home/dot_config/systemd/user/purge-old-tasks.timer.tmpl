@@ -1,0 +1,10 @@
+{{ if .taskwarrior -}}
+[Unit]
+Description=purge old tasks
+
+[Timer]
+OnCalendar=daily
+
+[Install]
+WantedBy=timers.target
+{{ end }}

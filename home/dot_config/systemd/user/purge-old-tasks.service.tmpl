@@ -1,0 +1,11 @@
+{{ if .taskwarrior -}}
+[Unit]
+Description=purge old tasks
+
+[Service]
+Type=oneshot
+ExecStart=bash -c "yes | task 'end.before(now - 2month)' and status:completed or status:deleted purge"
+
+[Install]
+WantedBy=purge-old-tasks.timer
+{{ end }}
