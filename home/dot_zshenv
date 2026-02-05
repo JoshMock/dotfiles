@@ -9,8 +9,6 @@ export PATH=$ASDF_DATA_DIR/shims:$HOME/.cargo/bin:/usr/local/share/npm/bin:/bin:
 # neovim as default editor
 export VISUAL=nvim
 export EDITOR=nvim
-# kickstart version of neovim
-export NVIM_APPNAME=nvim-kickstart
 
 # syntax highlighting when using `less` on the command line
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
