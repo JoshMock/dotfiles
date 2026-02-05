@@ -55,9 +55,10 @@ fi
 
 # install beets
 if echo "$pypkgs" | jq -e '.venvs | has("beets")'; then
-  pipx upgrade beets --include-injected
+  # pipx upgrade beets --include-injected
+  echo "beets already installed"
 else
-  pipx install --fetch-missing-python --python 3.13 'beets[lastgenre,fetchart]'
+  pipx install --fetch-missing-python --python 3.13 'beets[lastgenre,fetchart]==2.5.1'
 fi
 
 # install mutt-oauth2
