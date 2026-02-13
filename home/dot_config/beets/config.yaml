@@ -2,9 +2,14 @@ library: ~/Music/library.db
 paths:
   default: "$albumartist/$album%aunique{}/$track - $title"
   comp: "Compilations/$album%aunique{}/$track - $title"
-plugins: play fetchart musicbrainz
+plugins: play fetchart musicbrainz edit fuzzy lastgenre random
 play:
   command: "play"
 fetchart:
   minwidth: 100
   quality: 90
+lastgenre:
+  auto: no
+  force: yes
+  keep_existing: yes
+  count: 3
