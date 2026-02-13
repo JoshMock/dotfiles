@@ -809,7 +809,7 @@ require("lazy").setup({
     "chrisgrieser/nvim-origami",
     event = "VeryLazy",
     opts = {
-      pauseFoldsOnSearch = true,
+      pauseFoldsOnSearch = false,
     },
     init = function() end,
   },
