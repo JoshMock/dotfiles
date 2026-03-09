@@ -2,7 +2,7 @@
 
 export HOME=/home/joshmock
 export ASDF_DATA_DIR=/home/joshmock/.asdf
-export PATH=$ASDF_DATA_DIR/shims:$HOME/.cargo/bin:/usr/local/share/npm/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/lib/node_modules:$HOME/.local/bin:$PATH
+export PATH=$ASDF_DATA_DIR/shims:$HOME/.cargo/bin:/usr/local/share/npm/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/lib/node_modules:$HOME/.local/bin:$HOME/.bun/bin:$PATH
 
 [ -r "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
