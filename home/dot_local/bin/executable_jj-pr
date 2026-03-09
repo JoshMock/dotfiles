@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  echo "usage: jj-pr <bookmark-name>" >&2
+  exit 1
+fi
+
+BOOKMARK="$1"
+
+echo "Creating bookmark '$BOOKMARK'..."
+jj bookmark create "$BOOKMARK"
+
+echo "Pushing to git remote..."
+jj git push --bookmark "$BOOKMARK"
+
+echo "Creating pull request..."
+gh pr create --head "$BOOKMARK"
