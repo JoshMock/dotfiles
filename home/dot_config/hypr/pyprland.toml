@@ -22,7 +22,7 @@ animation = "fromTop"
 lazy = true
 
 [menubar]
-command = "waybar"
+command = "qs -c noctalia-shell"
 monitors = ["eDP-1", "DP-1", "DP-2", "DP-3"]
 
 [shortcuts_menu]

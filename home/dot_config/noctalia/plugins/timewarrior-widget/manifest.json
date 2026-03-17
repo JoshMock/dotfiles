@@ -1,0 +1,21 @@
+{
+  "id": "timewarrior-widget",
+  "name": "TimeWarrior Widget",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "3.6.0",
+  "author": "Your Name",
+  "license": "MIT",
+  "description": "Display TimeWarrior tracking status and weekly summary in your bar",
+  "entryPoints": {
+    "barWidget": "BarWidget.qml",
+    "settings": "Settings.qml"
+  },
+  "metadata": {
+    "defaultSettings": {
+      "updateInterval": 60000,
+      "showWeekTotal": true,
+      "clickAction": "terminal",
+      "terminalCommand": "alacritty -e timew summary :week"
+    }
+  }
+}

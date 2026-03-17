@@ -102,6 +102,8 @@ packages:
   - name: neovim
   - name: neovim-remote
   - name: nnn
+  - name: noctalia-shell
+    features: [desktop]
   - name: noti
     features: [desktop]
   - name: notmuch
