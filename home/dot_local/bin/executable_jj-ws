@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  echo "usage: jj-ws <workspace-name>" >&2
+  exit 1
+fi
+
+WORKSPACE="$1"
+
+REPO_ROOT="$(jj root)"
+REPO_NAME="$(basename "$REPO_ROOT")"
+WORKSPACE_PATH="$HOME/.local/share/jj-workspaces/$REPO_NAME/$WORKSPACE"
+mkdir -p "$WORKSPACE_PATH"
+
+echo "Creating workspace '$WORKSPACE' at $WORKSPACE_PATH..."
+jj workspace add "$WORKSPACE_PATH" --name "$WORKSPACE"
+
+echo "Done. Switch to it with: cd $WORKSPACE_PATH"
