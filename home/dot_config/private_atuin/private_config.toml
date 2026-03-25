@@ -1,5 +1,6 @@
 history_filter = ["^vault write", "^op item edit", "^docker login"]
 enter_accept = true
+search_mode = "daemon-fuzzy"
 
 [stats]
 common_subcommands = [
@@ -26,3 +27,10 @@ common_subcommands = [
 ]
 
 common_prefix = ["sudo"]
+
+[ai]
+enabled = true
+
+[daemon]
+enabled = true
+autostart = true
