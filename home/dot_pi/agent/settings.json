@@ -1,0 +1,25 @@
+{
+  "lastChangelogVersion": "0.66.1",
+  "defaultProvider": "github-copilot",
+  "defaultModel": "claude-sonnet-4.6",
+  "defaultThinkingLevel": "off",
+  "hideThinkingBlock": true,
+  "packages": [
+    "npm:@aliou/pi-guardrails",
+    "npm:lsp-pi",
+    "npm:@the-agency/pi-tokenshrink",
+    "npm:@the-agency/pi-hashline-edit",
+    "npm:pi-rtk",
+    "npm:pi-mcp-adapter",
+    "npm:@the-agency/pi-spec-kit",
+    "npm:pi-continuous-learning"
+  ],
+  "collapseChangelog": true,
+  "treeFilterMode": "default",
+  "enabledModels": [
+    "github-copilot/claude-opus-4.6",
+    "github-copilot/claude-sonnet-4.6",
+    "github-copilot/claude-haiku-4.5",
+    "google-gemini-cli/gemini-2.5-pro"
+  ]
+}
