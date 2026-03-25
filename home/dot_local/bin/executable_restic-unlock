@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# unlock local
+env RESTIC_REPOSITORY=/home/joshmock/.local/share/restic \
+  RESTIC_PASSWORD="$(yq '.backends.local.key' ~/.autorestic.yml)" \
+  restic unlock
+
+# unlock gdrive
+if [ $(hostname) = 'ravedeath' ]; then
+  env RESTIC_REPOSITORY=rclone:gdrive:rclone-ravedeath \
+    RESTIC_PASSWORD="$(yq '.backends.gdrive.key' ~/.autorestic.yml)" \
+    restic unlock
+fi
