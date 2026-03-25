@@ -5,7 +5,6 @@ packages:
   - name: 1password-cli
   - name: abook
     features: [email]
-  - name: asdf-vm
   - name: atuin
   - name: autorestic-bin
   - name: bat
@@ -87,6 +86,7 @@ packages:
     features: [email]
   - name: mimeo
     features: [desktop]
+  - name: mise
   - name: mpc
     features: [mopidy]
   - name: msmtp

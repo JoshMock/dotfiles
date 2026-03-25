@@ -23,7 +23,8 @@ common_subcommands = [
   "asdf",
   "restic",
   "autorestic",
-  "jj"
+  "jj",
+  "mise"
 ]
 
 common_prefix = ["sudo"]
