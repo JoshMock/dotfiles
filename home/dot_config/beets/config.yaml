@@ -1,4 +1,5 @@
 library: ~/Music/library.db
+sort_item: albumartist+ album+ disc+ track+
 paths:
   default: "$albumartist/$album%aunique{}/$track - $title"
   comp: "Compilations/$album%aunique{}/$track - $title"
