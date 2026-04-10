@@ -16,8 +16,6 @@ packages:
     features: [desktop]
   - name: calc
   - name: clipboard-bin
-  - name: cliphist
-    features: [desktop]
   - name: codespell
   - name: cyrus-sasl-xoauth2-git
     features: [email]
