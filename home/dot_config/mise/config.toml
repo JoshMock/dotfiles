@@ -1,0 +1,4 @@
+[tools]
+disable_tools = ["lua", "python"]
+node = "24.6.0"
+babashka = { version = "1.3.190", exe = "bb" }
