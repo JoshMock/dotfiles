@@ -27,6 +27,8 @@ merge-editor = "mergiraf"
   "~/Code/elasticsearch-lua",
   "~/Code/elasticsearch-py",
   "~/Code/elasticsearch-specification",
+  "~/Code/elastic-cli",
+  "~/Code/elastic-cli-builder/",
   "~/Code/gemini-cli-elasticsearch",
   "~/Code/kibana",
   "~/Code/mcp-server-elasticsearch",
