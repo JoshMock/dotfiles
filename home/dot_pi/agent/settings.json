@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.66.1",
+  "lastChangelogVersion": "0.70.2",
   "defaultProvider": "github-copilot",
   "defaultModel": "claude-sonnet-4.6",
-  "defaultThinkingLevel": "off",
+  "defaultThinkingLevel": "medium",
   "hideThinkingBlock": true,
   "packages": [
     "npm:@aliou/pi-guardrails",
@@ -10,7 +10,6 @@
     "npm:@the-agency/pi-tokenshrink",
     "npm:@the-agency/pi-hashline-edit",
     "npm:pi-rtk",
-    "npm:pi-mcp-adapter",
     "npm:@the-agency/pi-spec-kit",
     "npm:pi-continuous-learning"
   ],
