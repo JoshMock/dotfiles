@@ -775,7 +775,8 @@ require("lazy").setup({
 
   -- treesitter
   {
-    "nvim-treesitter/nvim-treesitter",
+    "neovim-treesitter/nvim-treesitter",
+    dependencies = { "neovim-treesitter/treesitter-parser-registry" },
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
     config = function()
@@ -798,7 +799,7 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
+      "neovim-treesitter/nvim-treesitter",
     },
     opts = {},
   },
@@ -941,6 +942,19 @@ require("lazy").setup({
         },
       },
       panel = { enabled = true },
+    },
+  },
+  {
+    "carlos-algms/agentic.nvim",
+    opts = {
+      provider = "pi",
+      acp_providers = {
+        ["pi"] = {
+          type = "custom",
+          name = "Pi",
+          command = "pi-acp",
+        },
+      },
     },
   },
 
