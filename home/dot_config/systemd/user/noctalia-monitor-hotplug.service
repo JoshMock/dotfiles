@@ -1,0 +1,14 @@
+[Unit]
+Description=Noctalia Monitor Hotplug Manager
+Documentation=file://%h/.config/noctalia/hooks/monitor-hotplug-daemon.sh
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+
+[Service]
+Type=simple
+ExecStart=%h/.config/noctalia/hooks/monitor-hotplug-daemon.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
