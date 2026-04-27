@@ -1,2 +1,10 @@
 show_startup_tips false
 show_release_notes false
+keybinds {
+    normal {
+        bind "Alt n" { NewPane "Down"; }
+    }
+    pane {
+        bind "n" { NewPane "Down"; SwitchToMode "Normal"; }
+    }
+}
