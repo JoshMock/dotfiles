@@ -3,7 +3,7 @@ sort_item: albumartist+ album+ disc+ track+
 paths:
   default: "$albumartist/$album%aunique{}/$track - $title"
   comp: "Compilations/$album%aunique{}/$track - $title"
-plugins: play fetchart musicbrainz edit fuzzy lastgenre random
+plugins: play fetchart musicbrainz edit fuzzy lastgenre random gitannex
 play:
   command: "play"
 fetchart:
@@ -14,3 +14,6 @@ lastgenre:
   force: yes
   keep_existing: yes
   count: 3
+gitannex:
+  allow_pull: no
+  preferred_remote: backblaze
