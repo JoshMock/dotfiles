@@ -198,7 +198,7 @@ for i in $(seq 0 $((EVENT_COUNT - 1))); do
           URL=$(cat "$URL_FILE" 2>/dev/null || true)
           if [[ -n "$URL" ]]; then
             logger -t calendar-notifier "Opening URL: $URL"
-            setsid xdg-open "$URL" </dev/null &>/dev/null &
+            setsid mimeo "$URL" </dev/null &>/dev/null &
           fi
         fi
       fi
