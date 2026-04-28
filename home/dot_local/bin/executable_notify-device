@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<EOF
+usage: notify-device [options] <message>
+
+Send a notification to the configured ntfy topic.
+
+Arguments:
+  message       Notification body text (required). Supports basic markdown.
+
+Options:
+  -t, --title   <text>      Notification title.
+  -p, --priority <level>    Priority: urgent, high, default, low, min.
+  -T, --tags    <tag,...>   Comma-separated tag names (mapped to emoji).
+  -c, --click   <url>       URL to open when notification is clicked.
+  -d, --delay   <when>      Schedule delivery. Accepts Unix timestamps,
+                            durations (30m, 3h, 2 days), or natural language
+                            time strings (10am, tomorrow, Tuesday).
+  -h, --help                Show this help message and exit.
+
+Examples:
+  notify-device "Build finished"
+  notify-device --title "CI" --priority high --tags tada "All tests passed"
+  notify-device --click https://example.com --delay 10am "Daily standup"
+EOF
+}
+
+TITLE=""
+PRIORITY=""
+TAGS=""
+CLICK=""
+DELAY=""
+MESSAGE=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -t|--title)    TITLE="$2";    shift 2 ;;
+    -p|--priority) PRIORITY="$2"; shift 2 ;;
+    -T|--tags)     TAGS="$2";     shift 2 ;;
+    -c|--click)    CLICK="$2";    shift 2 ;;
+    -d|--delay)    DELAY="$2";    shift 2 ;;
+    -h|--help)     usage; exit 0 ;;
+    -*)            echo "unknown option: $1" >&2; usage >&2; exit 1 ;;
+    *)
+      if [[ -n "$MESSAGE" ]]; then
+        echo "unexpected argument: $1" >&2; usage >&2; exit 1
+      fi
+      MESSAGE="$1"
+      shift
+      ;;
+  esac
+done
+
+if [[ -z "$MESSAGE" ]]; then
+  echo "error: message is required" >&2
+  usage >&2
+  exit 1
+fi
+
+CURL_ARGS=(
+  -H "Authorization: Bearer $(pass agents/ntfy/pi)"
+)
+
+[[ -n "$TITLE" ]]    && CURL_ARGS+=(-H "Title: $TITLE")
+[[ -n "$PRIORITY" ]] && CURL_ARGS+=(-H "Priority: $PRIORITY")
+[[ -n "$TAGS" ]]     && CURL_ARGS+=(-H "Tags: $TAGS")
+[[ -n "$CLICK" ]]    && CURL_ARGS+=(-H "Click: $CLICK")
+[[ -n "$DELAY" ]]    && CURL_ARGS+=(-H "Delay: $DELAY")
+
+curl "${CURL_ARGS[@]}" -d "$MESSAGE" https://ntfy.sh/joshmock-pi-agent-events
