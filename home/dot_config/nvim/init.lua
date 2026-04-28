@@ -750,27 +750,12 @@ require("lazy").setup({
               default_workspace = "clients",
             },
           },
-          ["core.export"] = {},
-          ["external.interim-ls"] = {
-            config = {
-              completion_provider = {
-                enable = true,
-                documentation = true,
-                categories = false,
-              },
-            },
-          },
         },
       })
+
+      vim.wo.foldlevel = 99
+      vim.wo.conceallevel = 2
     end,
-  },
-  {
-    "benlubas/neorg-interim-ls",
-    ft = { "norg", "neorg" },
-    lazy = true,
-    dependencies = {
-      "nvim-neorg/neorg",
-    },
   },
 
   -- treesitter
@@ -778,23 +763,23 @@ require("lazy").setup({
     "neovim-treesitter/nvim-treesitter",
     dependencies = { "neovim-treesitter/treesitter-parser-registry" },
     build = ":TSUpdate",
-    main = "nvim-treesitter.configs",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "bash",
-          "diff",
-          "javascript",
-          "markdown",
-          "markdown_inline",
-          "python",
-          "typescript",
-        },
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-    end,
+    opts = {
+      ensure_installed = {
+        "bash",
+        "diff",
+        "javascript",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "typescript",
+        "vimdoc",
+        "norg",
+        "neorg",
+      },
+      auto_install = true,
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
