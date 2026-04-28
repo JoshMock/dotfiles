@@ -1,24 +1,23 @@
 {
-  "lastChangelogVersion": "0.70.2",
+  "lastChangelogVersion": "0.70.6",
   "defaultProvider": "github-copilot",
   "defaultModel": "claude-sonnet-4.6",
-  "defaultThinkingLevel": "medium",
-  "hideThinkingBlock": true,
+  "defaultThinkingLevel": "off",
+  "hideThinkingBlock": false,
   "packages": [
     "npm:@aliou/pi-guardrails",
     "npm:lsp-pi",
     "npm:@the-agency/pi-tokenshrink",
     "npm:@the-agency/pi-hashline-edit",
     "npm:pi-rtk",
-    "npm:@the-agency/pi-spec-kit",
-    "npm:pi-continuous-learning"
+    "npm:pi-continuous-learning",
+    "npm:@ff-labs/pi-fff"
   ],
   "collapseChangelog": true,
   "treeFilterMode": "default",
   "enabledModels": [
     "github-copilot/claude-opus-4.6",
     "github-copilot/claude-sonnet-4.6",
-    "github-copilot/claude-haiku-4.5",
-    "google-gemini-cli/gemini-2.5-pro"
+    "github-copilot/claude-haiku-4.5"
   ]
 }

@@ -1,3 +1,10 @@
+## Version Control (git / jj)
+
+- **ALMOST ALWAYS READ-ONLY.** The user writes and pushes commits themselves.
+- Permitted: `git log`, `git diff`, `git show`, `git status`, `jj log`, `jj diff`, `jj show`, and other read-only inspection commands.
+- **NEVER** stage, commit, amend, push, rebase, reset, or otherwise mutate the repo state unless the user **explicitly** requests otherwise.
+- If you genuinely believe a write action is required, **stop and ask** before executing. Do not proceed unilaterally.
+
 ## Using skills
 
 - **CRITICAL:** Use skills to augment your core abilities. Do not ignore available skills.
