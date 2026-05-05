@@ -8,8 +8,9 @@
     ],
     "states": {
         "timewarrior-widget": {
-            "enabled": true
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         }
     },
-    "version": 1
+    "version": 2
 }
