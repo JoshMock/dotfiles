@@ -7,6 +7,8 @@ packages:
     features: [email]
   - name: atuin
   - name: autorestic-bin
+  - name: awww
+    features: [desktop]
   - name: bat
   - name: btop
   - name: blueman
@@ -140,8 +142,6 @@ packages:
   - name: starship
   - name: stow
   - name: swaync
-    features: [desktop]
-  - name: swww
     features: [desktop]
   - name: tailscale
   - name: task
