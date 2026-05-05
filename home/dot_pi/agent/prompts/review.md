@@ -5,8 +5,6 @@ Review these code changes, applying fixes as you go. **Do not** commit the resul
 
 Load the `code-conventions` skill and follow it throughout.
 
-$@
-
 ## What to review
 
 Review uncommitted changes. If there are none, diff all commits from the closest upstream branch/revision.
@@ -29,3 +27,7 @@ After verifying requirements, take another pass:
 - Apply `code-conventions` rules (comments, style, LLM artifacts, test organization)
 
 When finished, show a concise bulleted list of changes made and why.
+
+## Other notes
+
+$@
