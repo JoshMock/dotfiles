@@ -1,0 +1,5 @@
+{{ if .mopidy -}}
+[Build]
+ImageTag=localhost/mopidy:latest
+SetWorkingDirectory=mopidy
+{{ end -}}

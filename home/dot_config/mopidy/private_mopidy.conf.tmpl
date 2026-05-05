@@ -1,6 +1,7 @@
 {{ if .mopidy -}}
 [core]
 restore_state = true
+data_dir = /data/mopidy
 
 [local]
 media_dir = /home/joshmock/Music
@@ -16,7 +17,7 @@ mixer = software
 [file]
 enabled = true
 media_dirs =
-  ~/Music|Music
+  /home/joshmock/Music|Music
 excluded_file_extensions =
   .directory
   .html

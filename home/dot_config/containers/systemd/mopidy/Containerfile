@@ -1,0 +1,43 @@
+FROM debian:bookworm-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    python3-venv \
+    python3-gi \
+    python3-gi-cairo \
+    python3-gst-1.0 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-libav \
+    gstreamer1.0-pipewire \
+    gstreamer1.0-pulseaudio \
+    libglib2.0-0 \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Use --system-site-packages so the venv inherits python3-gi / gst-python from apt.
+# PyGObject is not pip-installed for this reason.
+RUN python3 -m venv --system-site-packages /opt/mopidy \
+    && /opt/mopidy/bin/pip install --no-cache-dir \
+        Mopidy \
+        Mopidy-Bandcamp \
+        Mopidy-Beets \
+        Mopidy-Iris \
+        Mopidy-Jellyfin \
+        Mopidy-MPD \
+        Mopidy-MPRIS \
+        Mopidy-Scrobbler \
+        Mopidy-SoundCloud \
+        Mopidy-YouTube \
+        mopidy-tidal \
+        Mopidy-InternetArchive \
+        Mopidy-Mowecl \
+        Mopidy-Local
+
+COPY entrypoint.sh /entrypoint.sh
+
+EXPOSE 6680 6600
+
+ENTRYPOINT ["/entrypoint.sh"]

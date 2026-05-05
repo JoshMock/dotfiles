@@ -11,9 +11,24 @@ After=pipewire.service
 After=remote-fs.target
 After=sound.target
 
+[Container]
+Image=mopidy.build
+ContainerName=mopidy
+Network=host
+
+# %t = XDG_RUNTIME_DIR, %h = home directory (systemd specifiers)
+Environment=XDG_RUNTIME_DIR=%t
+Environment=XDG_DATA_HOME=/data
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
+
+Volume=%t/pipewire-0:%t/pipewire-0
+Volume=%t/pulse/native:%t/pulse/native
+Volume=%t/bus:%t/bus
+Volume=%h/.config/mopidy/mopidy.conf:/config/mopidy.conf:ro
+Volume=%h/.local/share/mopidy:/data/mopidy
+Volume=%h/Music:/home/joshmock/Music:ro
+
 [Service]
-ExecStartPre=/usr/bin/timeout 120 /bin/sh -c 'until curl -sf --max-time 2 https://api.tidal.com/v1/ping > /dev/null 2>&1; do sleep 2; done'
-ExecStart=/home/joshmock/.local/bin/mopidy --config /home/joshmock/.config/mopidy/mopidy.conf
 ExecStartPost=/bin/sh -c 'until curl -sf --max-time 2 http://localhost:6680/mopidy/rpc -d "{\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"core.tracklist.set_consume\", \"params\": [true]}" -H "Content-Type: application/json" > /dev/null 2>&1; do sleep 2; done'
 
 [Install]
