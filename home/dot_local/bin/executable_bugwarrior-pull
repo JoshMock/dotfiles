@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+exec podman run --rm -i \
+    $([ -t 0 ] && echo "-t") \
+    --userns=keep-id \
+    --network=host \
+    -v "$HOME:$HOME:z" \
+    -e HOME="$HOME" \
+    -e TASKRC="$HOME/.taskrc" \
+    -e TASKDATA="$HOME/.task" \
+    -w "$PWD" \
+    localhost/bugwarrior bugwarrior-pull "$@"

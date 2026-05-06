@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+exec podman run --rm -i \
+    $([ -t 0 ] && echo "-t") \
+    --userns=keep-id \
+    --network=host \
+    -v "$HOME:$HOME:z" \
+    -e HOME="$HOME" \
+    -v "$HOME/.local/bin:/host-local-bin:z,ro" \
+    -e PATH="/usr/local/bin:/usr/bin:/bin:/host-local-bin" \
+    -e DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" \
+    -v /run/user/"$(id -u)":/run/user/"$(id -u)":z \
+    -w "$PWD" \
+    localhost/beets beet "$@"
