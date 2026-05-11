@@ -23,20 +23,20 @@ notes.modes="batch,any,normal"
 url.target=annotations
 url.labelregex=".*"
 url.regex="((?:www|http).*)"
-url.command="xdg-open $LAST_MATCH"
+url.command="/bin/firefox-developer-edition $LAST_MATCH"
 url.modes="batch,any,normal"
 
 urlattr.target=url
 urlattr.regex="((?:www|http).*)"
-urlattr.command="xdg-open $LAST_MATCH"
+urlattr.command="/bin/firefox-developer-edition $LAST_MATCH"
 urlattr.modes="batch,any,normal"
 
 jiraurl.target=jiraurl
 jiraurl.regex="((?:www|http).*)"
-jiraurl.command="xdg-open $LAST_MATCH"
+jiraurl.command="/bin/firefox-developer-edition $LAST_MATCH"
 jiraurl.modes="batch,any,normal"
 
 githuburl.target=githuburl
 githuburl.regex="((?:www|http).*)"
-githuburl.command="xdg-open $LAST_MATCH"
+githuburl.command="/bin/firefox-developer-edition $LAST_MATCH"
 githuburl.modes="batch,any,normal"

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+chez=$(chezmoi data)
+
+if echo "$chez" | jq -e '.taskwarrior == true' > /dev/null; then
+    uv tool install vit
+    uv tool install bugwarrior --with setuptools --with emoji
+fi
+
+if echo "$chez" | jq -e '.work == true' > /dev/null; then
+    uv tool install gcalcli
+fi
+
+if echo "$chez" | jq -e '.email == true' > /dev/null; then
+    uv tool install mutt-oauth2 --with secretstorage
+fi

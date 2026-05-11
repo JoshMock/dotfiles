@@ -9,17 +9,4 @@ build() {
     podman build --layers -t "localhost/$name" -f "$builds/Containerfile.$name" "$context"
 }
 
-if echo "$chez" | jq -e '.taskwarrior == true' > /dev/null; then
-    build bugwarrior
-    build vit
-fi
-
-if echo "$chez" | jq -e '.work == true' > /dev/null; then
-    build gcalcli
-fi
-
 build beets "$HOME"
-
-if echo "$chez" | jq -e '.email == true' > /dev/null; then
-    build mutt-oauth2
-fi

@@ -1,6 +1,0 @@
-FROM archlinux:base
-RUN pacman -Sy --noconfirm archlinux-keyring \
-  && pacman -Su --noconfirm \
-  && pacman -S --noconfirm task python python-pip \
-  && rm -rf /var/cache/pacman/pkg/*
-RUN pip install --no-cache-dir --break-system-packages setuptools bugwarrior emoji
