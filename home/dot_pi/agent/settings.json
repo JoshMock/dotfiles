@@ -1,17 +1,15 @@
 {
-  "lastChangelogVersion": "0.70.6",
+  "lastChangelogVersion": "0.72.1",
   "defaultProvider": "github-copilot",
   "defaultModel": "claude-sonnet-4.6",
   "defaultThinkingLevel": "off",
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "packages": [
-    "npm:@aliou/pi-guardrails",
-    "npm:lsp-pi",
-    "npm:@the-agency/pi-tokenshrink",
-    "npm:@the-agency/pi-hashline-edit",
     "npm:pi-rtk",
     "npm:pi-continuous-learning",
-    "npm:@ff-labs/pi-fff"
+    "../../Code/the-agency/packages/hashline-edit",
+    "../../Code/the-agency/packages/observability",
+    "npm:lsp-pi"
   ],
   "collapseChangelog": true,
   "treeFilterMode": "default",

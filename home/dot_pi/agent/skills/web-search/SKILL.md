@@ -3,6 +3,12 @@ name: web-search
 description: Search the web using SearxNG, a locally-run meta search engine that aggregates results from multiple engines
 ---
 
+# Jina search
+
+If the `jina` CLI tool is available, and `pass agents/jina-reader/pi` exists, **ALWAYS** use `jina search` to do a web search. Ensure `JINA_API_KEY=$(pass agents/jina-reader/pi)` env var is set.
+
+If `jina` is not installed or `pass` does not return a key, continue to the next section.
+
 # SearXNG Search
 
 SearXNG is a metasearch engine that runs locally. It aggregates results from multiple search engines and package repositories, returning clean JSON output.
