@@ -1,0 +1,14 @@
+[Unit]
+Description=SearXNG metasearch engine
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/searxng/searxng:latest
+ContainerName=searxng
+PublishPort=8080:8080
+Volume=%h/.config/searxng/settings.yml:/etc/searxng/settings.yml:ro
+Volume=searxng-data:/etc/searxng
+
+[Install]
+WantedBy=default.target
