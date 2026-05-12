@@ -736,6 +736,10 @@ require("lazy").setup({
     "nvim-neorg/neorg",
     lazy = false,
     version = "*",
+    dependencies = {
+      "nvim-neorg/tree-sitter-norg",
+      "nvim-neorg/tree-sitter-norg-meta",
+    },
     config = function()
       require("neorg").setup({
         load = {
