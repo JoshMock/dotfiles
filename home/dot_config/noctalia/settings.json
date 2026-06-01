@@ -455,13 +455,13 @@
   "hooks": {
     "colorGeneration": "",
     "darkModeChange": "",
-    "enabled": false,
+    "enabled": true,
     "performanceModeDisabled": "",
     "performanceModeEnabled": "",
     "screenLock": "",
     "screenUnlock": "",
     "session": "",
-    "startup": "",
+    "startup": "bash ~/.config/noctalia/hooks/manage-bar-displays.sh",
     "wallpaperChange": ""
   },
   "idle": {
@@ -480,11 +480,11 @@
   },
   "location": {
     "analogClockInCalendar": false,
-    "autoLocate": false,
+    "autoLocate": true,
     "firstDayOfWeek": -1,
     "hideWeatherCityName": false,
     "hideWeatherTimezone": false,
-    "name": "05486",
+    "name": "Colchester",
     "showCalendarEvents": true,
     "showCalendarWeather": true,
     "showWeekNumberInCalendar": false,
@@ -496,7 +496,7 @@
   },
   "network": {
     "bluetoothAutoConnect": true,
-    "bluetoothDetailsViewMode": "grid",
+    "bluetoothDetailsViewMode": "list",
     "bluetoothHideUnnamedDevices": false,
     "bluetoothRssiPollIntervalMs": 10000,
     "bluetoothRssiPollingEnabled": false,
