@@ -25,3 +25,5 @@ venv
 .magenta
 .serena
 .vmpirc.json
+mempalace.yaml
+entities.json
