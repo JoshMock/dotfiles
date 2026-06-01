@@ -77,7 +77,6 @@ vim.keymap.set("n", "<leader>k", "<cmd>noh<cr>", { desc = "No highlight" })
 vim.keymap.set("v", "v", "<Plug>(expand_region_expand)", { desc = "Expand selection" })
 vim.keymap.set("v", "<C-v>", "<Plug>(expand_region_shrink)", { desc = "Shrink selection" })
 vim.keymap.set("n", "<leader>A", "<cmd>A<cr>", { desc = "Switch to alternate file" })
-vim.keymap.set("n", "<tab>", "%", { desc = "Move to alternate bracket" })
 vim.keymap.set({ "n", "v" }, "<C-k>", "<cmd>Treewalker Up<cr>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<C-j>", "<cmd>Treewalker Down<cr>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<C-h>", "<cmd>Treewalker Left<cr>", { silent = true })
@@ -317,7 +316,6 @@ require("lazy").setup({
             },
           },
         },
-        copilot = { enabled = true },
       }
 
       -- Ensure the servers and tools above are installed
@@ -920,20 +918,6 @@ require("lazy").setup({
 
   -- LLM
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    event = "BufReadPost",
-    opts = {
-      suggestion = {
-        keymap = {
-          accept = "<C-y>",
-        },
-      },
-      panel = { enabled = true },
-    },
-  },
-  {
     "carlos-algms/agentic.nvim",
     opts = {
       provider = "pi",
@@ -945,6 +929,16 @@ require("lazy").setup({
         },
       },
     },
+    keys = {
+      {
+        "<leader>a",
+        function()
+          require("agentic").toggle()
+        end,
+        mode = { "n", "v" },
+        desc = "Toggle Agentic Chat",
+      },
+    },
   },
 
   -- autocompletion
@@ -952,10 +946,7 @@ require("lazy").setup({
     "saghen/blink.cmp",
     event = "VimEnter",
     version = "1.*",
-    dependencies = {
-      "folke/lazydev.nvim",
-      "fang2hou/blink-copilot",
-    },
+    dependencies = { "folke/lazydev.nvim" },
     opts = {
       keymap = {
         preset = "super-tab",
@@ -980,7 +971,7 @@ require("lazy").setup({
       },
 
       sources = {
-        default = { "lsp", "copilot", "buffer", "path" },
+        default = { "lsp", "buffer", "path" },
         per_filetype = {
           lua = { inherit_defaults = true, "lazydev" },
         },
@@ -989,12 +980,6 @@ require("lazy").setup({
             name = "LazyDev",
             module = "lazydev.integrations.blink",
             score_offset = 100,
-          },
-          copilot = {
-            name = "copilot",
-            module = "blink-copilot",
-            score_offset = 200,
-            async = true,
           },
         },
       },
