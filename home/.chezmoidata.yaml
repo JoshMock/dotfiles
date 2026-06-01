@@ -198,6 +198,8 @@ packages:
     features: [desktop, mopidy]
   - name: zeal-git
     features: [desktop]
+  - name: zellij
   - name: zip
+  - name: zmx-bin
   - name: zsh
   - name: zsh-antidote

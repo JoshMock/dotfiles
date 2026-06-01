@@ -10,6 +10,7 @@ format = """\
   $rust\
   $nodejs\
   $container\
+  ${env_var.ZMX_SESSION}\
   ${env_var.TEST_SUITE}\
   ${env_var.STACK_VERSION}\
   $line_break\
@@ -35,6 +36,10 @@ format = "ste:$env_value($style)"
 [env_var.STACK_VERSION]
 format = "v$env_value($style)"
 {{- end }}
+
+[env_var.ZMX_SESSION]
+style = "#8899BB"
+format = '[$env_value]($style) '
 
 [nodejs]
 version_format = "v${major}.${minor}"
