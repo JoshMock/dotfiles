@@ -3,9 +3,7 @@ format = """\
   $cmd_duration\
   $sudo\
   $directory\
-  $git_branch\
-  $git_state\
-  $git_status\
+  $custom\
   $python\
   $rust\
   $nodejs\
@@ -21,10 +19,13 @@ format = """\
 style = "bold #999999"
 
 [git_branch]
-style = "bold #566C82"
+disabled = true
+
+[git_state]
+disabled = true
 
 [git_status]
-style = "#AB5454"
+disabled = true
 
 [python]
 style = "#AAEEAA"
@@ -44,3 +45,34 @@ format = '[$env_value]($style) '
 [nodejs]
 version_format = "v${major}.${minor}"
 format = "[$symbol($version )]($style)"
+
+[custom.jj]
+require_repo = true
+description = 'jujutsu'
+symbol = 'ʝ:'
+when = 'jj workspace root --ignore-working-copy'
+command = "jj log --ignore-working-copy -r @ --no-graph -T 'change_id.shortest() ++ if(empty, \" ø\")'"
+style = 'bold #566C82'
+
+[custom.git_branch]
+require_repo = true
+description = 'git branch (non-jj)'
+when = '! jj --ignore-working-copy workspace root 2>/dev/null'
+command = 'git branch --show-current 2>/dev/null || git rev-parse --short HEAD'
+symbol = ' '
+style = 'bold #566C82'
+
+[custom.git_status]
+require_repo = true
+description = 'git status (non-jj)'
+when = '! jj --ignore-working-copy workspace root 2>/dev/null'
+command = '''
+s=""; \
+[[ -n "$(git diff --name-only 2>/dev/null)" ]] && s="${s}!"; \
+[[ -n "$(git diff --cached --name-only 2>/dev/null)" ]] && s="${s}+"; \
+[[ -n "$(git ls-files --others --exclude-standard 2>/dev/null)" ]] && s="${s}?"; \
+[[ -n "$s" ]] && echo "[$s]"
+echo " "
+'''
+style = '#AB5454'
+format = '[$output]($style)'
