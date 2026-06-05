@@ -71,6 +71,15 @@ monitor_hotplug_events() {
     local prev_dp3_connected=$(is_connected "DP-3" && echo "true" || echo "false")
     log "Initial state - DP-3 connected: $prev_dp3_connected"
     
+    # Apply correct initial state immediately
+    if [ "$prev_dp3_connected" = "true" ]; then
+        log "DP-3 connected on start - moving bar to external monitor"
+        update_bar_config "DP-3" "always_visible"
+    else
+        log "DP-3 disconnected on start - moving bar to laptop monitor"
+        update_bar_config "eDP-1" "always_visible"
+    fi
+    
     # Use udevadm to monitor hotplug events
     udevadm monitor --udev --subsystem-match=drm --property 2>/dev/null | \
     while IFS= read -r line; do
