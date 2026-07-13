@@ -7,6 +7,8 @@ If given a URL from the user, or a list of URLs from a web search, you can make 
 
 ## Usage
 
+If the link is to github.com, attempt to use the `gh` CLI tool to summarize the page. If not, continue.
+
 If the `jina` CLI tool exists:
 
 1. set the `JINA_API_KEY` env var: `export JINA_API_KEY=$(pass agents/jina-reader/pi)`
