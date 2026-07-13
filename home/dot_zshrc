@@ -37,7 +37,7 @@ export NNN_FIFO="/tmp/nnn.fifo" # nnn
 export NNN_PLUG='p:preview-tui;a:!git annex get --jobs=4 "$nnn"*' # nnn
 eval "$(atuin init zsh --disable-up-arrow)" # atuin
 export EXA_COLORS="da=1;34;nnn:di=32;1:*.log=37;41;1" # exa
-alias l="exa --long --header --all --icons" # exa
+alias l="exa --long --header --all --icons always" # exa
 [ -r /usr/share/doc/git-extras/git-extras-completion.zsh ] && source /usr/share/doc/git-extras/git-extras-completion.zsh # git-extras completion
 
 # source external files that aren't source-controlled (or always available)
