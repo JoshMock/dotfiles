@@ -1,15 +1,15 @@
 {
-  "lastChangelogVersion": "0.72.1",
+  "lastChangelogVersion": "0.80.6",
   "defaultProvider": "github-copilot",
   "defaultModel": "claude-sonnet-4.6",
   "defaultThinkingLevel": "off",
   "hideThinkingBlock": true,
   "packages": [
-    "npm:pi-rtk",
-    "npm:pi-continuous-learning",
     "../../Code/the-agency/packages/hashline-edit",
     "../../Code/the-agency/packages/observability",
-    "npm:lsp-pi"
+    "npm:lsp-pi",
+    "npm:pi-subagents",
+    "git:github.com/DietrichGebert/ponytail"
   ],
   "collapseChangelog": true,
   "treeFilterMode": "default",
@@ -17,5 +17,7 @@
     "github-copilot/claude-opus-4.6",
     "github-copilot/claude-sonnet-4.6",
     "github-copilot/claude-haiku-4.5"
-  ]
+  ],
+  "theme": "dark",
+  "quietStartup": true
 }
