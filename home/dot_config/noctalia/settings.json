@@ -58,7 +58,7 @@
     "middleClickCommand": "",
     "middleClickFollowMouse": false,
     "monitors": [
-      "DP-3"
+      "eDP-1"
     ],
     "mouseWheelAction": "none",
     "mouseWheelWrap": true,
@@ -145,6 +145,9 @@
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
           "unfocusedIconsOpacity": 1
+        },
+        {
+          "id": "plugin:hyprland-submap-indicator"
         },
         {
           "colorizeIcons": false,

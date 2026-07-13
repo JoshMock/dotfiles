@@ -1,16 +1,20 @@
 {
-    "sources": [
-        {
-            "enabled": true,
-            "name": "Noctalia Plugins",
-            "url": "https://github.com/noctalia-dev/noctalia-plugins"
-        }
-    ],
-    "states": {
-        "timewarrior-widget": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        }
+  "sources": [
+    {
+      "enabled": true,
+      "name": "Noctalia Plugins",
+      "url": "https://github.com/noctalia-dev/noctalia-plugins"
+    }
+  ],
+  "states": {
+    "timewarrior-widget": {
+      "enabled": true,
+      "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
     },
-    "version": 2
+    "hyprland-submap-indicator": {
+      "enabled": true,
+      "sourceUrl": "local"
+    }
+  },
+  "version": 2
 }

@@ -1,0 +1,15 @@
+{
+  "id": "hyprland-submap-indicator",
+  "name": "Hyprland Submap Indicator",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "3.6.0",
+  "author": "joshmock",
+  "license": "MIT",
+  "description": "Shows a red bubble when Hyprland is in a named submap (e.g. resize mode)",
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "metadata": {
+    "defaultSettings": {}
+  }
+}
