@@ -143,7 +143,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ install plugins ]]
 require("lazy").setup({
-  -- LSP things
+  -- LSP
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
@@ -161,7 +161,7 @@ require("lazy").setup({
           -- TODO: enable dynamically using detect_js_formatter
           require("none-ls.formatting.jq"),
           null_ls.builtins.code_actions.ts_node_action,
-          null_ls.builtins.diagnostics.codespell,
+          -- null_ls.builtins.diagnostics.codespell,
           null_ls.builtins.diagnostics.clj_kondo,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.isort,
@@ -288,7 +288,22 @@ require("lazy").setup({
       local servers = {
         pyright = {},
         ts_ls = {},
-        lua_ls = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim", "hl", "MiniMisc", "Snacks" },
+              },
+              workspace = {
+                library = {
+                  "${3rd}/luv/library",
+                  "${3rd}/busted/library",
+                  "/usr/share/hypr/stubs",
+                },
+              },
+            },
+          },
+        },
         jsonls = {
           settings = {
             json = {
@@ -623,6 +638,14 @@ require("lazy").setup({
     end,
     keys = {
       {
+        "<leader>a",
+        function()
+          local cwd_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+          Snacks.terminal.toggle("zmx a " .. cwd_dir .. "-pi pi --offline")
+        end,
+        desc = "Open Pi agent",
+      },
+      {
         "<leader>gb",
         function()
           Snacks.git.blame_line()
@@ -950,31 +973,6 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>uF", "<cmd>FormatToggle<cr>", { desc = "Toggle autoformat (global)" })
       vim.keymap.set("n", "<leader>uf", "<cmd>FormatToggle!<cr>", { desc = "Toggle autoformat (buffer)" })
     end,
-  },
-
-  -- LLM
-  {
-    "carlos-algms/agentic.nvim",
-    opts = {
-      provider = "pi",
-      acp_providers = {
-        ["pi"] = {
-          type = "custom",
-          name = "Pi",
-          command = "pi-acp",
-        },
-      },
-    },
-    keys = {
-      {
-        "<leader>a",
-        function()
-          require("agentic").toggle()
-        end,
-        mode = { "n", "v" },
-        desc = "Toggle Agentic Chat",
-      },
-    },
   },
 
   -- autocompletion
