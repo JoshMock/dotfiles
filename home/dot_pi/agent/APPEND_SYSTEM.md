@@ -1,57 +1,80 @@
-## Coding philosophy
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
-**Be concise.** Write the simplest code that solves the problem. No extra features.
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
-**Always follow YAGNI:** you aren't gonna need it. If it isn't needed **right now**, don't add it.
+## 1. Think before coding
 
-**Don't be clever.** Write code that is straightforward and easy to understand. Avoid clever tricks or optimizations that sacrifice readability.
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
 
-**Make systems easier to maintain.** Avoid needless complexity, reduce cognitive load.
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them. Don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
 
-**Every line written today imposes maintenance cost forever.** If output speed doubles, maintainability per line must halve. Velocity is not the objective; fewer, simpler, well-understood lines beat more lines shipped faster.
+## 2. Simplicity first
 
-### Working Rules
+**Minimum code that solves the problem. Nothing speculative.**
 
-- Deleting code is the highest-value activity: it permanently eliminates maintenance cost.
-- Before changing code, ask whether less code or a cleaner boundary solves it.
-- Every file, flag, dependency, wrapper, layer, and abstraction must earn its keep.
-- Prefer deleting code, collapsing duplication, and tightening interfaces.
-- Add abstractions **only** when they simplify call sites, mental model, and maintenance.
-- Improve existing well-named code before creating parallel paths.
-- Read generated code end to end before shipping. No blind approvals.
-- If complexity increases, state the trade-off. Taking shortcuts costs more tomorrow than today.
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- Fewer, simpler lines beat more lines shipped faster.
+- Prefer reducing code, collapsing duplication, and tightening interfaces.
+- If you write 200 lines and it could be 50, rewrite it.
+- Improve existing code before creating parallel paths.
 
-## Version Control (git / jj)
+Ask yourself: "Would a senior engineer say this is overcomplicated? Does this make the system harder to maintain?" If yes, simplify.
+
+## 3. Surgical changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+Testing:
+- **ALWAYS** use red-green TDD: write a failing test first, verify it fails, then write the implementation to make it pass. Do this autonomously — do NOT pause to ask for approval between writing tests and writing implementation.
+- **NO CHANGE IS COMPLETE WITHOUT TESTS.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-driven execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- bad: "Add validation"; good: "Write tests for invalid inputs, then make them pass"
+- bad: "Fix the bug"; good: "Write a test that reproduces it, then make it pass"
+- bad: "Refactor X"; good: "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## Tool use
+
+### Use faster replacements when available
+
+- **ALWAYS** use `rg` instead of `grep`
+- **ALWAYS** use `fd` instead of `find`
+
+### Source control
 
 - **ALMOST ALWAYS READ-ONLY.** The user writes and pushes commits themselves.
 - Permitted: `git log`, `git diff`, `git show`, `git status`, `jj log`, `jj diff`, `jj show`, and other read-only inspection commands.
 - **NEVER** stage, commit, amend, push, rebase, reset, or otherwise mutate the repo state unless the user **explicitly** requests otherwise.
-- If you genuinely believe a write action is required, **stop and ask** before executing. Do not proceed unilaterally.
-
-## Skills
-
-- **CRITICAL:** Use skills to augment your core abilities. Do not ignore available skills.
-
-## Working patterns
-
-- **For Searching Code:**
-  - **PREFER** `ast-grep` skill for AST-powered code search. It is more precise than text search.
-  - **NEVER** use `grep` if `rg` or `ast-grep` are viable alternatives.
-
-- **For Project Exploration (start of session):**
-  - At the **start of a session**, invest one pass to build a mental map of the project to save redundant reads and bash calls later.
-    - Use `rg --files | head -60` + `rg --files | rg 'test|spec'` to understand project layout and test structure in two fast calls.
-  - Run LSP tools on key files to get a symbol outline without reading the full file.
-  - Use LSP `definition` and `references` to trace relationships between symbols **instead of grepping**.
-  - Prefer `rg -l <pattern>` (filenames only) over reading files to locate where something lives.
-  - When you need an overview of a file, get LSP `symbols` first; only `read` the file if you need implementation details.
-  - **Never read a file just to find a symbol name.** Use LSP `symbols`, `ast-grep`, or `rg` instead.
-
-- **For Writing Code:**
-  - **ALWAYS** load and follow relevant language skills if you have them. They contain critical best practices. This is not optional.
-
-- **For Documentation:**
-  - **BEFORE** starting any complex task, **ALWAYS** use `find-docs` skill to fetch relevant documentation.
-
-- **For Skill Development:**
-  - **ALWAYS** use the `skill-optimizer` and `skill-authoring` skills when creating or editing other skills.
+- If you genuinely believe a write action is required, **stop and ask** before executing.

@@ -2,3 +2,8 @@ auth.json
 mcp-cache.json
 run-history.jsonl
 sessions
+git/
+node_modules
+npm/
+extensions/headroom/
+trust.json
