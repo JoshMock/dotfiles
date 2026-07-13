@@ -95,6 +95,11 @@ hl.config({
   },
 })
 
+hl.monitor({ output = "eDP-1", position = "2560x0", mode = "preferred", scale = 1, bitdepth = 10 })
+hl.monitor({ output = "DP-2", disabled = true })
+hl.monitor({ output = "DP-3", position = "0x0", mode = "2560x1440", scale = 1, bitdepth = 10 })
+hl.monitor({ output = "DP-4", disabled = true })
+
 hl.curve("wind", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 hl.curve("winIn", { type = "bezier", points = { { 0.1, 1.0 }, { 0.1, 1.0 } } })
 hl.curve("winOut", { type = "bezier", points = { { 0.3, -0.3 }, { 0, 1 } } })
@@ -133,13 +138,13 @@ hl.bind(mainMod .. " + M", hl.dsp.exit())
 hl.bind(mainMod .. " + V", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + P", hl.dsp.layout("pseudo"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
--- hl.bind(mainMod .. " + G", hl.dsp.window.group("togglegroup"))
+hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
--- hl.bind(mainMod .. " + left", hl.dsp.window.group("changegroupactive", "b"))
+hl.bind(mainMod .. " + tab", hl.dsp.group.next())
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
--- hl.bind(mainMod .. " + right", hl.dsp.window.group("changegroupactive", "f"))
+hl.bind(mainMod .. " + SHIFT + tab", hl.dsp.group.prev())
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
@@ -171,8 +176,8 @@ hl.bind(mainMod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
 hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
 -- Move active window into adjacent window group
--- hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.group("movewindoworgroup", "r"))
--- hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.group("movewindoworgroup", "l"))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ into_or_create_group = "r" }))
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ into_or_create_group = "l" }))
 
 -- Move current workspace to another monitor
 hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.move({ monitor = -1 }))
@@ -228,10 +233,6 @@ hl.bind(meh .. " + T", hl.dsp.exec_cmd("rofi-tidal"))
 hl.bind(meh .. " + V", hl.dsp.exec_cmd("pypr toggle volume"))
 hl.bind(meh .. " + R", hl.dsp.exec_cmd("pypr toggle system"))
 
-hl.monitor({ output = "eDP-1", position = "2560x0", mode = "preferred", bitdepth = 10 })
-hl.monitor({ output = "DP-2", disabled = true })
-hl.monitor({ output = "DP-3", position = "2560x1440", mode = "2560x1440", bitdepth = 10 })
-hl.monitor({ output = "DP-4", disabled = true })
 hl.workspace_rule({ workspace = "1", monitor = "DP-3", default = true })
 hl.workspace_rule({ workspace = "2", monitor = "DP-3" })
 hl.workspace_rule({ workspace = "3", monitor = "DP-3" })
@@ -249,6 +250,18 @@ hl.window_rule({
   name = "kitty",
   match = { class = "kitty" },
   workspace = "2 silent",
+})
+
+hl.window_rule({
+  name = "kitty-btop",
+  match = { class = "kitty-btop" },
+  float = true,
+})
+
+hl.window_rule({
+  name = "kitty-scratchpad",
+  match = { class = "kitty-scratchpad" },
+  float = true,
 })
 
 hl.window_rule({ tag = "+chat", match = { class = "^(Slack)$" } })
@@ -430,6 +443,13 @@ hl.window_rule({
 })
 
 hl.window_rule({
+  name = "scratchpad",
+  match = { workspace = "special:*" },
+  border_color = { colors = { "rgba(eeeeeeee)", "rgba(777777ee)" }, angle = 45 },
+  border_size = 3,
+})
+
+hl.window_rule({
   name = "fullscreen",
   match = { fullscreen = true },
   no_blur = true,
@@ -456,15 +476,19 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("vicinae server")
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("/home/joshmock/.local/bin/shuffle-wallpaper")
-  hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
-  hl.exec_cmd("/usr/lib/pam_kwallet_init")
-  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-  hl.exec_cmd("dex -a -s /etc/xdg/autostart/:/home/joshmock/.config/autostart/")
+  hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+  hl.exec_cmd("dex -a -s /etc/xdg/autostart/:~/.config/autostart/")
 end)
 
 -- Permissions
 hl.permission({
   binary = "/bin/hyprlock",
+  type = "screencopy",
+  mode = "allow",
+})
+
+hl.permission({
+  binary = "/usr/bin/hyprlock",
   type = "screencopy",
   mode = "allow",
 })
@@ -477,6 +501,12 @@ hl.permission({
 
 hl.permission({
   binary = "/bin/grim",
+  type = "screencopy",
+  mode = "allow",
+})
+
+hl.permission({
+  binary = "/usr/bin/grim",
   type = "screencopy",
   mode = "allow",
 })

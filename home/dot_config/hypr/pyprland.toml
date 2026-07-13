@@ -4,20 +4,20 @@ plugins = ["scratchpads", "menubar", "shortcuts_menu", "system_notifier"]
 [scratchpads.tasks]
 command = "/usr/bin/kitty --session ~/.config/kitty/scratchpad-session.conf --class kitty-scratchpad"
 class = "kitty-scratchpad"
-size = "70% 70%"
+size = "50% 30%"
 animation = "fromTop"
 
 [scratchpads.volume]
 command = "pavucontrol"
 class = "org.pulseaudio.pavucontrol"
-size = "70% 60%"
+size = "70% 30%"
 animation = "fromTop"
 lazy = true
 
 [scratchpads.system]
 command = "kitty --hold=no --app-id=kitty-btop btop"
 class = "kitty-btop"
-size = "70% 70%"
+size = "50% 40%"
 animation = "fromTop"
 lazy = true
 
