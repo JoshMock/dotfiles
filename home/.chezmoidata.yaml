@@ -20,6 +20,7 @@ packages:
   - name: codespell
   - name: cyrus-sasl-xoauth2-git
     features: [email]
+  - name: git-delta
   - name: dex
     features: [desktop]
   - name: difftastic

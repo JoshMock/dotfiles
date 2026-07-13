@@ -20,6 +20,7 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export PAGER="bat -p"
 export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat --theme=default -l man -p'"
+export DELTA_PAGER="bat --style=changes,grid,header-filename,snip"
 
 export BROWSER=/usr/bin/mimeo
 
