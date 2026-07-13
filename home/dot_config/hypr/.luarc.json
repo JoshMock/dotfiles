@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "workspace.library": [
+    "/home/joshmock/.local/share/chezmoi/"
+  ],
+  "Lua.diagnostics.globals": [
+    "hl",
+    "vim",
+    "MiniMisc"
+  ]
+}
