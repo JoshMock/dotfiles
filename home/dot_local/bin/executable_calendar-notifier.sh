@@ -29,9 +29,27 @@ NOW_EPOCH=$(date +%s)
 HORIZON_ISO=$(date -d "+${LOOKAHEAD_SECS} seconds" --iso-8601=seconds)
 
 # fetch events from now through the lookahead window
+GWS_STDERR=$(mktemp)
 EVENTS_JSON=$(gws calendar events list \
   --params "{\"calendarId\":\"${CALENDAR}\",\"timeMin\":\"${NOW_ISO}\",\"timeMax\":\"${HORIZON_ISO}\",\"singleEvents\":true,\"orderBy\":\"startTime\"}" \
-  --format json 2>/dev/null)
+  --format json 2>"$GWS_STDERR")
+GWS_EXIT=$?
+GWS_ERR=$(cat "$GWS_STDERR"); rm -f "$GWS_STDERR"
+
+if echo "$GWS_ERR$EVENTS_JSON" | grep -qi '401\|unauthorized\|invalid_grant'; then
+  MSG="calendar-notifier: 401 Unauthorized — token expired or revoked. Run: gws auth login"
+  logger -t calendar-notifier "$MSG"
+  notify-send --app-name=Calendar --icon=dialog-error --urgency=critical "Calendar auth failed" "$MSG" 2>/dev/null || true
+  echo "$MSG" >&2
+  exit 1
+fi
+
+if [[ $GWS_EXIT -ne 0 ]]; then
+  MSG="calendar-notifier: gws exited $GWS_EXIT — ${GWS_ERR}"
+  logger -t calendar-notifier "$MSG"
+  echo "$MSG" >&2
+  exit 1
+fi
 
 # filter to accepted/tentative, extract fields including stable event id
 JQ_FILTER=$(cat <<'JQEOF'

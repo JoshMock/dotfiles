@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Show today's remaining calendar events with start+end times and relevant links
+
+CALENDAR="joshua.mock@elastic.co"
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+EOD=$(date -u +%Y-%m-%dT23:59:59Z)
+
+gws calendar events list --params '{
+  "calendarId": "'"$CALENDAR"'",
+  "timeMin": "'"$NOW"'",
+  "timeMax": "'"$EOD"'",
+  "singleEvents": true,
+  "orderBy": "startTime",
+  "showDeleted": false
+}' 2>/dev/null | jq -r '
+  .items[]
+  | select(.status != "cancelled")
+  | select(
+      .attendees == null or
+      ([ .attendees[] | select(.self == true) | .responseStatus ] | first) != "declined"
+    )
+  | [
+      (.start.dateTime // .start.date | if test("T") then .[11:16] else . end),
+      "–",
+      (.end.dateTime // .end.date | if test("T") then .[11:16] else . end),
+      "  ",
+      .summary,
+      if .location and (.location | test("^https?://")) then "\n          \(.location)" else "" end
+    ]
+  | join("")
+'
