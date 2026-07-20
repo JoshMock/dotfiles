@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Called by Hyprland on startup and monitor.added / monitor.removed events.
+# Updates noctalia's bar.monitors in settings.json so the bar shows on the
+# right screen. noctalia-qs watches the file and reloads automatically.
+
+SETTINGS="$HOME/.config/noctalia/settings.json"
+
+if hyprctl -j monitors | jq -e '.[] | select(.name == "DP-3")' > /dev/null 2>&1; then
+    monitors='["DP-3"]'
+else
+    monitors='["eDP-1"]'
+fi
+
+tmp=$(mktemp)
+jq --argjson m "$monitors" '.bar.monitors = $m' "$SETTINGS" > "$tmp" && mv "$tmp" "$SETTINGS"

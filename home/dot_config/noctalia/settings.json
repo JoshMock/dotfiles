@@ -455,18 +455,6 @@
     "smoothScrollEnabled": true,
     "telemetryEnabled": false
   },
-  "hooks": {
-    "colorGeneration": "",
-    "darkModeChange": "",
-    "enabled": true,
-    "performanceModeDisabled": "",
-    "performanceModeEnabled": "",
-    "screenLock": "",
-    "screenUnlock": "",
-    "session": "",
-    "startup": "bash ~/.config/noctalia/hooks/manage-bar-displays.sh",
-    "wallpaperChange": ""
-  },
   "idle": {
     "customCommands": "[]",
     "enabled": false,

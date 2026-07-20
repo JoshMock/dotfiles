@@ -478,7 +478,12 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("/home/joshmock/.local/bin/shuffle-wallpaper")
   hl.exec_cmd("dbus-update-activation-environment --systemd --all")
   hl.exec_cmd("dex -a -s /etc/xdg/autostart/:~/.config/autostart/")
+  hl.exec_cmd("~/.local/bin/hypr-monitor-event")
 end)
+
+-- Update bar monitor on plug/unplug events
+hl.on("monitor.added", function() hl.exec_cmd("~/.local/bin/hypr-monitor-event") end)
+hl.on("monitor.removed", function() hl.exec_cmd("~/.local/bin/hypr-monitor-event") end)
 
 -- Permissions
 hl.permission({
