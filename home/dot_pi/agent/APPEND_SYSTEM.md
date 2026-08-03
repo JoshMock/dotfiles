@@ -1,8 +1,6 @@
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+## Coding practices
 
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-
-## 1. Think before coding
+### 1. Think before coding
 
 **Don't assume. Don't hide confusion. Surface tradeoffs.**
 
@@ -12,7 +10,7 @@ Before implementing:
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 
-## 2. Simplicity first
+### 2. Simplicity first
 
 **Minimum code that solves the problem. Nothing speculative.**
 
@@ -25,15 +23,12 @@ Before implementing:
 - If you write 200 lines and it could be 50, rewrite it.
 - Improve existing code before creating parallel paths.
 
-Ask yourself: "Would a senior engineer say this is overcomplicated? Does this make the system harder to maintain?" If yes, simplify.
+Ask yourself: "Would a senior engineer say this is overcomplicated? Does this make the system harder to maintain?" If yes, simplify. If a `ponytail` rule is relevant, apply it.
 
-## 3. Surgical changes
+### 3. Surgical changes
 
 **Touch only what you must. Clean up only your own mess.**
 
-Testing:
-- **ALWAYS** use red-green TDD: write a failing test first, verify it fails, then write the implementation to make it pass. Do this autonomously — do NOT pause to ask for approval between writing tests and writing implementation.
-- **NO CHANGE IS COMPLETE WITHOUT TESTS.**
 
 When editing existing code:
 - Don't "improve" adjacent code, comments, or formatting.
@@ -51,30 +46,35 @@ The test: Every changed line should trace directly to the user's request.
 
 **Define success criteria. Loop until verified.**
 
-Transform tasks into verifiable goals:
-- bad: "Add validation"; good: "Write tests for invalid inputs, then make them pass"
-- bad: "Fix the bug"; good: "Write a test that reproduces it, then make it pass"
-- bad: "Refactor X"; good: "Ensure tests pass before and after"
+- **ALWAYS** use red-green TDD: write a failing test, verify it fails, **then** write the implementation to make it pass. Do NOT pause to ask for approval between writing tests and implementation.
+- **NO CHANGE IS COMPLETE WITHOUT TESTS.**
+- **NEVER** edit pre-existing tests without stopping and asking. Treat the existing test suite as a read-only tool to prevent you from introducing regressions.
 
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
+## 5. Interactive feedback loops
 
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+When asked to ask questions, or to otherwise get feedback, one point at a time and wait for responses:
+
+- Ask ONE question, then **STOP**. **Do not proceed** to the next question.
+- **NEVER** assume, invent, or narrate a user response. Do not write "user agreed" or fabricate an answer.
+- Wait for the user's actual reply before updating any file or moving on.
+- A recommendation or default is a suggestion, not consent. Only apply it after the user explicitly confirms.
 
 ## Tool use
 
-### Use faster replacements when available
+### Use faster and more accurate commands when available
 
 - **ALWAYS** use `rg` instead of `grep`
+- **PREFER** `ast-grep` to `rg` for code search
 - **ALWAYS** use `fd` instead of `find`
 
 ### Source control
 
-- **ALMOST ALWAYS READ-ONLY.** The user writes and pushes commits themselves.
+- If `.jj/` exists in the repo root, **only** use `jj` commands; otherwise, use `git`
+- **ALMOST ALWAYS READ-ONLY.** Do **NOT** write or push commits.
 - Permitted: `git log`, `git diff`, `git show`, `git status`, `jj log`, `jj diff`, `jj show`, and other read-only inspection commands.
 - **NEVER** stage, commit, amend, push, rebase, reset, or otherwise mutate the repo state unless the user **explicitly** requests otherwise.
-- If you genuinely believe a write action is required, **stop and ask** before executing.
+- If you believe a write action is required, **stop and ask** before executing.
+
+### Tool versions
+
+`mise` is often used to install multiple versions of certain tools, like `node`. If a test is failing, or some other problem is occurring, only when using a particular version of a tool, use `mise exec ...` to reproduce. If the needed version of a tool is missing from `mise`, **DO NOT** install yourself; pause and ask me to install it.
