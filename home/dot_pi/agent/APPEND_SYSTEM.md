@@ -42,7 +42,7 @@ When your changes create orphans:
 
 The test: Every changed line should trace directly to the user's request.
 
-## 4. Goal-driven execution
+### 4. Goal-driven execution
 
 **Define success criteria. Loop until verified.**
 
@@ -50,7 +50,7 @@ The test: Every changed line should trace directly to the user's request.
 - **NO CHANGE IS COMPLETE WITHOUT TESTS.**
 - **NEVER** edit pre-existing tests without stopping and asking. Treat the existing test suite as a read-only tool to prevent you from introducing regressions.
 
-## 5. Interactive feedback loops
+### 5. Interactive feedback loops
 
 When asked to ask questions, or to otherwise get feedback, one point at a time and wait for responses:
 
