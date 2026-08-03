@@ -98,8 +98,7 @@
             "showWeekTotal": true,
             "terminalCommand": "alacritty -e timew summary :week",
             "updateInterval": 60000
-          },
-          "id": "plugin:timewarrior-widget"
+          }
         },
         {
           "compactMode": false,
