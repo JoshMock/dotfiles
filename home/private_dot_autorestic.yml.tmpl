@@ -32,6 +32,8 @@ backends:
     type: rclone
     path: 'gdrive:rclone-{{ .chezmoi.hostname }}'
     key: {{ pass "restic/tunnelblanket/cloud" }}
+    env:
+      GOMAXPROCS: 2
 
   {{- else }}
   b2:
@@ -41,9 +43,13 @@ backends:
     env:
       B2_ACCOUNT_ID: '{{ onepasswordRead "op://Homelab/b2 backup - joshmock-backups bucket /add more/key ID" }}'
       B2_ACCOUNT_KEY: '{{ onepasswordRead "op://Homelab/b2 backup - joshmock-backups bucket /add more/key secret" }}'
+      GOMAXPROCS: 2
+
   {{- end }}
   local:
     type: local
     path: /home/joshmock/.local/share/restic
     key: {{ if .work }}{{ pass "restic/tunnelblanket/local" }}{{ else }}{{ onepasswordRead "op://Personal/restic backup password - all/password" }}{{ end }}
+    env:
+      GOMAXPROCS: 2
 {{- end }}
