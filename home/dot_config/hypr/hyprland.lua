@@ -69,11 +69,6 @@ hl.config({
     },
   },
 
-  -- dwindle = {
-  --   pseudotile = true,
-  --   preserve_split = true,
-  -- },
-
   misc = {
     force_default_wallpaper = 0,
     disable_hyprland_logo = true,
@@ -126,6 +121,7 @@ hl.bind(
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("thunar"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("pypr menu"))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("kitten quick-access-terminal --detach"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("vicinae deeplink vicinae://launch/clipboard/history"))
 
 -- quit app
@@ -138,50 +134,34 @@ hl.bind(mainMod .. " + M", hl.dsp.exit())
 hl.bind(mainMod .. " + V", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + P", hl.dsp.layout("pseudo"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + tab", hl.dsp.group.next())
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + tab", hl.dsp.group.prev())
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- switch focus to previous window
--- hl.bind(mainMod .. " + tab", hl.dsp.focus({ current_or_last = true }))
+hl.bind(mainMod .. " + tab", hl.dsp.focus({ last = true }))
 
--- Switch workspaces
-hl.bind(mainMod .. " + 1", hl.dsp.focus({ workspace = 1 }))
-hl.bind(mainMod .. " + 2", hl.dsp.focus({ workspace = 2 }))
-hl.bind(mainMod .. " + 3", hl.dsp.focus({ workspace = 3 }))
-hl.bind(mainMod .. " + 4", hl.dsp.focus({ workspace = 4 }))
-hl.bind(mainMod .. " + 5", hl.dsp.focus({ workspace = 5 }))
-hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 6 }))
-hl.bind(mainMod .. " + 7", hl.dsp.focus({ workspace = 7 }))
-hl.bind(mainMod .. " + 8", hl.dsp.focus({ workspace = 8 }))
-hl.bind(mainMod .. " + 9", hl.dsp.focus({ workspace = 9 }))
-hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = 10 }))
-
--- Move active window to a workspace
-hl.bind(mainMod .. " + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
-hl.bind(mainMod .. " + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
-hl.bind(mainMod .. " + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
-hl.bind(mainMod .. " + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
-hl.bind(mainMod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
-hl.bind(mainMod .. " + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
-hl.bind(mainMod .. " + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
-hl.bind(mainMod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
-hl.bind(mainMod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
-hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+for i = 0, 10 do
+  local key = i % 10 -- 10 maps to key 0
+  -- Switch workspaces
+  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+  -- Move active window to a workspace
+  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+end
 
 -- Move active window into adjacent window group
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ into_or_create_group = "r" }))
 hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ into_or_create_group = "l" }))
 
 -- Move current workspace to another monitor
-hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.move({ monitor = -1 }))
-hl.bind(mainMod .. " + SHIFT + period", hl.dsp.workspace.move({ monitor = 1 }))
+hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.move({ monitor = 1 }))
+hl.bind(mainMod .. " + SHIFT + period", hl.dsp.workspace.move({ monitor = -1 }))
 
 -- resize mode
 hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
@@ -482,36 +462,48 @@ hl.on("hyprland.start", function()
 end)
 
 -- Update bar monitor on plug/unplug events
-hl.on("monitor.added", function() hl.exec_cmd("~/.local/bin/hypr-monitor-event") end)
-hl.on("monitor.removed", function() hl.exec_cmd("~/.local/bin/hypr-monitor-event") end)
+hl.on("monitor.added", function()
+  hl.exec_cmd("~/.local/bin/hypr-monitor-event")
+end)
+hl.on("monitor.removed", function()
+  hl.exec_cmd("~/.local/bin/hypr-monitor-event")
+end)
 
--- Permissions
-hl.permission({
-  binary = "/bin/hyprlock",
-  type = "screencopy",
-  mode = "allow",
+-- screencopy permissions: apps that need to screencap
+local screencopiers = {
+  "/bin/hyprlock",
+  "/usr/bin/hyprlock",
+  "/usr/lib/xdg-desktop-portal-hyprland",
+  "/bin/grim",
+  "/usr/bin/grim",
+}
+for _, value in ipairs(screencopiers) do
+  hl.permission({
+    binary = value,
+    type = "screencopy",
+    mode = "allow",
+  })
+end
+
+hl.window_rule({
+  -- Ignore maximize requests from all apps
+  name = "suppress-maximize-events",
+  match = { class = ".*" },
+
+  suppress_event = "maximize",
 })
 
-hl.permission({
-  binary = "/usr/bin/hyprlock",
-  type = "screencopy",
-  mode = "allow",
-})
+hl.window_rule({
+  -- Fix some dragging issues with XWayland
+  name = "fix-xwayland-drags",
+  match = {
+    class = "^$",
+    title = "^$",
+    xwayland = true,
+    float = true,
+    fullscreen = false,
+    pin = false,
+  },
 
-hl.permission({
-  binary = "/usr/lib/xdg-desktop-portal-hyprland",
-  type = "screencopy",
-  mode = "allow",
-})
-
-hl.permission({
-  binary = "/bin/grim",
-  type = "screencopy",
-  mode = "allow",
-})
-
-hl.permission({
-  binary = "/usr/bin/grim",
-  type = "screencopy",
-  mode = "allow",
+  no_focus = true,
 })
