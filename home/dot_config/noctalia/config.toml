@@ -46,3 +46,6 @@ unit = "imperial"
 [widget.media]
 artist_first = true
 max_length = 340
+
+[osd.kinds]
+media = false
