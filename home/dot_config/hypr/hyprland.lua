@@ -109,9 +109,6 @@ hl.animation({ leaf = "fade", enabled = true, speed = 10, bezier = "default" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "wind" })
 
 local mainMod = "SUPER"
--- hl.binds({
---   workspace_back_and_forth = true,
--- })
 
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd("kitty --session ~/.config/kitty/default-session.conf"))
 hl.bind(
@@ -149,8 +146,18 @@ hl.bind(mainMod .. " + tab", hl.dsp.focus({ last = true }))
 
 for i = 0, 10 do
   local key = i % 10 -- 10 maps to key 0
+
   -- Switch workspaces
-  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+  local switch = function()
+    local ws = hl.get_active_workspace().id
+    if ws ~= i then
+      hl.dispatch(hl.dsp.focus({ workspace = i }))
+    else
+      hl.dispatch(hl.dsp.focus({ last = true }))
+    end
+  end
+  hl.bind(mainMod .. " + " .. key, switch)
+
   -- Move active window to a workspace
   hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
@@ -217,7 +224,16 @@ hl.workspace_rule({ workspace = "1", monitor = "DP-3", default = true })
 hl.workspace_rule({ workspace = "2", monitor = "DP-3" })
 hl.workspace_rule({ workspace = "3", monitor = "DP-3" })
 hl.workspace_rule({ workspace = "4", monitor = "DP-3" })
-hl.workspace_rule({ workspace = "5", monitor = "DP-3" })
+hl.workspace_rule({
+  workspace = "5",
+  monitor = "DP-3",
+  -- experimental: trying to make zoom behave better
+  gaps_in = 0,
+  gaps_out = 0,
+  float_gaps = 0,
+  border_size = 0,
+})
+
 hl.workspace_rule({ workspace = "6", monitor = "eDP-1" })
 
 hl.window_rule({
@@ -268,6 +284,7 @@ hl.window_rule({
   match = { tag = "zoom" },
   workspace = "5 silent",
   idle_inhibit = "focus",
+  border_size = 0,
   tag = "+media",
 })
 
@@ -357,7 +374,7 @@ hl.window_rule({ tag = "+zoom", match = { title = ".*app\\.zoom\\.us.*" } })
 hl.window_rule({
   name = "zoom-popups",
   match = {
-    class = "^(zoom)$",
+    tag = "zoom",
     float = true,
   },
   no_blur = true,
@@ -368,20 +385,19 @@ hl.window_rule({
 hl.window_rule({
   name = "zoom-menus",
   match = {
-    class = "^(zoom)$",
+    tag = "zoom",
     title = "^(menu window|popup window|as_toolbar|cpt_frame_window)$",
   },
   no_blur = true,
   no_dim = true,
   opaque = true,
-  -- move = "onscreen",
 })
 
 hl.window_rule({
   name = "modal",
   match = { tag = "modal" },
   float = true,
-  size = "<60% <60%",
+  size = "<60% <30%",
   center = true,
 })
 
@@ -507,3 +523,6 @@ hl.window_rule({
 
   no_focus = true,
 })
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()
