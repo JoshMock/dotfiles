@@ -1,0 +1,22 @@
+[Unit]
+Description=hister listener
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=hister.build
+ContainerName=hister
+Exec=listen
+PublishPort=4433:4433
+
+# Data dir points straight at the mounted volume (already exists + writable),
+# avoiding hister's unwritable /var/lib/hister system-user fallback.
+Environment=HISTER_DATA_DIR=/config
+# 0.0.0.0 so PublishPort is reachable; base_url required when bound to 0.0.0.0.
+Environment=HISTER__SERVER__ADDRESS=0.0.0.0:4433
+Environment=HISTER__SERVER__BASE_URL=http://localhost:4433
+
+Volume=%h/.config/hister:/config:rw
+
+[Install]
+WantedBy=default.target

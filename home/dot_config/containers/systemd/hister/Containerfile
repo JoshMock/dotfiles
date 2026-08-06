@@ -1,0 +1,14 @@
+FROM debian:bookworm-slim
+
+ARG HISTER_VERSION=0.18.0
+ARG TARGETARCH=amd64
+
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl \
+    && curl -fsSL -o /usr/local/bin/hister \
+        "https://github.com/asciimoo/hister/releases/download/v${HISTER_VERSION}/hister_${HISTER_VERSION}_linux_${TARGETARCH}" \
+    && chmod +x /usr/local/bin/hister \
+    && apt-get purge -y curl && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
+EXPOSE 4433
+
+ENTRYPOINT ["/usr/local/bin/hister"]

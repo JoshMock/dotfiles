@@ -1,0 +1,3 @@
+[Build]
+ImageTag=localhost/hister:latest
+SetWorkingDirectory=hister
