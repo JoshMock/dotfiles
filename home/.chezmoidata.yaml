@@ -2,36 +2,26 @@
 packages:
   - name: 1password
     features: [desktop]
-  - name: 1password-cli
   - name: abook
     features: [email]
-  - name: atuin
   - name: autorestic-bin
   - name: awww
     features: [desktop]
-  - name: bat
-  - name: btop
   - name: blueman
     features: [desktop]
   - name: brightnessctl
     features: [desktop]
   - name: calc
-  - name: clipboard-bin
   - name: codespell
   - name: cyrus-sasl-xoauth2-git
     features: [email]
-  - name: git-delta
   - name: dex
     features: [desktop]
-  - name: difftastic
-  - name: direnv
   - name: discord
     features: [desktop]
   - name: element-desktop
     features: [desktop]
   - name: etckeeper
-  - name: exa
-  - name: fd
   - name: feh
     features: [desktop]
   - name: gstreamer
@@ -47,15 +37,11 @@ packages:
   - name: firefox-developer-edition
     features: [desktop]
   - name: flake8
-  - name: fzf
   - name: git
   - name: git-annex
   - name: git-extras
-  - name: github-cli
-  - name: glances
   - name: gmailctl
     features: [work]
-  - name: gping
   - name: htop
   - name: hyprland
     features: [desktop]
@@ -69,8 +55,6 @@ packages:
     features: [desktop]
   - name: interception-caps2esc
     features: [desktop]
-  - name: jless
-  - name: jq
   - name: kwallet
     features: [desktop]
   - name: kwallet-pam
@@ -83,7 +67,6 @@ packages:
     features: [desktop]
   - name: kitty-terminfo
     features: [desktop]
-  - name: lazygit
   - name: lspmux
   - name: luarocks
   - name: lynx
@@ -106,8 +89,6 @@ packages:
   - name: nnn
   - name: noctalia-shell
     features: [desktop]
-  - name: noti
-    features: [desktop]
   - name: notmuch
     features: [email]
   - name: noto-fonts-emoji
@@ -116,7 +97,6 @@ packages:
     features: [desktop]
   - name: otf-font-awesome-4
     features: [desktop]
-  - name: p7zip
   - name: pass
     features: [email]
   - name: playerctl
@@ -134,15 +114,11 @@ packages:
     features: [taskwarrior]
   - name: python-tidalapi
     features: [desktop, mopidy]
-  - name: rclone
   - name: restic
-  - name: ripgrep
   - name: rofi-wayland
     features: [desktop]
   - name: slack-desktop
     features: [desktop]
-  - name: starship
-  - name: stow
   - name: swaync
     features: [desktop]
   - name: tailscale
@@ -152,7 +128,6 @@ packages:
     features: [taskwarrior]
   - name: timew
     features: [taskwarrior]
-  - name: tmux
   - name: traceroute
   - name: tree-sitter
   - name: ttf-ancient-fonts
@@ -173,7 +148,6 @@ packages:
     features: [desktop]
   - name: vicinae-bin
     features: [desktop]
-  - name: unzip
   - name: urlview
     features: [desktop, email]
   - name: vault
@@ -195,13 +169,8 @@ packages:
     features: [desktop]
   - name: xdg-utils-mimeo
     features: [desktop]
-  - name: go-yq
-  - name: yt-dlp
-    features: [desktop, mopidy]
   - name: zeal-git
     features: [desktop]
-  - name: zellij
-  - name: zip
   - name: zmx-bin
   - name: zsh
   - name: zsh-antidote

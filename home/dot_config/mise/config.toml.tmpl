@@ -1,0 +1,52 @@
+# vim: ft=toml
+
+[settings]
+disable_tools = ["lua", "python"]
+
+[tools]
+1password-cli = "latest"
+ast-grep = "latest"
+atuin = "latest"
+bat = "latest"
+btop = "latest"
+bun = "latest"
+delta = "latest"
+difftastic = "latest"
+direnv = "latest"
+eza = "latest"
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+git-lfs = "latest"
+gping = "latest"
+hyperfine = "latest"
+jless = "latest"
+jq = "latest"
+jujutsu = "latest"
+just = "latest"
+lazygit = "latest"
+node = "latest"
+nono = "latest"
+rclone = "latest"
+ripgrep = "latest"
+starship = "latest"
+tealdeer = "latest"
+yazi = "latest"
+yq = "latest"
+yt-dlp = "latest"
+uv = "latest"
+"npm:@elastic/cli" = "latest"
+"github:asciimoo/hister" = "latest"
+"npm:agent-browser" = { version = "latest", postinstall = "agent-browser install" }
+"github:ouch-org/ouch" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+{{ if .taskwarrior -}}
+"pipx:bugwarrior" = { version = "latest", uvx_args = "--with setuptools --with emoji", depends = "uv" }
+"pipx:vit" = { version = "latest", depends = "uv" }
+{{ end -}}
+{{ if .work -}}
+"pipx:gcalcli" = { version = "latest", depends = "uv" }
+{{ end -}}
+{{ if .email -}}
+"pipx:mutt-oauth2" = { version = "latest", uvx_args = "--with secretstorage", depends = "uv" }
+{{ end -}}
