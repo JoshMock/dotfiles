@@ -16,6 +16,7 @@ Load and follow these rules whenever writing, reviewing, or refactoring code.
     - BAD: explaining why a test is asserting something that is already stated in the test description
     - BAD: being redundant
 - Code comments are usually phrases, not complete sentences. Thus, they typically start lowercase aside from proper nouns, and do not end in a period unless they're multiple sentences. If an existing comment does not follow the lowercase/sentence rules, do not update it unless you are making other text changes to it.
+- **NO section dividers or comment headers**: Don't add lines like `// ---`, `// ───`, `// ===`, or other line-drawing characters, even with text between them (e.g. `// --- Public API ---`). Code structure speaks for itself.
 
 ## General Style
 

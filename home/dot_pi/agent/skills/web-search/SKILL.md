@@ -13,6 +13,12 @@ If `jina` is not installed or `pass` does not return a key, continue to the next
 
 SearXNG is a metasearch engine that runs locally. It aggregates results from multiple search engines and package repositories, returning clean JSON output.
 
+**NOTE:** SearXNG typically runs on `localhost:8080` but, if you are sandboxed, it may appear at `host.docker.internal:8080`.
+
+# agent-browser
+
+As a last resort, if Jina and SearXNG do not yield useful results, use the `agent-browser` skill and runtime.
+
 ## Quick Reference
 
 | Task | Command | Category |
@@ -128,3 +134,7 @@ curl -s "http://localhost:8080/search?q=rust+language&format=json" | \
 
 - **Cargo category sometimes returns empty**: Try `categories=packages` or `categories=it` which also include crates.io
 - **Rate limiting**: SearXNG may rate-limit if too many requests in quick succession
+
+# agent-browser
+
+As a last resort, if Jina and SearXNG do not yield useful results, use the `agent-browser` skill and runtime.
