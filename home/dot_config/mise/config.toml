@@ -5,3 +5,4 @@ disable_tools = ["lua", "python"]
 node = "latest"
 babashka = { version = "latest", exe = "bb" }
 bun = "latest"
+nono = "latest"

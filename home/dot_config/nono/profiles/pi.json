@@ -1,0 +1,116 @@
+{
+  "extends": [
+    "nolabs-ai/pi"
+  ],
+  "meta": {
+    "name": "pi",
+    "version": "1.0.0",
+    "description": "Runtime-discovered path additions for pi",
+    "author": null
+  },
+  "security": {
+    "signal_mode": null,
+    "process_info_mode": null,
+    "ipc_mode": null,
+    "capability_elevation": null,
+    "approval_backends": {},
+    "approval_defaults": null,
+    "wsl2_proxy_policy": null
+  },
+  "groups": {
+    "include": [
+      "bun_runtime",
+      "mise_manager",
+      "git_config"
+    ],
+    "exclude": []
+  },
+  "commands": {
+    "allow": [],
+    "deny": []
+  },
+  "filesystem": {
+    "allow": [
+      "/tmp",
+      "~/Code/the-agency",
+      "~/.pi/agent/sessions",
+      "~/.npm",
+      "~/.gnupg"
+    ],
+    "read": [
+      "~/.config/nono",
+      "~/.local/share/mise/installs/node",
+      "~/.local/bin",
+      "~/.local/share/pipx/venvs/jina-cli",
+      "~/.password-store"
+    ],
+    "write": [],
+    "allow_file": [
+      "~/.config/gh/config.yml",
+      "~/.ripgreprc",
+      "/tmp/kib.yaml",
+      "~/.config/gh/hosts.yml",
+      "~/.gitignore-global",
+      "~/.local/share/mise/installs/node/25.9.0/bin/npm",
+      "~/.local/share/mise/installs/node/latest/bin/npm",
+      "~/.local/share/mise/installs/node/latest/bin/npx",
+      "~/.local/share/mise/installs/node/latest/bin/node",
+      "~/Code/llm-wiki/AGENTS.md"
+    ],
+    "read_file": [],
+    "write_file": [],
+    "unix_socket": [],
+    "unix_socket_bind": [],
+    "unix_socket_dir": [],
+    "unix_socket_dir_bind": [],
+    "unix_socket_subtree": [],
+    "unix_socket_subtree_bind": [],
+    "deny": [],
+    "bypass_protection": [
+      "~/.gnupg",
+      "~/.password-store"
+    ],
+    "suppress_save_prompt": []
+  },
+  "network": {
+    "block": false,
+    "allow_http2": false,
+    "allow_domain": [],
+    "deny_domain": [],
+    "open_port": [],
+    "open_port_range": [],
+    "listen_port": [],
+    "listen_port_range": [],
+    "connect_port": [],
+    "no_proxy": [],
+    "custom_credentials": {},
+    "tls_intercept": null,
+    "upstream_proxy": null,
+    "upstream_bypass": []
+  },
+  "diagnostics": {
+    "suppress_system_services": []
+  },
+  "linux": {
+    "af_unix_mediation": null,
+    "sandbox_policy": null
+  },
+  "env_credentials": {},
+  "credential_capture": {},
+  "credential_providers": {},
+  "credential_routes": [],
+  "workdir": {
+    "access": "none"
+  },
+  "hooks": {},
+  "session_hooks": {},
+  "rollback": {
+    "exclude_patterns": [],
+    "exclude_globs": []
+  },
+  "interactive": false,
+  "skipdirs": [],
+  "packs": [],
+  "command_args": [],
+  "unsafe_macos_seatbelt_rules": []
+}
