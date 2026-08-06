@@ -70,11 +70,15 @@ When asked to ask questions, or to otherwise get feedback, one point at a time a
 ### Source control
 
 - If `.jj/` exists in the repo root, **only** use `jj` commands; otherwise, use `git`
-- **ALMOST ALWAYS READ-ONLY.** Do **NOT** write or push commits.
-- Permitted: `git log`, `git diff`, `git show`, `git status`, `jj log`, `jj diff`, `jj show`, and other read-only inspection commands.
-- **NEVER** stage, commit, amend, push, rebase, reset, or otherwise mutate the repo state unless the user **explicitly** requests otherwise.
-- If you believe a write action is required, **stop and ask** before executing.
+- **USE ATOMIC COMMITS.** One commit per standalone change you make, so that each can be reviewed in isolation.
+- **ALWAYS** start a new revision before making edits if there is work you did not author in the current revision, or stash if `jj` is not present, and mention which action you took when completing your turn.
+- **NEVER** push commits to a remote unless otherwise instructed.
+- **ALWAYS** add `Assisted-by: <name>` trailers to all commit messages, using an appropriate name based on what model generated the code, falling back to "Pi Coding Agent" if you cannot determine the model.
 
 ### Tool versions
 
 `mise` is often used to install multiple versions of certain tools, like `node`. If a test is failing, or some other problem is occurring, only when using a particular version of a tool, use `mise exec ...` to reproduce. If the needed version of a tool is missing from `mise`, **DO NOT** install yourself; pause and ask me to install it.
+
+## Wiki
+
+If it exists, **always** use the `wiki` skill for looking up and remembering facts that should be remembered across multiple sessions.
