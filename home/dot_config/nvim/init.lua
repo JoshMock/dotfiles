@@ -615,6 +615,7 @@ require("lazy").setup({
       bigfile = { enabled = true },
       bufdelete = { enabled = true },
       gitbrowse = { enabled = true },
+      gh = { enabled = true },
       input = { enabled = true },
       lazygit = { enabled = true },
       notifier = {
@@ -672,6 +673,13 @@ require("lazy").setup({
           Snacks.gitbrowse.open()
         end,
         desc = "Git browse",
+      },
+      {
+        "<leader>gp",
+        function()
+          Snacks.picker.gh_pr()
+        end,
+        desc = "View open PRs",
       },
       {
         "<leader>gg",
