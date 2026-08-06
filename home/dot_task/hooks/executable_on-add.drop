@@ -34,6 +34,8 @@ elif task.get("project") == "elasticsearch-specification" and "backport_" in " "
     task["status"] = "deleted"
 elif task.get("project") == "search-o11y-resources":
     task["status"] = "deleted"
+elif task.get("githubrepo") == "elastic/mcp-service":
+    task["status"] = "deleted"
 
 
 print(json.dumps(task))
