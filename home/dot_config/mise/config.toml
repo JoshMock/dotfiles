@@ -3,6 +3,8 @@ disable_tools = ["lua", "python"]
 
 [tools]
 node = "latest"
-babashka = { version = "latest", exe = "bb" }
 bun = "latest"
 nono = "latest"
+"npm:@elastic/cli" = "latest"
+"github:asciimoo/hister" = "latest"
+"npm:agent-browser" = { version = "latest", postinstall = "agent-browser install" }
