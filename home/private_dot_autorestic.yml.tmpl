@@ -16,6 +16,7 @@ locations:
         keep-yearly: 20
       backup:
         exclude-file: /home/joshmock/.config/restic/restic-ignore
+    cron: "0 * * * *"
     {{- if .backup.healthcheck_id }}
     hooks:
       before:

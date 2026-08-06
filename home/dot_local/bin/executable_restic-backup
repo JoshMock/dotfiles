@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+export GOMAXPROCS=2
+
+autorestic --ci cron -- unlock;
+autorestic --ci forget --prune -a -- unlock;

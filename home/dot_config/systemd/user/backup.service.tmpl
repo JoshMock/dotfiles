@@ -4,7 +4,21 @@ Description=Scheduled backups, powered by autorestic.
 
 [Service]
 Type=oneshot
-ExecStart=bash -c "GOMAXPROCS=2 /usr/local/bin/autorestic --ci backup -a -- unlock && GOMAXPROCS=2 /usr/local/bin/autorestic --ci forget --prune -a -- unlock"
+ExecStart=/home/joshmock/.local/bin/restic-backup
+Environment="GOMAXPROCS=2"
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectClock=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectProc=invisible
+ProcSubset=pid
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
 
 [Install]
 WantedBy=backup.timer
