@@ -1,0 +1,48 @@
+[bar.default]
+center = [ "media" ]
+end = [ "tray", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "session", "clock" ]
+start = [ "workspaces" ]
+widget_spacing = 14
+
+[desktop_widgets]
+enabled = false
+
+[location]
+address = "South Hero, Vermont, USA"
+
+[lockscreen]
+enabled = false
+
+[lockscreen_widgets]
+enabled = false
+
+[notification]
+enable_daemon = false
+
+[shell]
+app_icon_colorize = true
+clipboard_enabled = false
+font_family = "FiraCode Nerd Font Mono"
+
+[shell.privacy]
+mic_filter_regex = ".*zoom.*"
+
+[shell.screen_corners]
+enabled = true
+
+[theme]
+builtin = "Tokyo-Night"
+
+[theme.templates]
+builtin_ids = [ "btop", "hyprland" ]
+community_ids = [ "rofi", "vicinae", "hyprtoolkit" ]
+
+[wallpaper]
+enabled = false
+
+[weather]
+unit = "imperial"
+
+[widget.media]
+artist_first = true
+max_length = 340
