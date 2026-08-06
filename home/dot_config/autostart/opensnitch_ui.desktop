@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=OpenSnitch
+Exec=opensnitch-ui
+Icon=opensnitch-ui
+GenericName=OpenSnitch Firewall
