@@ -4,7 +4,7 @@ Description=purge old tasks
 
 [Service]
 Type=oneshot
-ExecStart=bash -c "yes | task 'end.before(now - 2month)' and status:completed or status:deleted purge"
+ExecStart=/home/joshmock/.local/bin/task-purge
 
 [Install]
 WantedBy=purge-old-tasks.timer

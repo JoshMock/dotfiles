@@ -4,7 +4,7 @@ Description=remove oldest messages from email archive
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/fd --older=1year . /home/joshmock/.local/share/mail/*/Archive -X rm
+ExecStart=bash -c '/usr/bin/fd --older=1year . /home/joshmock/.local/share/mail/*/Archive -X rm'
 
 [Install]
 WantedBy=clear-mail-archive.timer
