@@ -29,6 +29,9 @@ Volume=%t/pipewire-0:%t/pipewire-0
 Volume=%t/pulse/native:%t/pulse/native
 Volume=%t/bus:%t/bus
 Volume=%h/.config/mopidy/mopidy.conf:/config/mopidy.conf:ro
+# static resolv.conf: host resolv.conf is tailscale-only (single resolver);
+# public fallbacks here keep DNS alive when tailscale MagicDNS hiccups
+Volume=%h/.config/mopidy/resolv.conf:/etc/resolv.conf:ro
 Volume=%h/.local/share/mopidy:/data/mopidy
 Volume=%h/Music:/home/joshmock/Music:ro
 
