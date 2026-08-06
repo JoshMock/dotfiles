@@ -299,9 +299,6 @@ require("lazy").setup({
             "--stdio",
           },
         },
-        vtsls = {
-          cmd = { "lspmux", "client", "--server-path", mason_bin .. "vtsls", "--", "--stdio" },
-        },
         lua_ls = {
           settings = {
             Lua = {
@@ -337,6 +334,11 @@ require("lazy").setup({
             },
           },
         },
+        docker_compose_language_service = {},
+        dockerls = {},
+        eslint = {},
+        hadolint = {},
+        shellcheck = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -652,14 +654,6 @@ require("lazy").setup({
       Snacks.toggle.zen():map("<leader>uz")
     end,
     keys = {
-      {
-        "<leader>a",
-        function()
-          local cwd_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-          Snacks.terminal.toggle("zmx a " .. cwd_dir .. "-pi pi --offline")
-        end,
-        desc = "Open Pi agent",
-      },
       {
         "<leader>gb",
         function()
@@ -1000,6 +994,60 @@ require("lazy").setup({
 
       signature = { enabled = true },
     },
+  },
+  -- TODO: get set up with a model provider (openrouter supported & preferred)
+  -- {
+  --   {
+  --     "milanglacier/minuet-ai.nvim",
+  --     config = function()
+  --       require("minuet").setup({
+  --         provider = 'openai_compatible',
+  --         request_timeout = 2.5,
+  --         throttle = 1500,
+  --         debounce = 600,
+  --         provider_options = {
+  --           openai_compatible = {
+  --             api_key = 'OPENROUTER_API_KEY',
+  --             end_point = 'https://openrouter.ai/api/v1/chat/completions',
+  --             model = 'deepseek/deepseek-v4-flash',
+  --             name = 'OpenRouter',
+  --             optional = {
+  --               max_tokens = 56,
+  --               top_p = 0.9,
+  --               provider = {
+  --                 -- Prioritize throughput for faster completion
+  --                 sort = 'throughput',
+  --               },
+  --               -- disable thinking to avoid first token latency
+  --               reasoning_effort = 'none'
+  --             },
+  --           },
+  --         },
+  --         lsp = {
+  --           enabled_ft = { "typescript", "lua", "javascript", "python" },
+  --           completion = {
+  --             enabled_auto_trigger_ft = { "typescript", "lua", "javascript", "python" },
+  --           },
+  --         },
+  --       })
+  --     end,
+  --   },
+  --   { "saghen/blink.cmp" },
+  -- },
+  {
+    "mikesmithgh/kitty-scrollback.nvim",
+    enabled = true,
+    lazy = true,
+    cmd = {
+      "KittyScrollbackGenerateKittens",
+      "KittyScrollbackCheckHealth",
+      "KittyScrollbackGenerateCommandLineEditing",
+    },
+    event = { "User KittyScrollbackLaunch" },
+    version = "*",
+    config = function()
+      require("kitty-scrollback").setup()
+    end,
   },
 
   -- colorscheme
