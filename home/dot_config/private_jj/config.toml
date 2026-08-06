@@ -16,6 +16,7 @@ merge-editor = "mergiraf"
 
 [[--scope]]
 --when.repositories = [
+  "~/Code/catalog-info",
   "~/Code/cloud",
   "~/Code/docs",
   "~/Code/elastic-client-generator-js",
@@ -28,6 +29,7 @@ merge-editor = "mergiraf"
   "~/Code/elasticsearch-py",
   "~/Code/elasticsearch-specification",
   "~/Code/elastic-cli",
+  "~/Code/schemas",
   "~/Code/elastic-cli-builder/",
   "~/Code/gemini-cli-elasticsearch",
   "~/Code/kibana",
@@ -44,10 +46,11 @@ merge-editor = "mergiraf"
 email = "joshua.mock@elastic.co"
 
 [aliases]
+d = ["diff"]
+l = ["log"]
 push = ["git", "push", "--all"]
 pull = ["git", "fetch"]
 fetch = ["git", "fetch"]
 start = ["new", "trunk()"]
 pr = ["util", "exec", "--", "jj-pr"]
 ws = ["util", "exec", "--", "jj-ws"]
-tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
