@@ -932,69 +932,25 @@ require("lazy").setup({
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
-    config = function()
-      require("conform").setup({
-        notify_on_error = false,
-        format_on_save = function(bufnr)
-          local disable_filetypes = { c = true, cpp = true }
-          if disable_filetypes[vim.bo[bufnr].filetype] then
-            return nil
-          elseif vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-            return nil
-          else
-            return {
-              timeout_ms = 500,
-              lsp_format = "fallback",
-            }
-          end
-        end,
-        formatters = {
-          ["ts-standard"] = {
-            command = "ts-standard",
-            args = { "--fix", "--stdin" },
-          },
+    opts = {
+      formatters = {
+        ["ts-standard"] = {
+          command = "ts-standard",
+          args = { "--fix", "--stdin" },
         },
-        formatters_by_ft = {
-          lua = { "stylua" },
-          python = { "isort", "black" },
-          javascript = pick_js_formatter,
-          typescript = pick_js_formatter,
-        },
-      })
-
-      vim.api.nvim_create_user_command("FormatDisable", function(args)
-        if args.bang then
-          -- FormatDisable! will disable formatting just for this buffer
-          vim.b.disable_autoformat = true
-        else
-          vim.g.disable_autoformat = true
-        end
-      end, {
-        desc = "Disable autoformat-on-save",
-        bang = true,
-      })
-
-      vim.api.nvim_create_user_command("FormatEnable", function()
-        vim.b.disable_autoformat = false
-        vim.g.disable_autoformat = false
-      end, {
-        desc = "Re-enable autoformat-on-save",
-      })
-
-      vim.api.nvim_create_user_command("FormatToggle", function(args)
-        if args.bang then
-          vim.b.disable_autoformat = not vim.b.disable_autoformat
-        else
-          vim.g.disable_autoformat = not vim.g.disable_autoformat
-        end
-      end, {
-        desc = "Toggle autoformat-on-save",
-        bang = true,
-      })
-
-      vim.keymap.set("n", "<leader>uF", "<cmd>FormatToggle<cr>", { desc = "Toggle autoformat (global)" })
-      vim.keymap.set("n", "<leader>uf", "<cmd>FormatToggle!<cr>", { desc = "Toggle autoformat (buffer)" })
-    end,
+      },
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        javascript = { "ts-standard", "eslint_d", stop_after_first = true },
+        typescript = pick_js_formatter,
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+      notify_on_error = false,
+      format_on_save = { timeout_ms = 500 },
+    },
   },
 
   -- autocompletion
