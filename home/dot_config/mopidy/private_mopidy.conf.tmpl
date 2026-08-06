@@ -2,6 +2,10 @@
 [core]
 restore_state = true
 data_dir = /data/mopidy
+# pin cache/config to the writable volume
+# container HOME is unset so defaults land in unwritable /.cache
+cache_dir = /data/mopidy/cache
+config_dir = /data/mopidy/config
 
 [local]
 media_dir = /home/joshmock/Music
@@ -13,6 +17,7 @@ album_art_files =
 
 [audio]
 mixer = software
+output = pulsesink
 
 [file]
 enabled = true
@@ -60,7 +65,7 @@ password = {{ onepasswordRead "op://Personal/Last.fm/Password" }}
 enabled = true
 
 [mpd]
-hostname = ::
+hostname = ::1
 
 [youtube]
 enabled = true

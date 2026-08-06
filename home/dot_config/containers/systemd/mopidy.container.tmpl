@@ -15,11 +15,15 @@ After=sound.target
 Image=mopidy.build
 ContainerName=mopidy
 Network=host
+# keep-id maps host uid 1000 -> container uid 1000 so the bind-mounted
+# pipewire/pulse sockets are owned by the running process, not root
+UserNS=keep-id
 
 # %t = XDG_RUNTIME_DIR, %h = home directory (systemd specifiers)
 Environment=XDG_RUNTIME_DIR=%t
 Environment=XDG_DATA_HOME=/data
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
+Environment=PULSE_SERVER=unix:%t/pulse/native
 
 Volume=%t/pipewire-0:%t/pipewire-0
 Volume=%t/pulse/native:%t/pulse/native
