@@ -285,9 +285,23 @@ require("lazy").setup({
       local lspconfig = require("lspconfig")
       local schemastore = require("schemastore")
 
+      local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/"
+
       local servers = {
         pyright = {},
-        ts_ls = {},
+        ts_ls = {
+          cmd = {
+            "lspmux",
+            "client",
+            "--server-path",
+            mason_bin .. "typescript-language-server",
+            "--",
+            "--stdio",
+          },
+        },
+        vtsls = {
+          cmd = { "lspmux", "client", "--server-path", mason_bin .. "vtsls", "--", "--stdio" },
+        },
         lua_ls = {
           settings = {
             Lua = {

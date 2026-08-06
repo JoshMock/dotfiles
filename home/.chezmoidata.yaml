@@ -84,6 +84,7 @@ packages:
   - name: kitty-terminfo
     features: [desktop]
   - name: lazygit
+  - name: lspmux
   - name: luarocks
   - name: lynx
     features: [email]
