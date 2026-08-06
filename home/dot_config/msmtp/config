@@ -9,7 +9,7 @@ host smtp.gmail.com
 port 465
 from joshua.mock@elastic.co
 user joshua.mock@elastic.co
-passwordeval "pass joshua.mock@elastic.co"
+passwordeval "mutt-oauth2 -u joshua.mock@elastic.co"
 auth on
 tls on
 tls_trust_file	/etc/ssl/certs/ca-certificates.crt
