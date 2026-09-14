@@ -135,8 +135,22 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + left", function()
+  local win = hl.get_active_window()
+  if win and win.group and win.group.size > 1 then
+    hl.dispatch(hl.dsp.group.prev())
+  else
+    hl.dispatch(hl.dsp.focus({ direction = "left" }))
+  end
+end)
+hl.bind(mainMod .. " + right", function()
+  local win = hl.get_active_window()
+  if win and win.group and win.group.size > 1 then
+    hl.dispatch(hl.dsp.group.next())
+  else
+    hl.dispatch(hl.dsp.focus({ direction = "right" }))
+  end
+end)
 hl.bind(mainMod .. " + SHIFT + tab", hl.dsp.group.prev())
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
