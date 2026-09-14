@@ -1,0 +1,3 @@
+{ "type": "agent", "name": "esensor", "nice": 10, "ionice": 7, "latency_nice": 19, "sched": "batch", "ioclass": "idle"  }
+{ "type": "agent", "name": "elastic-endpoint", "nice": 10, "ionice": 7, "latency_nice": 19, "sched": "batch", "ioclass": "idle" }
+{ "type": "agent", "name": "elastic-agent", "nice": 10, "ionice": 7, "latency_nice": 19, "sched": "batch", "ioclass": "idle" }

@@ -1,0 +1,92 @@
+[bootstrap.packages]
+# "aur:autorestic-bin" = "latest"
+# "aur:git-extras" = "latest"
+# "aur:neovim-remote" = "latest"
+# "aur:zmx-bin" = "latest"
+# "aur:zsh-antidote" = "latest"
+"pacman:calc" = "latest"
+"pacman:etckeeper" = "latest"
+"pacman:base-devel" = "latest"
+"pacman:git" = "latest"
+"pacman:git-annex" = "latest"
+"pacman:htop" = "latest"
+"pacman:neovim" = "latest"
+"pacman:nnn" = "latest"
+"pacman:pass" = "latest"
+"pacman:restic" = "latest"
+"pacman:tailscale" = "latest"
+"pacman:wget" = "latest"
+"pacman:which" = "latest"
+"pacman:whois" = "latest"
+"pacman:zsh" = "latest"
+"pacman:podman" = "latest"
+"pacman:docker" = "latest"
+# "aur:lspmux" = "latest"
+"pacman:ananicy-cpp" = "latest"
+"pacman:opensnitch" = "latest"
+
+[bootstrap.files."/etc/pacman.conf"]
+source = "./files/pacman/pacman.conf"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/ananicy.conf"]
+source = "./files/ananicy/ananicy.conf"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/cgroups.cgroups"]
+source = "./files/ananicy/cgroups.cgroups"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/10-agents/elastic.rules"]
+source = "./files/ananicy/10-agents/elastic.rules"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/20-backup/restic.rules"]
+source = "./files/ananicy/20-backup/restic.rules"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/30-compilers/cpp.rules"]
+source = "./files/ananicy/30-compilers/cpp.rules"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/30-compilers/go.rules"]
+source = "./files/ananicy/30-compilers/go.rules"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/30-compilers/rust.rules"]
+source = "./files/ananicy/30-compilers/rust.rules"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/ananicy.d/40-video/zoom.rules"]
+source = "./files/ananicy/40-video/zoom.rules"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.services.udevmon]
+state = "running"
+enabled = true
+
+[bootstrap.services.ananicy-cpp]
+state = "running"
+enabled = true
+
+[bootstrap.services.opensnitchd]
+state = "running"
+enabled = true

@@ -1,0 +1,1 @@
+{"type": "compiler", "name": "rustc", "nice": 19, "latency_nice": 19, "sched": "batch", "ioclass": "idle"}

@@ -1,8 +1,5 @@
 # vim: ft=toml
 
-[settings]
-disable_tools = ["lua", "python"]
-
 [tools]
 1password-cli = "latest"
 ast-grep = "latest"
@@ -25,8 +22,10 @@ jq = "latest"
 jujutsu = "latest"
 just = "latest"
 lazygit = "latest"
+lua = "latest"
 node = "latest"
 nono = "latest"
+python = "latest"
 rclone = "latest"
 ripgrep = "latest"
 starship = "latest"

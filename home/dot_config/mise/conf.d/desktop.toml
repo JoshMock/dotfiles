@@ -1,0 +1,29 @@
+[bootstrap.packages]
+# "aur:pinentry-dispatch" = "latest"
+"pacman:blueman" = "latest"
+"pacman:brightnessctl" = "latest"
+"pacman:dex" = "latest"
+"pacman:feh" = "latest"
+"pacman:interception-caps2esc" = "latest"
+"pacman:kwallet" = "latest"
+"pacman:kwallet-pam" = "latest"
+"pacman:mimeo" = "latest"
+"pacman:network-manager-applet" = "latest"
+"pacman:noctalia" = "latest"
+"pacman:playerctl" = "latest"
+"pacman:python-rofi" = "latest"
+"pacman:rofi" = "latest"
+"pacman:swaync" = "latest"
+"pacman:wofi" = "latest"
+"pacman:xdg-utils-mimeo" = "latest"
+"pacman:power-profiles-daemon" = "latest"
+
+[bootstrap.files."/etc/interception/udevmon.d/caps2esc.yaml"]
+source = "./files/interception/caps2esc.yaml"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.services.power-profiles-daemon]
+state = "running"
+enabled = true

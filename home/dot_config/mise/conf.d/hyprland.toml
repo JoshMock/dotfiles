@@ -1,0 +1,11 @@
+[bootstrap.packages]
+# "aur:pyprland" = "latest"
+# "aur:vicinae-bin" = "latest"
+"pacman:awww" = "latest"
+"pacman:hypridle" = "latest"
+"pacman:hyprland" = "latest"
+"pacman:hyprland-guiutils" = "latest"
+"pacman:hyprlock" = "latest"
+"pacman:hyprpolkitagent" = "latest"
+"pacman:hyprutils" = "latest"
+"pacman:xdg-desktop-portal-hyprland" = "latest"

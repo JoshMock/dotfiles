@@ -1,0 +1,12 @@
+[bootstrap.packages]
+"pacman:inter-font" = "latest"
+# "aur:ttf-ancient-fonts" = "latest"
+"pacman:ttf-arimo-nerd" = "latest"
+"pacman:ttf-dejavu" = "latest"
+"pacman:ttf-firacode-nerd" = "latest"
+# "aur:ttf-font-awesome-4" = "latest"
+"pacman:ttf-hack" = "latest"
+"pacman:ttf-liberation" = "latest"
+"pacman:ttf-ubuntu-mono-nerd" = "latest"
+# "aur:otf-font-awesome-4" = "latest"
+"pacman:noto-fonts-emoji" = "latest"

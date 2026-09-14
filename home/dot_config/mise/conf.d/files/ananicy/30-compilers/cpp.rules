@@ -1,0 +1,5 @@
+{"type": "compiler", "name": "gcc", "nice": 19, "latency_nice": 19, "sched": "batch", "ioclass": "idle", "cgroup": "compilers"} 
+{"type": "compiler", "name": "cmake", "nice": 19, "latency_nice": 19, "sched": "batch", "ioclass": "idle", "cgroup": "compilers"} 
+{"type": "compiler", "name": "c++", "nice": 19, "latency_nice": 19, "sched": "batch", "ioclass": "idle", "cgroup": "compilers"} 
+{"type": "compiler", "name": "cc1plus", "nice": 19, "latency_nice": 19, "sched": "batch", "ioclass": "idle", "cgroup": "compilers"} 
+{"type": "compiler", "name": "lto1", "nice": 19, "latency_nice": 19, "sched": "batch", "ioclass": "idle", "cgroup": "compilers"} 

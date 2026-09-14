@@ -1,3 +1,8 @@
 [tools]
 "pipx:bugwarrior" = { version = "latest", uvx_args = "--with setuptools --with emoji", depends = "uv" }
 "pipx:vit" = { version = "latest", depends = "uv" }
+
+[bootstrap.packages]
+"pacman:task" = "latest"
+"pacman:python-emoji" = "latest"
+# "aur:taskopen" = "latest"

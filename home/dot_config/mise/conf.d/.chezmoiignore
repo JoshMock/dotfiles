@@ -1,3 +1,10 @@
 {{ if not .taskwarrior }}taskwarrior.toml{{ end }}
 {{ if not .work }}work.toml{{ end }}
 {{ if not .email }}email.toml{{ end }}
+{{ if not .taskwarrior }}taskwarrior.toml{{ end }}
+{{ if not .desktop }}
+desktop.toml
+desktop_apps.toml
+hyprland.toml
+fonts.toml
+{{ end }}

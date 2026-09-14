@@ -1,0 +1,2 @@
+{ "cgroup": "compilers", "CPUQuota": 300 }
+{ "cgroup": "restic", "CPUQuota": 400 }
