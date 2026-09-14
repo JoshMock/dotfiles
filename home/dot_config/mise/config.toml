@@ -35,18 +35,8 @@ yazi = "latest"
 yq = "latest"
 yt-dlp = "latest"
 uv = "latest"
-"npm:@elastic/cli" = "latest"
 "github:asciimoo/hister" = "latest"
 "npm:agent-browser" = { version = "latest", postinstall = "agent-browser install" }
 "github:ouch-org/ouch" = "latest"
+"http:zp" = { version = "0.3.0", url = "https://raw.githubusercontent.com/EarthmanMuons/zmx-picker/v{{version}}/zp" }
 "npm:@earendil-works/pi-coding-agent" = "latest"
-{{ if .taskwarrior -}}
-"pipx:bugwarrior" = { version = "latest", uvx_args = "--with setuptools --with emoji", depends = "uv" }
-"pipx:vit" = { version = "latest", depends = "uv" }
-{{ end -}}
-{{ if .work -}}
-"pipx:gcalcli" = { version = "latest", depends = "uv" }
-{{ end -}}
-{{ if .email -}}
-"pipx:mutt-oauth2" = { version = "latest", uvx_args = "--with secretstorage", depends = "uv" }
-{{ end -}}

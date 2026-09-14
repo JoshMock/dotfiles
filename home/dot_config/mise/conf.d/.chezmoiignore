@@ -1,0 +1,3 @@
+{{ if not .taskwarrior }}taskwarrior.toml{{ end }}
+{{ if not .work }}work.toml{{ end }}
+{{ if not .email }}email.toml{{ end }}

@@ -1,0 +1,3 @@
+[tools]
+"pipx:bugwarrior" = { version = "latest", uvx_args = "--with setuptools --with emoji", depends = "uv" }
+"pipx:vit" = { version = "latest", depends = "uv" }
