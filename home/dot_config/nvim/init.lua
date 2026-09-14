@@ -288,17 +288,6 @@ require("lazy").setup({
       local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/"
 
       local servers = {
-        pyright = {},
-        ts_ls = {
-          cmd = {
-            "lspmux",
-            "client",
-            "--server-path",
-            mason_bin .. "typescript-language-server",
-            "--",
-            "--stdio",
-          },
-        },
         lua_ls = {
           settings = {
             Lua = {
@@ -334,11 +323,6 @@ require("lazy").setup({
             },
           },
         },
-        docker_compose_language_service = {},
-        dockerls = {},
-        eslint = {},
-        hadolint = {},
-        shellcheck = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -346,42 +330,73 @@ require("lazy").setup({
       vim.list_extend(ensure_installed, {
         "black",
         "clojure_lsp",
+        "docker_compose_language_service",
+        "dockerls",
+        "eslint",
         "eslint_d",
+        "hadolint",
         "isort",
-        "jsonls",
-        "lua_ls",
         "pyright",
+        "shellcheck",
         "stylua",
         "ts-standard",
         "ts_ls",
-        "yamlls",
       })
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+      -- servers are auto-enabled via vim.lsp.enable().
+      -- configure per-server overrides via vim.lsp.config() after this call.
       require("mason-lspconfig").setup({
         ensure_installed = {}, -- keep empty, overridden by mason-tool-installer
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            lspconfig[server_name].setup(server)
-          end,
+      })
+
+      -- set capabilities globally for all servers
+      vim.lsp.config("*", { capabilities = capabilities })
+
+      -- per-server settings (non-cmd)
+      for server_name, server in pairs(servers) do
+        local cfg = vim.deepcopy(server)
+        cfg.cmd = nil -- cmd applied separately below; avoid stomping lspmux overrides
+        if next(cfg) ~= nil then
+          vim.lsp.config(server_name, cfg)
+        end
+      end
+
+      -- lspmux cmd overrides (must come after mason-lspconfig auto-configures servers)
+      vim.lsp.config("ts_ls", {
+        cmd = {
+          "lspmux",
+          "client",
+          "--server-path",
+          mason_bin .. "typescript-language-server",
+          "--",
+          "--stdio",
+        },
+      })
+
+      vim.lsp.config("eslint", {
+        cmd = {
+          "lspmux",
+          "client",
+          "--server-path",
+          mason_bin .. "vscode-eslint-language-server",
+          "--",
+          "--stdio",
+        },
+      })
+
+      vim.lsp.config("pyright", {
+        cmd = {
+          "lspmux",
+          "client",
+          "--server-path",
+          mason_bin .. "pyright-langserver",
+          "--",
+          "--stdio",
         },
       })
     end,
-  },
-  {
-    "mason-org/mason-lspconfig.nvim",
-    opts = {},
-    dependencies = {
-      { "mason-org/mason.nvim", opts = {} },
-      "neovim/nvim-lspconfig",
-    },
   },
   {
     "folke/lazydev.nvim",
