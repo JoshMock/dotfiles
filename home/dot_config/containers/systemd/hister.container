@@ -6,8 +6,9 @@ Wants=network-online.target
 [Container]
 Image=hister.build
 ContainerName=hister
-Exec=listen
+Exec=listen --config /config/config.yml
 PublishPort=4433:4433
+Network=host
 
 # Data dir points straight at the mounted volume (already exists + writable),
 # avoiding hister's unwritable /var/lib/hister system-user fallback.

@@ -1,0 +1,7 @@
+semantic_search:
+  enable: true
+  embedding_endpoint: "http://localhost:8081/v1/embeddings"
+  embedding_model: "Qwen/Qwen3-Embedding-0.6B-GGUF:Q8_0"
+  dimensions: 1024
+  max_embedding_batch_size: 4
+  embedding_timeout: 600
