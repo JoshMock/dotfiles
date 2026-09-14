@@ -3,6 +3,10 @@ name: web-search
 description: Search the web using SearxNG, a locally-run meta search engine that aggregates results from multiple engines
 ---
 
+# Hister search
+
+A [Hister](https://hister.org/) instance runs locally on `localhost:4433`. If the `hister` CLI is available to you, use `hister search` to search my browser history for relevant pages. If it is not, use [the HTTP API](http://localhost:4433/api-docs) to search instead. Search results from Hister have a high likelihood of containing relevant information.
+
 # Jina search
 
 If the `jina` CLI tool is available, and `pass agents/jina-reader/pi` exists, **ALWAYS** use `jina search` to do a web search. Ensure `JINA_API_KEY=$(pass agents/jina-reader/pi)` env var is set.
