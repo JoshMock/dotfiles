@@ -357,41 +357,22 @@ require("lazy").setup({
       -- per-server settings (non-cmd)
       for server_name, server in pairs(servers) do
         local cfg = vim.deepcopy(server)
-        cfg.cmd = nil -- cmd applied separately below; avoid stomping lspmux overrides
+        cfg.cmd = nil
         if next(cfg) ~= nil then
           vim.lsp.config(server_name, cfg)
         end
       end
 
-      -- lspmux cmd overrides (must come after mason-lspconfig auto-configures servers)
-      vim.lsp.config("ts_ls", {
+      -- lspmux cmd overrides
+      -- Only yamlls works with lspmux; ts_ls/eslint/lua_ls/pyright send window/logMessage
+      -- before initializeResult which lspmux v0.3.0 rejects as 'first server message was
+      -- not initialize response'. Those servers use direct invocation via mason PATH.
+      vim.lsp.config("yamlls", {
         cmd = {
           "lspmux",
           "client",
           "--server-path",
-          mason_bin .. "typescript-language-server",
-          "--",
-          "--stdio",
-        },
-      })
-
-      vim.lsp.config("eslint", {
-        cmd = {
-          "lspmux",
-          "client",
-          "--server-path",
-          mason_bin .. "vscode-eslint-language-server",
-          "--",
-          "--stdio",
-        },
-      })
-
-      vim.lsp.config("pyright", {
-        cmd = {
-          "lspmux",
-          "client",
-          "--server-path",
-          mason_bin .. "pyright-langserver",
+          mason_bin .. "yaml-language-server",
           "--",
           "--stdio",
         },
