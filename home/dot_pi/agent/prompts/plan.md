@@ -1,5 +1,5 @@
 ---
-description: Turn an idea into a markdown implementation plan.
+description: Turn an idea into a PLAN.md document
 ---
 
 Given the following idea, and any related documents or code in this repository--especially a `./RESEARCH.md` file in this exact directory--use your software design and systems architecture expertise to break down a solution into steps.
