@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# stdin: current file contents (or empty if file doesn't exist)
+# stdout: new file contents
+
+input=$(cat)
+if [ -z "$input" ]; then
+  input='{}'
+fi
+
+echo "$input" | jq '
+  .SKIP_HOST_UPDATE = true |
+  .MINIMIZE_TO_TRAY = false |
+  .OPEN_ON_STARTUP = false
+'
