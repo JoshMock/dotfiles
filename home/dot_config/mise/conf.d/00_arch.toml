@@ -24,6 +24,7 @@
 # "aur:lspmux" = "latest"
 "pacman:ananicy-cpp" = "latest"
 "pacman:opensnitch" = "latest"
+"pacman:pacman-contrib" = "latest"
 
 [bootstrap.files."/etc/pacman.conf"]
 source = "./files/pacman/pacman.conf"
@@ -43,17 +44,32 @@ owner = "root"
 group = "root"
 mode = "0644"
 
+[bootstrap.directories."/etc/ananicy.d/10-agents"]
+owner = "root"
+group = "root"
+mode = "0755"
+
 [bootstrap.files."/etc/ananicy.d/10-agents/elastic.rules"]
 source = "./files/ananicy/10-agents/elastic.rules"
 owner = "root"
 group = "root"
 mode = "0644"
 
+[bootstrap.directories."/etc/ananicy.d/20-backup"]
+owner = "root"
+group = "root"
+mode = "0755"
+
 [bootstrap.files."/etc/ananicy.d/20-backup/restic.rules"]
 source = "./files/ananicy/20-backup/restic.rules"
 owner = "root"
 group = "root"
 mode = "0644"
+
+[bootstrap.directories."/etc/ananicy.d/30-compilers"]
+owner = "root"
+group = "root"
+mode = "0755"
 
 [bootstrap.files."/etc/ananicy.d/30-compilers/cpp.rules"]
 source = "./files/ananicy/30-compilers/cpp.rules"
@@ -73,6 +89,11 @@ owner = "root"
 group = "root"
 mode = "0644"
 
+[bootstrap.directories."/etc/ananicy.d/40-video"]
+owner = "root"
+group = "root"
+mode = "0755"
+
 [bootstrap.files."/etc/ananicy.d/40-video/zoom.rules"]
 source = "./files/ananicy/40-video/zoom.rules"
 owner = "root"
@@ -88,5 +109,15 @@ state = "running"
 enabled = true
 
 [bootstrap.services.opensnitchd]
+state = "running"
+enabled = true
+
+[bootstrap.files."/etc/xdg/reflector/reflector.conf"]
+source = "./files/reflector/reflector.conf"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.services.reflector]
 state = "running"
 enabled = true
