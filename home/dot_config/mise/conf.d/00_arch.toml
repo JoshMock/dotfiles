@@ -118,6 +118,6 @@ owner = "root"
 group = "root"
 mode = "0644"
 
-[bootstrap.services.reflector]
+[bootstrap.services."reflector.timer"]
 state = "running"
 enabled = true
