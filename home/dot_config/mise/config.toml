@@ -1,7 +1,6 @@
 # vim: ft=toml
 
 [tools]
-1password-cli = "latest"
 ast-grep = "latest"
 atuin = "latest"
 bat = "latest"

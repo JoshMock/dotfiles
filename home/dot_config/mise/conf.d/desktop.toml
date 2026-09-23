@@ -17,6 +17,7 @@
 "pacman:wofi" = "latest"
 "pacman:xdg-utils-mimeo" = "latest"
 "pacman:power-profiles-daemon" = "latest"
+"pacman:password-cli" = "latest"
 
 [bootstrap.files."/etc/interception/udevmon.d/caps2esc.yaml"]
 source = "./files/interception/caps2esc.yaml"
