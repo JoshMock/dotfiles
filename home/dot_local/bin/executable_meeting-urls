@@ -1,0 +1,182 @@
+#!/usr/bin/env bash
+# Show all URLs/URIs from the current or next calendar meeting, with labels
+
+CALENDAR="joshua.mock@elastic.co"
+# Look 1 hour back and 2 hours forward
+WINDOW_START=$(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-1H +%Y-%m-%dT%H:%M:%SZ)
+WINDOW_END=$(date -u -d '2 hours' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v+2H +%Y-%m-%dT%H:%M:%SZ)
+
+EVENT=$(gws calendar events list --params '{
+  "calendarId": "'"$CALENDAR"'",
+  "timeMin": "'"$WINDOW_START"'",
+  "timeMax": "'"$WINDOW_END"'",
+  "singleEvents": true,
+  "orderBy": "startTime",
+  "showDeleted": false
+}' 2>/dev/null | jq '
+  [ .items[]
+    | select(.status != "cancelled")
+    | select(.start.dateTime != null)
+    | select(
+        .attendees == null or
+        ([ .attendees[] | select(.self == true) | .responseStatus ] | first) != "declined"
+      )
+  ] | first
+')
+
+if [ -z "$EVENT" ] || [ "$EVENT" = "null" ]; then
+  echo "No meeting found within the past 1 hour or next 2 hours."
+  exit 0
+fi
+
+SUMMARY=$(echo "$EVENT" | jq -r '.summary // "(no title)"')
+START=$(echo "$EVENT" | jq -r '.start.dateTime | .[11:16]')
+END=$(echo "$EVENT" | jq -r '.end.dateTime | .[11:16]')
+
+echo "$START–$END  $SUMMARY"
+echo ""
+
+MEETING_JSON="$EVENT" python3 <<'EOF'
+import sys, json, re, os
+from html.parser import HTMLParser
+from urllib.parse import urlparse, parse_qs, unquote
+
+event = json.loads(os.environ['MEETING_JSON'])
+
+# --- label inference from URL ---
+def infer_label(uri):
+    try:
+        p = urlparse(uri)
+    except Exception:
+        return uri
+    host = p.netloc.lower()
+    path = p.path.lower()
+    if 'zoom.us' in host:
+        if '/j/' in path:           return 'Zoom'
+        if '/u/' in path:           return 'Zoom (intl dial-in)'
+    if p.scheme == 'zoommtg':       return 'Zoom'
+    if host == 'meet.google.com':   return 'Google Meet'
+    if 'docs.google.com' in host:
+        if '/document'      in path: return 'Google Doc'
+        if '/spreadsheets'  in path: return 'Google Sheet'
+        if '/presentation'  in path: return 'Google Slides'
+        if '/forms'         in path: return 'Google Form'
+        return 'Google Doc'
+    if host in ('drive.google.com',): return 'Google Drive'
+    if 'notion.so' in host:         return 'Notion'
+    if 'figma.com' in host:         return 'Figma'
+    if 'github.com' in host:        return 'GitHub'
+    if 'loom.com' in host:          return 'Loom'
+    if 'miro.com' in host:          return 'Miro'
+    return host or uri
+
+# --- HTML parser to extract href + link text ---
+class LinkExtractor(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = {}   # url -> label
+        self._cur_href = None
+        self._cur_text = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'a':
+            href = dict(attrs).get('href', '')
+            if href and not href.startswith('mailto:') and not href.startswith('tel:'):
+                self._cur_href = href
+                self._cur_text = []
+
+    def handle_data(self, data):
+        if self._cur_href:
+            self._cur_text.append(data.strip())
+
+    def handle_endtag(self, tag):
+        if tag == 'a' and self._cur_href:
+            text = ' '.join(t for t in self._cur_text if t)
+            # skip if link text is just the URL (with or without scheme)
+            is_url_text = bool(re.match(r'https?://', text)) or text == self._cur_href.split('://', 1)[-1]
+            if text and not is_url_text:
+                self.links[self._cur_href] = text
+            elif self._cur_href not in self.links:
+                self.links[self._cur_href] = None
+            self._cur_href = None
+
+# URI pattern: any scheme://... or zoommtg:// etc., not mailto/tel/sip
+URI_RE = re.compile(r'(?<!["\'])(?:zoommtg|https?|webex|msteams)://[^\s<>()\[\]"\']+')
+
+# Outlook plain-text format: label<URI>
+OUTLOOK_RE = re.compile(r'([^\n<]{4,60}?)<((?:zoommtg|https?)://[^>]+)>')
+
+# Google redirect wrapper
+GOOGLE_REDIRECT_RE = re.compile(r'google\.com/url\?')
+
+def unwrap_google(url):
+    """If it's a google.com/url redirect, extract the real URL."""
+    if GOOGLE_REDIRECT_RE.search(url):
+        try:
+            qs = parse_qs(urlparse(url).query)
+            return (qs.get('q') or qs.get('url') or [url])[0]
+        except Exception:
+            return url
+    return url
+
+results = {}  # url -> label
+
+def add(url, label=None):
+    url = unwrap_google(url.rstrip('.,;)'))
+    if GOOGLE_REDIRECT_RE.search(url):
+        return  # couldn't unwrap
+    if url in results:
+        if label and not results[url]:
+            results[url] = label
+    else:
+        results[url] = label
+
+# 1. conferenceData entryPoints (most structured)
+conf = event.get('conferenceData') or {}
+solution_name = (conf.get('conferenceSolution') or {}).get('name')
+for ep in conf.get('entryPoints') or []:
+    ep_type = ep.get('entryPointType', '')
+    uri = ep.get('uri', '')
+    if not uri or uri.startswith(('mailto:', 'tel:', 'sip:')):
+        continue
+    if ep_type in ('phone', 'sip', 'more'):
+        continue  # skip dial-in alternatives and zoom addon detail pages
+    label = ep.get('label', '')
+    # if label looks like a bare URL/domain (no scheme), prefer solution name
+    if not label or re.match(r'[\w.-]+\.\w+[/:]', label):
+        label = solution_name
+    add(uri, label)
+
+# 2. hangoutLink
+if event.get('hangoutLink'):
+    add(event['hangoutLink'], 'Google Meet')
+
+# 3. location
+if event.get('location'):
+    loc = event['location'].strip()
+    if re.match(r'\w+://', loc):
+        add(loc)
+
+# 4. description
+desc = event.get('description') or ''
+
+# 4a. HTML links
+extractor = LinkExtractor()
+extractor.feed(desc)
+for url, label in extractor.links.items():
+    add(url, label)
+
+# 4b. Outlook-style label<URI>
+for m in OUTLOOK_RE.finditer(desc):
+    label_text = m.group(1).strip().strip('-–').strip()
+    add(m.group(2), label_text if label_text else None)
+
+# 4c. bare URIs not yet captured
+for m in URI_RE.finditer(desc):
+    add(m.group(0))
+
+# --- output ---
+for url, label in results.items():
+    display = label or infer_label(url)
+    print(f"{display}\n  {url}\n")
+EOF

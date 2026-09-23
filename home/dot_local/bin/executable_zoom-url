@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Convert https zoom URL to zoommtg:// scheme so Zoom joins the meeting directly
+url="$1"
+if [[ "$url" =~ zoom\.us/j/([0-9]+)([\?&](.+))? ]]; then
+    id="${BASH_REMATCH[1]}"
+    query="${BASH_REMATCH[3]}"
+    pwd=$(echo "$query" | grep -oP '(?<=pwd=)[^&]+')
+    mtg="zoommtg://zoom.us/join?confno=${id}&zc=0"
+    [[ -n "$pwd" ]] && mtg+="&pwd=${pwd}"
+    exec /usr/bin/zoom "$mtg"
+else
+    exec /usr/bin/zoom "$url"
+fi
