@@ -1,0 +1,18 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "allow-elastic-endpoint",
+  "description": "",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "process.path",
+    "data": "/opt/Elastic/Endpoint/elastic-endpoint",
+    "type": "simple",
+    "list": [],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

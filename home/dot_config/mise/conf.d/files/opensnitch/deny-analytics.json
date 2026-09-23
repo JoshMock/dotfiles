@@ -1,0 +1,18 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "deny-analytics",
+  "description": "Globally deny common analytics/telemetry-only hosts for all processes.",
+  "action": "deny",
+  "duration": "always",
+  "operator": {
+    "operand": "dest.host",
+    "data": "^(|.*\\.)(google-analytics\\.com|googletagmanager\\.com|analytics\\.google\\.com|doubleclick\\.net|segment\\.io|segment\\.com|mixpanel\\.com|amplitude\\.com|api\\.amplitude\\.com|fullstory\\.com|hotjar\\.com|heapanalytics\\.com|matomo\\.cloud|app\\.posthog\\.com|browser-intake-datadoghq\\.com)$",
+    "type": "regexp",
+    "list": [],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": true,
+  "nolog": false
+}

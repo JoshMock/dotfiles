@@ -1,0 +1,564 @@
+# OpenSnitch firewall rules and domain/ip/nets lists
+# Run files/opensnitch/migrate-lists.sh once (with sudo) on a new machine
+# to convert legacy flat domain files to the subdirectory/list structure.
+
+[bootstrap.packages]
+"pacman:opensnitch" = "latest"
+
+# ── Directories ─────────────────────────────────────────────────────────────
+
+[bootstrap.directories."/etc/opensnitchd/rules"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/anthropic"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/atuin"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/cloudflare"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/discord"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/elastic"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/github"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/google"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/matrix"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/mise"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/nono"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/npm"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/pypi"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/slack"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/spotify"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/domains/tidal"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/ips"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/ips/discord"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/nets"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+[bootstrap.directories."/etc/opensnitchd/nets/zoom"]
+owner = "root"
+group = "root"
+mode = "0755"
+
+# ── Domain lists ─────────────────────────────────────────────────────────────
+
+[bootstrap.files."/etc/opensnitchd/domains/anthropic/list"]
+source = "./files/opensnitch/lists/domains/anthropic/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/atuin/list"]
+source = "./files/opensnitch/lists/domains/atuin/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/cloudflare/list"]
+source = "./files/opensnitch/lists/domains/cloudflare/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/discord/list"]
+source = "./files/opensnitch/lists/domains/discord/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/elastic/list"]
+source = "./files/opensnitch/lists/domains/elastic/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/github/list"]
+source = "./files/opensnitch/lists/domains/github/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/google/list"]
+source = "./files/opensnitch/lists/domains/google/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/matrix/list"]
+source = "./files/opensnitch/lists/domains/matrix/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/mise/list"]
+source = "./files/opensnitch/lists/domains/mise/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/nono/list"]
+source = "./files/opensnitch/lists/domains/nono/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/npm/list"]
+source = "./files/opensnitch/lists/domains/npm/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/pypi/list"]
+source = "./files/opensnitch/lists/domains/pypi/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/slack/list"]
+source = "./files/opensnitch/lists/domains/slack/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/spotify/list"]
+source = "./files/opensnitch/lists/domains/spotify/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/domains/tidal/list"]
+source = "./files/opensnitch/lists/domains/tidal/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+# ── IP and nets lists ────────────────────────────────────────────────────────
+
+[bootstrap.files."/etc/opensnitchd/ips/discord/list"]
+source = "./files/opensnitch/lists/ips/discord/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/opensnitchd/nets/zoom/list"]
+source = "./files/opensnitch/lists/nets/zoom/list"
+owner = "root"
+group = "root"
+mode = "0644"
+
+# ── Rules ───────────────────────────────────────────────────────────────────
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-1.1.1.1.json"]
+source = "./files/opensnitch/allow-1.1.1.1.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-1password-app.json"]
+source = "./files/opensnitch/allow-1password-app.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-agent-browser.json"]
+source = "./files/opensnitch/allow-agent-browser.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-arch-package-managers.json"]
+source = "./files/opensnitch/allow-arch-package-managers.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-atuin.json"]
+source = "./files/opensnitch/allow-atuin.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-bun.json"]
+source = "./files/opensnitch/allow-bun.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-cargo.json"]
+source = "./files/opensnitch/allow-cargo.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-cq.json"]
+source = "./files/opensnitch/allow-cq.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-curl-tidal.json"]
+source = "./files/opensnitch/allow-curl-tidal.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-curl-wget.json"]
+source = "./files/opensnitch/allow-curl-wget.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-discord.json"]
+source = "./files/opensnitch/allow-discord.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-dnscrypt-proxy.json"]
+source = "./files/opensnitch/allow-dnscrypt-proxy.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-docker.json"]
+source = "./files/opensnitch/allow-docker.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-elastic-agent-versioned.json"]
+source = "./files/opensnitch/allow-elastic-agent-versioned.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-elastic-agent.json"]
+source = "./files/opensnitch/allow-elastic-agent.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-elastic-domains.json"]
+source = "./files/opensnitch/allow-elastic-domains.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-elastic-endpoint.json"]
+source = "./files/opensnitch/allow-elastic-endpoint.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-elastic-otel-collector.json"]
+source = "./files/opensnitch/allow-elastic-otel-collector.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-element.json"]
+source = "./files/opensnitch/allow-element.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-firefox.json"]
+source = "./files/opensnitch/allow-firefox.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-gh.json"]
+source = "./files/opensnitch/allow-gh.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-git-remote-http.json"]
+source = "./files/opensnitch/allow-git-remote-http.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-go.json"]
+source = "./files/opensnitch/allow-go.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-gws.json"]
+source = "./files/opensnitch/allow-gws.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-jina-ai.json"]
+source = "./files/opensnitch/allow-jina-ai.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-kdeconnect.json"]
+source = "./files/opensnitch/allow-kdeconnect.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-llama-server.json"]
+source = "./files/opensnitch/allow-llama-server.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-loopback.json"]
+source = "./files/opensnitch/allow-loopback.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-mason-nvim.json"]
+source = "./files/opensnitch/allow-mason-nvim.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-mbsync.json"]
+source = "./files/opensnitch/allow-mbsync.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-mise-node.json"]
+source = "./files/opensnitch/allow-mise-node.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-mise.json"]
+source = "./files/opensnitch/allow-mise.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-mopidy.json"]
+source = "./files/opensnitch/allow-mopidy.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-mpc.json"]
+source = "./files/opensnitch/allow-mpc.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-networkmanager.json"]
+source = "./files/opensnitch/allow-networkmanager.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-noctalia.json"]
+source = "./files/opensnitch/allow-noctalia.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-nono.json"]
+source = "./files/opensnitch/allow-nono.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-op.json"]
+source = "./files/opensnitch/allow-op.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-passt.json"]
+source = "./files/opensnitch/allow-passt.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-pi-anthropic.json"]
+source = "./files/opensnitch/allow-pi-anthropic.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-pi-github.json"]
+source = "./files/opensnitch/allow-pi-github.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-python.json"]
+source = "./files/opensnitch/allow-python.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-rclone.json"]
+source = "./files/opensnitch/allow-rclone.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-slack-extra.json"]
+source = "./files/opensnitch/allow-slack-extra.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-slack-spotify.json"]
+source = "./files/opensnitch/allow-slack-spotify.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-slack.json"]
+source = "./files/opensnitch/allow-slack.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-ssh.json"]
+source = "./files/opensnitch/allow-ssh.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-system-services.json"]
+source = "./files/opensnitch/allow-system-services.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-tailscaled.json"]
+source = "./files/opensnitch/allow-tailscaled.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-tidal.json"]
+source = "./files/opensnitch/allow-tidal.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-uv.json"]
+source = "./files/opensnitch/allow-uv.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-vicinae.json"]
+source = "./files/opensnitch/allow-vicinae.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-ytimg.json"]
+source = "./files/opensnitch/allow-ytimg.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-zoom-nets.json"]
+source = "./files/opensnitch/allow-zoom-nets.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/allow-zoom.json"]
+source = "./files/opensnitch/allow-zoom.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/deny-analytics.json"]
+source = "./files/opensnitch/deny-analytics.json"
+owner = "root"
+group = "root"
+mode = "0600"
+
+[bootstrap.files."/etc/opensnitchd/rules/deny-ingest-sentry.json"]
+source = "./files/opensnitch/deny-ingest-sentry.json"
+owner = "root"
+group = "root"
+mode = "0600"
+

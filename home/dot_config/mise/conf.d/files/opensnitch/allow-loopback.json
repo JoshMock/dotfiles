@@ -1,0 +1,18 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "allow-loopback",
+  "description": "Allow any process to reach loopback (127.0.0.1, ::1); never leaves the machine.",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "dest.ip",
+    "data": "^(127\\.0\\.0\\.1|::1)$",
+    "type": "regexp",
+    "list": [],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

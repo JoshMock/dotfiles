@@ -1,0 +1,4 @@
+^(|.*\.)google\.com$
+^(|.*\.)googleapis\.com$
+^(|.*\.)gstatic\.com$
+^(|.*\.)gmail\.com$

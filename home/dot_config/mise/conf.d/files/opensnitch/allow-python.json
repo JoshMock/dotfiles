@@ -1,0 +1,47 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "allow-python",
+  "description": "mise- and uv-managed python interpreters.",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "sensitive": false,
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "^/home/joshmock/.local/share/(mise/installs/python/.*|uv/python/cpython-.*)/bin/python3\\.\\d+$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "lists.domains_regexp",
+        "data": "/etc/opensnitchd/domains/pypi/",
+        "type": "lists",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "lists.domains_regexp",
+        "data": "/etc/opensnitchd/domains/github/",
+        "type": "lists",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "lists.domains_regexp",
+        "data": "/etc/opensnitchd/domains/elastic/",
+        "type": "lists",
+        "list": null,
+        "sensitive": false
+      }
+    ]
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

@@ -1,0 +1,33 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "allow-vicinae",
+  "description": "vicinae CLI and server to api.vicinae.com.",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "sensitive": false,
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "^(/usr/bin/vicinae|/usr/libexec/vicinae/vicinae-server)$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.host",
+        "data": "^api\\.vicinae\\.com$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      }
+    ]
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

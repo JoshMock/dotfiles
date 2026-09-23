@@ -1,0 +1,5 @@
+^(|.*\.)slack\.com$
+^(|.*\.)slackb\.com$
+^(|.*\.)slack-edge\.com$
+^(|.*\.)slack-imgs\.com$
+^(|.*\.)chime\.aws$

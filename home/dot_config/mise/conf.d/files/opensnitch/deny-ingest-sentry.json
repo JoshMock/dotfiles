@@ -1,0 +1,18 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "deny-ingest-sentry",
+  "description": "",
+  "action": "deny",
+  "duration": "always",
+  "operator": {
+    "operand": "dest.host",
+    "data": "\\w+\\.ingest\\.\\w+\\.sentry\\.io",
+    "type": "regexp",
+    "list": [],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": true,
+  "nolog": false
+}

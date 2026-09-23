@@ -1,0 +1,33 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "allow-op",
+  "description": "",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "sensitive": false,
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "/usr/bin/op",
+        "type": "simple",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.host",
+        "data": "^(|.*\\.)1password\\.com(\\.tail[a-z0-9]+\\.ts\\.net)?$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      }
+    ]
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

@@ -1,0 +1,47 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "allow-mise",
+  "description": "",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "sensitive": false,
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "/usr/bin/mise",
+        "type": "simple",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.host",
+        "data": "^(|.*\\.)(agilebits\\.com|crates\\.io|jsr\\.io|npmjs\\.org|npmjs\\.com|sigstore\\.dev|pypi\\.org|pythonhosted\\.org|lua\\.org|nodejs\\.org|osv\\.dev)$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "lists.domains_regexp",
+        "data": "/etc/opensnitchd/domains/mise/",
+        "type": "lists",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "lists.domains_regexp",
+        "data": "/etc/opensnitchd/domains/github/",
+        "type": "lists",
+        "list": null,
+        "sensitive": false
+      }
+    ]
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

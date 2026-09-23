@@ -1,0 +1,33 @@
+{
+  "created": "2026-10-01T00:00:00-04:00",
+  "updated": "2026-10-01T00:00:00-04:00",
+  "name": "allow-nono",
+  "description": "",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "sensitive": false,
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "^/home/joshmock/.local/share/mise/installs/nono/\\d+\\.\\d+\\.\\d+/nono$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "lists.domains_regexp",
+        "data": "/etc/opensnitchd/domains/nono/",
+        "type": "lists",
+        "list": null,
+        "sensitive": false
+      }
+    ]
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}
