@@ -274,6 +274,13 @@ hl.window_rule({
   float = true,
 })
 
+hl.layer_rule({
+  match = { namespace = "vicinae" },
+  name = "vicinae-blur",
+  blur = true,
+  ignore_alpha = 0,
+})
+
 hl.window_rule({ tag = "+chat", match = { class = "^(Slack)$" } })
 hl.window_rule({ tag = "+chat", match = { class = "^(slack)$" } })
 hl.window_rule({ tag = "+chat", match = { class = "^(Element)$" } })
@@ -487,6 +494,11 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("/home/joshmock/.local/bin/shuffle-wallpaper")
   hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+  -- graphical-session.target sets RefuseManualStart, and nothing else
+  -- pulls it in under bare Hyprland, so start the agent directly. Swap to a
+  -- hyprland-session.target (Wants=graphical-session.target) if more user units
+  -- ever need the same hook.
+  hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("dex -a -s /etc/xdg/autostart/:~/.config/autostart/")
   hl.exec_cmd("~/.local/bin/hypr-monitor-event")
 end)
