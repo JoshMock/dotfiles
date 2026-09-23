@@ -7,9 +7,16 @@ If given a URL from the user, or a list of URLs from a web search, you can make 
 
 ## Usage
 
-If the link is to github.com, attempt to use the `gh` CLI tool to summarize the page. If not, continue.
+If the link is to github.com, **ALWAYS** use the `gh` CLI tool if available to read the URL. If not, continue.
 
-Use the Jina Reader API with `curl`:
+If the `hister` CLI tool exists, or if Hister is running at `localhost:4433`, use its search API to see if a Markdown representation of the page is available. If Hister is not available, continue.
+
+If the `jina` CLI tool exists:
+
+1. set the `JINA_API_KEY` env var: `export JINA_API_KEY=$(pass agents/jina-reader/pi)`
+2. use `jina read` to get a markdown rendering of a page: `jina read http://www.example.com`
+
+If `jina` is not installed, use the Jina web API. Example with `curl`:
 
 ```bash
 # fetch www.example.com
