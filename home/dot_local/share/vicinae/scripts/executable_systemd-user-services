@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# @vicinae.schemaVersion 1
+# @vicinae.exec ["/bin/bash"]
+# @vicinae.title User Services
+# @vicinae.description Manage a running user systemd service
+# @vicinae.mode silent
+
+service=$(systemctl --user list-units -t service --state running | tail -n+2 | head -n-6 | awk '{print $1}' \
+  | vicinae dmenu --navigation-title "User Services" --placeholder "Select service…") || exit 0
+[ -n "$service" ] || exit 0
+
+action=$(printf 'start\nstop\nrestart' \
+  | vicinae dmenu --navigation-title "User Services" --placeholder "Select action…") || exit 0
+[ -n "$action" ] || exit 0
+
+systemctl --user "$action" "$service"

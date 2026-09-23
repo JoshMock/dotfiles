@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# @vicinae.schemaVersion 1
+# @vicinae.exec ["/bin/bash"]
+# @vicinae.title journalctl
+# @vicinae.description View journal for a running system service
+# @vicinae.mode silent
+
+service=$(systemctl list-units -t service --state running | tail -n+2 | head -n-6 | awk '{print $1}' \
+  | vicinae dmenu --navigation-title "journalctl" --placeholder "Select service…") || exit 0
+[ -n "$service" ] || exit 0
+
+setsid -f kitty sudo journalctl -b0 -u "$service"

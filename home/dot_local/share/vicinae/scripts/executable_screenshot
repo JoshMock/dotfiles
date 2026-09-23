@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# @vicinae.schemaVersion 1
+# @vicinae.exec ["/bin/bash"]
+# @vicinae.title Screenshot
+# @vicinae.description Take a screenshot
+# @vicinae.mode silent
+
+# Detach capture from vicinae-server so it releases the wl_seat before slurp
+# runs; otherwise slurp's overlay shows but never receives pointer events.
+# ponytail: setsid detach is the fix; hyprctl dispatch exec if this regresses
+setsid -f bash -c '
+  geom=$(slurp) || exit 0
+  [ -n "$geom" ] || { notify-send "Screenshot cancelled"; exit 0; }
+  path="/home/joshmock/Pictures/$(date -u "+%Y-%m-%dT%H-%M-%S").png"
+  grim -g "$geom" "$path" && notify-send "Screenshot saved" "$path" \
+    || notify-send "Screenshot failed"
+'
