@@ -789,7 +789,7 @@ require("lazy").setup({
 
   -- treesitter
   {
-    "neovim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter",
     dependencies = { "neovim-treesitter/treesitter-parser-registry" },
     build = ":TSUpdate",
     opts = {
@@ -813,7 +813,7 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = {
-      "neovim-treesitter/nvim-treesitter",
+      "nvim-treesitter/nvim-treesitter",
     },
     opts = {},
   },
