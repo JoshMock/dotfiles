@@ -1,0 +1,7 @@
+semantic_search:
+  enable: true
+  embedding_endpoint: "https://api.jina.ai/v1/embeddings"
+  embedding_model: "jina-embeddings-v4"
+  api_key: '{{ pass "agents/jina-reader/pi" }}'
+  dimensions: 2048
+  embedding_timeout: 600
