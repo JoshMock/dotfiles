@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# pin home wifi to 5 GHz (2.4 GHz channel 1 is congested); no-op if profile is absent
+# ponytail: modifies the existing profile; PSK is never in dotfiles, add it once with nmcli/pass
+profile="KidA"
+
+nmcli -t -f NAME con show | grep -qx "$profile" || exit 0
+nmcli con modify "$profile" 802-11-wireless.band a
