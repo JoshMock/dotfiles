@@ -27,3 +27,5 @@ venv
 .vmpirc.json
 mempalace.yaml
 entities.json
+.workspaces
+.pi
