@@ -1,6 +1,7 @@
 history_filter = ["^vault write", "^op item edit", "^docker login"]
 enter_accept = true
 search_mode = "daemon-fuzzy"
+auto_sync = false
 
 [stats]
 common_subcommands = [
