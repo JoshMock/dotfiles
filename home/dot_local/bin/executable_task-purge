@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
-yes | task +COMPLETED 'end.before:(now-1m)' delete
-yes | task 'end.before(now-2m)' status:deleted purge
+yes | task 'end.before:today-2w' delete
+yes | task 'end.before:today-2w' status:deleted purge
