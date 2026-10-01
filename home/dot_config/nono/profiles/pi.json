@@ -35,14 +35,19 @@
       "~/Code/the-agency",
       "~/.pi/agent/sessions",
       "~/.npm",
-      "~/.gnupg"
+      "~/.config/gws",
+      "~/.gnupg",
+      "~/.config/gcloud",
+      "~/.local/share/cq"
     ],
     "read": [
       "~/.config/nono",
+      "~/.config/jj",
       "~/.local/share/mise/installs/node",
       "~/.local/bin",
       "~/.local/share/pipx/venvs/jina-cli",
-      "~/.password-store"
+      "~/.password-store",
+      "~/.config/jj/repos"
     ],
     "write": [],
     "allow_file": [
@@ -55,7 +60,11 @@
       "~/.local/share/mise/installs/node/latest/bin/npm",
       "~/.local/share/mise/installs/node/latest/bin/npx",
       "~/.local/share/mise/installs/node/latest/bin/node",
-      "~/Code/llm-wiki/AGENTS.md"
+      "~/.local/share/mise/installs/github-mozilla-ai-cq/cli-v0.17.0/cq",
+      "~/Code/llm-wiki/AGENTS.md",
+      "~/.config/jj/config.toml",
+      "~/.elasticrc.yml",
+      "~/.docker/config.json"
     ],
     "read_file": [],
     "write_file": [],
@@ -68,7 +77,9 @@
     "deny": [],
     "bypass_protection": [
       "~/.gnupg",
-      "~/.password-store"
+      "~/.password-store",
+      "~/.docker/config.json",
+      "~/.config/gcloud"
     ],
     "suppress_save_prompt": []
   },
@@ -108,7 +119,6 @@
     "exclude_patterns": [],
     "exclude_globs": []
   },
-  "interactive": false,
   "skipdirs": [],
   "packs": [],
   "command_args": [],

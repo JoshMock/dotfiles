@@ -38,3 +38,4 @@ uv = "latest"
 "github:ouch-org/ouch" = "latest"
 "http:zp" = { version = "0.3.0", url = "https://raw.githubusercontent.com/EarthmanMuons/zmx-picker/v{{version}}/zp" }
 "npm:@earendil-works/pi-coding-agent" = "latest"
+"github:mozilla-ai/cq" = "latest"
