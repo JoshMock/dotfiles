@@ -18,6 +18,10 @@ Break the solution down into high level "milestones" that each implement a concr
 
 Now break each milestone down into atomic, concrete tasks. Be brief, but avoid ambiguity. Use pseudocode if helpful. Include links to examples or related files.
 
+### Check against the real need
+
+Before saving, check the plan against the idea as I stated it and the people who will use the result, not only against requirements you derived yourself.
+
 ## Keep it simple
 
 **DO NOT** over-engineer your solution. Propose the simplest approach that makes sense.

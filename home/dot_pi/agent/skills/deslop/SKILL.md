@@ -32,7 +32,7 @@ Review the diff these produce, then continue with the manual fixes below.
 - Apply any code convention skills/tools
 - Apply any non-destructive suggestions from `ponytail` skills/tools
 - Ensure all code is linted and passes required formatting checks
-- Ensure tests validate **actual functionality** of this code project, not just validate that dependencies, stdlib or language works as expected
+- **NO TAUTOLOGICAL TESTS:** Ensure tests validate **actual functionality** of this code project, not just validate that dependencies, stdlib or language works as expected
 - Ensure any code coverage requirements are met
 - Add docstrings where helpful
 - Remove common AI tropes, like:
