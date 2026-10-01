@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+export WAYLAND_DISPLAY=wayland-1
+export DISPLAY=:0
+
 path="/home/joshmock/Pictures/$(date -u '+%Y-%m-%dT%H-%M-%S').png"
 sleep 5;
 grim -g "$(slurp)" "$path" && \
