@@ -21,7 +21,12 @@ EVENT=$(gws calendar events list --params '{
         .attendees == null or
         ([ .attendees[] | select(.self == true) | .responseStatus ] | first) != "declined"
       )
-  ] | first
+  ]
+  # ponytail: prefer the latest-started ongoing meeting, else the next upcoming one
+  | def ts: (.[:19] + "Z" | fromdate)
+      - ((.[19:] | if . == "Z" then 0 else ((.[1:3] | tonumber) * 3600 + (.[4:6] | tonumber) * 60) * (if .[0:1] == "-" then -1 else 1 end) end));
+    map(select((.end.dateTime | ts) > now)) as $live
+  | ([ $live[] | select((.start.dateTime | ts) <= now) ] | last) // ($live | first)
 ')
 
 if [ -z "$EVENT" ] || [ "$EVENT" = "null" ]; then
