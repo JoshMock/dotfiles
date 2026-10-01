@@ -1,3 +1,6 @@
 [tools]
 "pipx:gcalcli" = { version = "latest", depends = "uv" }
 "npm:@elastic/cli" = "latest"
+
+[bootstrap.packages]
+"aur:gmailctl" = "latest"

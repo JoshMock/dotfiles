@@ -1,6 +1,6 @@
 [bootstrap.packages]
-# "aur:pyprland" = "latest"
-# "aur:vicinae-bin" = "latest"
+"aur:pyprland" = "latest"
+"aur:vicinae-bin" = "latest"
 "pacman:awww" = "latest"
 "pacman:hypridle" = "latest"
 "pacman:hyprland" = "latest"

@@ -13,14 +13,7 @@
     "list": [
       {
         "operand": "process.path",
-        "data": "^/home/joshmock/.config/discord/app-\\d+\\.\\d+\\.\\d+/Discord$",
-        "type": "regexp",
-        "list": null,
-        "sensitive": false
-      },
-      {
-        "operand": "dest.host",
-        "data": "^(|.*\\.)(discord\\.com|discordapp\\.com|discord\\.gg|discord\\.media)$",
+        "data": "^/home/joshmock/.config/discord/app-\\d+\\.\\d+\\.\\d+/d|Discord$",
         "type": "regexp",
         "list": null,
         "sensitive": false

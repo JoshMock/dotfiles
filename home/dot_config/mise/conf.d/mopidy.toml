@@ -1,0 +1,3 @@
+[bootstrap.packages]
+"pacman:mpc" = "latest"
+"pacman:python-tidalapi" = "latest"

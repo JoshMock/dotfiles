@@ -1,5 +1,5 @@
 [bootstrap.packages]
-# "aur:pinentry-dispatch" = "latest"
+"aur:pinentry-dispatch" = "latest"
 "pacman:blueman" = "latest"
 "pacman:brightnessctl" = "latest"
 "pacman:dex" = "latest"
@@ -17,7 +17,7 @@
 "pacman:wofi" = "latest"
 "pacman:xdg-utils-mimeo" = "latest"
 "pacman:power-profiles-daemon" = "latest"
-"pacman:password-cli" = "latest"
+"pacman:1password-cli" = "latest"
 
 [bootstrap.files."/etc/interception/udevmon.d/caps2esc.yaml"]
 source = "./files/interception/caps2esc.yaml"

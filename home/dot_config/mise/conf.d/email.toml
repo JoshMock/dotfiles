@@ -1,2 +1,12 @@
 [tools]
 "pipx:mutt-oauth2" = { version = "latest", uvx_args = "--with secretstorage", depends = "uv" }
+
+[bootstrap.packages]
+"aur:abook" = "latest"
+"aur:cyrus-sasl-xoauth2-git" = "latest"
+"pacman:lynx" = "latest"
+"pacman:msmtp" = "latest"
+"aur:mutt-wizard" = "latest"
+"pacman:neomutt" = "latest"
+"pacman:notmuch" = "latest"
+"aur:urlview" = "latest"

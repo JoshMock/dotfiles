@@ -1,2 +1,7 @@
 ^(|.*\.)elastic\.co$
 ^(|.*\.)elastic\.dev$
+^(|.*\.)elasticnet\.co$
+^(|.*\.)es\.io$
+^(|.*\.)found\.no$
+^(|.*\.)foundit\.no$
+^(|.*\.)found\.io$

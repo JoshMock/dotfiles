@@ -3,7 +3,7 @@
 "pacman:kitty-terminfo" = "latest"
 "pacman:vlc" = "latest"
 "pacman:vlc-plugins-all" = "latest"
-# "aur:zeal-git" = "latest"
+"aur:zeal-git" = "latest"
 "pacman:slack-desktop" = "latest"
 "pacman:obsidian" = "latest"
 "pacman:firefox-developer-edition" = "latest"

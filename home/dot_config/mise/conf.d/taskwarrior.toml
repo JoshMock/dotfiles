@@ -5,4 +5,4 @@
 [bootstrap.packages]
 "pacman:task" = "latest"
 "pacman:python-emoji" = "latest"
-# "aur:taskopen" = "latest"
+"aur:taskopen" = "latest"
