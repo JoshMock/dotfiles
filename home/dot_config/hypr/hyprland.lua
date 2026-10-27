@@ -15,7 +15,6 @@ hl.env("MOZ_DBUS_REMOTE", "1")
 hl.env("OZONE_PLATFORM", "wayland")
 hl.env("GTK_THEME", "Adwaita:dark")
 hl.env("GTK2_RC_FILES", "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
-hl.env("QT_STYLE_OVERRIDE", "Adwaita-Dark")
 hl.env("PINENTRY_USER_DATA", "pinentry-qt")
 
 hl.config({

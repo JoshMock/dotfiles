@@ -34,7 +34,9 @@ enabled = true
 builtin = "Tokyo-Night"
 
 [theme.templates]
-builtin_ids = [ "btop", "hyprland" ]
+enable_builtin_templates = true
+enable_community_templates = true
+builtin_ids = [ "btop", "hyprland", "qt" ]
 community_ids = [ "rofi", "vicinae", "hyprtoolkit" ]
 
 [wallpaper]
