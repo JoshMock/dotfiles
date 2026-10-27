@@ -46,6 +46,16 @@ hl.config({
       inactive_border = "rgba(595959aa)",
     },
     layout = "dwindle",
+    snap = {
+      enabled = true,
+      respect_gaps = true,
+      window_gap = 10,
+      monitor_gap = 10,
+    },
+  },
+
+  dwindle = {
+    preserve_split = true,
   },
 
   decoration = {
@@ -55,6 +65,7 @@ hl.config({
       size = 6,
       passes = 1,
       xray = true,
+      popups = true,
     },
     active_opacity = 1.0,
     inactive_opacity = 0.6,
@@ -73,6 +84,8 @@ hl.config({
     force_default_wallpaper = 0,
     disable_hyprland_logo = true,
     disable_splash_rendering = true,
+    mouse_move_enables_dpms = true,
+    key_press_enables_dpms = true,
   },
 
   group = {
