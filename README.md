@@ -63,6 +63,12 @@ If you are not running an Arch-based distribution with `yay` installed, this scr
 Eventually it would be cool to get it working with `apt` on Debian (for logging onto Raspberry Pis, Ubuntu servers, etc.).
 `brew` support for MacOS is unlikely unless a future employer requires me to use a Mac, or I get tired of all this fiddly Linux business and cave in to the Apple ecosystem.
 
+### Machine-local overrides
+
+`~/.config/hypr/hyprland.lua` loads everything in `~/.config/hypr/custom.d/*.lua` after the tracked config, so files there override binds, rules and settings.
+That directory is deliberately not managed by Chezmoi: use it to hot-test changes without editing the tracked config or running `chezmoi apply`.
+See [AGENTS.md](./AGENTS.md) for details.
+
 ## License
 
 I can't license other people's submodules, obviously, but for anything that isn't already licensed, assume the [GPL license](https://www.gnu.org/licenses/gpl.html).

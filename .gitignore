@@ -1,2 +1,4 @@
 .DS_Store
 venv
+# machine-local Hyprland overlay, loaded by hyprland.lua (see AGENTS.md)
+custom.d/
