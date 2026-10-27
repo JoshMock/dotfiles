@@ -12,7 +12,10 @@ hl.env("SDL_VIDEODRIVER", "wayland")
 hl.env("MOZ_DISABLE_RDD_SANDBOX", "1")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 hl.env("MOZ_DBUS_REMOTE", "1")
-hl.env("OZONE_PLATFORM", "wayland")
+-- Electron/Chromium apps get their Wayland flags from
+-- ~/.config/electron-flags.conf: OZONE_PLATFORM is not a documented
+-- Electron variable, and ELECTRON_OZONE_PLATFORM_HINT was removed in
+-- Electron 38.
 hl.env("GTK_THEME", "Adwaita:dark")
 hl.env("GTK2_RC_FILES", "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
 hl.env("PINENTRY_USER_DATA", "pinentry-qt")
