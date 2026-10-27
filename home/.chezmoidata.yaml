@@ -20,5 +20,7 @@ packages:
     features: [email]
   - name: python-tidalapi
     features: [desktop, mopidy]
+  - name: qt6ct
+    features: [desktop]
   - name: urlview
     features: [desktop, email]
