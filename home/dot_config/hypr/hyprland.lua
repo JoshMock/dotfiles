@@ -552,3 +552,12 @@ hl.window_rule({
 
 -- For Noctalia Color templates
 require("noctalia").apply_theme()
+
+-- Machine-local overrides, loaded last so they win. ~/.config/hypr/custom.d/*.lua
+-- is not managed by chezmoi (see AGENTS.md), so experiments never touch this
+-- file. Errors are printed rather than raised so a broken overlay can't stop the
+-- rest of the config from loading.
+local custom_ok, custom_err = pcall(require, "./custom.d/*")
+if not custom_ok and not tostring(custom_err):find("wildcard found no") then
+  print("hypr: custom.d overlay failed to load: " .. tostring(custom_err))
+end
