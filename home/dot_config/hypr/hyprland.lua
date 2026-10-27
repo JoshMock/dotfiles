@@ -335,17 +335,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-  name = "vlc-menu",
-  match = {
-    class = "^(vlc)$",
-    float = true,
-  },
-  no_blur = true,
-  no_dim = true,
-  opaque = true,
-})
-
-hl.window_rule({
   name = "cava",
   match = { class = "cava" },
   workspace = "5 silent",
@@ -375,7 +364,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "1password-prompt",
-  match = { class = "1password", float = 1 },
+  match = { class = "1password" },
   tag = "prompt",
   size = "400 400",
 })
