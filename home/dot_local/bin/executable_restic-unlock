@@ -1,13 +1,70 @@
 #!/usr/bin/env bash
 
-# unlock local
-env RESTIC_REPOSITORY=/home/joshmock/.local/share/restic \
-  RESTIC_PASSWORD="$(yq '.backends.local.key' ~/.autorestic.yml)" \
-  restic unlock
+# restic-unlock — clear stale restic locks on every repository this host uses.
+#
+# Which repositories exist is a property of the machine, so they are read from
+# ~/.autorestic.yml (rendered per host by chezmoi) instead of naming a host or a
+# remote here: work machines define a gdrive backend, personal ones a b2 backend,
+# and all of them define local. A backend this host does not define is skipped, not
+# an error.
+#
+# Usage: restic-unlock [--remove-all]
+#   --remove-all   remove every lock, not just the stale ones. Use when a *fresh*
+#                  lock is what is in the way; it will also cut short a backup that
+#                  is running right now (that backup re-acquires its lock or fails).
+set -uo pipefail
 
-# unlock gdrive
-if [ $(hostname) = 'ravedeath' ]; then
-  env RESTIC_REPOSITORY=rclone:gdrive:rclone-ravedeath \
-    RESTIC_PASSWORD="$(yq '.backends.gdrive.key' ~/.autorestic.yml)" \
-    restic unlock
+CONFIG="$HOME/.autorestic.yml"
+unlock_extra=""
+case "${1:-}" in
+  --remove-all) unlock_extra="--remove-all" ;;
+  "") ;;
+  *) printf 'restic-unlock: unknown argument: %s\n' "$1" >&2; exit 2 ;;
+esac
+
+# Nothing configured is not a failure; missing tooling is.
+if [ ! -r "$CONFIG" ]; then
+  printf 'restic-unlock: no %s on this host — nothing to unlock.\n' "$CONFIG"
+  exit 0
 fi
+command -v yq >/dev/null || { printf 'restic-unlock: yq is not on PATH (mise install yq)\n' >&2; exit 1; }
+command -v restic >/dev/null || { printf 'restic-unlock: restic is not on PATH\n' >&2; exit 1; }
+
+backends="$(yq -r '.backends // {} | keys | .[]' "$CONFIG")"
+if [ -z "$backends" ]; then
+  printf 'restic-unlock: %s defines no backends — nothing to unlock.\n' "$CONFIG"
+  exit 0
+fi
+
+status=0
+while IFS= read -r backend; do
+  [ -n "$backend" ] || continue
+  type="$(yq -r ".backends[\"$backend\"].type // \"\"" "$CONFIG")"
+  path="$(yq -r ".backends[\"$backend\"].path // \"\"" "$CONFIG")"
+  key="$(yq -r ".backends[\"$backend\"].key // \"\"" "$CONFIG")"
+
+  if [ -z "$type" ] || [ -z "$path" ] || [ -z "$key" ]; then
+    printf 'skipping %s: incomplete backend in %s (type=%s path=%s key=%s)\n' \
+      "$backend" "$CONFIG" "${type:-none}" "${path:-none}" "$([ -n "$key" ] && echo set || echo none)"
+    continue
+  fi
+
+  # restic takes `local` as a bare path and every remote as `<type>:<path>` —
+  # `rclone:gdrive:rclone-<host>`, `b2:<bucket>:<prefix>`, `s3:...`.
+  if [ "$type" = local ]; then repo="$path"; else repo="$type:$path"; fi
+  printf '%s → %s\n' "$backend" "$repo"
+
+  # A backend's own env (B2_ACCOUNT_ID/KEY, GOMAXPROCS…) is what restic needs to
+  # reach it. Export it in a subshell so it cannot leak into the next backend, and
+  # pass the password in the environment rather than through `env`'s argv.
+  env_keys="$(yq -r ".backends[\"$backend\"].env // {} | keys | .[]" "$CONFIG")"
+  (
+    while IFS= read -r env_key; do
+      [ -n "$env_key" ] || continue
+      export "$env_key=$(yq -r ".backends[\"$backend\"].env[\"$env_key\"]" "$CONFIG")"
+    done <<< "$env_keys"
+    RESTIC_REPOSITORY="$repo" RESTIC_PASSWORD="$key" restic unlock $unlock_extra
+  ) || { printf 'restic-unlock: unlocking %s failed\n' "$backend" >&2; status=1; }
+done <<< "$backends"
+
+exit "$status"
