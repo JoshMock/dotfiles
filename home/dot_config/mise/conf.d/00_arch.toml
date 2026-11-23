@@ -110,7 +110,7 @@ enabled = true
 
 [bootstrap.services.opensnitchd]
 state = "running"
-enabled = true
+enabled = false
 
 [bootstrap.files."/etc/xdg/reflector/reflector.conf"]
 source = "./files/reflector/reflector.conf"
