@@ -103,7 +103,34 @@ hl.config({
   },
 })
 
-hl.monitor({ output = "eDP-1", position = "2560x0", mode = "preferred", scale = 1, bitdepth = 10 })
+local hostname = nil
+local function get_hostname()
+  if hostname ~= nil then
+    return hostname
+  end
+  -- Try reading from /etc/hostname
+  local f = io.open("/etc/hostname", "r")
+  if f then
+    hostname = f:read("*a"):match("^%s*(.-)%s*$")
+    f:close()
+    if hostname ~= "" then
+      return hostname
+    end
+  end
+  -- Fallback to HOSTNAME environment variable
+  hostname = os.getenv("HOSTNAME") or ""
+  return hostname
+end
+
+-- Set scale based on hostname
+local edp1_scale = 1
+if get_hostname() == "greatdismal" then
+  edp1_scale = 2
+elseif get_hostname() == "ravedeath" then
+  edp1_scale = 1
+end
+
+hl.monitor({ output = "eDP-1", position = "2560x0", mode = "preferred", scale = edp1_scale, bitdepth = 10 })
 hl.monitor({ output = "DP-2", disabled = true })
 hl.monitor({ output = "DP-3", position = "0x0", mode = "2560x1440", scale = 1, bitdepth = 10 })
 hl.monitor({ output = "DP-4", disabled = true })
