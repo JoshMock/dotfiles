@@ -1,0 +1,2 @@
+{{ if not .work }}firefox-developer-edition.desktop{{ end }}
+{{ if not .mopidy }}mopidy-iris.desktop{{ end }}
